@@ -1,26 +1,229 @@
 @import "tailwindcss";
+@import "./security.css";
 
 :root {
   --background: #ffffff;
   --foreground: #171717;
+  --font-sans: 'Inter', system-ui, sans-serif;
+  --font-mono: 'JetBrains Mono', monospace;
+  --font-heading: 'Space Grotesk', Arial, sans-serif;
 }
 
 @theme inline {
   --color-background: var(--background);
   --color-foreground: var(--foreground);
-  --font-sans: var(--font-geist-sans);
-  --font-mono: var(--font-geist-mono);
+  --font-sans: var(--font-sans);
+  --font-mono: var(--font-mono);
+  --font-heading: var(--font-heading);
 }
 
+/* Enhanced Dark Mode with Security Theme */
 @media (prefers-color-scheme: dark) {
   :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
+    --background: #080C14; /* Deep Navy 800 */
+    --foreground: #F8FAFC; /* Light Gray 50 */
+    --card-background: #0F172A; /* Deep Navy 500 */
+    --border-color: rgba(0, 255, 255, 0.1);
+    --text-muted: rgba(248, 250, 252, 0.6);
+    --accent-cyan: #00FFFF;
+    --accent-green: #39FF14;
   }
 }
 
+/* Security-Themed Base Styles */
 body {
   background: var(--background);
   color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
+  font-family: var(--font-sans);
+  line-height: 1.6;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+/* Enhanced Typography with Security Theme */
+h1, h2, h3, h4, h5, h6 {
+  font-family: var(--font-heading);
+  font-weight: 600;
+  line-height: 1.3;
+  letter-spacing: -0.02em;
+  color: #ffffff;
+}
+
+h1 {
+  font-size: 3.5rem;
+}
+
+h2 {
+  font-size: 2.5rem;
+}
+
+h3 {
+  font-size: 1.875rem;
+}
+
+h4 {
+  font-size: 1.5rem;
+}
+
+h5 {
+  font-size: 1.25rem;
+}
+
+h6 {
+  font-size: 1.125rem;
+}
+
+/* Body Text */
+p, li, span {
+  font-size: 1rem;
+  color: var(--text-muted);
+}
+
+/* Code Styling */
+code {
+  font-family: var(--font-mono);
+  background: rgba(0, 255, 255, 0.1);
+  border: 1px solid rgba(0, 255, 255, 0.2);
+  border-radius: 0.25rem;
+  padding: 0.125rem 0.25rem;
+  color: #00FFFF;
+}
+
+/* Security-Themed Links */
+a {
+  color: #00FFFF;
+  text-decoration: none;
+  transition: all 0.3s ease;
+  position: relative;
+}
+
+a:hover {
+  color: #39FF14;
+}
+
+a::after {
+  content: '';
+  position: absolute;
+  bottom: -2px;
+  left: 0;
+  width: 0;
+  height: 2px;
+  background: #00FFFF;
+  transition: width 0.3s ease;
+}
+
+a:hover::after {
+  width: 100%;
+}
+
+/* Enhanced Form Elements */
+input, textarea, select {
+  font-family: var(--font-sans);
+  border-radius: 0.5rem;
+  transition: all 0.3s ease;
+}
+
+/* Security Badge Styles */
+.security-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 0.5rem 1rem;
+  background: rgba(57, 255, 20, 0.1);
+  border: 1px solid #39FF14;
+  border-radius: 0.5rem;
+  color: #39FF14;
+  font-size: 0.875rem;
+  font-weight: 500;
+}
+
+.security-badge.locked {
+  background: rgba(0, 255, 255, 0.1);
+  border-color: #00FFFF;
+  color: #00FFFF;
+}
+
+/* Progress Bar Base */
+.progress-container {
+  width: 100%;
+  height: 0.75rem;
+  background: rgba(0, 255, 255, 0.1);
+  border-radius: 0.5rem;
+  overflow: hidden;
+  position: relative;
+}
+
+.progress-bar {
+  height: 100%;
+  background: linear-gradient(90deg, #39FF14, #00FFFF);
+  border-radius: 0.5rem;
+  transition: width 0.3s ease;
+}
+
+/* Enhanced List Styles */
+ul {
+  list-style: none;
+  padding: 0;
+}
+
+ul li {
+  position: relative;
+  padding-left: 1.5rem;
+  margin-bottom: 0.5rem;
+}
+
+ul li::before {
+  content: '✓';
+  position: absolute;
+  left: 0;
+  color: #39FF14;
+  font-weight: bold;
+}
+
+/* Responsive Container */
+.container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 1rem;
+}
+
+/* Accessibility Enhancements */
+.sr-only {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+  border: 0;
+}
+
+/* Focus Styles */
+*:focus-visible {
+  outline: 2px solid #00FFFF;
+  outline-offset: 2px;
+}
+
+/* Print Styles */
+@media print {
+  body {
+    background: white !important;
+    color: black !important;
+  }
+  
+  .security-glow,
+  .circuit-pattern,
+  .data-flow,
+  .hero-glow {
+    box-shadow: none !important;
+    background: none !important;
+    animation: none !important;
+  }
+  
+  a {
+    color: black !important;
+    text-decoration: underline !important;
+  }
 }

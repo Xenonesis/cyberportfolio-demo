@@ -1,0 +1,637 @@
+/* Comprehensive Responsive Design Enhancements for Cybersecurity Portfolio */
+/* Dark Tech-Inspired Security Theme */
+
+/* Base Responsive Utilities */
+.responsive-container {
+  width: 100%;
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 1rem;
+}
+
+/* Mobile-First Breakpoints */
+:root {
+  --breakpoint-sm: 640px;
+  --breakpoint-md: 768px;
+  --breakpoint-lg: 1024px;
+  --breakpoint-xl: 1280px;
+  --breakpoint-2xl: 1536px;
+}
+
+/* Mobile (320px - 639px) */
+@media (max-width: 639px) {
+  .mobile-responsive {
+    padding: 1rem;
+  }
+  
+  .mobile-header {
+    height: 4rem;
+    padding: 0 1rem;
+  }
+  
+  .mobile-nav {
+    flex-direction: column;
+    gap: 1rem;
+    padding: 2rem 1rem;
+  }
+  
+  .mobile-hero {
+    padding: 2rem 1rem;
+    text-align: center;
+  }
+  
+  .mobile-hero h1 {
+    font-size: 2.5rem;
+    line-height: 1.2;
+  }
+  
+  .mobile-hero p {
+    font-size: 1rem;
+    margin-bottom: 2rem;
+  }
+  
+  .mobile-cta {
+    width: 100%;
+    margin: 0.5rem 0;
+  }
+  
+  .mobile-grid {
+    grid-template-columns: 1fr;
+    gap: 1.5rem;
+  }
+  
+  .mobile-card {
+    padding: 1.5rem;
+    margin-bottom: 1rem;
+  }
+  
+  .mobile-form {
+    padding: 1rem;
+  }
+  
+  .mobile-input {
+    width: 100%;
+    padding: 0.75rem;
+    margin-bottom: 1rem;
+  }
+  
+  .mobile-button {
+    width: 100%;
+    margin: 0.5rem 0;
+  }
+  
+  /* Mobile-Specific Security Animations */
+  .mobile-circuit-pattern {
+    background-size: 30px 30px;
+    animation: cyberGrid 4s linear infinite;
+  }
+  
+  .mobile-security-glow {
+    box-shadow: 0 0 10px rgba(0, 255, 255, 0.3);
+  }
+  
+  .mobile-threat-level {
+    flex-direction: row;
+    align-items: center;
+    gap: 0.5rem;
+  }
+  
+  /* Touch-Friendly Enhancements */
+  .touch-target {
+    min-height: 44px;
+    min-width: 44px;
+    padding: 0.75rem 1rem;
+    font-size: 1rem;
+  }
+  
+  .touch-friendly {
+    touch-action: manipulation;
+    -webkit-tap-highlight-color: transparent;
+  }
+}
+
+/* Small Devices (640px - 767px) */
+@media (min-width: 640px) and (max-width: 767px) {
+  .sm-responsive {
+    padding: 1.5rem;
+  }
+  
+  .sm-grid {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 2rem;
+  }
+  
+  .sm-card {
+    padding: 2rem;
+  }
+  
+  .sm-hero {
+    padding: 3rem 1.5rem;
+  }
+  
+  .sm-hero h1 {
+    font-size: 3rem;
+  }
+}
+
+/* Tablet (768px - 1023px) */
+@media (min-width: 768px) and (max-width: 1023px) {
+  .tablet-responsive {
+    padding: 2rem;
+  }
+  
+  .tablet-header {
+    padding: 0 2rem;
+  }
+  
+  .tablet-nav {
+    flex-direction: row;
+    justify-content: center;
+    gap: 2rem;
+  }
+  
+  .tablet-hero {
+    padding: 4rem 2rem;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+  }
+  
+  .tablet-hero-content {
+    flex: 1;
+    max-width: 500px;
+  }
+  
+  .tablet-hero-image {
+    flex: 1;
+    max-width: 400px;
+  }
+  
+  .tablet-grid {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 2.5rem;
+  }
+  
+  .tablet-card {
+    padding: 2.5rem;
+  }
+  
+  .tablet-form {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 2rem;
+  }
+  
+  .tablet-input {
+    width: 100%;
+  }
+  
+  /* Enhanced Tablet Animations */
+  .tablet-security-glow {
+    box-shadow: 0 0 15px rgba(0, 255, 255, 0.4);
+  }
+  
+  .tablet-circuit-pattern {
+    background-size: 40px 40px;
+    animation: cyberGrid 6s linear infinite;
+  }
+}
+
+/* Desktop (1024px - 1279px) */
+@media (min-width: 1024px) and (max-width: 1279px) {
+  .desktop-responsive {
+    padding: 2.5rem;
+  }
+  
+  .desktop-header {
+    padding: 0 3rem;
+  }
+  
+  .desktop-hero {
+    padding: 5rem 3rem;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 3rem;
+    align-items: center;
+  }
+  
+  .desktop-grid {
+    grid-template-columns: repeat(3, 1fr);
+    gap: 3rem;
+  }
+  
+  .desktop-card {
+    padding: 3rem;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+  }
+  
+  .desktop-card:hover {
+    transform: translateY(-8px);
+    box-shadow: 0 20px 40px rgba(0, 255, 255, 0.15);
+  }
+  
+  .desktop-form {
+    display: grid;
+    grid-template-columns: 2fr 1fr;
+    gap: 3rem;
+  }
+  
+  /* Desktop-Specific Enhancements */
+  .desktop-security-glow {
+    box-shadow: 0 0 20px rgba(0, 255, 255, 0.5);
+  }
+  
+  .desktop-circuit-pattern {
+    background-size: 50px 50px;
+    animation: cyberGrid 8s linear infinite;
+  }
+  
+  .desktop-data-flow {
+    animation: dataFlow 3s ease-in-out infinite;
+  }
+  
+  .desktop-threat-level {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+  }
+}
+
+/* Large Desktop (1280px - 1535px) */
+@media (min-width: 1280px) and (max-width: 1535px) {
+  .lg-desktop-responsive {
+    padding: 3rem;
+  }
+  
+  .lg-desktop-container {
+    max-width: 1400px;
+  }
+  
+  .lg-desktop-hero {
+    padding: 6rem 4rem;
+    grid-template-columns: 1.2fr 1fr;
+    gap: 4rem;
+  }
+  
+  .lg-desktop-grid {
+    grid-template-columns: repeat(4, 1fr);
+    gap: 4rem;
+  }
+  
+  .lg-desktop-card {
+    padding: 3.5rem;
+  }
+  
+  .lg-desktop-form {
+    grid-template-columns: 3fr 1fr;
+    gap: 4rem;
+  }
+  
+  /* Enhanced Large Desktop Effects */
+  .lg-desktop-security-glow {
+    box-shadow: 0 0 25px rgba(0, 255, 255, 0.6);
+  }
+  
+  .lg-desktop-circuit-pattern {
+    background-size: 60px 60px;
+    animation: cyberGrid 10s linear infinite;
+  }
+  
+  .lg-desktop-binary-rain {
+    opacity: 0.3;
+    animation: binaryRain 15s linear infinite;
+  }
+}
+
+/* Extra Large Desktop (1536px+) */
+@media (min-width: 1536px) {
+  .xl-desktop-responsive {
+    padding: 4rem;
+  }
+  
+  .xl-desktop-container {
+    max-width: 1600px;
+  }
+  
+  .xl-desktop-hero {
+    padding: 8rem 6rem;
+    grid-template-columns: 1.5fr 1fr;
+    gap: 6rem;
+  }
+  
+  .xl-desktop-grid {
+    grid-template-columns: repeat(5, 1fr);
+    gap: 5rem;
+  }
+  
+  .xl-desktop-card {
+    padding: 4rem;
+  }
+  
+  /* Maximum Visual Impact */
+  .xl-desktop-security-glow {
+    box-shadow: 0 0 30px rgba(0, 255, 255, 0.7);
+  }
+  
+  .xl-desktop-circuit-pattern {
+    background-size: 80px 80px;
+    animation: cyberGrid 12s linear infinite;
+  }
+  
+  .xl-desktop-binary-rain {
+    opacity: 0.4;
+    animation: binaryRain 12s linear infinite;
+  }
+  
+  .xl-desktop-data-flow {
+    animation: dataFlow 2s ease-in-out infinite;
+  }
+}
+
+/* Orientation-Specific Styles */
+@media (orientation: landscape) {
+  .landscape-hero {
+    flex-direction: row;
+    align-items: center;
+  }
+  
+  .landscape-grid {
+    grid-template-columns: repeat(3, 1fr);
+  }
+}
+
+@media (orientation: portrait) {
+  .portrait-hero {
+    text-align: center;
+  }
+  
+  .portrait-grid {
+    grid-template-columns: 1fr;
+  }
+  
+  .portrait-form {
+    grid-template-columns: 1fr;
+  }
+}
+
+/* High DPI/Retina Displays */
+@media (-webkit-min-device-pixel-ratio: 2), (min-resolution: 192dpi) {
+  .retina-crisp {
+    image-rendering: -webkit-optimize-contrast;
+    image-rendering: crisp-edges;
+  }
+  
+  .retina-text {
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+  }
+  
+  .retina-security-glow {
+    box-shadow: 0 0 15px rgba(0, 255, 255, 0.4);
+  }
+}
+
+/* Reduced Motion Preferences */
+@media (prefers-reduced-motion: reduce) {
+  .reduced-motion * {
+    animation: none !important;
+    transition: none !important;
+  }
+  
+  .reduced-motion-security-glow {
+    box-shadow: 0 0 5px rgba(0, 255, 255, 0.2);
+  }
+  
+  .reduced-motion-circuit-pattern {
+    background-image: none;
+  }
+  
+  .reduced-motion-data-flow {
+    animation: none;
+  }
+}
+
+/* High Contrast Preferences */
+@media (prefers-contrast: high) {
+  .high-contrast {
+    background: #000 !important;
+    color: #fff !important;
+  }
+  
+  .high-contrast-accent {
+    background: #fff !important;
+    color: #000 !important;
+  }
+  
+  .high-contrast-border {
+    border: 2px solid #fff !important;
+  }
+}
+
+/* Dark Mode Specific */
+@media (prefers-color-scheme: dark) {
+  .dark-mode-bg {
+    background: #080C14;
+  }
+  
+  .dark-mode-card {
+    background: #0F172A;
+    border-color: rgba(0, 255, 255, 0.1);
+  }
+  
+  .dark-mode-text {
+    color: #F8FAFC;
+  }
+  
+  .dark-mode-muted {
+    color: rgba(248, 250, 252, 0.6);
+  }
+}
+
+/* Light Mode Specific */
+@media (prefers-color-scheme: light) {
+  .light-mode-bg {
+    background: #F8FAFC;
+  }
+  
+  .light-mode-card {
+    background: #ffffff;
+    border-color: #E2E8F0;
+  }
+  
+  .light-mode-text {
+    color: #171717;
+  }
+  
+  .light-mode-muted {
+    color: #6B7280;
+  }
+}
+
+/* Print Styles */
+@media print {
+  .print-hide {
+    display: none !important;
+  }
+  
+  .print-show {
+    display: block !important;
+  }
+  
+  .print-content {
+    background: white !important;
+    color: black !important;
+  }
+  
+  .print-links {
+    color: black !important;
+    text-decoration: underline !important;
+  }
+  
+  .print-no-break {
+    page-break-inside: avoid;
+  }
+  
+  .print-break-before {
+    page-break-before: always;
+  }
+}
+
+/* Performance Optimizations for Different Devices */
+/* Low-End Devices */
+@media (max-width: 768px) {
+  .low-end-animations {
+    animation-duration: 0.5s !important;
+  }
+  
+  .low-end-bg {
+    background-image: none !important;
+  }
+}
+
+/* High-End Devices */
+@media (min-width: 1024px) {
+  .high-end-animations {
+    will-change: transform, opacity;
+    transform: translateZ(0);
+  }
+  
+  .high-end-bg {
+    background-attachment: fixed;
+  }
+}
+
+/* Custom Security-Specific Responsive Classes */
+.security-responsive {
+  display: grid;
+  gap: 2rem;
+}
+
+.security-mobile-grid {
+  grid-template-columns: 1fr;
+}
+
+.security-tablet-grid {
+  grid-template-columns: repeat(2, 1fr);
+}
+
+.security-desktop-grid {
+  grid-template-columns: repeat(3, 1fr);
+}
+
+.security-lg-grid {
+  grid-template-columns: repeat(4, 1fr);
+}
+
+.security-xl-grid {
+  grid-template-columns: repeat(5, 1fr);
+}
+
+/* Responsive Typography Scaling */
+.responsive-h1 {
+  font-size: clamp(2rem, 5vw, 3.5rem);
+  line-height: 1.2;
+}
+
+.responsive-h2 {
+  font-size: clamp(1.5rem, 3.5vw, 2.5rem);
+  line-height: 1.3;
+}
+
+.responsive-h3 {
+  font-size: clamp(1.2rem, 2.5vw, 1.875rem);
+  line-height: 1.4;
+}
+
+.responsive-body {
+  font-size: clamp(0.9rem, 2vw, 1.125rem);
+  line-height: 1.6;
+}
+
+.responsive-caption {
+  font-size: clamp(0.7rem, 1.5vw, 0.875rem);
+  line-height: 1.4;
+}
+
+/* Touch Gesture Support */
+.touch-swipe-left {
+  transform: translateX(-100%);
+}
+
+.touch-swipe-right {
+  transform: translateX(100%);
+}
+
+.touch-swipe-up {
+  transform: translateY(-100%);
+}
+
+.touch-swipe-down {
+  transform: translateY(100%);
+}
+
+/* Accessibility-Focused Responsive */
+.accessible-focus {
+  outline: 3px solid #00FFFF;
+  outline-offset: 2px;
+}
+
+.accessible-hover {
+  cursor: pointer;
+}
+
+.accessible-keyboard {
+  outline: 2px solid #00FFFF;
+  outline-offset: 2px;
+}
+
+/* Loading States for Different Connections */
+.slow-connection .loading {
+  opacity: 0.7;
+}
+
+.fast-connection .loading {
+  opacity: 1;
+}
+
+/* Device-Specific Optimizations */
+/* iPhone */
+@supports (-webkit-touch-callout: none) {
+  .iphone-safe-area {
+    padding: env(safe-area-inset-top) env(safe-area-inset-right) env(safe-area-inset-bottom) env(safe-area-inset-left);
+  }
+}
+
+/* Android */
+@supports (-webkit-appearance: none) {
+  .android-optimized {
+    -webkit-tap-highlight-color: transparent;
+  }
+}
+
+/* Windows */
+@supports (-ms-ime-align: auto) {
+  .windows-optimized {
+    font-smooth: always;
+  }
+}

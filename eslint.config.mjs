@@ -5,6 +5,36 @@ import nextTs from "eslint-config-next/typescript";
 const eslintConfig = defineConfig([
   ...nextVitals,
   ...nextTs,
+  // Security-focused ESLint rules
+  {
+    rules: {
+      // Security rules
+      "security/detect-object-injection": "error",
+      "security/detect-non-literal-regexp": "error",
+      "security/detect-unsafe-regex": "error",
+      "security/detect-buffer-noassert": "error",
+      "security/detect-eval-with-expression": "error",
+      "security/detect-pseudoRandomBytes": "error",
+      
+      // Code quality rules
+      "prefer-const": "error",
+      "no-var": "error",
+      "prefer-arrow-callback": "error",
+      "arrow-spacing": "error",
+      "no-unused-vars": "error",
+      "no-console": "warn",
+      
+      // React-specific rules
+      "react-hooks/rules-of-hooks": "error",
+      "react-hooks/exhaustive-deps": "warn",
+      "react/jsx-key": "error",
+      "react/jsx-no-duplicate-props": "error",
+      "react/jsx-no-undef": "error",
+      "react/jsx-uses-react": "error",
+      "react/jsx-uses-vars": "error",
+    },
+    plugins: ["security"],
+  },
   // Override default ignores of eslint-config-next.
   globalIgnores([
     // Default ignores of eslint-config-next:
@@ -12,6 +42,9 @@ const eslintConfig = defineConfig([
     "out/**",
     "build/**",
     "next-env.d.ts",
+    // Additional ignores
+    "public/**",
+    "content/**",
   ]),
 ]);
 

@@ -1,0 +1,724 @@
+/* Comprehensive Accessibility and Performance Optimization for Cybersecurity Portfolio */
+/* Dark Tech-Inspired Security Theme */
+
+/* WCAG 2.1 AA Compliance */
+:root {
+  /* Color Contrast Ratios */
+  --contrast-ratio-normal: 4.5; /* Minimum for normal text */
+  --contrast-ratio-large: 3.0; /* Minimum for large text */
+  --contrast-ratio-ui: 3.0; /* Minimum for UI components */
+  
+  /* Focus Indicators */
+  --focus-outline-width: 3px;
+  --focus-outline-offset: 2px;
+  
+  /* Animation Durations */
+  --animation-duration-normal: 0.3s;
+  --animation-duration-slow: 0.5s;
+  --animation-duration-fast: 0.15s;
+  
+  /* Performance Metrics */
+  --critical-css-size: 50KB;
+  --font-display-fallback: fallback;
+  --image-loading-lazy: lazy;
+}
+
+/* High Contrast Mode Support */
+@media (prefers-contrast: high) {
+  :root {
+    --background: #000000;
+    --foreground: #FFFFFF;
+    --accent-cyan: #00CED1;
+    --accent-green: #39FF14;
+    --border: #FFFFFF;
+    --focus-outline: #FFFF00;
+  }
+  
+  /* Force High Contrast Colors */
+  .high-contrast-forced {
+    background: var(--background) !important;
+    color: var(--foreground) !important;
+    border-color: var(--border) !important;
+  }
+  
+  /* Enhanced Focus States */
+  .high-contrast-focus {
+    outline: var(--focus-outline-width) solid var(--focus-outline) !important;
+    outline-offset: var(--focus-outline-offset) !important;
+  }
+  
+  /* Simplified Animations */
+  .high-contrast-animate {
+    animation: none !important;
+    transition: none !important;
+  }
+}
+
+/* Reduced Motion Preferences */
+@media (prefers-reduced-motion: reduce) {
+  :root {
+    --animation-duration-normal: 0s;
+    --animation-duration-slow: 0s;
+    --animation-duration-fast: 0s;
+  }
+  
+  /* Disable All Animations */
+  .no-motion {
+    animation: none !important;
+    transition: none !important;
+    transform: none !important;
+  }
+  
+  /* Disable Auto-Playing Media */
+  .auto-play {
+    animation-play-state: paused !important;
+    transition-play-state: paused !important;
+  }
+  
+  /* Simplified Interactions */
+  .motion-reduced {
+    will-change: auto !important;
+  }
+}
+
+/* Dark Mode Optimization */
+@media (prefers-color-scheme: dark) {
+  :root {
+    --background-dark: #080C14;
+    --surface-dark: #0F172A;
+    --on-surface-dark: #F8FAFC;
+    --on-surface-muted-dark: rgba(248, 250, 252, 0.6);
+    --border-dark: rgba(0, 255, 255, 0.1);
+  }
+  
+  .dark-mode-optimized {
+    background: var(--background-dark);
+    color: var(--on-surface-dark);
+  }
+  
+  .dark-mode-surface {
+    background: var(--surface-dark);
+    border-color: var(--border-dark);
+  }
+  
+  .dark-mode-text {
+    color: var(--on-surface-dark);
+  }
+  
+  .dark-mode-muted {
+    color: var(--on-surface-muted-dark);
+  }
+}
+
+/* Light Mode Optimization */
+@media (prefers-color-scheme: light) {
+  :root {
+    --background-light: #F8FAFC;
+    --surface-light: #FFFFFF;
+    --on-surface-light: #171717;
+    --on-surface-muted-light: #6B7280;
+    --border-light: #E2E8F0;
+  }
+  
+  .light-mode-optimized {
+    background: var(--background-light);
+    color: var(--on-surface-light);
+  }
+  
+  .light-mode-surface {
+    background: var(--surface-light);
+    border-color: var(--border-light);
+  }
+  
+  .light-mode-text {
+    color: var(--on-surface-light);
+  }
+  
+  .light-mode-muted {
+    color: var(--on-surface-muted-light);
+  }
+}
+
+/* Focus Management */
+/* Visible Focus Indicators */
+.focus-visible {
+  outline: var(--focus-outline-width) solid #00FFFF;
+  outline-offset: var(--focus-outline-offset);
+  border-radius: 0.25rem;
+}
+
+/* Enhanced Focus for Security Elements */
+.security-focus {
+  outline: var(--focus-outline-width) solid #39FF14;
+  outline-offset: var(--focus-outline-offset);
+  box-shadow: 0 0 0 6px rgba(57, 255, 20, 0.2);
+}
+
+/* Focus Trapping for Modals */
+.focus-trap {
+  position: fixed;
+  inset: 0;
+  z-index: 9999;
+}
+
+/* Skip Navigation */
+.skip-nav {
+  position: absolute;
+  top: -40px;
+  left: 6px;
+  background: #000;
+  color: #fff;
+  padding: 8px;
+  z-index: 99999;
+  border-radius: 4px;
+  text-decoration: none;
+}
+
+.skip-nav:focus {
+  top: 6px;
+}
+
+/* Screen Reader Only Content */
+.sr-only {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+  border: 0;
+}
+
+/* ARIA Live Regions */
+.aria-live-polite {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  border: 0;
+  white-space: nowrap;
+  word-wrap: normal;
+}
+
+.aria-live-assertive {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  border: 0;
+  white-space: nowrap;
+  word-wrap: normal;
+}
+
+/* Semantic HTML Enhancements */
+/* Navigation Landmarks */
+.main-nav {
+  role: navigation;
+  aria-label: "Main navigation";
+}
+
+.breadcrumb-nav {
+  role: navigation;
+  aria-label: "Breadcrumb";
+}
+
+/* Form Enhancements */
+.form-field {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+}
+
+.form-label {
+  font-weight: 500;
+  color: var(--on-surface-dark);
+}
+
+.form-input {
+  padding: 0.75rem;
+  border: 1px solid var(--border-dark);
+  border-radius: 0.5rem;
+  background: var(--surface-dark);
+  color: var(--on-surface-dark);
+  transition: border-color 0.3s ease, box-shadow 0.3s ease;
+}
+
+.form-input:focus {
+  border-color: #00FFFF;
+  box-shadow: 0 0 0 3px rgba(0, 255, 255, 0.1);
+  outline: none;
+}
+
+.form-error {
+  color: #EF4444;
+  font-size: 0.875rem;
+  margin-top: 0.25rem;
+}
+
+/* Performance Optimizations */
+
+/* Critical CSS Inlining */
+.critical {
+  /* Critical styles that should be inlined */
+  font-family: 'Inter', system-ui, sans-serif;
+}
+
+/* Font Loading Optimization */
+@font-face {
+  font-family: 'Inter';
+  font-style: normal;
+  font-weight: 400;
+  font-display: swap;
+  src: local('Inter Regular'), local('Inter-Regular');
+}
+
+@font-face {
+  font-family: 'Space Grotesk';
+  font-style: normal;
+  font-weight: 600;
+  font-display: swap;
+  src: local('Space Grotesk Bold'), local('SpaceGrotesk-Bold');
+}
+
+@font-face {
+  font-family: 'JetBrains Mono';
+  font-style: normal;
+  font-weight: 400;
+  font-display: swap;
+  src: local('JetBrains Mono'), local('JetBrainsMono-Regular');
+}
+
+/* Image Optimization */
+.img-optimized {
+  loading: lazy;
+  decoding: async;
+  width: auto;
+  height: auto;
+}
+
+/* CSS Containment for Performance */
+.performance-container {
+  contain: layout style paint;
+}
+
+.performance-animation {
+  will-change: transform, opacity;
+  transform: translateZ(0);
+}
+
+/* Reduce Repaints */
+.minimize-repaint {
+  contain: layout style;
+}
+
+/* Memory Management */
+.memory-efficient {
+  image-rendering: -webkit-optimize-contrast;
+  image-rendering: crisp-edges;
+}
+
+/* Network Optimization */
+@media (max-width: 768px) {
+  .mobile-optimized {
+    /* Reduce heavy animations on mobile */
+    animation-duration: var(--animation-duration-slow);
+    background-image: none;
+  }
+}
+
+@media (prefers-reduced-data: reduce) {
+  .data-saving {
+    /* Reduce data usage */
+    background-image: none;
+    animation: none;
+    font-size: 0.875rem;
+  }
+}
+
+/* Security-Specific Accessibility */
+
+/* Threat Level Accessibility */
+.threat-level-accessible {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 0.5rem 1rem;
+  border-radius: 0.5rem;
+  font-weight: 500;
+}
+
+.threat-low {
+  background: rgba(57, 255, 20, 0.1);
+  border: 1px solid #39FF14;
+  color: #39FF14;
+}
+
+.threat-medium {
+  background: rgba(255, 215, 0, 0.1);
+  border: 1px solid #FFD700;
+  color: #FFD700;
+}
+
+.threat-high {
+  background: rgba(239, 68, 68, 0.1);
+  border: 1px solid #EF4444;
+  color: #EF4444;
+}
+
+.threat-critical {
+  background: rgba(185, 28, 28, 0.15);
+  border: 1px solid #B91C1C;
+  color: #B91C1C;
+  animation: pulse 2s ease-in-out infinite;
+}
+
+/* Security Status Accessibility */
+.security-status-accessible {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  padding: 0.5rem 1rem;
+  border-radius: 0.5rem;
+  min-height: 44px; /* Touch target */
+}
+
+.status-online {
+  background: rgba(57, 255, 20, 0.1);
+  border: 1px solid #39FF14;
+  color: #39FF14;
+}
+
+.status-offline {
+  background: rgba(107, 114, 128, 0.1);
+  border: 1px solid #6B7280;
+  color: #6B7280;
+}
+
+.status-secure {
+  background: rgba(0, 255, 255, 0.1);
+  border: 1px solid #00FFFF;
+  color: #00FFFF;
+}
+
+.status-warning {
+  background: rgba(255, 215, 0, 0.1);
+  border: 1px solid #FFD700;
+  color: #FFD700;
+}
+
+/* Keyboard Navigation */
+.keyboard-navigation {
+  outline: 2px solid #00FFFF;
+  outline-offset: 2px;
+  border-radius: 0.25rem;
+}
+
+/* Tab Order Management */
+.tab-order {
+  order: 1;
+}
+
+/* Voice Control Support */
+.voice-control {
+  aria-label: "Interactive element";
+}
+
+/* Cognitive Load Reduction */
+.cognitive-friendly {
+  max-width: 80ch;
+  line-height: 1.6;
+  font-size: 1rem;
+  margin: 0 auto;
+  padding: 1rem;
+}
+
+/* Error Prevention */
+.error-prevention {
+  background: rgba(239, 68, 68, 0.1);
+  border: 1px solid #EF4444;
+  color: #EF4444;
+  padding: 1rem;
+  border-radius: 0.5rem;
+}
+
+/* Confirmation Dialogs */
+.confirmation-dialog {
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  background: var(--surface-dark);
+  border: 1px solid var(--border-dark);
+  border-radius: 0.75rem;
+  padding: 2rem;
+  z-index: 1000;
+  min-width: 300px;
+  max-width: 500px;
+}
+
+/* Loading States */
+.loading-skeleton {
+  background: linear-gradient(90deg, #1E293B 25%, #334155 50%, #1E293B 75%);
+  background-size: 200% 100%;
+  animation: loading 1.5s infinite;
+}
+
+@keyframes loading {
+  0% {
+    background-position: 200% 0;
+  }
+  100% {
+    background-position: -200% 0;
+  }
+}
+
+/* Print Styles */
+@media print {
+  .print-optimized {
+    background: white !important;
+    color: black !important;
+    font-size: 12pt;
+    line-height: 1.4;
+  }
+  
+  .print-hide {
+    display: none !important;
+  }
+  
+  .print-show {
+    display: block !important;
+  }
+  
+  .print-links {
+    color: black !important;
+    text-decoration: underline !important;
+  }
+  
+  .print-break-before {
+    page-break-before: always;
+  }
+  
+  .print-break-after {
+    page-break-after: always;
+  }
+  
+  .print-no-break {
+    page-break-inside: avoid;
+  }
+}
+
+/* Testing and Validation */
+
+/* Color Blindness Simulation */
+.color-blind-friendly {
+  /* Use patterns and textures in addition to color */
+  background-image: linear-gradient(45deg, transparent 45%, rgba(0, 255, 255, 0.1) 50%, transparent 55%);
+  background-size: 10px 10px;
+}
+
+/* Dyslexia-Friendly */
+.dyslexia-friendly {
+  font-family: 'Open Dyslexic', Arial, sans-serif;
+  line-height: 1.8;
+  letter-spacing: 0.05em;
+  max-width: 65ch;
+}
+
+/* Elderly-Friendly */
+.elderly-friendly {
+  font-size: 1.2rem;
+  line-height: 1.7;
+  touch-target: 48px;
+  high-contrast: true;
+}
+
+/* Performance Monitoring */
+.performance-metric {
+  position: fixed;
+  bottom: 1rem;
+  right: 1rem;
+  background: rgba(0, 0, 0, 0.8);
+  color: white;
+  padding: 0.5rem;
+  border-radius: 0.25rem;
+  font-size: 0.75rem;
+  z-index: 9999;
+}
+
+/* Security Compliance */
+.security-compliance {
+  /* Ensure all security elements are accessible */
+  border: 2px solid transparent;
+  border-radius: 0.25rem;
+}
+
+.security-compliance:focus {
+  border-color: #00FFFF;
+}
+
+/* ARIA Attributes */
+[aria-expanded="true"] {
+  /* Enhanced styling for expanded elements */
+  background: rgba(0, 255, 255, 0.1);
+}
+
+[aria-selected="true"] {
+  /* Enhanced styling for selected elements */
+  background: rgba(57, 255, 20, 0.1);
+  border: 2px solid #39FF14;
+}
+
+[aria-invalid="true"] {
+  /* Enhanced styling for invalid elements */
+  border: 2px solid #EF4444;
+  background: rgba(239, 68, 68, 0.1);
+}
+
+/* Progressive Enhancement */
+.progressive-enhancement {
+  /* Base styles that work without JavaScript */
+  background: #0F172A;
+  color: #F8FAFC;
+  border: 1px solid rgba(0, 255, 255, 0.1);
+}
+
+.js-enhanced {
+  /* Enhanced styles when JavaScript is available */
+  animation: fadeIn 0.3s ease;
+}
+
+/* Fallback Styles */
+.fallback {
+  /* Fallback styles for older browsers */
+  background: #1E293B;
+  color: #F8FAFC;
+  border: 1px solid #4B5563;
+}
+
+/* Graceful Degradation */
+.degraded {
+  /* Styles when advanced features aren't supported */
+  background: #374151;
+  color: #E5E7EB;
+  border: 1px solid #6B7280;
+}
+
+/* Security-Specific Performance */
+
+/* Security Animation Optimization */
+.security-animation-optimized {
+  animation-duration: var(--animation-duration-normal);
+  will-change: transform;
+  transform: translateZ(0);
+}
+
+/* Circuit Pattern Performance */
+.circuit-pattern-optimized {
+  background-image: radial-gradient(circle at 25% 25%, rgba(0, 255, 255, 0.1) 1px, transparent 1px);
+  background-size: 50px 50px;
+  animation: cyberGrid 8s linear infinite;
+}
+
+/* Data Flow Performance */
+.data-flow-optimized {
+  animation: dataFlow 3s ease-in-out infinite;
+  will-change: transform;
+}
+
+/* Binary Rain Performance */
+.binary-rain-optimized {
+  background-image: linear-gradient(90deg, transparent 70%, rgba(0, 255, 255, 0.05) 70.1%);
+  background-size: 20px 20px;
+  animation: binaryRain 20s linear infinite;
+  opacity: 0.3;
+}
+
+/* Security Badge Performance */
+.badge-optimized {
+  animation: lockIn 0.5s ease-out;
+  will-change: transform;
+}
+
+/* Shield Animation Performance */
+.shield-optimized {
+  animation: shieldActivate 1s ease-out;
+  will-change: transform, filter;
+}
+
+/* Security Scan Performance */
+.scan-optimized {
+  animation: securityScan 2s ease-out;
+  will-change: transform, background;
+}
+
+/* Neon Pulse Performance */
+.pulse-optimized {
+  animation: neonPulse 1.5s ease-in-out infinite;
+  will-change: box-shadow;
+}
+
+/* Performance Budget */
+.performance-budget {
+  /* Monitor performance budget */
+  --budget-css: 50KB;
+  --budget-js: 100KB;
+  --budget-images: 200KB;
+}
+
+/* Critical Path Optimization */
+.critical-path {
+  /* Optimize critical rendering path */
+  contain: layout style paint;
+  will-change: auto;
+}
+
+/* Resource Hints */
+.resource-hint {
+  /* Preload critical resources */
+  rel: preload;
+  as: style;
+}
+
+/* Lazy Loading */
+.lazy-load {
+  /* Lazy load non-critical resources */
+  loading: lazy;
+}
+
+/* Intersection Observer */
+.intersection-observer {
+  /* Use Intersection Observer for lazy loading */
+  rootMargin: 50px;
+  threshold: 0.1;
+}
+
+/* Performance Metrics Collection */
+.performance-collect {
+  /* Collect performance metrics */
+  --metric-fcp: 1800ms;
+  --metric-lcp: 2500ms;
+  --metric-fid: 100ms;
+  --metric-cls: 0.1;
+}
+
+/* Security Performance Monitoring */
+.security-performance {
+  /* Monitor security feature performance */
+  --security-animation-budget: 16ms;
+  --security-render-budget: 100ms;
+}
+
+/* Accessibility Performance */
+.accessibility-performance {
+  /* Ensure accessibility doesn't impact performance */
+  --a11y-animation-budget: 33ms;
+  --a11y-render-budget: 50ms;
+}

@@ -1,36 +1,322 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# Cybersecurity Portfolio - Aditya Kumar Tiwari
 
-## Getting Started
+A professional, modern, and responsive cybersecurity portfolio website built with Next.js 14, React 18, TypeScript, and Tailwind CSS 3.4.
 
-First, run the development server:
+## 🚀 Project Overview
 
-```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
+This project provides a complete development environment for a cybersecurity expert's portfolio website with:
+
+- **Modern Tech Stack**: Next.js 14+, React 18+, TypeScript, Tailwind CSS
+- **Security-Focused Design**: Dark tech-inspired theme with custom color palette
+- **Professional Components**: Reusable UI components and security-focused design elements
+- **SEO Optimized**: Schema markup, Open Graph, and Twitter Card support
+- **Performance Optimized**: Image optimization, lazy loading, and bundle analysis
+- **Developer Experience**: ESLint, Prettier, Husky Git hooks, and VS Code settings
+
+## 🎨 Design Theme
+
+- **Primary Color**: Deep Navy Blue (#0F172A)
+- **Accent Colors**: Electric Cyan (#00FFFF), Neon Green (#39FF14)
+- **Theme**: Dark tech-inspired with security-focused elements
+- **Typography**: Inter (sans-serif) and JetBrains Mono (monospace)
+
+## 📁 Project Structure
+
+```
+cybersecurity-portfolio/
+├── /public/                  # Static assets
+│   ├── /images/             # Project images and icons
+│   ├── /pdf/               # Resume and documents
+│   └── /favicon.ico        # Site favicon
+├── /src/                    # Source code
+│   ├── /components/        # React components
+│   │   ├── /layout/       # Header, Footer, Navigation
+│   │   ├── /sections/     # Hero, About, Services, etc.
+│   │   ├── /ui/          # Buttons, Cards, Badges, Forms
+│   │   └── /shared/      # SEO, Schema, Analytics
+│   ├── /pages/            # Next.js pages
+│   ├── /styles/           # Global styles
+│   ├── /lib/             # Data, schema, utilities
+│   └── /types/           # TypeScript interfaces
+├── /content/             # Content files
+│   ├── /blog/           # Markdown blog posts
+│   └── /projects/       # Case study content
+├── next.config.js        # Next.js configuration
+├── tailwind.config.js    # Tailwind CSS configuration
+├── tsconfig.json         # TypeScript configuration
+└── package.json          # Dependencies and scripts
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+## 🛠️ Development Setup
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+### Prerequisites
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+- Node.js 18+ (recommended: use nvm)
+- npm or yarn package manager
+- Git for version control
 
-## Learn More
+### Installation
 
-To learn more about Next.js, take a look at the following resources:
+1. **Clone the repository** (if using as template):
+   ```bash
+   git clone <repository-url> cybersecurity-portfolio
+   cd cybersecurity-portfolio
+   ```
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+2. **Install dependencies**:
+   ```bash
+   npm install
+   ```
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+3. **Start development server**:
+   ```bash
+   npm run dev
+   ```
 
-## Deploy on Vercel
+4. **Open your browser**:
+   - Default: http://localhost:3000
+   - If port 3000 is busy: http://localhost:3001
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+### Available Scripts
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+- `npm run dev` - Start development server
+- `npm run build` - Build for production
+- `npm run start` - Start production server
+- `npm run lint` - Run ESLint
+- `npm run lint:fix` - Fix ESLint issues automatically
+- `npm run format` - Format code with Prettier
+- `npm run format:check` - Check code formatting
+- `npm run type-check` - Check TypeScript types
+
+## 🔧 Configuration
+
+### Environment Variables
+
+Create a `.env.local` file in the project root:
+
+```env
+NEXT_PUBLIC_SITE_URL=https://aditya-cybersecurity.com
+NEXT_PUBLIC_CONTACT_EMAIL=aditya@cybersecurity.com
+```
+
+### Tailwind CSS
+
+Custom color palette and design system configured in `tailwind.config.js`:
+
+- Navy blues (50-900 scale)
+- Electric cyan accents
+- Neon green highlights
+- Security gray tones
+
+### Next.js Configuration
+
+- Security headers (CSP, X-Frame-Options, etc.)
+- Image optimization settings
+- Environment variables setup
+- Performance optimizations
+
+## 🎯 Key Features
+
+### Layout Components
+
+- **Header**: Fixed navigation with mobile menu, search, and theme toggle
+- **Footer**: Comprehensive footer with navigation, contact info, and newsletter
+- **MobileMenu**: Responsive slide-out menu with animations
+- **ThemeToggle**: Dark/light mode with localStorage persistence
+
+### UI Components
+
+- **Button**: Multiple variants (primary, secondary, outline, ghost)
+- **Card**: Flexible card component with hover effects
+- **Badge**: Status indicators with different variants
+- **FormInput**: Accessible form inputs with validation states
+- **Icon**: Reusable icon component with animation support
+
+### Security Design Elements
+
+- **LockIcon**: Security lock icon with multiple states
+- **ShieldIcon**: Protection shield with active/inactive states
+- **CircuitPattern**: Animated circuit board background patterns
+
+### Section Components
+
+- **Hero**: Hero section with animated security elements
+- **About**: Professional experience, education, and skills showcase
+- **Services**: Service offerings with detailed descriptions
+- **Portfolio**: Project showcase with case studies
+- **Testimonials**: Client feedback and ratings
+
+## 📊 Content Management
+
+### Blog Posts
+
+Markdown files in `/content/blog/` with frontmatter:
+
+```markdown
+---
+title: "Post Title"
+subtitle: "Post subtitle"
+slug: "post-slug"
+excerpt: "Post excerpt"
+publishedAt: "2024-01-15"
+author: "Aditya Kumar Tiwari"
+readingTime: "5 min read"
+tags: ["Tag1", "Tag2"]
+category: "Category"
+featuredImage: "/images/blog/image.jpg"
+seo:
+  title: "SEO Title"
+  description: "SEO description"
+  keywords: ["keyword1", "keyword2"]
+---
+```
+
+### Project Case Studies
+
+Markdown files in `/content/projects/` with detailed project information:
+
+```markdown
+---
+title: "Project Title"
+subtitle: "Project description"
+client: "Client Name"
+industry: "Industry"
+duration: "Project duration"
+budget: "Project budget"
+challenges: ["Challenge 1", "Challenge 2"]
+solutions: ["Solution 1", "Solution 2"]
+technologies: ["Tech 1", "Tech 2"]
+results: ["Result 1", "Result 2"]
+---
+```
+
+## 🔍 SEO & Performance
+
+### SEO Features
+
+- Schema.org structured data (Organization, Website, Article)
+- Open Graph and Twitter Card meta tags
+- Canonical URLs and robots.txt
+- Font loading optimization
+- Preconnect for external resources
+
+### Performance Optimizations
+
+- Image lazy loading with WebP/AVIF support
+- Font display swap for better CLS
+- Bundle size monitoring
+- Security headers for better security score
+
+## 🛡️ Security Features
+
+### Security Headers
+
+- Content Security Policy (CSP)
+- X-Content-Type-Options: nosniff
+- X-Frame-Options: DENY
+- X-XSS-Protection: 1; mode=block
+- Referrer-Policy: strict-origin-when-cross-origin
+
+### Code Quality
+
+- ESLint with security rules
+- Prettier for consistent formatting
+- Husky Git hooks for pre-commit checks
+- TypeScript for type safety
+
+## 🎨 Customization
+
+### Colors
+
+Edit `tailwind.config.js` to customize the color palette:
+
+```javascript
+colors: {
+  'navy': {
+    50: '#F8FAFC',
+    // ... other shades
+    800: '#0F172A', // Primary navy
+    900: '#020617',
+  },
+  'cyan': {
+    // ... cyan shades
+  },
+  'neon-green': {
+    // ... neon green shades
+  }
+}
+```
+
+### Typography
+
+Font families are configured in `tailwind.config.js`:
+
+```javascript
+fontFamily: {
+  'mono': ['"JetBrains Mono"', 'monospace'],
+  'sans': ['"Inter"', 'system-ui', 'sans-serif'],
+}
+```
+
+### Animations
+
+Custom animations in `tailwind.config.js`:
+
+```javascript
+animation: {
+  'pulse-slow': 'pulse 3s cubic-bezier(0.4, 0, 0.6, 1) infinite',
+  'glow': 'glow 2s ease-in-out infinite alternate',
+  'circuit': 'circuit 4s linear infinite',
+  'scan': 'scan 1s ease-in-out forwards',
+}
+```
+
+## 📱 Responsive Design
+
+- Mobile-first design approach
+- Responsive grid layouts
+- Touch-friendly navigation
+- Optimized for all screen sizes
+
+## 🚀 Deployment
+
+### Vercel (Recommended)
+
+1. Install Vercel CLI: `npm i -g vercel`
+2. Deploy: `vercel`
+3. Follow prompts for configuration
+
+### Netlify
+
+1. Install Netlify CLI: `npm i -g netlify-cli`
+2. Build: `npm run build`
+3. Deploy: `netlify deploy`
+
+### Custom Server
+
+1. Build: `npm run build`
+2. Start: `npm run start`
+3. Configure your server to serve the `out` directory
+
+## 🤝 Contributing
+
+1. Fork the repository
+2. Create a feature branch: `git checkout -b feature-name`
+3. Make changes and commit: `git commit -m 'Add feature'`
+4. Push to branch: `git push origin feature-name`
+5. Open a Pull Request
+
+## 📄 License
+
+This project is open source and available under the MIT License.
+
+## 📞 Contact
+
+- **Email**: aditya@cybersecurity.com
+- **LinkedIn**: linkedin.com/in/aditya-cybersecurity
+- **Twitter**: @aditya_cyber
+- **GitHub**: github.com/aditya-cybersecurity
+
+---
+
+**Built with ❤️ for cybersecurity professionals**
