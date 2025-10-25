@@ -5,8 +5,10 @@ import { ShieldIcon } from '@/components/ui/ShieldIcon';
 import { Badge } from '@/components/ui/Badge';
 import { Card } from '@/components/ui/Card';
 import { Button } from '@/components/ui/Button';
-import { EXPERIENCE, EDUCATION, SKILLS } from '@/lib/data';
+import { EXPERIENCE, EDUCATION, SKILLS, SOCIAL_LINKS } from '@/lib/data';
 import { PDFResumeGenerator } from '@/components/pdf/PDFResumeGenerator';
+import { LinkedInIcon } from '@/components/ui/LinkedInIcon';
+import { GitHubIcon } from '@/components/ui/GitHubIcon';
 
 export const About = () => {
   const containerVariants = {
@@ -53,185 +55,105 @@ export const About = () => {
             Cybersecurity <span className="text-cyan-400">Expertise</span>
           </h2>
           <p className="text-xl text-gray-300 max-w-3xl mx-auto">
-            With over 7 years of experience in the cybersecurity field, I've dedicated my career 
-            to protecting organizations from evolving cyber threats. My expertise spans from 
+            With over 7 years of experience in the cybersecurity field, I've dedicated my career
+            to protecting organizations from evolving cyber threats. My expertise spans from
             enterprise security architecture to incident response and cloud security.
           </p>
+          <div className="flex justify-center space-x-6 mt-8">
+            {SOCIAL_LINKS.slice(0, 2).map((social) => (
+              <motion.a
+                key={social.id}
+                href={social.url}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="flex items-center space-x-2 text-gray-300 hover:text-cyan-400 transition-colors duration-300"
+                whileHover={{ scale: 1.05 }}
+                whileTap={{ scale: 0.95 }}
+                aria-label={social.title}
+              >
+                <div className="w-6 h-6">
+                  {social.id === 'linkedin' && <LinkedInIcon size="sm" color="gray" animate />}
+                  {social.id === 'github' && <GitHubIcon size="sm" color="gray" animate />}
+                </div>
+                <span className="text-sm font-medium">{social.title}</span>
+              </motion.a>
+            ))}
+          </div>
         </motion.div>
 
-        {/* Professional Experience */}
+        {/* Experience Section */}
         <motion.div
-          className="mb-20"
-          variants={containerVariants}
-          initial="hidden"
-          whileInView="visible"
-          viewport={{ once: true }}
+          variants={itemVariants}
+          className="mb-16"
         >
           <h3 className="text-2xl font-semibold text-white mb-8 text-center">
             Professional Experience
           </h3>
-          <div className="grid gap-8 md:grid-cols-2 lg:grid-cols-3">
-            {EXPERIENCE.map((exp, index) => (
-              <motion.div
+          <div className="space-y-6">
+            {EXPERIENCE.slice(0, 2).map((exp) => (
+              <div
                 key={exp.id}
-                variants={itemVariants}
                 className="bg-navy-800 border border-navy-700 rounded-lg p-6 hover:border-cyan-500 transition-all duration-300"
               >
-                <div className="flex items-start justify-between mb-4">
+                <div className="flex flex-col md:flex-row md:items-center md:justify-between mb-4">
                   <div>
-                    <h4 className="text-lg font-semibold text-white mb-1">
-                      {exp.title}
-                    </h4>
-                    <p className="text-cyan-400 font-medium">{exp.company}</p>
-                  </div>
-                  <Badge variant="info" size="sm">
-                    {exp.period}
-                  </Badge>
-                </div>
-                <p className="text-gray-400 text-sm mb-4 leading-relaxed">
-                  {exp.description}
-                </p>
-                <div className="mb-4">
-                  <h5 className="text-sm font-medium text-gray-300 mb-2">
-                    Key Technologies:
-                  </h5>
-                  <div className="flex flex-wrap gap-2">
-                    {exp.technologies.map((tech) => (
-                      <Badge key={tech} variant="default" size="sm">
-                        {tech}
-                      </Badge>
-                    ))}
+                    <h4 className="text-lg font-semibold text-white">{exp.title}</h4>
+                    <p className="text-cyan-400">{exp.company}</p>
+                    <p className="text-sm text-gray-400">{exp.period}</p>
                   </div>
                 </div>
-                <div>
-                  <h5 className="text-sm font-medium text-gray-300 mb-2">
-                    Notable Achievements:
-                  </h5>
-                  <ul className="text-gray-400 text-sm space-y-1">
-                    {exp.achievements.map((achievement, i) => (
-                      <li key={i} className="flex items-start space-x-2">
-                        <div className="w-1 h-1 bg-cyan-400 rounded-full mt-2 flex-shrink-0" />
-                        <span>{achievement}</span>
-                      </li>
-                    ))}
-                  </ul>
+                <p className="text-gray-300 mb-4">{exp.description}</p>
+                <div className="flex flex-wrap gap-2">
+                  {exp.technologies.map((tech) => (
+                    <span
+                      key={tech}
+                      className="px-2 py-1 bg-cyan-600/20 text-cyan-400 text-xs rounded"
+                    >
+                      {tech}
+                    </span>
+                  ))}
                 </div>
-              </motion.div>
+              </div>
             ))}
           </div>
         </motion.div>
 
-        {/* Education */}
+        {/* Skills Preview */}
         <motion.div
-          className="mb-20"
-          variants={containerVariants}
-          initial="hidden"
-          whileInView="visible"
-          viewport={{ once: true }}
+          variants={itemVariants}
+          className="mb-16"
         >
           <h3 className="text-2xl font-semibold text-white mb-8 text-center">
-            Education
+            Core Skills
           </h3>
-          <div className="grid gap-8 md:grid-cols-2">
-            {EDUCATION.map((edu) => (
-              <motion.div
-                key={edu.id}
-                variants={itemVariants}
-                className="bg-navy-800 border border-navy-700 rounded-lg p-6 hover:border-neon-green-500 transition-all duration-300"
-              >
-                <div className="flex items-start justify-between mb-4">
-                  <div>
-                    <h4 className="text-lg font-semibold text-white mb-1">
-                      {edu.degree}
-                    </h4>
-                    <p className="text-neon-green-400 font-medium">{edu.institution}</p>
-                  </div>
-                  <Badge variant="success" size="sm">
-                    {edu.year}
-                  </Badge>
-                </div>
-                <p className="text-gray-400 text-sm mb-4 leading-relaxed">
-                  {edu.description}
-                </p>
-                {edu.honors && (
-                  <div>
-                    <h5 className="text-sm font-medium text-gray-300 mb-2">
-                      Honors & Awards:
-                    </h5>
-                    <div className="flex flex-wrap gap-2">
-                      {edu.honors.map((honor) => (
-                        <Badge key={honor} variant="success" size="sm">
-                          {honor}
-                        </Badge>
-                      ))}
-                    </div>
-                  </div>
-                )}
-              </motion.div>
-            ))}
-          </div>
-        </motion.div>
-
-        {/* Skills */}
-        <motion.div
-          variants={containerVariants}
-          initial="hidden"
-          whileInView="visible"
-          viewport={{ once: true }}
-        >
-          <h3 className="text-2xl font-semibold text-white mb-8 text-center">
-            Skills & Expertise
-          </h3>
-          <div className="grid gap-6 md:grid-cols-2 lg:grid-cols-3">
-            {SKILLS.map((skill) => (
-              <motion.div
+          <div className="grid md:grid-cols-2 gap-6">
+            {SKILLS.slice(0, 4).map((skill) => (
+              <div
                 key={skill.id}
-                variants={itemVariants}
                 className="bg-navy-800 border border-navy-700 rounded-lg p-6 hover:border-cyan-500 transition-all duration-300"
               >
-                <div className="flex items-center justify-between mb-3">
+                <div className="flex items-center justify-between mb-2">
                   <h4 className="font-semibold text-white">{skill.name}</h4>
-                  <Badge variant="info" size="sm">
-                    {skill.category}
-                  </Badge>
+                  <span className="text-cyan-400 text-sm">{skill.level}/10</span>
                 </div>
-                <div className="mb-3">
-                  <div className="flex justify-between text-sm text-gray-400 mb-1">
-                    <span>Proficiency</span>
-                    <span>{skill.level}/10</span>
-                  </div>
-                  <div className="w-full bg-navy-700 rounded-full h-2">
-                    <div
-                      className="bg-gradient-to-r from-cyan-500 to-neon-green-600 h-2 rounded-full transition-all duration-500"
-                      style={{ width: `${skill.level * 10}%` }}
-                    />
-                  </div>
+                <div className="w-full bg-navy-700 rounded-full h-2 mb-2">
+                  <div
+                    className="bg-cyan-500 h-2 rounded-full"
+                    style={{ width: `${skill.level * 10}%` }}
+                  />
                 </div>
-                <p className="text-gray-400 text-sm leading-relaxed">
-                  {skill.description}
-                </p>
-              </motion.div>
+                <p className="text-gray-400 text-sm">{skill.description}</p>
+              </div>
             ))}
           </div>
         </motion.div>
 
-        {/* CTA */}
+        {/* CTA Section */}
         <motion.div
-          className="text-center mt-16"
-          initial={{ opacity: 0, y: 20 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
-          transition={{ duration: 0.6, delay: 0.5 }}
+          variants={itemVariants}
+          className="text-center"
         >
-          <h3 className="text-2xl font-semibold text-white mb-4">
-            Ready to secure your organization?
-          </h3>
-          <p className="text-gray-400 mb-8">
-            Let's discuss how I can help protect your digital assets.
-          </p>
-          <Button size="lg" variant="primary">
-            Schedule Consultation
-          </Button>
+          <PDFResumeGenerator />
         </motion.div>
       </div>
     </section>

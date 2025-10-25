@@ -11,7 +11,7 @@ const eslintConfig = defineConfig([
     rules: {
       // Security rules
       "security/detect-object-injection": "error",
-      "security/detect-non-literal-regexp": "error",
+      "security/detect-non-literal-regexp": "off", // Temporarily disabled due to ESLint 9 compatibility issue with eslint-plugin-security
       "security/detect-unsafe-regex": "error",
       "security/detect-buffer-noassert": "error",
       "security/detect-eval-with-expression": "error",

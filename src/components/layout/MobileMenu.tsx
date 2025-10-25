@@ -2,6 +2,8 @@
 
 import { motion, AnimatePresence } from 'framer-motion';
 import Link from 'next/link';
+import { LinkedInIcon } from '@/components/ui/LinkedInIcon';
+import { GitHubIcon } from '@/components/ui/GitHubIcon';
 import { NavigationItem, SocialLink } from '@/types';
 
 interface MobileMenuProps {
@@ -82,8 +84,11 @@ export const MobileMenu = ({ navigation, socials, onClose }: MobileMenuProps) =>
                     aria-label={social.title}
                   >
                     <div className="w-5 h-5">
-                      {/* Placeholder for social icons - would use react-icons in real implementation */}
-                      <div className="w-full h-full bg-current rounded-sm"></div>
+                      {social.id === 'linkedin' && <LinkedInIcon size="sm" color="gray" animate />}
+                      {social.id === 'github' && <GitHubIcon size="sm" color="gray" animate />}
+                      {social.id !== 'linkedin' && social.id !== 'github' && (
+                        <div className="w-full h-full bg-current rounded-sm"></div>
+                      )}
                     </div>
                   </motion.a>
                 ))}

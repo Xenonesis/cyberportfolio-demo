@@ -118,7 +118,7 @@ export const SOCIAL_LINKS: SocialLink[] = [
   {
     id: 'linkedin',
     title: 'LinkedIn',
-    url: 'https://linkedin.com/in/aditya-cybersecurity',
+    url: 'https://www.linkedin.com/in/aditya-kumar-tiwari',
     icon: 'linkedin',
     username: '@aditya-cybersecurity',
   },
@@ -132,7 +132,7 @@ export const SOCIAL_LINKS: SocialLink[] = [
   {
     id: 'github',
     title: 'GitHub',
-    url: 'https://github.com/aditya-cybersecurity',
+    url: 'https://github.com/adityakumar-tiwari',
     icon: 'github',
     username: 'aditya-cybersecurity',
   },
