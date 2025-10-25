@@ -1,3 +1,5 @@
+'use client';
+
 import { useEffect, useState } from 'react';
 import { SchemaMarkup } from './SchemaMarkup';
 import { SEO_CONFIG } from '@/lib/seo-config';

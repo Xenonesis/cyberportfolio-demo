@@ -740,7 +740,7 @@ async function testHeadingStructure(): Promise<AccessibilityViolation[]> {
         timestamp: new Date(),
       });
     }
-  }
+  });
 
   return violations;
 }

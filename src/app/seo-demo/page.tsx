@@ -1,3 +1,5 @@
+'use client';
+
 import { SEOProvider } from '@/components/seo/SEOProvider';
 import { ContentOptimization } from '@/components/seo/ContentOptimization';
 import { TrustBuilding } from '@/components/seo/TrustBuilding';

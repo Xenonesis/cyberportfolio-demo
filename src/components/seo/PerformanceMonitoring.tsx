@@ -1,3 +1,5 @@
+'use client';
+
 import { useEffect, useState } from 'react';
 import { SEO_PERFORMANCE_CONFIG } from '@/lib/seo-config';
 
@@ -65,7 +67,7 @@ export const PerformanceMonitoring = ({
 
   const startMonitoring = () => {
     setIsMonitoring(true);
-    
+
     // Monitor Core Web Vitals
     if (enableCoreWebVitals && 'PerformanceObserver' in window) {
       observeCoreWebVitals();
@@ -106,7 +108,7 @@ export const PerformanceMonitoring = ({
       // Monitor First Input Delay (FID)
       const fidObserver = new PerformanceObserver((list) => {
         const entries = list.getEntries();
-        const fid = entries[0];
+        const fid = entries[0] as PerformanceEventTiming;
         updateMetric('firstInputDelay', fid.processingStart - fid.startTime);
       });
       fidObserver.observe({ entryTypes: ['first-input'] });
@@ -115,8 +117,9 @@ export const PerformanceMonitoring = ({
       const clsObserver = new PerformanceObserver((list) => {
         let clsScore = 0;
         list.getEntries().forEach((entry) => {
-          if (!entry.hadRecentInput) {
-            clsScore += entry.value;
+          const layoutShift = entry as LayoutShift;
+          if (!layoutShift.hadRecentInput) {
+            clsScore += layoutShift.value;
           }
         });
         updateMetric('cumulativeLayoutShift', clsScore);
@@ -155,10 +158,10 @@ export const PerformanceMonitoring = ({
   const updateMetrics = () => {
     // Update performance metrics
     const now = performance.now();
-    
+
     // Update page load time
     updateMetric('pageLoadTime', now);
-    
+
     // Update DOM content loaded
     if (document.readyState === 'complete') {
       updateMetric('domContentLoaded', now);
@@ -282,7 +285,7 @@ export const PerformanceMonitoring = ({
   };
 
   const resolveAlert = (alertId: string) => {
-    setAlerts(prev => prev.map(alert => 
+    setAlerts(prev => prev.map(alert =>
       alert.id === alertId ? { ...alert, resolved: true } : alert
     ));
   };
@@ -302,11 +305,11 @@ export const PerformanceMonitoring = ({
 
     if (metric === 'seoScore' || metric === 'mobileUsability' || metric === 'accessibilityScore') {
       // Higher is better
-      return value >= threshold.good ? 'text-green-400' : 
+      return value >= threshold.good ? 'text-green-400' :
              value >= threshold.poor ? 'text-yellow-400' : 'text-red-400';
     } else {
       // Lower is better
-      return value <= threshold.good ? 'text-green-400' : 
+      return value <= threshold.good ? 'text-green-400' :
              value <= threshold.poor ? 'text-yellow-400' : 'text-red-400';
     }
   };
@@ -362,7 +365,7 @@ export const PerformanceMonitoring = ({
                 <div className={`vital-value ${getPerformanceColor('largestContentfulPaint', currentMetrics.largestContentfulPaint)}`}>
                   {formatMetricValue('largestContentfulPaint', currentMetrics.largestContentfulPaint)}
                 </div>
-                <div className="vital-target">Target: <{SEO_PERFORMANCE_CONFIG.CORE_WEB_VITALS.LCP}ms</div>
+                <div className="vital-target">Target: {SEO_PERFORMANCE_CONFIG.CORE_WEB_VITALS.LCP}ms</div>
               </div>
 
               <div className="vital-card">
@@ -373,7 +376,7 @@ export const PerformanceMonitoring = ({
                 <div className={`vital-value ${getPerformanceColor('firstInputDelay', currentMetrics.firstInputDelay)}`}>
                   {formatMetricValue('firstInputDelay', currentMetrics.firstInputDelay)}
                 </div>
-                <div className="vital-target">Target: <{SEO_PERFORMANCE_CONFIG.CORE_WEB_VITALS.FID}ms</div>
+                <div className="vital-target">Target: {SEO_PERFORMANCE_CONFIG.coreWebVitals.FID}ms</div>
               </div>
 
               <div className="vital-card">
@@ -384,7 +387,7 @@ export const PerformanceMonitoring = ({
                 <div className={`vital-value ${getPerformanceColor('cumulativeLayoutShift', currentMetrics.cumulativeLayoutShift)}`}>
                   {formatMetricValue('cumulativeLayoutShift', currentMetrics.cumulativeLayoutShift)}
                 </div>
-                <div className="vital-target">Target: <{SEO_PERFORMANCE_CONFIG.CORE_WEB_VITALS.CLS}</div>
+                <div className="vital-target">Target: {SEO_PERFORMANCE_CONFIG.coreWebVitals.CLS}</div>
               </div>
             </div>
           </div>
@@ -469,11 +472,11 @@ export const PerformanceMonitoring = ({
           <h4>Performance Alerts</h4>
           <div className="alerts-list">
             {alerts.filter(alert => !alert.resolved).map(alert => (
-              <div key={alert.id} className={`alert alert-${alert.type}`}>
+              <div key={alert.id} className={`alert alert-${alert.type}`} data-testid={`alert-${alert.id}`}>
                 <div className="alert-content">
                   <span className="alert-icon">
-                    {alert.type === 'error' ? '🚨' : 
-                     alert.type === 'warning' ? '⚠️' : 
+                    {alert.type === 'error' ? '🚨' :
+                     alert.type === 'warning' ? '⚠️' :
                      alert.type === 'info' ? 'ℹ️' : '✅'}
                   </span>
                   <div className="alert-text">
@@ -486,6 +489,7 @@ export const PerformanceMonitoring = ({
                   <button
                     className="alert-resolve"
                     onClick={() => resolveAlert(alert.id)}
+                    aria-label={`Resolve ${alert.title} alert`}
                   >
                     Resolve
                   </button>

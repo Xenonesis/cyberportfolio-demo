@@ -11,7 +11,15 @@ import { ColorContrast } from "@/components/accessibility/ColorContrast";
 import { MotionPreferences } from "@/components/accessibility/MotionPreferences";
 import { FocusManagement } from "@/components/accessibility/FocusManagement";
 import { ErrorHandling } from "@/components/accessibility/ErrorHandling";
-import { TestingSuite } from "@/components/accessibility/TestingSuite";
+
+// Import performance components
+import { PerformanceProvider } from "@/components/performance/PerformanceProvider";
+import { ResourceLoader } from "@/components/performance/ResourceLoader";
+import { BundleAnalyzer } from "@/components/performance/BundleAnalyzer";
+import { MobileOptimizer } from "@/components/performance/MobileOptimizer";
+import { CoreWebVitals } from "@/components/performance/CoreWebVitals";
+import { PerformanceMonitor } from "@/components/performance/PerformanceMonitor";
+import { MobileResponsive } from "@/components/performance/MobileResponsive";
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
@@ -57,48 +65,70 @@ export default function RootLayout({
       <body
         className={`${geistSans.variable} ${geistMono.variable} antialiased`}
       >
-        <AccessibilityProvider enableTesting={true} enableSecurityAlerts={true}>
-          <ScreenReaderSupport
-            enableLiveRegions={true}
-            enableARIAEnhancements={true}
-            enableSemanticEnhancements={true}
+        <PerformanceProvider>
+          <ResourceLoader
+            criticalResources={[]}
+            preloadResources={[]}
+            prefetchResources={[]}
+            preconnectOrigins={[
+              "https://fonts.googleapis.com",
+              "https://fonts.gstatic.com"
+            ]}
           >
-            <KeyboardNavigation
-              enableSkipLinks={true}
-              enableFocusTrapping={true}
-              enableKeyboardShortcuts={true}
-              enableTabOrder={true}
-            >
-              <ErrorHandling
-                enableAutoCorrection={true}
-                enableValidationAnnouncements={true}
-                enableSecurityValidation={true}
-              >
-                <FocusManagement
-                  enableFocusIndicators={true}
-                  enableFocusHistory={true}
-                  enableKeyboardNavigation={true}
-                  defaultIndicatorStyle="custom"
-                >
-                  <MotionPreferences
-                    enableAnimationControl={true}
-                    enableMotionToggle={true}
-                  >
-                    <ColorContrast
-                      enableAutoAdjustment={true}
-                      enableContrastToggle={true}
-                      enableContrastMonitoring={true}
-                      minNormalContrast={4.5}
-                      minLargeContrast={3.0}
-                    >
-                      {children}
-                    </ColorContrast>
-                  </MotionPreferences>
-                </FocusManagement>
-              </ErrorHandling>
-            </KeyboardNavigation>
-          </ScreenReaderSupport>
-        </AccessibilityProvider>
+            <BundleAnalyzer>
+              <MobileOptimizer>
+                <CoreWebVitals>
+                  <PerformanceMonitor>
+                    <MobileResponsive>
+                      <AccessibilityProvider enableTesting={true} enableSecurityAlerts={true}>
+                        <ScreenReaderSupport
+                          enableLiveRegions={true}
+                          enableARIAEnhancements={true}
+                          enableSemanticEnhancements={true}
+                        >
+                          <KeyboardNavigation
+                            enableSkipLinks={true}
+                            enableFocusTrapping={true}
+                            enableKeyboardShortcuts={true}
+                            enableTabOrder={true}
+                          >
+                            <ErrorHandling
+                              enableAutoCorrection={true}
+                              enableValidationAnnouncements={true}
+                              enableSecurityValidation={true}
+                            >
+                              <FocusManagement
+                                enableFocusIndicators={true}
+                                enableFocusHistory={true}
+                                enableKeyboardNavigation={true}
+                                defaultIndicatorStyle="custom"
+                              >
+                                <MotionPreferences
+                                  enableAnimationControl={true}
+                                  enableMotionToggle={true}
+                                >
+                                  <ColorContrast
+                                    enableAutoAdjustment={true}
+                                    enableContrastToggle={true}
+                                    enableContrastMonitoring={true}
+                                    minNormalContrast={4.5}
+                                    minLargeContrast={3.0}
+                                  >
+                                    {children}
+                                  </ColorContrast>
+                                </MotionPreferences>
+                              </FocusManagement>
+                            </ErrorHandling>
+                          </KeyboardNavigation>
+                        </ScreenReaderSupport>
+                      </AccessibilityProvider>
+                    </MobileResponsive>
+                  </PerformanceMonitor>
+                </CoreWebVitals>
+              </MobileOptimizer>
+            </BundleAnalyzer>
+          </ResourceLoader>
+        </PerformanceProvider>
       </body>
     </html>
   );

@@ -1,3 +1,5 @@
+'use client';
+
 import { useEffect, useState } from 'react';
 
 interface MobileOptimizationProps {
@@ -41,10 +43,10 @@ export const MobileOptimization = ({
       const isMobile = /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(
         navigator.userAgent
       );
-      
+
       const touchSupport = 'ontouchstart' in window;
       const viewportWidth = window.innerWidth;
-      
+
       // Estimate connection speed
       let connectionSpeed = 'unknown';
       if ('connection' in navigator) {
@@ -130,9 +132,9 @@ export const MobileOptimization = ({
     ];
 
     metaTags.forEach(tag => {
-      let meta = document.querySelector(`meta[name="${tag.name}"]`);
+      let meta = document.querySelector(`meta[name="${tag.name}"]`) as HTMLMetaElement;
       if (!meta) {
-        meta = document.createElement('meta');
+        meta = document.createElement('meta') as HTMLMetaElement;
         meta.name = tag.name;
         document.head.appendChild(meta);
       }
@@ -184,7 +186,7 @@ export const MobileOptimization = ({
       if (!img.hasAttribute('loading')) {
         img.setAttribute('loading', 'lazy');
       }
-      
+
       if (!img.hasAttribute('decoding')) {
         img.setAttribute('decoding', 'async');
       }
@@ -203,7 +205,7 @@ export const MobileOptimization = ({
     const nav = document.querySelector('nav, .navigation, .header');
     if (nav) {
       nav.classList.add('mobile-optimized');
-      
+
       // Add mobile menu button if not present
       if (!document.querySelector('.mobile-menu-toggle')) {
         const toggle = document.createElement('button');

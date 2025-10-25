@@ -1,3 +1,5 @@
+'use client';
+
 import { useEffect, useState, ReactNode } from 'react';
 import { SEO_CONFIG, CONTENT_OPTIMIZATION_GUIDELINES } from '@/lib/seo-config';
 
@@ -95,11 +97,23 @@ export const ContentOptimization = ({
     if (typeof children === 'string') {
       return children;
     }
+    if (typeof children === 'string') {
+      return children;
+    }
     if (Array.isArray(children)) {
       return children.map(extractTextFromChildren).join(' ');
     }
     if (children && typeof children === 'object' && 'props' in children) {
-      return extractTextFromChildren(children.props.children);
+      // Try to safely access children
+      try {
+        const child = children as any;
+        if (child.props && child.props.children !== undefined) {
+          return extractTextFromChildren(child.props.children);
+        }
+      } catch (e) {
+        // If we can't access children safely, return empty string
+        return '';
+      }
     }
     return '';
   };
@@ -146,6 +160,21 @@ export const ContentOptimization = ({
     return structure;
   };
 
+  const getContentLengthGuidelines = (contentType: string) => {
+    switch (contentType) {
+      case 'blog-post':
+        return CONTENT_OPTIMIZATION_GUIDELINES.contentLength.blogPosts;
+      case 'case-study':
+        return CONTENT_OPTIMIZATION_GUIDELINES.contentLength.caseStudies;
+      case 'service':
+        return CONTENT_OPTIMIZATION_GUIDELINES.contentLength.servicePages;
+      case 'landing-page':
+        return CONTENT_OPTIMIZATION_GUIDELINES.contentLength.landingPages;
+      default:
+        return null;
+    }
+  };
+
   const calculateOptimizationScore = (metrics: any): number => {
     let score = 0;
 
@@ -159,9 +188,9 @@ export const ContentOptimization = ({
     score += readability;
 
     // Content length score
-    const guidelines = CONTENT_OPTIMIZATION_GUIDELINES.contentLength[contentType];
-    if (guidelines) {
-      const { min, max } = guidelines;
+    const contentLengthGuidelines = getContentLengthGuidelines(contentType);
+    if (contentLengthGuidelines) {
+      const { min, max } = contentLengthGuidelines;
       const lengthScore = metrics.contentLength >= min && metrics.contentLength <= max ? 100 : 50;
       score += lengthScore;
     }
@@ -203,7 +232,7 @@ export const ContentOptimization = ({
       recommendations.push('Fix heading hierarchy (use sequential order)');
     }
 
-    const guidelines = CONTENT_OPTIMIZATION_GUIDELINES.contentLength[contentType];
+    const guidelines = getContentLengthGuidelines(contentType);
     if (guidelines) {
       const { min, max } = guidelines;
       if (metrics.contentLength < min) {

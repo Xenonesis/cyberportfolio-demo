@@ -17,11 +17,9 @@ export const LazyLoad: React.FC<PerformanceOptimizationProps> = ({
   className = '',
 }) => {
   const ref = useRef<HTMLDivElement>(null);
-  const isInView = useInView({
-    ref,
-    threshold,
-    rootMargin,
-    triggerOnce: true,
+  const isInView = useInView(ref, {
+    amount: threshold,
+    once: true,
   });
 
   return (
