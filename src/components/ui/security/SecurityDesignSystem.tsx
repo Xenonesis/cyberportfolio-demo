@@ -7,7 +7,7 @@ import { SecurityAnimations } from './SecurityAnimations';
 import { SecurityBadges } from './SecurityBadges';
 
 // Security Design System Context
-interface SecurityContextType {
+export interface SecurityContextType {
   theme: 'dark' | 'light';
   colorScheme: {
     primary: string;

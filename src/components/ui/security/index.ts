@@ -15,7 +15,7 @@ export * from './InteractiveSecurity';
 export * from './SecurityDesignSystem';
 
 // Security Hooks
-export * from '../../lib/securityHooks';
+export * from '@/lib/securityHooks';
 
 // Security Utilities
 // export * from '../../lib/securityUtils'; // Not yet implemented
@@ -56,3 +56,5 @@ export type {
 export type {
   SecurityContextType,
 } from './SecurityDesignSystem';
+
+export { useSecurityContext } from './SecurityDesignSystem';
