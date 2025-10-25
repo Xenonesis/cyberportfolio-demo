@@ -2,6 +2,11 @@
 
 import { useEffect, useState } from 'react';
 import { SEO_PERFORMANCE_CONFIG } from '@/lib/seo-config';
+// Declare LayoutShift interface for TypeScript
+interface LayoutShift {
+  value: number;
+  hadRecentInput: boolean;
+}
 
 interface PerformanceMetrics {
   pageLoadTime: number;
@@ -117,7 +122,7 @@ export const PerformanceMonitoring = ({
       const clsObserver = new PerformanceObserver((list) => {
         let clsScore = 0;
         list.getEntries().forEach((entry) => {
-          const layoutShift = entry as LayoutShift;
+          const layoutShift = entry as unknown as LayoutShift;
           if (!layoutShift.hadRecentInput) {
             clsScore += layoutShift.value;
           }
@@ -188,24 +193,24 @@ export const PerformanceMonitoring = ({
     setCurrentMetrics(prev => ({
       ...prev,
       keywordRankings: {
-        ...prev.keywordRanking,
+        ...prev.keywordRankings,
         [keyword]: ranking,
       },
     }));
   };
 
   const calculateSEOScore = (): number => {
-    const { CORE_WEB_VITALS } = SEO_PERFORMANCE_CONFIG;
+    const { coreWebVitals } = SEO_PERFORMANCE_CONFIG;
     let score = 100;
 
     // Deduct points for poor Core Web Vitals
-    if (currentMetrics.largestContentfulPaint > CORE_WEB_VITALS.LCP) {
+    if (currentMetrics.largestContentfulPaint > coreWebVitals.LCP) {
       score -= 20;
     }
-    if (currentMetrics.firstInputDelay > CORE_WEB_VITALS.FID) {
+    if (currentMetrics.firstInputDelay > coreWebVitals.FID) {
       score -= 15;
     }
-    if (currentMetrics.cumulativeLayoutShift > CORE_WEB_VITALS.CLS) {
+    if (currentMetrics.cumulativeLayoutShift > coreWebVitals.CLS) {
       score -= 15;
     }
 
@@ -236,7 +241,7 @@ export const PerformanceMonitoring = ({
         id: 'lcp-poor',
         type: 'warning',
         title: 'Poor Largest Contentful Paint',
-        message: `LCP is ${Math.round(currentMetrics.largestContentfulPaint)}ms (target: <${SEO_PERFORMANCE_CONFIG.CORE_WEB_VITALS.LCP}ms)`,
+        message: `LCP is ${Math.round(currentMetrics.largestContentfulPaint)}ms (target: <${SEO_PERFORMANCE_CONFIG.coreWebVitals.LCP}ms)`,
         timestamp: new Date(),
         resolved: false,
       });
@@ -247,7 +252,7 @@ export const PerformanceMonitoring = ({
         id: 'fid-poor',
         type: 'warning',
         title: 'Poor First Input Delay',
-        message: `FID is ${Math.round(currentMetrics.firstInputDelay)}ms (target: <${SEO_PERFORMANCE_CONFIG.CORE_WEB_VITALS.FID}ms)`,
+        message: `FID is ${Math.round(currentMetrics.firstInputDelay)}ms (target: <${SEO_PERFORMANCE_CONFIG.coreWebVitals.FID}ms)`,
         timestamp: new Date(),
         resolved: false,
       });
@@ -258,7 +263,7 @@ export const PerformanceMonitoring = ({
         id: 'cls-poor',
         type: 'warning',
         title: 'Poor Cumulative Layout Shift',
-        message: `CLS is ${currentMetrics.cumulativeLayoutShift.toFixed(3)} (target: <${SEO_PERFORMANCE_CONFIG.CORE_WEB_VITALS.CLS})`,
+        message: `CLS is ${currentMetrics.cumulativeLayoutShift.toFixed(3)} (target: <${SEO_PERFORMANCE_CONFIG.coreWebVitals.CLS})`,
         timestamp: new Date(),
         resolved: false,
       });
@@ -365,7 +370,7 @@ export const PerformanceMonitoring = ({
                 <div className={`vital-value ${getPerformanceColor('largestContentfulPaint', currentMetrics.largestContentfulPaint)}`}>
                   {formatMetricValue('largestContentfulPaint', currentMetrics.largestContentfulPaint)}
                 </div>
-                <div className="vital-target">Target: {SEO_PERFORMANCE_CONFIG.CORE_WEB_VITALS.LCP}ms</div>
+                <div className="vital-target">Target: {SEO_PERFORMANCE_CONFIG.coreWebVitals.LCP}ms</div>
               </div>
 
               <div className="vital-card">

@@ -1,6 +1,6 @@
 import { useEffect, useState } from 'react';
 import { generateSeoMetadata, generateOpenGraph, generateTwitterCard } from '@/lib/schema';
-import { SEO_CONFIG, SEO_PAGES } from '@/lib/seo-config';
+import { SITE_CONFIG, SEO_CONFIG } from '@/lib/data';
 
 interface SEOHeadProps {
   title?: string;
@@ -59,9 +59,9 @@ export const SEOHead = ({
       '@context': 'https://schema.org',
       '@type': 'Person',
       name: 'Aditya Kumar Tiwari',
-      url: SEO_CONFIG.siteUrl,
-      description: SEO_CONFIG.siteDescription,
-      image: `${SEO_CONFIG.siteUrl}/images/profile.jpg`,
+      url: SITE_CONFIG.url,
+      description: SITE_CONFIG.description,
+      image: `${SITE_CONFIG.url}/images/profile.jpg`,
       sameAs: [
         'https://linkedin.com/in/aditya-cybersecurity',
         'https://twitter.com/aditya_cyber',
@@ -70,7 +70,7 @@ export const SEOHead = ({
       ],
       mainEntityOfPage: {
         '@type': 'WebPage',
-        '@id': SEO_CONFIG.siteUrl,
+        '@id': SITE_CONFIG.url,
       },
     });
 
@@ -78,12 +78,12 @@ export const SEOHead = ({
     schemas.push({
       '@context': 'https://schema.org',
       '@type': 'WebSite',
-      name: SEO_CONFIG.siteTitle,
-      url: SEO_CONFIG.siteUrl,
-      description: SEO_CONFIG.siteDescription,
+      name: SITE_CONFIG.title,
+      url: SITE_CONFIG.url,
+      description: SITE_CONFIG.description,
       mainEntityOfPage: {
         '@type': 'WebPage',
-        '@id': SEO_CONFIG.siteUrl,
+        '@id': SITE_CONFIG.url,
       },
     });
 
@@ -108,7 +108,7 @@ export const SEOHead = ({
         '@type': 'ListItem',
         position: index + 1,
         name: segment.replace(/-/g, ' ').replace(/\b\w/g, l => l.toUpperCase()),
-        item: `${SEO_CONFIG.siteUrl}${path}`,
+        item: `${SITE_CONFIG.url}${path}`,
       };
     });
 
@@ -120,7 +120,7 @@ export const SEOHead = ({
           '@type': 'ListItem',
           position: 1,
           name: 'Home',
-          item: SEO_CONFIG.siteUrl,
+          item: SITE_CONFIG.url,
         },
         ...breadcrumbs,
       ],
@@ -129,7 +129,7 @@ export const SEOHead = ({
 
   const openGraph = generateOpenGraph(seoData);
   const twitterCard = generateTwitterCard(seoData);
-  const finalCanonicalUrl = canonicalUrl || seoData.url || SEO_CONFIG.siteUrl;
+  const finalCanonicalUrl = canonicalUrl || seoData.url || SITE_CONFIG.url;
 
   return (
     <>
@@ -138,7 +138,7 @@ export const SEOHead = ({
       <meta name="description" content={seoData.description} />
       <meta
         name="keywords"
-        content={keywords?.join(', ') || SEO_CONFIG.primaryKeywords.join(', ')}
+        content={keywords?.join(', ') || SEO_CONFIG.keywords.join(', ')}
       />
       <meta name="viewport" content="width=device-width, initial-scale=1" />
       <meta name="robots" content={robots} />

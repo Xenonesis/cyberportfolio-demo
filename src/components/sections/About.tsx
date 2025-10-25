@@ -6,6 +6,7 @@ import { Badge } from '@/components/ui/Badge';
 import { Card } from '@/components/ui/Card';
 import { Button } from '@/components/ui/Button';
 import { EXPERIENCE, EDUCATION, SKILLS } from '@/lib/data';
+import { PDFResumeGenerator } from '@/components/pdf/PDFResumeGenerator';
 
 export const About = () => {
   const containerVariants = {
