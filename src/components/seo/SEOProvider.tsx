@@ -49,7 +49,24 @@ export const SEOProvider = ({
   enableTrustBuilding = true,
 }: SEOProviderProps) => {
   const [currentPage, setCurrentPage] = useState('');
-  const [performanceMetrics, setPerformanceMetrics] = useState({});
+  const [performanceMetrics, setPerformanceMetrics] = useState({
+    pageLoadTime: 0,
+    firstContentfulPaint: 0,
+    largestContentfulPaint: 0,
+    firstInputDelay: 0,
+    cumulativeLayoutShift: 0,
+    timeToFirstByte: 0,
+    domContentLoaded: 0,
+    totalBlockingTime: 0,
+    speedIndex: 0,
+    seoScore: 0,
+    keywordRankings: {},
+    organicTraffic: 0,
+    bounceRate: 0,
+    conversionRate: 0,
+    mobileUsability: 0,
+    accessibilityScore: 0,
+  });
   const [urlParams, setUrlParams] = useState({});
 
   useEffect(() => {
@@ -117,7 +134,8 @@ export const SEOProvider = ({
           pageType={pageType}
           pageTitle={pageTitle}
           pageDescription={pageDescription}
-          structuredData={structuredData}
+          pageImage={pageImage}
+          pageUrl={pageUrl}
         />
       </div>
     </SEOContext.Provider>

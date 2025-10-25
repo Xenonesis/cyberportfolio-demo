@@ -4,7 +4,7 @@ import { useState } from 'react';
 import { motion } from 'framer-motion';
 import { ShieldIcon } from '@/components/ui/ShieldIcon';
 import { LockIcon } from '@/components/ui/LockIcon';
-import { SecureFormFields } from '@/components/ui/SecureFormFields';
+import { SecureFormInput, SecureTextarea } from '@/components/ui/SecureFormFields';
 
 export const SecureContactForm = () => {
   const [formData, setFormData] = useState({
@@ -48,7 +48,7 @@ export const SecureContactForm = () => {
         <div className="bg-navy-800/80 backdrop-blur-sm border border-electric-cyan-500/30 rounded-2xl p-8 md:p-12">
           <header className="text-center mb-8">
             <div className="inline-flex items-center space-x-2 bg-navy-700/80 backdrop-blur-sm border border-electric-cyan-500/30 rounded-full px-6 py-2 mb-6">
-              <ShieldIcon size="sm" variant="active" color="electric-cyan" animate />
+              <ShieldIcon size="sm" variant="active" color="cyan" animate />
               <span className="text-electric-cyan-400 font-medium text-sm">
                 Secure Contact Form
               </span>
@@ -82,31 +82,34 @@ export const SecureContactForm = () => {
           ) : (
             <form onSubmit={handleSubmit} className="space-y-6">
               <div className="grid md:grid-cols-2 gap-6">
-                <SecureFormFields
-                  type="text"
+                <SecureFormInput
                   label="Full Name"
+                  type="text"
+                  name="name"
                   value={formData.name}
-                  onChange={(value) => handleInputChange('name', value)}
+                  onChange={(e) => handleInputChange('name', e.target.value)}
                   required
                   securityLevel="high"
                 />
 
-                <SecureFormFields
-                  type="email"
+                <SecureFormInput
                   label="Email Address"
+                  type="email"
+                  name="email"
                   value={formData.email}
-                  onChange={(value) => handleInputChange('email', value)}
+                  onChange={(e) => handleInputChange('email', e.target.value)}
                   required
                   securityLevel="high"
                 />
               </div>
 
-              <SecureFormFields
-                type="text"
+              <SecureFormInput
                 label="Company/Organization"
+                type="text"
+                name="company"
                 value={formData.company}
-                onChange={(value) => handleInputChange('company', value)}
-                securityLevel="medium"
+                onChange={(e) => handleInputChange('company', e.target.value)}
+                securityLevel="standard"
               />
 
               <div className="grid md:grid-cols-2 gap-6">
@@ -144,11 +147,11 @@ export const SecureContactForm = () => {
                 </div>
               </div>
 
-              <SecureFormFields
-                type="textarea"
+              <SecureTextarea
                 label="Message"
+                name="message"
                 value={formData.message}
-                onChange={(value) => handleInputChange('message', value)}
+                onChange={(e) => handleInputChange('message', e.target.value)}
                 required
                 securityLevel="high"
                 rows={6}
@@ -156,7 +159,7 @@ export const SecureContactForm = () => {
 
               <div className="flex items-center justify-between pt-6">
                 <div className="flex items-center space-x-2 text-sm text-gray-400">
-                  <LockIcon size="sm" variant="locked" color="electric-cyan" />
+                  <LockIcon size="sm" variant="locked" color="cyan" />
                   <span>End-to-end encrypted transmission</span>
                 </div>
 
@@ -172,7 +175,7 @@ export const SecureContactForm = () => {
                     </>
                   ) : (
                     <>
-                      <ShieldIcon size="sm" variant="active" color="navy" />
+                      <ShieldIcon size="sm" variant="active" color="white" />
                       <span>Send Secure Message</span>
                     </>
                   )}
