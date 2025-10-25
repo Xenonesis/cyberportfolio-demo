@@ -8,6 +8,10 @@ import { AccessibilityProvider } from "@/components/accessibility/AccessibilityP
 import { ScreenReaderSupport } from "@/components/accessibility/ScreenReaderSupport";
 import { KeyboardNavigation } from "@/components/accessibility/KeyboardNavigation";
 import { ColorContrast } from "@/components/accessibility/ColorContrast";
+import { MotionPreferences } from "@/components/accessibility/MotionPreferences";
+import { FocusManagement } from "@/components/accessibility/FocusManagement";
+import { ErrorHandling } from "@/components/accessibility/ErrorHandling";
+import { TestingSuite } from "@/components/accessibility/TestingSuite";
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
@@ -65,15 +69,33 @@ export default function RootLayout({
               enableKeyboardShortcuts={true}
               enableTabOrder={true}
             >
-              <ColorContrast
-                enableAutoAdjustment={true}
-                enableContrastToggle={true}
-                enableContrastMonitoring={true}
-                minNormalContrast={4.5}
-                minLargeContrast={3.0}
+              <ErrorHandling
+                enableAutoCorrection={true}
+                enableValidationAnnouncements={true}
+                enableSecurityValidation={true}
               >
-                {children}
-              </ColorContrast>
+                <FocusManagement
+                  enableFocusIndicators={true}
+                  enableFocusHistory={true}
+                  enableKeyboardNavigation={true}
+                  defaultIndicatorStyle="custom"
+                >
+                  <MotionPreferences
+                    enableAnimationControl={true}
+                    enableMotionToggle={true}
+                  >
+                    <ColorContrast
+                      enableAutoAdjustment={true}
+                      enableContrastToggle={true}
+                      enableContrastMonitoring={true}
+                      minNormalContrast={4.5}
+                      minLargeContrast={3.0}
+                    >
+                      {children}
+                    </ColorContrast>
+                  </MotionPreferences>
+                </FocusManagement>
+              </ErrorHandling>
             </KeyboardNavigation>
           </ScreenReaderSupport>
         </AccessibilityProvider>

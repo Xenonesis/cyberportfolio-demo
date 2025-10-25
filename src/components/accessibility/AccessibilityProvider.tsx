@@ -59,7 +59,7 @@ interface SecurityAlert {
 }
 
 // Create context with default values
-const AccessibilityContext = createContext<AccessibilityContextType | undefined>(undefined);
+export const AccessibilityContext = createContext<AccessibilityContextType | undefined>(undefined);
 
 // Accessibility provider props
 interface AccessibilityProviderProps {
