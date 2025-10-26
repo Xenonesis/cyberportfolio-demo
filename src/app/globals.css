@@ -209,10 +209,12 @@ ul li::before {
   border: 0;
 }
 
-/* Focus Styles */
+/* Enhanced Focus Styling for Accessibility */
 *:focus-visible {
-  outline: 2px solid #00ffff;
-  outline-offset: 2px;
+  outline: 3px solid #00ffff !important;
+  outline-offset: 2px !important;
+  box-shadow: 0 0 0 5px rgba(0, 255, 255, 0.3) !important;
+  border-radius: 2px;
 }
 
 /* Print Styles */

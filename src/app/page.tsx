@@ -1,6 +1,5 @@
-import Image from 'next/image';
 import { Metadata } from 'next';
-import { SITE_CONFIG, SEO_CONFIG } from '@/lib/data';
+import { SEO_CONFIG } from '@/lib/data';
 import { Header } from '@/components/layout/Header';
 import { Footer } from '@/components/layout/Footer';
 import { Hero } from '@/components/sections/Hero';
@@ -90,7 +89,11 @@ export default function Home() {
               <article
                 className='bg-navy-700 border border-navy-600 rounded-lg p-6 hover:border-cyan-500 transition-all duration-300'
                 role='article'
+                aria-labelledby='service-incident-response'
               >
+                <h3 id='service-incident-response' className='text-2xl font-bold text-cyan-400'>
+                  Incident Response
+                </h3>
                 <header className='flex items-center justify-between mb-4'>
                   <h3 className='text-lg font-semibold text-white'>
                     Security Assessment
@@ -148,7 +151,11 @@ export default function Home() {
               <article
                 className='bg-navy-700 border border-navy-600 rounded-lg p-6 hover:border-neon-green-500 transition-all duration-300'
                 role='article'
+                aria-labelledby='service-penetration-testing'
               >
+                <h3 id='service-penetration-testing' className='text-2xl font-bold text-neon-green-400'>
+                  Penetration Testing
+                </h3>
                 <header className='flex items-center justify-between mb-4'>
                   <h3 className='text-lg font-semibold text-white'>
                     Incident Response
@@ -203,7 +210,11 @@ export default function Home() {
               <article
                 className='bg-navy-700 border border-navy-600 rounded-lg p-6 hover:border-cyan-500 transition-all duration-300'
                 role='article'
+                aria-labelledby='service-vulnerability-assessment'
               >
+                <h3 id='service-vulnerability-assessment' className='text-2xl font-bold text-cyan-400'>
+                  Vulnerability Assessment
+                </h3>
                 <header className='flex items-center justify-between mb-4'>
                   <h3 className='text-lg font-semibold text-white'>
                     Cloud Security
@@ -326,7 +337,11 @@ export default function Home() {
               <article
                 className='bg-navy-800 border border-navy-700 rounded-lg overflow-hidden hover:border-neon-green-500 transition-all duration-300'
                 role='article'
+                aria-labelledby='blog-zero-day-vulnerabilities'
               >
+                <h3 id='blog-zero-day-vulnerabilities' className='text-2xl font-bold text-neon-green-400 p-6'>
+                  The Hunt for Zero-Day Vulnerabilities
+                </h3>
                 <div className='relative h-48 bg-gradient-to-r from-cyan-600 to-neon-green-600'>
                   <div className='absolute inset-0 flex items-center justify-center'>
                     <svg
@@ -386,7 +401,11 @@ export default function Home() {
               <article
                 className='bg-navy-800 border border-navy-700 rounded-lg overflow-hidden hover:border-cyan-500 transition-all duration-300'
                 role='article'
+                aria-labelledby='project-enterprise-security-overhaul'
               >
+                <h3 id='project-enterprise-security-overhaul' className='text-2xl font-bold text-cyan-400 p-6'>
+                  Enterprise Security Overhaul
+                </h3>
                 <div className='relative h-48 bg-gradient-to-r from-navy-700 to-cyan-600'>
                   <div className='absolute inset-0 flex items-center justify-center'>
                     <svg
@@ -445,7 +464,11 @@ export default function Home() {
               <article
                 className='bg-navy-800 border border-navy-700 rounded-lg overflow-hidden hover:border-neon-green-500 transition-all duration-300'
                 role='article'
+                aria-labelledby='project-secure-cloud-infrastructure'
               >
+                <h3 id='project-secure-cloud-infrastructure' className='text-2xl font-bold text-neon-green-400 p-6'>
+                  Secure Cloud Infrastructure
+                </h3>
                 <div className='relative h-48 bg-gradient-to-r from-gray-700 to-cyan-600'>
                   <div className='absolute inset-0 flex items-center justify-center'>
                     <svg

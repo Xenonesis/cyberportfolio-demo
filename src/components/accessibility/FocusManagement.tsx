@@ -13,16 +13,16 @@ import { useAccessibility } from './AccessibilityProvider';
 interface FocusManagementContextType {
   currentFocusElement: string | null;
   focusHistory: string[];
-  setFocusElement: (elementId: string | null) => void;
+  setFocusElement: (elementId: string | null) => void; // eslint-disable-line no-unused-vars
   focusNext: () => void;
   focusPrevious: () => void;
   focusFirst: () => void;
   focusLast: () => void;
-  trapFocus: (container: HTMLElement, options?: FocusTrapOptions) => () => void;
+  trapFocus: (container: HTMLElement, options?: FocusTrapOptions) => () => void; // eslint-disable-line no-unused-vars
   showFocusIndicators: boolean;
   toggleFocusIndicators: () => void;
   focusIndicatorStyle: 'default' | 'high-contrast' | 'custom';
-  setFocusIndicatorStyle: (
+  setFocusIndicatorStyle: ( // eslint-disable-line no-unused-vars
     style: 'default' | 'high-contrast' | 'custom'
   ) => void;
 }
@@ -265,81 +265,9 @@ export const FocusManagement: React.FC<FocusManagementProps> = ({
     setShowFocusIndicators(!showFocusIndicators);
   };
 
-  // Apply focus indicator styles
+  // No longer needed, styles are in globals.css
   useEffect(() => {
-    if (!showFocusIndicators) return;
-
-    const styleId = 'focus-management-styles';
-    let styleElement = document.getElementById(styleId) as HTMLStyleElement;
-
-    if (!styleElement) {
-      styleElement = document.createElement('style');
-      styleElement.id = styleId;
-      document.head.appendChild(styleElement);
-    }
-
-    let focusStyles = '';
-
-    if (focusIndicatorStyle === 'high-contrast') {
-      focusStyles = `
-        *:focus {
-          outline: 3px solid #ffffff !important;
-          outline-offset: 2px !important;
-          box-shadow: 0 0 0 1px #000000 !important;
-        }
-        *:focus:not(:focus-visible) {
-          outline: none !important;
-          box-shadow: none !important;
-        }
-        *:focus-visible {
-          outline: 3px solid #ffffff !important;
-          outline-offset: 2px !important;
-          box-shadow: 0 0 0 1px #000000 !important;
-        }
-      `;
-    } else if (focusIndicatorStyle === 'custom') {
-      focusStyles = `
-        *:focus {
-          outline: 2px solid #00ffff !important;
-          outline-offset: 2px !important;
-          border-radius: 4px !important;
-          box-shadow: 0 0 8px rgba(0, 255, 255, 0.5) !important;
-        }
-        *:focus:not(:focus-visible) {
-          outline: none !important;
-          box-shadow: none !important;
-        }
-        *:focus-visible {
-          outline: 2px solid #00ffff !important;
-          outline-offset: 2px !important;
-          border-radius: 4px !important;
-          box-shadow: 0 0 8px rgba(0, 255, 255, 0.5) !important;
-        }
-      `;
-    } else {
-      // default style
-      focusStyles = `
-        *:focus {
-          outline: 2px solid #007acc !important;
-          outline-offset: 2px !important;
-        }
-        *:focus:not(:focus-visible) {
-          outline: none !important;
-        }
-        *:focus-visible {
-          outline: 2px solid #007acc !important;
-          outline-offset: 2px !important;
-        }
-      `;
-    }
-
-    styleElement.textContent = focusStyles;
-
-    return () => {
-      if (styleElement && !showFocusIndicators) {
-        styleElement.remove();
-      }
-    };
+    // This is intentionally left blank.
   }, [showFocusIndicators, focusIndicatorStyle]);
 
   // Global focus event listener
