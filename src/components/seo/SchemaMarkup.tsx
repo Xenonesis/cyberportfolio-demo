@@ -50,13 +50,13 @@ interface SchemaData {
   [key: string]: any;
 }
 
-export const SchemaMarkup = ({
-  pageType = 'website',
+export default function SchemaMarkup({
+  pageType,
   pageTitle,
   pageDescription,
   pageImage,
   pageUrl,
-  author = 'Aditya Kumar Tiwari',
+  author,
   publishDate,
   modifiedDate,
   articleSection,
@@ -70,111 +70,8 @@ export const SchemaMarkup = ({
   eventDate,
   eventLocation,
   eventDescription,
-}: SchemaMarkupProps) => {
+}: SchemaMarkupProps) {
   const [schemas, setSchemas] = useState<SchemaData[]>([]);
-
-  useEffect(() => {
-    const generatedSchemas: SchemaData[] = [];
-
-    // Always include organization schema
-    generatedSchemas.push({
-      '@context': 'https://schema.org',
-      '@type': 'Person',
-      name: 'Aditya Kumar Tiwari',
-      url: SEO_CONFIG.siteUrl,
-      description: SEO_CONFIG.siteDescription,
-      image: `${SEO_CONFIG.siteUrl}/images/profile.jpg`,
-      sameAs: [
-        'https://linkedin.com/in/aditya-cybersecurity',
-        'https://twitter.com/aditya_cyber',
-        'https://github.com/aditya-cybersecurity',
-        'https://medium.com/@aditya-cybersecurity',
-      ],
-      mainEntityOfPage: {
-        '@type': 'WebPage',
-        '@id': SEO_CONFIG.siteUrl,
-      },
-    });
-
-    // Always include website schema
-    generatedSchemas.push({
-      '@context': 'https://schema.org',
-      '@type': 'WebSite',
-      name: SEO_CONFIG.siteTitle,
-      url: SEO_CONFIG.siteUrl,
-      description: SEO_CONFIG.siteDescription,
-      mainEntityOfPage: {
-        '@type': 'WebPage',
-        '@id': SEO_CONFIG.siteUrl,
-      },
-    });
-
-    // Generate page-specific schema
-    switch (pageType) {
-      case 'article':
-        if (pageTitle && pageDescription) {
-          generatedSchemas.push(generateArticleSchema());
-        }
-        break;
-      case 'case-study':
-        if (caseStudyData) {
-          generatedSchemas.push(generateCaseStudySchema());
-        }
-        break;
-      case 'review':
-        if (reviewData) {
-          generatedSchemas.push(generateReviewSchema());
-        }
-        break;
-      case 'service':
-        if (serviceData) {
-          generatedSchemas.push(generateServiceSchema());
-        }
-        break;
-      case 'event':
-        if (eventDate && eventLocation && eventDescription) {
-          generatedSchemas.push(generateEventSchema());
-        }
-        break;
-      case 'faq':
-        if (faqList && faqList.length > 0) {
-          generatedSchemas.push(generateFAQSchema());
-        }
-        break;
-      case 'how-to':
-        if (howToSteps && howToSteps.length > 0) {
-          generatedSchemas.push(generateHowToSchema());
-        }
-        break;
-      case 'breadcrumb':
-        if (breadcrumbList && breadcrumbList.length > 0) {
-          generatedSchemas.push(generateBreadcrumbSchema());
-        }
-        break;
-    }
-
-    setSchemas(generatedSchemas);
-  }, [
-    pageType,
-    pageTitle,
-    pageDescription,
-    pageImage,
-    pageUrl,
-    author,
-    publishDate,
-    modifiedDate,
-    articleSection,
-    articleTags,
-    breadcrumbList,
-    faqList,
-    howToSteps,
-    caseStudyData,
-    reviewData,
-    serviceData,
-    eventDate,
-    eventLocation,
-    eventDescription,
-  ]);
 
   const generateArticleSchema = (): SchemaData => ({
     '@context': 'https://schema.org',
@@ -341,6 +238,89 @@ export const SchemaMarkup = ({
       item: item.url,
     })),
   });
+
+  useEffect(() => {
+    const generatedSchemas: SchemaData[] = [];
+
+    // Always include website schema
+    generatedSchemas.push({
+      '@context': 'https://schema.org',
+      '@type': 'WebSite',
+      name: SEO_CONFIG.siteTitle,
+      url: SEO_CONFIG.siteUrl,
+      description: SEO_CONFIG.siteDescription,
+      mainEntityOfPage: {
+        '@type': 'WebPage',
+        '@id': SEO_CONFIG.siteUrl,
+      },
+    });
+
+    // Generate page-specific schema
+    switch (pageType) {
+      case 'article':
+        if (pageTitle && pageDescription) {
+          generatedSchemas.push(generateArticleSchema());
+        }
+        break;
+      case 'case-study':
+        if (caseStudyData) {
+          generatedSchemas.push(generateCaseStudySchema());
+        }
+        break;
+      case 'review':
+        if (reviewData) {
+          generatedSchemas.push(generateReviewSchema());
+        }
+        break;
+      case 'service':
+        if (serviceData) {
+          generatedSchemas.push(generateServiceSchema());
+        }
+        break;
+      case 'event':
+        if (eventDate && eventLocation && eventDescription) {
+          generatedSchemas.push(generateEventSchema());
+        }
+        break;
+      case 'faq':
+        if (faqList && faqList.length > 0) {
+          generatedSchemas.push(generateFAQSchema());
+        }
+        break;
+      case 'how-to':
+        if (howToSteps && howToSteps.length > 0) {
+          generatedSchemas.push(generateHowToSchema());
+        }
+        break;
+      case 'breadcrumb':
+        if (breadcrumbList && breadcrumbList.length > 0) {
+          generatedSchemas.push(generateBreadcrumbSchema());
+        }
+        break;
+    }
+
+    setSchemas(generatedSchemas);
+  }, [
+    pageType,
+    pageTitle,
+    pageDescription,
+    pageImage,
+    pageUrl,
+    author,
+    publishDate,
+    modifiedDate,
+    articleSection,
+    articleTags,
+    breadcrumbList,
+    faqList,
+    howToSteps,
+    caseStudyData,
+    reviewData,
+    serviceData,
+    eventDate,
+    eventLocation,
+    eventDescription,
+  ]);
 
   return (
     <>

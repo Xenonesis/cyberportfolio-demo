@@ -151,7 +151,7 @@ export const BrowserCompatibility: React.FC<BrowserCompatibilityProps> = ({
     };
 
     const info = detectBrowser();
-    // eslint-disable-next-line react-hooks/exhaustive-deps
+     
     setBrowserInfo(info);
 
     // Check for compatibility issues
