@@ -86,9 +86,7 @@ export const ResumeSummary = () => {
     <View style={styles.section}>
       <Text style={styles.sectionTitle}>Professional Summary</Text>
 
-      <Text style={styles.summaryText}>
-        {RESUME_SUMMARY.overview}
-      </Text>
+      <Text style={styles.summaryText}>{RESUME_SUMMARY.overview}</Text>
 
       <View style={styles.achievementsGrid}>
         {RESUME_SUMMARY.keyAchievements.map((achievement, index) => (

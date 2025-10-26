@@ -1,8 +1,8 @@
 /** @type {import('tailwindcss').Config} */
 export default {
   content: [
-    "./src/**/*.{js,ts,jsx,tsx,mdx}",
-    "./public/**/*.{js,ts,jsx,tsx,mdx}",
+    './src/**/*.{js,ts,jsx,tsx,mdx}',
+    './public/**/*.{js,ts,jsx,tsx,mdx}',
   ],
   theme: {
     extend: {
@@ -70,43 +70,76 @@ export default {
         },
         // Security-Themed Utility Colors
         'threat-level': {
-          low: '#39FF14',      // Neon Green
-          medium: '#FFD700',    // Gold/Yellow
-          high: '#FF6B6B',     // Red
-          critical: '#FF0000',  // Bright Red
+          low: '#39FF14', // Neon Green
+          medium: '#FFD700', // Gold/Yellow
+          high: '#FF6B6B', // Red
+          critical: '#FF0000', // Bright Red
         },
-        'status': {
-          online: '#39FF14',    // Neon Green
-          offline: '#6B7280',   // Gray
-          secure: '#00FFFF',    // Electric Cyan
-          warning: '#FFD700',   // Yellow
-        }
+        status: {
+          online: '#39FF14', // Neon Green
+          offline: '#6B7280', // Gray
+          secure: '#00FFFF', // Electric Cyan
+          warning: '#FFD700', // Yellow
+        },
       },
       fontFamily: {
-        'mono': ['"JetBrains Mono"', 'monospace'],
-        'sans': ['"Inter"', 'system-ui', 'sans-serif'],
-        'heading': ['"Space Grotesk"', 'Arial', 'sans-serif'], // Tech-inspired heading font
+        mono: ['"JetBrains Mono"', 'monospace'],
+        sans: ['"Inter"', 'system-ui', 'sans-serif'],
+        heading: ['"Space Grotesk"', 'Arial', 'sans-serif'], // Tech-inspired heading font
       },
       fontSize: {
         // Comprehensive Typography Scale
-        'h1': ['3.5rem', { lineHeight: '1.2', letterSpacing: '-0.02em', fontWeight: '700' }],
-        'h2': ['2.5rem', { lineHeight: '1.3', letterSpacing: '-0.02em', fontWeight: '600' }],
-        'h3': ['1.875rem', { lineHeight: '1.4', letterSpacing: '-0.01em', fontWeight: '600' }],
-        'h4': ['1.5rem', { lineHeight: '1.5', letterSpacing: '-0.01em', fontWeight: '600' }],
-        'h5': ['1.25rem', { lineHeight: '1.5', letterSpacing: '0', fontWeight: '500' }],
-        'h6': ['1.125rem', { lineHeight: '1.6', letterSpacing: '0', fontWeight: '500' }],
-        'body-lg': ['1.125rem', { lineHeight: '1.6', letterSpacing: '0', fontWeight: '400' }],
-        'body': ['1rem', { lineHeight: '1.6', letterSpacing: '0', fontWeight: '400' }],
-        'body-sm': ['0.875rem', { lineHeight: '1.5', letterSpacing: '0', fontWeight: '400' }],
-        'caption': ['0.75rem', { lineHeight: '1.4', letterSpacing: '0.02em', fontWeight: '400' }],
-        'code': ['0.875rem', { lineHeight: '1.4', letterSpacing: '0', fontWeight: '400' }],
+        h1: [
+          '3.5rem',
+          { lineHeight: '1.2', letterSpacing: '-0.02em', fontWeight: '700' },
+        ],
+        h2: [
+          '2.5rem',
+          { lineHeight: '1.3', letterSpacing: '-0.02em', fontWeight: '600' },
+        ],
+        h3: [
+          '1.875rem',
+          { lineHeight: '1.4', letterSpacing: '-0.01em', fontWeight: '600' },
+        ],
+        h4: [
+          '1.5rem',
+          { lineHeight: '1.5', letterSpacing: '-0.01em', fontWeight: '600' },
+        ],
+        h5: [
+          '1.25rem',
+          { lineHeight: '1.5', letterSpacing: '0', fontWeight: '500' },
+        ],
+        h6: [
+          '1.125rem',
+          { lineHeight: '1.6', letterSpacing: '0', fontWeight: '500' },
+        ],
+        'body-lg': [
+          '1.125rem',
+          { lineHeight: '1.6', letterSpacing: '0', fontWeight: '400' },
+        ],
+        body: [
+          '1rem',
+          { lineHeight: '1.6', letterSpacing: '0', fontWeight: '400' },
+        ],
+        'body-sm': [
+          '0.875rem',
+          { lineHeight: '1.5', letterSpacing: '0', fontWeight: '400' },
+        ],
+        caption: [
+          '0.75rem',
+          { lineHeight: '1.4', letterSpacing: '0.02em', fontWeight: '400' },
+        ],
+        code: [
+          '0.875rem',
+          { lineHeight: '1.4', letterSpacing: '0', fontWeight: '400' },
+        ],
       },
       animation: {
         // Enhanced Security-Themed Animations
         'pulse-slow': 'pulse 3s cubic-bezier(0.4, 0, 0.6, 1) infinite',
-        'glow': 'glow 2s ease-in-out infinite alternate',
-        'circuit': 'circuit 4s linear infinite',
-        'scan': 'scan 1s ease-in-out forwards',
+        glow: 'glow 2s ease-in-out infinite alternate',
+        circuit: 'circuit 4s linear infinite',
+        scan: 'scan 1s ease-in-out forwards',
         'data-flow': 'dataFlow 3s ease-in-out infinite',
         'lock-in': 'lockIn 0.5s ease-out forwards',
         'shield-activate': 'shieldActivate 1s ease-out forwards',
@@ -117,8 +150,14 @@ export default {
       },
       keyframes: {
         glow: {
-          '0%, 100%': { opacity: '1', filter: 'drop-shadow(0 0 10px rgba(0, 255, 255, 0.5))' },
-          '50%': { opacity: '0.6', filter: 'drop-shadow(0 0 20px rgba(0, 255, 255, 0.3))' },
+          '0%, 100%': {
+            opacity: '1',
+            filter: 'drop-shadow(0 0 10px rgba(0, 255, 255, 0.5))',
+          },
+          '50%': {
+            opacity: '0.6',
+            filter: 'drop-shadow(0 0 20px rgba(0, 255, 255, 0.3))',
+          },
         },
         circuit: {
           '0%': { transform: 'translateX(-100%)', opacity: '0' },
@@ -142,9 +181,21 @@ export default {
           '100%': { transform: 'scale(1) rotate(0deg)', opacity: '1' },
         },
         shieldActivate: {
-          '0%': { transform: 'scale(0.5)', opacity: '0', filter: 'hue-rotate(0deg)' },
-          '50%': { transform: 'scale(1.2)', opacity: '0.8', filter: 'hue-rotate(180deg)' },
-          '100%': { transform: 'scale(1)', opacity: '1', filter: 'hue-rotate(360deg)' },
+          '0%': {
+            transform: 'scale(0.5)',
+            opacity: '0',
+            filter: 'hue-rotate(0deg)',
+          },
+          '50%': {
+            transform: 'scale(1.2)',
+            opacity: '0.8',
+            filter: 'hue-rotate(180deg)',
+          },
+          '100%': {
+            transform: 'scale(1)',
+            opacity: '1',
+            filter: 'hue-rotate(360deg)',
+          },
         },
         binaryRain: {
           '0%': { transform: 'translateY(-100%)', opacity: '0' },
@@ -152,8 +203,14 @@ export default {
         },
         securityScan: {
           '0%': { transform: 'scaleX(0)', transformOrigin: 'left' },
-          '50%': { transform: 'scaleX(1)', backgroundColor: 'rgba(57, 255, 20, 0.3)' },
-          '100%': { transform: 'scaleX(1)', backgroundColor: 'rgba(57, 255, 20, 0.8)' },
+          '50%': {
+            transform: 'scaleX(1)',
+            backgroundColor: 'rgba(57, 255, 20, 0.3)',
+          },
+          '100%': {
+            transform: 'scaleX(1)',
+            backgroundColor: 'rgba(57, 255, 20, 0.8)',
+          },
         },
         neonPulse: {
           '0%, 100%': { boxShadow: '0 0 10px rgba(0, 255, 255, 0.3)' },
@@ -165,15 +222,17 @@ export default {
         },
       },
       boxShadow: {
-        'neon': '0 0 20px rgba(0, 255, 255, 0.3)',
+        neon: '0 0 20px rgba(0, 255, 255, 0.3)',
         'neon-green': '0 0 20px rgba(57, 255, 20, 0.3)',
         'neon-lg': '0 0 40px rgba(0, 255, 255, 0.2)',
         'neon-green-lg': '0 0 40px rgba(57, 255, 20, 0.2)',
-        'security': '0 0 30px rgba(0, 255, 255, 0.15), inset 0 1px 0 rgba(255, 255, 255, 0.1)',
-        'glass': '0 8px 32px rgba(0, 0, 0, 0.3), inset 0 1px 0 rgba(255, 255, 255, 0.1)',
+        security:
+          '0 0 30px rgba(0, 255, 255, 0.15), inset 0 1px 0 rgba(255, 255, 255, 0.1)',
+        glass:
+          '0 8px 32px rgba(0, 0, 0, 0.3), inset 0 1px 0 rgba(255, 255, 255, 0.1)',
       },
       backdropBlur: {
-        'glass': '20px',
+        glass: '20px',
       },
       // Custom Security-Themed Utilities
       utilities: {
@@ -207,9 +266,9 @@ export default {
         '.shield-badge': {
           animation: 'shieldActivate 1s ease-out',
         },
-      }
+      },
     },
   },
   darkMode: 'class',
   plugins: [],
-}
+};

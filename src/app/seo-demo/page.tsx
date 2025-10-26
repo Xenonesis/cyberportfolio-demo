@@ -58,14 +58,16 @@ export default function SEODemoPage() {
   const reviewData = {
     reviewer: 'Sarah Johnson',
     rating: 5,
-    review: 'Aditya transformed our security posture completely. His expertise in Zero Trust architecture and incident response saved our company from potential catastrophic breaches. The 75% reduction in security incidents speaks volumes about his capabilities.',
+    review:
+      'Aditya transformed our security posture completely. His expertise in Zero Trust architecture and incident response saved our company from potential catastrophic breaches. The 75% reduction in security incidents speaks volumes about his capabilities.',
     date: '2024-03-15',
     verified: true,
   };
 
   const serviceData = {
     name: 'Enterprise Security Assessment',
-    description: 'Comprehensive evaluation of your organization\'s security posture including vulnerability scanning, penetration testing, and risk assessment.',
+    description:
+      "Comprehensive evaluation of your organization's security posture including vulnerability scanning, penetration testing, and risk assessment.",
     priceRange: '$5,000 - $15,000',
     serviceArea: 'Global',
     availableAtOrFrom: 'New York, NY',
@@ -74,15 +76,19 @@ export default function SEODemoPage() {
   const faqList = [
     {
       question: 'What is cybersecurity and why is it important?',
-      answer: 'Cybersecurity is the practice of protecting systems, networks, and programs from digital attacks. It\'s crucial for protecting sensitive data, maintaining business continuity, and ensuring customer trust.',
+      answer:
+        "Cybersecurity is the practice of protecting systems, networks, and programs from digital attacks. It's crucial for protecting sensitive data, maintaining business continuity, and ensuring customer trust.",
     },
     {
       question: 'How often should security assessments be conducted?',
-      answer: 'Security assessments should be conducted annually at minimum, or whenever significant changes are made to your IT infrastructure, applications, or business processes.',
+      answer:
+        'Security assessments should be conducted annually at minimum, or whenever significant changes are made to your IT infrastructure, applications, or business processes.',
     },
     {
-      question: 'What is the difference between vulnerability assessment and penetration testing?',
-      answer: 'Vulnerability assessment identifies and classifies security weaknesses, while penetration testing actively exploits those vulnerabilities to determine their real-world impact.',
+      question:
+        'What is the difference between vulnerability assessment and penetration testing?',
+      answer:
+        'Vulnerability assessment identifies and classifies security weaknesses, while penetration testing actively exploits those vulnerabilities to determine their real-world impact.',
     },
   ];
 
@@ -113,9 +119,9 @@ export default function SEODemoPage() {
 
   return (
     <SEOProvider
-      pageType="article"
-      pageTitle="Comprehensive Cybersecurity Services | Aditya Kumar Tiwari"
-      pageDescription="Expert cybersecurity consultant specializing in enterprise security, incident response, and cloud security solutions. Protecting organizations from evolving cyber threats."
+      pageType='article'
+      pageTitle='Comprehensive Cybersecurity Services | Aditya Kumar Tiwari'
+      pageDescription='Expert cybersecurity consultant specializing in enterprise security, incident response, and cloud security solutions. Protecting organizations from evolving cyber threats.'
       pageKeywords={[
         'cybersecurity specialist',
         'security consultant',
@@ -126,19 +132,19 @@ export default function SEODemoPage() {
         'AI security',
         'prompt engineering',
       ]}
-      pageImage="/images/seo-demo-hero.jpg"
-      pageUrl="https://aditya-cybersecurity.com/seo-demo"
+      pageImage='/images/seo-demo-hero.jpg'
+      pageUrl='https://aditya-cybersecurity.com/seo-demo'
       enablePerformanceMonitoring={true}
       enableMobileOptimization={true}
       enableTrustBuilding={true}
     >
-      <div className="seo-demo-container">
+      <div className='seo-demo-container'>
         {/* Breadcrumb Navigation */}
-        <BreadcrumbNavigation currentPath="/seo-demo" />
+        <BreadcrumbNavigation currentPath='/seo-demo' />
 
         {/* Main Content with SEO Optimization */}
         <ContentOptimization
-          contentType="article"
+          contentType='article'
           keywords={[
             'cybersecurity',
             'security consultant',
@@ -189,15 +195,15 @@ export default function SEODemoPage() {
 
         {/* Advanced Schema Markup */}
         <SchemaMarkup
-          pageType="article"
-          pageTitle="Comprehensive Cybersecurity Services | Aditya Kumar Tiwari"
-          pageDescription="Expert cybersecurity consultant specializing in enterprise security, incident response, and cloud security solutions."
-          pageImage="/images/seo-demo-hero.jpg"
-          pageUrl="https://aditya-cybersecurity.com/seo-demo"
-          author="Aditya Kumar Tiwari"
-          publishDate="2024-12-25"
-          modifiedDate="2024-12-25"
-          articleSection="Cybersecurity Services"
+          pageType='article'
+          pageTitle='Comprehensive Cybersecurity Services | Aditya Kumar Tiwari'
+          pageDescription='Expert cybersecurity consultant specializing in enterprise security, incident response, and cloud security solutions.'
+          pageImage='/images/seo-demo-hero.jpg'
+          pageUrl='https://aditya-cybersecurity.com/seo-demo'
+          author='Aditya Kumar Tiwari'
+          publishDate='2024-12-25'
+          modifiedDate='2024-12-25'
+          articleSection='Cybersecurity Services'
           articleTags={[
             'cybersecurity',
             'security consultant',
@@ -214,22 +220,30 @@ export default function SEODemoPage() {
         />
 
         {/* Additional SEO Content */}
-        <section className="seo-content-section">
+        <section className='seo-content-section'>
           <h2>Why Choose Our Cybersecurity Services?</h2>
-          <div className="seo-benefits-grid">
-            <div className="seo-benefit">
+          <div className='seo-benefits-grid'>
+            <div className='seo-benefit'>
               <h3>✅ Expertise & Experience</h3>
-              <p>7+ years of cybersecurity experience with 100+ security assessments completed</p>
+              <p>
+                7+ years of cybersecurity experience with 100+ security
+                assessments completed
+              </p>
             </div>
-            <div className="seo-benefit">
+            <div className='seo-benefit'>
               <h3>🔒 Advanced Security</h3>
-              <p>Latest security technologies and methodologies for maximum protection</p>
+              <p>
+                Latest security technologies and methodologies for maximum
+                protection
+              </p>
             </div>
-            <div className="seo-benefit">
+            <div className='seo-benefit'>
               <h3>⚡ Rapid Response</h3>
-              <p>24/7 incident response with average response time under 1 hour</p>
+              <p>
+                24/7 incident response with average response time under 1 hour
+              </p>
             </div>
-            <div className="seo-benefit">
+            <div className='seo-benefit'>
               <h3>📈 Proven Results</h3>
               <p>99.9% success rate with measurable security improvements</p>
             </div>

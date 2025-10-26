@@ -15,7 +15,12 @@ export interface EnhancedTestimonial {
   rating: number; // 1-5 scale
   verified?: boolean; // Client verification status
   securityDomain?: SecurityDomain[]; // Security areas covered
-  projectType?: 'assessment' | 'development' | 'incident-response' | 'consulting' | 'training';
+  projectType?:
+    | 'assessment'
+    | 'development'
+    | 'incident-response'
+    | 'consulting'
+    | 'training';
   projectDuration?: string; // e.g., "3 months", "6 weeks"
   projectImpact?: string; // Quantified results
   securityMetrics?: {

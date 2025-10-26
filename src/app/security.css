@@ -6,20 +6,20 @@
 /* CSS Custom Properties for Security Theme */
 :root {
   /* Primary Color Variables */
-  --deep-navy-500: #0F172A;
-  --deep-navy-800: #080C14;
-  --electric-cyan-500: #00FFFF;
-  --neon-green-500: #39FF14;
+  --deep-navy-500: #0f172a;
+  --deep-navy-800: #080c14;
+  --electric-cyan-500: #00ffff;
+  --neon-green-500: #39ff14;
   --security-gray-700: #374151;
-  --light-gray-50: #F8FAFC;
-  
+  --light-gray-50: #f8fafc;
+
   /* Animation Variables */
   --animation-speed-fast: 0.2s;
   --animation-speed-normal: 0.3s;
   --animation-speed-slow: 0.5s;
   --animation-ease: cubic-bezier(0.4, 0, 0.6, 1);
   --animation-ease-out: cubic-bezier(0, 0, 0.2, 1);
-  
+
   /* Security Theme Variables */
   --security-glow-strength: 0.4;
   --circuit-line-width: 1px;
@@ -125,7 +125,8 @@
 }
 
 @keyframes neonPulse {
-  0%, 100% {
+  0%,
+  100% {
     box-shadow: 0 0 10px rgba(0, 255, 255, 0.3);
   }
   50% {
@@ -144,23 +145,39 @@
 }
 
 .circuit-pattern {
-  background-image: 
-    radial-gradient(circle at 25% 25%, rgba(0, 255, 255, 0.1) var(--circuit-line-width), transparent var(--circuit-line-width)),
-    radial-gradient(circle at 75% 75%, rgba(0, 255, 255, 0.1) var(--circuit-line-width), transparent var(--circuit-line-width)),
-    linear-gradient(90deg, rgba(0, 255, 255, 0.05) var(--circuit-line-width), transparent var(--circuit-line-width)),
-    linear-gradient(0deg, rgba(0, 255, 255, 0.05) var(--circuit-line-width), transparent var(--circuit-line-width));
+  background-image:
+    radial-gradient(
+      circle at 25% 25%,
+      rgba(0, 255, 255, 0.1) var(--circuit-line-width),
+      transparent var(--circuit-line-width)
+    ),
+    radial-gradient(
+      circle at 75% 75%,
+      rgba(0, 255, 255, 0.1) var(--circuit-line-width),
+      transparent var(--circuit-line-width)
+    ),
+    linear-gradient(
+      90deg,
+      rgba(0, 255, 255, 0.05) var(--circuit-line-width),
+      transparent var(--circuit-line-width)
+    ),
+    linear-gradient(
+      0deg,
+      rgba(0, 255, 255, 0.05) var(--circuit-line-width),
+      transparent var(--circuit-line-width)
+    );
   background-size: 50px 50px;
   animation: cyberGrid 8s linear infinite;
 }
 
 .binary-texture {
-  background-image: 
-    linear-gradient(90deg, 
-      transparent 70%, 
-      rgba(0, 255, 255, 0.05) 70.1%, 
-      rgba(0, 255, 255, 0.05) 75%, 
-      transparent 75.1%
-    );
+  background-image: linear-gradient(
+    90deg,
+    transparent 70%,
+    rgba(0, 255, 255, 0.05) 70.1%,
+    rgba(0, 255, 255, 0.05) 75%,
+    transparent 75.1%
+  );
   background-size: 20px 20px;
   opacity: 0.3;
 }
@@ -194,9 +211,17 @@
 
 /* Hero Section Enhancements */
 .hero-circuit-background {
-  background: 
-    radial-gradient(circle at 10% 20%, rgba(0, 255, 255, 0.05) 1px, transparent 1px),
-    radial-gradient(circle at 90% 80%, rgba(0, 255, 255, 0.05) 1px, transparent 1px),
+  background:
+    radial-gradient(
+      circle at 10% 20%,
+      rgba(0, 255, 255, 0.05) 1px,
+      transparent 1px
+    ),
+    radial-gradient(
+      circle at 90% 80%,
+      rgba(0, 255, 255, 0.05) 1px,
+      transparent 1px
+    ),
     linear-gradient(45deg, rgba(0, 255, 255, 0.02) 1px, transparent 1px),
     linear-gradient(-45deg, rgba(0, 255, 255, 0.02) 1px, transparent 1px);
   background-size: 100px 100px;
@@ -214,7 +239,11 @@
   left: -20px;
   right: -20px;
   bottom: -20px;
-  background: linear-gradient(45deg, rgba(0, 255, 255, 0.1), rgba(57, 255, 20, 0.1));
+  background: linear-gradient(
+    45deg,
+    rgba(0, 255, 255, 0.1),
+    rgba(57, 255, 20, 0.1)
+  );
   border-radius: 20px;
   filter: blur(40px);
   animation: neonPulse 3s ease-in-out infinite;
@@ -245,20 +274,28 @@
 }
 
 .btn-security:hover {
-  background: linear-gradient(135deg, rgba(0, 255, 255, 0.2), rgba(57, 255, 20, 0.1));
+  background: linear-gradient(
+    135deg,
+    rgba(0, 255, 255, 0.2),
+    rgba(57, 255, 20, 0.1)
+  );
   box-shadow: 0 0 20px rgba(0, 255, 255, 0.3);
   transform: translateY(-2px);
 }
 
 .btn-neon {
-  background: linear-gradient(45deg, var(--electric-cyan-500), var(--neon-green-500));
+  background: linear-gradient(
+    45deg,
+    var(--electric-cyan-500),
+    var(--neon-green-500)
+  );
   border: none;
   transition: all var(--animation-speed-normal) ease;
   animation: neonPulse 2s ease-in-out infinite;
 }
 
 .btn-neon:hover {
-  background: linear-gradient(45deg, #00E6E6, #32CC0E);
+  background: linear-gradient(45deg, #00e6e6, #32cc0e);
   transform: scale(1.05);
 }
 
@@ -294,7 +331,7 @@
   top: 0;
   left: 0;
   height: 100%;
-  background: linear-gradient(90deg, var(--neon-green-500), #00FFFF);
+  background: linear-gradient(90deg, var(--neon-green-500), #00ffff);
   border-radius: 10px;
   animation: securityScan 2s var(--animation-ease-out) forwards;
 }
@@ -322,7 +359,7 @@
     background-size: 30px 30px;
     animation: cyberGrid 4s linear infinite;
   }
-  
+
   .mobile-hero-glow {
     background: rgba(0, 255, 255, 0.05);
     border-radius: 15px;
@@ -347,7 +384,7 @@
     animation: none;
     transition: none;
   }
-  
+
   .btn-security:hover,
   .btn-neon:hover {
     transform: none;
@@ -357,11 +394,11 @@
 /* High Contrast Mode Support */
 @media (prefers-contrast: high) {
   :root {
-    --electric-cyan-500: #00CED1;
-    --neon-green-500: #39FF14;
+    --electric-cyan-500: #00ced1;
+    --neon-green-500: #39ff14;
     --deep-navy-500: #001122;
   }
-  
+
   .security-glow {
     box-shadow: 0 0 20px rgba(0, 206, 209, 0.6);
   }
@@ -377,7 +414,7 @@
     background: none;
     animation: none;
   }
-  
+
   .btn-security,
   .btn-neon {
     background: #000;

@@ -1,6 +1,13 @@
-"use client";
+'use client';
 
-import React, { createContext, useContext, useState, useEffect, ReactNode, useRef } from 'react';
+import React, {
+  createContext,
+  useContext,
+  useState,
+  useEffect,
+  ReactNode,
+  useRef,
+} from 'react';
 import { useAccessibility } from './AccessibilityProvider';
 
 interface AccessibilityViolation {
@@ -73,7 +80,9 @@ interface ComplianceReport {
   generatedAt: Date;
 }
 
-const TestingSuiteContext = createContext<TestingSuiteContextType | undefined>(undefined);
+const TestingSuiteContext = createContext<TestingSuiteContextType | undefined>(
+  undefined
+);
 
 interface TestingSuiteProps {
   children: ReactNode;
@@ -93,7 +102,9 @@ export const TestingSuite: React.FC<TestingSuiteProps> = ({
   const accessibilityContext = useAccessibility();
   const [testResults, setTestResults] = useState<TestResult[]>([]);
   const [isTesting, setIsTesting] = useState(false);
-  const [enableRealTimeMonitoringState, setEnableRealTimeMonitoring] = useState(enableRealTimeMonitoring);
+  const [enableRealTimeMonitoringState, setEnableRealTimeMonitoring] = useState(
+    enableRealTimeMonitoring
+  );
   const [monitoringResults, setMonitoringResults] = useState<TestResult[]>([]);
   const [lastTestRun, setLastTestRun] = useState<Date | null>(null);
   const intervalRef = useRef<NodeJS.Timeout | null>(null);
@@ -103,7 +114,8 @@ export const TestingSuite: React.FC<TestingSuiteProps> = ({
     {
       id: 'color-contrast',
       name: 'Color Contrast',
-      description: 'Checks color contrast ratios for text and interactive elements',
+      description:
+        'Checks color contrast ratios for text and interactive elements',
       category: 'automated',
       wcagCriteria: ['1.4.3', '1.4.6'],
       enabled: true,
@@ -121,7 +133,8 @@ export const TestingSuite: React.FC<TestingSuiteProps> = ({
     {
       id: 'screen-reader-support',
       name: 'Screen Reader Support',
-      description: 'Tests ARIA labels, semantic HTML, and screen reader compatibility',
+      description:
+        'Tests ARIA labels, semantic HTML, and screen reader compatibility',
       category: 'automated',
       wcagCriteria: ['1.3.1', '4.1.2'],
       enabled: true,
@@ -197,7 +210,10 @@ export const TestingSuite: React.FC<TestingSuiteProps> = ({
   const complianceScore = React.useMemo(() => {
     if (testResults.length === 0) return 0;
 
-    const totalScore = testResults.reduce((sum, result) => sum + result.score, 0);
+    const totalScore = testResults.reduce(
+      (sum, result) => sum + result.score,
+      0
+    );
     return Math.round(totalScore / testResults.length);
   }, [testResults]);
 
@@ -220,9 +236,14 @@ export const TestingSuite: React.FC<TestingSuiteProps> = ({
       const result: TestResult = {
         testId,
         testName: test.name,
-        status: violations.length === 0 ? 'passed' :
-                violations.some(v => v.severity === 'critical') ? 'failed' :
-                violations.some(v => v.severity === 'serious') ? 'warning' : 'passed',
+        status:
+          violations.length === 0
+            ? 'passed'
+            : violations.some(v => v.severity === 'critical')
+              ? 'failed'
+              : violations.some(v => v.severity === 'serious')
+                ? 'warning'
+                : 'passed',
         violations,
         score,
         duration,
@@ -237,17 +258,19 @@ export const TestingSuite: React.FC<TestingSuiteProps> = ({
         testId,
         testName: test.name,
         status: 'failed',
-        violations: [{
-          id: `error-${testId}`,
-          rule: 'test-execution-error',
-          description: `Test execution failed: ${error instanceof Error ? error.message : 'Unknown error'}`,
-          severity: 'critical',
-          element: 'testing-suite',
-          impact: 'Unable to verify accessibility compliance',
-          help: 'Check test implementation and try again',
-          code: 'TEST_EXECUTION_ERROR',
-          timestamp: new Date(),
-        }],
+        violations: [
+          {
+            id: `error-${testId}`,
+            rule: 'test-execution-error',
+            description: `Test execution failed: ${error instanceof Error ? error.message : 'Unknown error'}`,
+            severity: 'critical',
+            element: 'testing-suite',
+            impact: 'Unable to verify accessibility compliance',
+            help: 'Check test implementation and try again',
+            code: 'TEST_EXECUTION_ERROR',
+            timestamp: new Date(),
+          },
+        ],
         score: 0,
         duration,
         timestamp: new Date(),
@@ -272,7 +295,8 @@ export const TestingSuite: React.FC<TestingSuiteProps> = ({
       setLastTestRun(new Date());
 
       // Update accessibility context
-      const overallScore = results.reduce((sum, result) => sum + result.score, 0) / results.length;
+      const overallScore =
+        results.reduce((sum, result) => sum + result.score, 0) / results.length;
       // Note: We don't directly update complianceScore here as it's computed
 
       return results;
@@ -282,7 +306,9 @@ export const TestingSuite: React.FC<TestingSuiteProps> = ({
   };
 
   const runAutomatedTests = async (): Promise<TestResult[]> => {
-    const automatedTests = availableTests.filter(t => t.category === 'automated' && t.enabled);
+    const automatedTests = availableTests.filter(
+      t => t.category === 'automated' && t.enabled
+    );
     const results: TestResult[] = [];
 
     for (const test of automatedTests) {
@@ -294,7 +320,9 @@ export const TestingSuite: React.FC<TestingSuiteProps> = ({
   };
 
   // WCAG compliance checking
-  const checkWCAGCompliance = async (level: 'A' | 'AA' | 'AAA' = 'AA'): Promise<TestResult> => {
+  const checkWCAGCompliance = async (
+    level: 'A' | 'AA' | 'AAA' = 'AA'
+  ): Promise<TestResult> => {
     const startTime = Date.now();
 
     // Run all relevant tests
@@ -305,9 +333,11 @@ export const TestingSuite: React.FC<TestingSuiteProps> = ({
       result.violations.filter(violation => {
         // Map violation severity to WCAG levels
         const violationLevel = getWCAGLevelForViolation(violation);
-        return level === 'A' ? violationLevel === 'A' :
-               level === 'AA' ? ['A', 'AA'].includes(violationLevel) :
-               ['A', 'AA', 'AAA'].includes(violationLevel);
+        return level === 'A'
+          ? violationLevel === 'A'
+          : level === 'AA'
+            ? ['A', 'AA'].includes(violationLevel)
+            : ['A', 'AA', 'AAA'].includes(violationLevel);
       })
     );
 
@@ -317,8 +347,12 @@ export const TestingSuite: React.FC<TestingSuiteProps> = ({
     return {
       testId: `wcag-${level}`,
       testName: `WCAG ${level} Compliance`,
-      status: relevantViolations.length === 0 ? 'passed' :
-              relevantViolations.some(v => v.severity === 'critical') ? 'failed' : 'warning',
+      status:
+        relevantViolations.length === 0
+          ? 'passed'
+          : relevantViolations.some(v => v.severity === 'critical')
+            ? 'failed'
+            : 'warning',
       violations: relevantViolations,
       score,
       duration,
@@ -329,7 +363,9 @@ export const TestingSuite: React.FC<TestingSuiteProps> = ({
   // Generate compliance report
   const generateComplianceReport = (): ComplianceReport => {
     const allViolations = testResults.flatMap(result => result.violations);
-    const passedTests = testResults.filter(result => result.status === 'passed').length;
+    const passedTests = testResults.filter(
+      result => result.status === 'passed'
+    ).length;
 
     const recommendations = generateRecommendations(allViolations);
 
@@ -347,10 +383,13 @@ export const TestingSuite: React.FC<TestingSuiteProps> = ({
   // Real-time monitoring
   useEffect(() => {
     if (enableRealTimeMonitoringState && enableAutomatedTesting) {
-      intervalRef.current = setInterval(async () => {
-        const results = await runAutomatedTests();
-        setMonitoringResults(prev => [...prev.slice(-9), ...results]); // Keep last 10 results
-      }, testInterval * 60 * 1000);
+      intervalRef.current = setInterval(
+        async () => {
+          const results = await runAutomatedTests();
+          setMonitoringResults(prev => [...prev.slice(-9), ...results]); // Keep last 10 results
+        },
+        testInterval * 60 * 1000
+      );
 
       return () => {
         if (intervalRef.current) {
@@ -393,9 +432,7 @@ export const TestingSuite: React.FC<TestingSuiteProps> = ({
 
   return (
     <TestingSuiteContext.Provider value={contextValue}>
-      <div className="testing-suite-container">
-        {children}
-      </div>
+      <div className='testing-suite-container'>{children}</div>
     </TestingSuiteContext.Provider>
   );
 };
@@ -403,7 +440,9 @@ export const TestingSuite: React.FC<TestingSuiteProps> = ({
 export const useTestingSuite = (): TestingSuiteContextType => {
   const context = useContext(TestingSuiteContext);
   if (!context) {
-    throw new Error('useTestingSuite must be used within a TestingSuite provider');
+    throw new Error(
+      'useTestingSuite must be used within a TestingSuite provider'
+    );
   }
   return context;
 };
@@ -413,7 +452,9 @@ async function testColorContrast(): Promise<AccessibilityViolation[]> {
   const violations: AccessibilityViolation[] = [];
 
   // Check text elements for contrast
-  const textElements = document.querySelectorAll('p, span, div, h1, h2, h3, h4, h5, h6, a, button');
+  const textElements = document.querySelectorAll(
+    'p, span, div, h1, h2, h3, h4, h5, h6, a, button'
+  );
 
   textElements.forEach((element, index) => {
     const computedStyle = window.getComputedStyle(element);
@@ -425,7 +466,10 @@ async function testColorContrast(): Promise<AccessibilityViolation[]> {
     const backgroundColor = computedStyle.backgroundColor;
     const color = computedStyle.color;
 
-    if (backgroundColor === 'rgba(0, 0, 0, 0)' || backgroundColor === 'transparent') {
+    if (
+      backgroundColor === 'rgba(0, 0, 0, 0)' ||
+      backgroundColor === 'transparent'
+    ) {
       // Skip elements with transparent backgrounds
       return;
     }
@@ -435,7 +479,8 @@ async function testColorContrast(): Promise<AccessibilityViolation[]> {
       violations.push({
         id: `contrast-${index}`,
         rule: 'color-contrast',
-        description: 'Text color may not have sufficient contrast with background',
+        description:
+          'Text color may not have sufficient contrast with background',
         severity: 'serious',
         element: element.tagName.toLowerCase(),
         impact: 'Text may be difficult or impossible to read',
@@ -454,7 +499,8 @@ async function testKeyboardNavigation(): Promise<AccessibilityViolation[]> {
   const violations: AccessibilityViolation[] = [];
 
   // Check for focusable elements
-  const focusableSelectors = 'a[href], button:not([disabled]), input:not([disabled]), select:not([disabled]), textarea:not([disabled]), [tabindex]:not([tabindex="-1"])';
+  const focusableSelectors =
+    'a[href], button:not([disabled]), input:not([disabled]), select:not([disabled]), textarea:not([disabled]), [tabindex]:not([tabindex="-1"])';
   const focusableElements = document.querySelectorAll(focusableSelectors);
 
   if (focusableElements.length === 0) {
@@ -473,7 +519,9 @@ async function testKeyboardNavigation(): Promise<AccessibilityViolation[]> {
 
   // Check for tabindex misuse
   const negativeTabIndex = document.querySelectorAll('[tabindex="-1"]');
-  const positiveTabIndex = document.querySelectorAll('[tabindex]:not([tabindex="-1"]):not([tabindex="0"])');
+  const positiveTabIndex = document.querySelectorAll(
+    '[tabindex]:not([tabindex="-1"]):not([tabindex="0"])'
+  );
 
   if (positiveTabIndex.length > focusableElements.length * 0.5) {
     violations.push({
@@ -498,7 +546,11 @@ async function testScreenReaderSupport(): Promise<AccessibilityViolation[]> {
   // Check for missing alt text on images
   const images = document.querySelectorAll('img');
   images.forEach((img, index) => {
-    if (!img.hasAttribute('alt') && !img.hasAttribute('aria-label') && !img.hasAttribute('aria-labelledby')) {
+    if (
+      !img.hasAttribute('alt') &&
+      !img.hasAttribute('aria-label') &&
+      !img.hasAttribute('aria-labelledby')
+    ) {
       violations.push({
         id: `missing-alt-${index}`,
         rule: 'screen-reader-support',
@@ -518,11 +570,16 @@ async function testScreenReaderSupport(): Promise<AccessibilityViolation[]> {
   const decorativeImages = document.querySelectorAll('img[alt=""]');
   decorativeImages.forEach((img, index) => {
     const htmlImg = img as HTMLElement;
-    if (htmlImg.offsetWidth > 0 && htmlImg.offsetHeight > 0 && (!img.hasAttribute('role') || img.getAttribute('role') !== 'presentation')) {
+    if (
+      htmlImg.offsetWidth > 0 &&
+      htmlImg.offsetHeight > 0 &&
+      (!img.hasAttribute('role') || img.getAttribute('role') !== 'presentation')
+    ) {
       violations.push({
         id: `empty-alt-decorative-${index}`,
         rule: 'screen-reader-support',
-        description: 'Decorative image should have role="presentation" or be hidden from screen readers',
+        description:
+          'Decorative image should have role="presentation" or be hidden from screen readers',
         severity: 'minor',
         element: 'img',
         impact: 'Screen readers may announce unnecessary image information',
@@ -540,15 +597,21 @@ async function testFocusManagement(): Promise<AccessibilityViolation[]> {
   const violations: AccessibilityViolation[] = [];
 
   // Check for visible focus indicators
-  const focusableElements = document.querySelectorAll('a[href], button, input, select, textarea, [tabindex]:not([tabindex="-1"])');
+  const focusableElements = document.querySelectorAll(
+    'a[href], button, input, select, textarea, [tabindex]:not([tabindex="-1"])'
+  );
 
   focusableElements.forEach((element, index) => {
     const computedStyle = window.getComputedStyle(element);
 
     // Check if element has visible focus outline
-    const hasOutline = computedStyle.outlineStyle !== 'none' && computedStyle.outlineWidth !== '0px';
+    const hasOutline =
+      computedStyle.outlineStyle !== 'none' &&
+      computedStyle.outlineWidth !== '0px';
     const hasBoxShadow = computedStyle.boxShadow !== 'none';
-    const hasBorder = computedStyle.borderStyle !== 'none' && computedStyle.borderWidth !== '0px';
+    const hasBorder =
+      computedStyle.borderStyle !== 'none' &&
+      computedStyle.borderWidth !== '0px';
 
     if (!hasOutline && !hasBoxShadow && !hasBorder) {
       violations.push({
@@ -573,14 +636,19 @@ async function testMotionPreferences(): Promise<AccessibilityViolation[]> {
   const violations: AccessibilityViolation[] = [];
 
   // Check for CSS animations that don't respect prefers-reduced-motion
-  const animatedElements = document.querySelectorAll('[style*="animation"], [style*="transition"]');
+  const animatedElements = document.querySelectorAll(
+    '[style*="animation"], [style*="transition"]'
+  );
 
   animatedElements.forEach((element, index) => {
     const computedStyle = window.getComputedStyle(element);
     const hasAnimation = computedStyle.animationName !== 'none';
     const hasTransition = computedStyle.transitionProperty !== 'none';
 
-    if ((hasAnimation || hasTransition) && !computedStyle.getPropertyValue('--reduced-motion')) {
+    if (
+      (hasAnimation || hasTransition) &&
+      !computedStyle.getPropertyValue('--reduced-motion')
+    ) {
       violations.push({
         id: `motion-preference-${index}`,
         rule: 'motion-preferences',
@@ -589,7 +657,8 @@ async function testMotionPreferences(): Promise<AccessibilityViolation[]> {
         element: element.tagName.toLowerCase(),
         impact: 'Users with motion sensitivity may experience discomfort',
         help: 'Use CSS @media (prefers-reduced-motion) to disable animations',
-        helpUrl: 'https://www.w3.org/WAI/WCAG21/quickref/#animation-from-interactions',
+        helpUrl:
+          'https://www.w3.org/WAI/WCAG21/quickref/#animation-from-interactions',
         code: 'MOTION_PREFERENCE',
         timestamp: new Date(),
       });
@@ -611,11 +680,16 @@ async function testFormValidation(): Promise<AccessibilityViolation[]> {
       const inputElement = input as HTMLInputElement;
 
       // Check for labels
-      const hasLabel = input.hasAttribute('aria-label') ||
-                      input.hasAttribute('aria-labelledby') ||
-                      document.querySelector(`label[for="${input.id}"]`);
+      const hasLabel =
+        input.hasAttribute('aria-label') ||
+        input.hasAttribute('aria-labelledby') ||
+        document.querySelector(`label[for="${input.id}"]`);
 
-      if (!hasLabel && inputElement.type !== 'submit' && inputElement.type !== 'button') {
+      if (
+        !hasLabel &&
+        inputElement.type !== 'submit' &&
+        inputElement.type !== 'button'
+      ) {
         violations.push({
           id: `missing-label-${formIndex}-${inputIndex}`,
           rule: 'form-validation',
@@ -632,8 +706,9 @@ async function testFormValidation(): Promise<AccessibilityViolation[]> {
 
       // Check for error messages
       if (inputElement.validity && !inputElement.validity.valid) {
-        const hasErrorMessage = input.hasAttribute('aria-describedby') ||
-                               input.hasAttribute('aria-errormessage');
+        const hasErrorMessage =
+          input.hasAttribute('aria-describedby') ||
+          input.hasAttribute('aria-errormessage');
 
         if (!hasErrorMessage) {
           violations.push({
@@ -675,12 +750,14 @@ async function testImageAltText(): Promise<AccessibilityViolation[]> {
       });
     } else if (img.getAttribute('alt') === '') {
       // Check if it's actually decorative
-      const isDecorative = img.hasAttribute('role') && img.getAttribute('role') === 'presentation';
+      const isDecorative =
+        img.hasAttribute('role') && img.getAttribute('role') === 'presentation';
       if (!isDecorative) {
         violations.push({
           id: `empty-alt-${index}`,
           rule: 'image-alt-text',
-          description: 'Image has empty alt text but is not marked as decorative',
+          description:
+            'Image has empty alt text but is not marked as decorative',
           severity: 'serious',
           element: 'img',
           impact: 'Screen readers may skip important image information',
@@ -701,7 +778,7 @@ async function testHeadingStructure(): Promise<AccessibilityViolation[]> {
   const headings = document.querySelectorAll('h1, h2, h3, h4, h5, h6');
   const headingLevels: number[] = [];
 
-  headings.forEach((heading) => {
+  headings.forEach(heading => {
     const level = parseInt(heading.tagName.charAt(1));
     headingLevels.push(level);
   });
@@ -755,25 +832,42 @@ async function testLinkPurpose(): Promise<AccessibilityViolation[]> {
     const accessibleText = text || ariaLabel;
 
     // Check for generic link text
-    const genericTexts = ['click here', 'read more', 'here', 'link', 'learn more', 'more'];
-    if (genericTexts.some(generic => accessibleText.toLowerCase().includes(generic))) {
+    const genericTexts = [
+      'click here',
+      'read more',
+      'here',
+      'link',
+      'learn more',
+      'more',
+    ];
+    if (
+      genericTexts.some(generic =>
+        accessibleText.toLowerCase().includes(generic)
+      )
+    ) {
       violations.push({
         id: `generic-link-text-${index}`,
         rule: 'link-purpose',
-        description: 'Link uses generic text that doesn\'t describe destination',
+        description: "Link uses generic text that doesn't describe destination",
         severity: 'moderate',
         element: 'a',
         impact: 'Screen readers cannot provide context about link destination',
         help: 'Use descriptive link text that explains where the link goes',
-        helpUrl: 'https://www.w3.org/WAI/WCAG21/quickref/#link-purpose-in-context',
+        helpUrl:
+          'https://www.w3.org/WAI/WCAG21/quickref/#link-purpose-in-context',
         code: 'GENERIC_LINK_TEXT',
         timestamp: new Date(),
       });
     }
 
     // Check for links that open in new windows without warning
-    if (link.getAttribute('target') === '_blank' && !link.hasAttribute('aria-label') &&
-        !link.querySelector('[aria-label*="opens in"], [aria-label*="new window"]')) {
+    if (
+      link.getAttribute('target') === '_blank' &&
+      !link.hasAttribute('aria-label') &&
+      !link.querySelector(
+        '[aria-label*="opens in"], [aria-label*="new window"]'
+      )
+    ) {
       violations.push({
         id: `new-window-warning-${index}`,
         rule: 'link-purpose',
@@ -835,18 +929,25 @@ function calculateTestScore(violations: AccessibilityViolation[]): number {
 
   const totalPenalty = violations.reduce((sum, violation) => {
     switch (violation.severity) {
-      case 'critical': return sum + criticalWeight;
-      case 'serious': return sum + seriousWeight;
-      case 'moderate': return sum + moderateWeight;
-      case 'minor': return sum + minorWeight;
-      default: return sum;
+      case 'critical':
+        return sum + criticalWeight;
+      case 'serious':
+        return sum + seriousWeight;
+      case 'moderate':
+        return sum + moderateWeight;
+      case 'minor':
+        return sum + minorWeight;
+      default:
+        return sum;
     }
   }, 0);
 
   return Math.max(0, 100 - totalPenalty);
 }
 
-function getWCAGLevelForViolation(violation: AccessibilityViolation): 'A' | 'AA' | 'AAA' {
+function getWCAGLevelForViolation(
+  violation: AccessibilityViolation
+): 'A' | 'AA' | 'AAA' {
   // Simplified mapping - in reality, this would be more complex
   switch (violation.severity) {
     case 'critical':
@@ -861,7 +962,10 @@ function getWCAGLevelForViolation(violation: AccessibilityViolation): 'A' | 'AA'
   }
 }
 
-function calculateComplianceScore(violations: AccessibilityViolation[], level: 'A' | 'AA' | 'AAA'): number {
+function calculateComplianceScore(
+  violations: AccessibilityViolation[],
+  level: 'A' | 'AA' | 'AAA'
+): number {
   const baseScore = calculateTestScore(violations);
 
   // Adjust score based on WCAG level requirements
@@ -877,15 +981,21 @@ function calculateComplianceScore(violations: AccessibilityViolation[], level: '
   }
 }
 
-function generateRecommendations(violations: AccessibilityViolation[]): string[] {
+function generateRecommendations(
+  violations: AccessibilityViolation[]
+): string[] {
   const recommendations: string[] = [];
 
   if (violations.some(v => v.rule === 'color-contrast')) {
-    recommendations.push('Improve color contrast ratios to meet WCAG guidelines');
+    recommendations.push(
+      'Improve color contrast ratios to meet WCAG guidelines'
+    );
   }
 
   if (violations.some(v => v.rule === 'keyboard-navigation')) {
-    recommendations.push('Ensure all interactive elements are keyboard accessible');
+    recommendations.push(
+      'Ensure all interactive elements are keyboard accessible'
+    );
   }
 
   if (violations.some(v => v.rule === 'screen-reader-support')) {
@@ -893,7 +1003,9 @@ function generateRecommendations(violations: AccessibilityViolation[]): string[]
   }
 
   if (violations.some(v => v.rule === 'focus-management')) {
-    recommendations.push('Implement visible focus indicators for keyboard navigation');
+    recommendations.push(
+      'Implement visible focus indicators for keyboard navigation'
+    );
   }
 
   if (violations.some(v => v.rule === 'image-alt-text')) {
@@ -905,7 +1017,9 @@ function generateRecommendations(violations: AccessibilityViolation[]): string[]
   }
 
   if (violations.length === 0) {
-    recommendations.push('Continue maintaining excellent accessibility standards');
+    recommendations.push(
+      'Continue maintaining excellent accessibility standards'
+    );
   }
 
   return recommendations;

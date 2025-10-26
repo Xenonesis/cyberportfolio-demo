@@ -2,36 +2,40 @@
 
 import React, { useState, useEffect, useMemo } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
-import { 
-  Shield, 
-  Star, 
-  Users, 
-  Award, 
-  CheckCircle, 
-  TrendingUp, 
-  Database, 
-  AlertCircle 
+import {
+  Shield,
+  Star,
+  Users,
+  Award,
+  CheckCircle,
+  TrendingUp,
+  Database,
+  AlertCircle,
 } from 'lucide-react';
 import Image from 'next/image';
 import { TestimonialCard, FeaturedTestimonialCard } from './TestimonialCard';
 import { TestimonialCarousel } from './TestimonialCarousel';
-import { TestimonialFilterBar, TestimonialSearchBar, QuickFilterChips } from './TestimonialFilterBar';
+import {
+  TestimonialFilterBar,
+  TestimonialSearchBar,
+  QuickFilterChips,
+} from './TestimonialFilterBar';
 import { TestimonialClientLogos } from './TestimonialClientLogos';
-import type { 
-  EnhancedTestimonial, 
-  TestimonialFilters, 
-  TestimonialCategory, 
-  TrustIndicator, 
+import type {
+  EnhancedTestimonial,
+  TestimonialFilters,
+  TestimonialCategory,
+  TrustIndicator,
   SecurityBadge,
-  TestimonialsConfig 
+  TestimonialsConfig,
 } from '@/types/testimonials';
-import { 
-  ENHANCED_TESTIMONIALS, 
-  TESTIMONIAL_CATEGORIES, 
+import {
+  ENHANCED_TESTIMONIALS,
+  TESTIMONIAL_CATEGORIES,
   TESTIMONIALS_CONFIG,
   TRUST_INDICATORS,
   SECURITY_BADGES,
-  CLIENT_INFO 
+  CLIENT_INFO,
 } from '@/lib/testimonialsData';
 
 interface TestimonialsSectionProps {
@@ -53,7 +57,8 @@ export const TestimonialsSection: React.FC<TestimonialsSectionProps> = ({
   showClientLogos = true,
   className = '',
 }) => {
-  const [selectedTestimonial, setSelectedTestimonial] = useState<EnhancedTestimonial | null>(null);
+  const [selectedTestimonial, setSelectedTestimonial] =
+    useState<EnhancedTestimonial | null>(null);
   const [isModalOpen, setIsModalOpen] = useState(false);
   const [isLoading, setIsLoading] = useState(false);
   const [currentPage, setCurrentPage] = useState(1);
@@ -86,8 +91,11 @@ export const TestimonialsSection: React.FC<TestimonialsSectionProps> = ({
         }
         return filters.categories.some(categoryId => {
           const category = categories.find(c => c.id === categoryId);
-          return category && testimonial.securityDomain?.some(domain => 
-            category.securityDomains.includes(domain)
+          return (
+            category &&
+            testimonial.securityDomain?.some(domain =>
+              category.securityDomains.includes(domain)
+            )
           );
         });
       });
@@ -105,7 +113,9 @@ export const TestimonialsSection: React.FC<TestimonialsSectionProps> = ({
     // Apply industry filters
     if (filters.industries.length > 0) {
       filtered = filtered.filter(testimonial =>
-        filters.industries.includes(testimonial.companyIndustry?.toLowerCase() || '')
+        filters.industries.includes(
+          testimonial.companyIndustry?.toLowerCase() || ''
+        )
       );
     }
 
@@ -133,12 +143,14 @@ export const TestimonialsSection: React.FC<TestimonialsSectionProps> = ({
     // Apply search query
     if (filters.searchQuery.trim()) {
       const query = filters.searchQuery.toLowerCase();
-      filtered = filtered.filter(testimonial =>
-        testimonial.name.toLowerCase().includes(query) ||
-        testimonial.company.toLowerCase().includes(query) ||
-        testimonial.content.toLowerCase().includes(query) ||
-        testimonial.role.toLowerCase().includes(query) ||
-        (testimonial.tags && testimonial.tags.some(tag => tag.toLowerCase().includes(query)))
+      filtered = filtered.filter(
+        testimonial =>
+          testimonial.name.toLowerCase().includes(query) ||
+          testimonial.company.toLowerCase().includes(query) ||
+          testimonial.content.toLowerCase().includes(query) ||
+          testimonial.role.toLowerCase().includes(query) ||
+          (testimonial.tags &&
+            testimonial.tags.some(tag => tag.toLowerCase().includes(query)))
       );
     }
 
@@ -146,16 +158,34 @@ export const TestimonialsSection: React.FC<TestimonialsSectionProps> = ({
     filtered.sort((a, b) => {
       switch (filters.sortBy) {
         case 'newest':
-          return new Date(b.date || '').getTime() - new Date(a.date || '').getTime();
+          return (
+            new Date(b.date || '').getTime() - new Date(a.date || '').getTime()
+          );
         case 'oldest':
-          return new Date(a.date || '').getTime() - new Date(b.date || '').getTime();
+          return (
+            new Date(a.date || '').getTime() - new Date(b.date || '').getTime()
+          );
         case 'rating':
           return b.rating - a.rating;
         case 'impact':
-          return (b.securityMetrics?.securityScoreImprovement || 0) - (a.securityMetrics?.securityScoreImprovement || 0);
+          return (
+            (b.securityMetrics?.securityScoreImprovement || 0) -
+            (a.securityMetrics?.securityScoreImprovement || 0)
+          );
         case 'company-size':
-          const sizeOrder = { enterprise: 4, 'mid-market': 3, large: 3, medium: 2, smb: 1, small: 1, startup: 1 };
-          return (sizeOrder[b.companySize as keyof typeof sizeOrder] || 1) - (sizeOrder[a.companySize as keyof typeof sizeOrder] || 1);
+          const sizeOrder = {
+            enterprise: 4,
+            'mid-market': 3,
+            large: 3,
+            medium: 2,
+            smb: 1,
+            small: 1,
+            startup: 1,
+          };
+          return (
+            (sizeOrder[b.companySize as keyof typeof sizeOrder] || 1) -
+            (sizeOrder[a.companySize as keyof typeof sizeOrder] || 1)
+          );
         default:
           return 0;
       }
@@ -171,10 +201,15 @@ export const TestimonialsSection: React.FC<TestimonialsSectionProps> = ({
     return filteredTestimonials.slice(startIndex, endIndex);
   }, [filteredTestimonials, currentPage, config.itemsPerPage]);
 
-  const totalPages = Math.ceil(filteredTestimonials.length / config.itemsPerPage);
+  const totalPages = Math.ceil(
+    filteredTestimonials.length / config.itemsPerPage
+  );
 
   // Handle filter changes
-  const handleFilterChange = (filterType: keyof TestimonialFilters, value: string | string[] | number[]) => {
+  const handleFilterChange = (
+    filterType: keyof TestimonialFilters,
+    value: string | string[] | number[]
+  ) => {
     setFilters(prev => ({
       ...prev,
       [filterType]: value,
@@ -205,7 +240,7 @@ export const TestimonialsSection: React.FC<TestimonialsSectionProps> = ({
   // Load more testimonials (for lazy loading)
   const loadMore = () => {
     if (isLoading) return;
-    
+
     setIsLoading(true);
     // Simulate loading more testimonials
     setTimeout(() => {
@@ -223,21 +258,28 @@ export const TestimonialsSection: React.FC<TestimonialsSectionProps> = ({
         initial={{ opacity: 0, y: 20 }}
         animate={{ opacity: 1, y: 0 }}
         transition={{ duration: 0.6, delay: 0.2 }}
-        className="grid grid-cols-2 md:grid-cols-4 lg:grid-cols-5 gap-6 mb-16"
+        className='grid grid-cols-2 md:grid-cols-4 lg:grid-cols-5 gap-6 mb-16'
       >
-        {TRUST_INDICATORS.map((indicator) => (
+        {TRUST_INDICATORS.map(indicator => (
           <motion.div
             key={indicator.id}
             whileHover={{ y: -4, scale: 1.05 }}
-            className="text-center p-6 bg-gradient-to-br from-deep-navy-800 to-deep-navy-700 border border-deep-navy-600 rounded-xl"
+            className='text-center p-6 bg-gradient-to-br from-deep-navy-800 to-deep-navy-700 border border-deep-navy-600 rounded-xl'
           >
-            <div className="flex items-center justify-center w-12 h-12 mx-auto mb-3 bg-gradient-to-r from-electric-cyan-500/20 to-neon-green-500/20 rounded-full">
-              {indicator.icon && React.createElement(indicator.icon, { className: `w-6 h-6 ${indicator.color}` })}
+            <div className='flex items-center justify-center w-12 h-12 mx-auto mb-3 bg-gradient-to-r from-electric-cyan-500/20 to-neon-green-500/20 rounded-full'>
+              {indicator.icon &&
+                React.createElement(indicator.icon, {
+                  className: `w-6 h-6 ${indicator.color}`,
+                })}
             </div>
-            <div className="text-2xl font-bold text-white mb-1">{indicator.value}</div>
-            <div className="text-sm text-gray-400">{indicator.title}</div>
+            <div className='text-2xl font-bold text-white mb-1'>
+              {indicator.value}
+            </div>
+            <div className='text-sm text-gray-400'>{indicator.title}</div>
             {indicator.description && (
-              <div className="text-xs text-gray-500 mt-2">{indicator.description}</div>
+              <div className='text-xs text-gray-500 mt-2'>
+                {indicator.description}
+              </div>
             )}
           </motion.div>
         ))}
@@ -254,25 +296,36 @@ export const TestimonialsSection: React.FC<TestimonialsSectionProps> = ({
         initial={{ opacity: 0, y: 20 }}
         animate={{ opacity: 1, y: 0 }}
         transition={{ duration: 0.6, delay: 0.3 }}
-        className="mb-16"
+        className='mb-16'
       >
-        <div className="text-center mb-8">
-          <h3 className="text-2xl font-bold text-white mb-2">Security Excellence</h3>
-          <p className="text-gray-400">Recognized for outstanding security achievements</p>
+        <div className='text-center mb-8'>
+          <h3 className='text-2xl font-bold text-white mb-2'>
+            Security Excellence
+          </h3>
+          <p className='text-gray-400'>
+            Recognized for outstanding security achievements
+          </p>
         </div>
-        
-        <div className="grid grid-cols-2 md:grid-cols-4 gap-4">
-          {SECURITY_BADGES.map((badge) => (
+
+        <div className='grid grid-cols-2 md:grid-cols-4 gap-4'>
+          {SECURITY_BADGES.map(badge => (
             <motion.div
               key={badge.id}
               whileHover={{ y: -2, scale: 1.02 }}
-              className="p-4 bg-gradient-to-br from-deep-navy-800 to-deep-navy-700 border border-deep-navy-600 rounded-lg text-center"
+              className='p-4 bg-gradient-to-br from-deep-navy-800 to-deep-navy-700 border border-deep-navy-600 rounded-lg text-center'
             >
-              <div className="flex items-center justify-center w-8 h-8 mx-auto mb-2 bg-gradient-to-r from-electric-cyan-500/20 to-neon-green-500/20 rounded-full">
-                {badge.icon && React.createElement(badge.icon, { className: `w-4 h-4 ${badge.color}` })}
+              <div className='flex items-center justify-center w-8 h-8 mx-auto mb-2 bg-gradient-to-r from-electric-cyan-500/20 to-neon-green-500/20 rounded-full'>
+                {badge.icon &&
+                  React.createElement(badge.icon, {
+                    className: `w-4 h-4 ${badge.color}`,
+                  })}
               </div>
-              <div className="text-sm font-semibold text-white mb-1">{badge.name}</div>
-              <div className="text-xs text-gray-400">{badge.clients.length} clients</div>
+              <div className='text-sm font-semibold text-white mb-1'>
+                {badge.name}
+              </div>
+              <div className='text-xs text-gray-400'>
+                {badge.clients.length} clients
+              </div>
             </motion.div>
           ))}
         </div>
@@ -283,7 +336,7 @@ export const TestimonialsSection: React.FC<TestimonialsSectionProps> = ({
   // Featured testimonials carousel
   const renderFeaturedCarousel = () => {
     const featuredTestimonials = testimonials.filter(t => t.featured);
-    
+
     if (featuredTestimonials.length === 0 || !config.showCarousel) return null;
 
     return (
@@ -291,13 +344,17 @@ export const TestimonialsSection: React.FC<TestimonialsSectionProps> = ({
         initial={{ opacity: 0, y: 20 }}
         animate={{ opacity: 1, y: 0 }}
         transition={{ duration: 0.6, delay: 0.4 }}
-        className="mb-16"
+        className='mb-16'
       >
-        <div className="text-center mb-8">
-          <h3 className="text-2xl font-bold text-white mb-2">Featured Success Stories</h3>
-          <p className="text-gray-400">Our most impactful security transformations</p>
+        <div className='text-center mb-8'>
+          <h3 className='text-2xl font-bold text-white mb-2'>
+            Featured Success Stories
+          </h3>
+          <p className='text-gray-400'>
+            Our most impactful security transformations
+          </p>
         </div>
-        
+
         <TestimonialCarousel
           testimonials={featuredTestimonials}
           autoPlay={true}
@@ -305,8 +362,8 @@ export const TestimonialsSection: React.FC<TestimonialsSectionProps> = ({
           showControls={true}
           showIndicators={true}
           showSecurityMetrics={true}
-          variant="featured"
-          className="mx-auto"
+          variant='featured'
+          className='mx-auto'
         />
       </motion.div>
     );
@@ -337,34 +394,37 @@ export const TestimonialsSection: React.FC<TestimonialsSectionProps> = ({
   };
 
   return (
-    <section 
-      id="testimonials"
-      aria-labelledby="testimonials-heading"
+    <section
+      id='testimonials'
+      aria-labelledby='testimonials-heading'
       className={`py-20 bg-gradient-to-b from-deep-navy-900 to-deep-navy-800 ${className}`}
     >
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div className='max-w-7xl mx-auto px-4 sm:px-6 lg:px-8'>
         {/* Section Header */}
         <motion.div
           initial={{ opacity: 0, y: -20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.6 }}
-          className="text-center mb-16"
+          className='text-center mb-16'
         >
-          <div className="inline-flex items-center space-x-2 bg-deep-navy-800/80 backdrop-blur-sm border border-electric-cyan-500/30 rounded-full px-6 py-2 mb-6">
-            <Shield className="w-4 h-4 text-electric-cyan-400" />
-            <span className="text-electric-cyan-400 font-medium text-sm">
+          <div className='inline-flex items-center space-x-2 bg-deep-navy-800/80 backdrop-blur-sm border border-electric-cyan-500/30 rounded-full px-6 py-2 mb-6'>
+            <Shield className='w-4 h-4 text-electric-cyan-400' />
+            <span className='text-electric-cyan-400 font-medium text-sm'>
               Client Verified & Security Tested
             </span>
           </div>
-          
-          <h2 
-            id="testimonials-heading"
-            className="text-4xl md:text-5xl font-bold text-white mb-6"
+
+          <h2
+            id='testimonials-heading'
+            className='text-4xl md:text-5xl font-bold text-white mb-6'
           >
-            Client Testimonials & <span className="text-neon-green-400">Security Success Stories</span>
+            Client Testimonials &{' '}
+            <span className='text-neon-green-400'>
+              Security Success Stories
+            </span>
           </h2>
-          
-          <p className="text-xl text-gray-300 max-w-3xl mx-auto">
+
+          <p className='text-xl text-gray-300 max-w-3xl mx-auto'>
             {config.description}
           </p>
         </motion.div>
@@ -381,7 +441,7 @@ export const TestimonialsSection: React.FC<TestimonialsSectionProps> = ({
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.6, delay: 0.2 }}
-            className="mb-16"
+            className='mb-16'
           >
             <TestimonialClientLogos clients={CLIENT_INFO} />
           </motion.div>
@@ -395,18 +455,18 @@ export const TestimonialsSection: React.FC<TestimonialsSectionProps> = ({
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.6, delay: 0.3 }}
-          className="mb-8"
+          className='mb-8'
         >
           {config.showSearch && (
-            <div className="mb-6">
+            <div className='mb-6'>
               <TestimonialSearchBar
                 value={filters.searchQuery}
                 onChange={handleSearchChange}
-                placeholder="Search testimonials by client, company, technology, or security domain..."
+                placeholder='Search testimonials by client, company, technology, or security domain...'
               />
             </div>
           )}
-          
+
           {config.showFilterBar && (
             <TestimonialFilterBar
               filters={filters}
@@ -423,7 +483,7 @@ export const TestimonialsSection: React.FC<TestimonialsSectionProps> = ({
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.6, delay: 0.4 }}
-          className="mb-8 lg:hidden"
+          className='mb-8 lg:hidden'
         >
           <QuickFilterChips
             filters={filters}
@@ -435,18 +495,18 @@ export const TestimonialsSection: React.FC<TestimonialsSectionProps> = ({
         {/* Testimonials Grid */}
         <motion.div
           variants={containerVariants}
-          initial="hidden"
-          animate="visible"
-          className="grid gap-8 md:grid-cols-2 lg:grid-cols-3 mb-12"
+          initial='hidden'
+          animate='visible'
+          className='grid gap-8 md:grid-cols-2 lg:grid-cols-3 mb-12'
         >
-          <AnimatePresence mode="wait">
-            {paginatedTestimonials.map((testimonial) => (
+          <AnimatePresence mode='wait'>
+            {paginatedTestimonials.map(testimonial => (
               <motion.div
                 key={testimonial.id}
                 variants={itemVariants}
-                whileHover={{ 
+                whileHover={{
                   y: -8,
-                  transition: { duration: 0.3 }
+                  transition: { duration: 0.3 },
                 }}
                 whileTap={{ scale: 0.98 }}
               >
@@ -456,7 +516,7 @@ export const TestimonialsSection: React.FC<TestimonialsSectionProps> = ({
                   showRating={config.showRatings}
                   showVerificationBadge={config.showVerificationBadges}
                   onClick={() => handleTestimonialClick(testimonial)}
-                  className="h-full"
+                  className='h-full'
                 />
               </motion.div>
             ))}
@@ -468,27 +528,32 @@ export const TestimonialsSection: React.FC<TestimonialsSectionProps> = ({
           <motion.div
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
-            className="text-center py-12"
+            className='text-center py-12'
           >
-            <div className="w-24 h-24 mx-auto mb-4 bg-deep-navy-700 rounded-full flex items-center justify-center">
-              <Shield className="w-12 h-12 text-gray-500" />
+            <div className='w-24 h-24 mx-auto mb-4 bg-deep-navy-700 rounded-full flex items-center justify-center'>
+              <Shield className='w-12 h-12 text-gray-500' />
             </div>
-            <h3 className="text-lg font-semibold text-white mb-2">No Testimonials Found</h3>
-            <p className="text-gray-400 mb-6">
-              Try adjusting your filters or search terms to find relevant testimonials.
+            <h3 className='text-lg font-semibold text-white mb-2'>
+              No Testimonials Found
+            </h3>
+            <p className='text-gray-400 mb-6'>
+              Try adjusting your filters or search terms to find relevant
+              testimonials.
             </p>
             <button
-              onClick={() => setFilters({
-                categories: [],
-                securityDomains: [],
-                industries: [],
-                companySizes: [],
-                projectTypes: [],
-                ratings: [],
-                searchQuery: '',
-                sortBy: 'newest',
-              })}
-              className="text-electric-cyan-400 hover:text-white transition-colors duration-300 text-sm font-medium"
+              onClick={() =>
+                setFilters({
+                  categories: [],
+                  securityDomains: [],
+                  industries: [],
+                  companySizes: [],
+                  projectTypes: [],
+                  ratings: [],
+                  searchQuery: '',
+                  sortBy: 'newest',
+                })
+              }
+              className='text-electric-cyan-400 hover:text-white transition-colors duration-300 text-sm font-medium'
             >
               Clear All Filters
             </button>
@@ -501,23 +566,25 @@ export const TestimonialsSection: React.FC<TestimonialsSectionProps> = ({
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.6, delay: 0.5 }}
-            className="flex justify-center"
+            className='flex justify-center'
           >
-            <div className="flex items-center space-x-2">
+            <div className='flex items-center space-x-2'>
               <button
                 onClick={() => setCurrentPage(prev => Math.max(prev - 1, 1))}
                 disabled={currentPage === 1}
-                className="px-3 py-2 bg-deep-navy-700 border border-deep-navy-600 rounded-lg text-electric-cyan-400 hover:bg-electric-cyan-500/20 disabled:opacity-50 disabled:cursor-not-allowed"
+                className='px-3 py-2 bg-deep-navy-700 border border-deep-navy-600 rounded-lg text-electric-cyan-400 hover:bg-electric-cyan-500/20 disabled:opacity-50 disabled:cursor-not-allowed'
               >
                 Previous
               </button>
-              <span className="text-white px-4">
+              <span className='text-white px-4'>
                 Page {currentPage} of {totalPages}
               </span>
               <button
-                onClick={() => setCurrentPage(prev => Math.min(prev + 1, totalPages))}
+                onClick={() =>
+                  setCurrentPage(prev => Math.min(prev + 1, totalPages))
+                }
                 disabled={currentPage === totalPages}
-                className="px-3 py-2 bg-deep-navy-700 border border-deep-navy-600 rounded-lg text-electric-cyan-400 hover:bg-electric-cyan-500/20 disabled:opacity-50 disabled:cursor-not-allowed"
+                className='px-3 py-2 bg-deep-navy-700 border border-deep-navy-600 rounded-lg text-electric-cyan-400 hover:bg-electric-cyan-500/20 disabled:opacity-50 disabled:cursor-not-allowed'
               >
                 Next
               </button>
@@ -531,32 +598,32 @@ export const TestimonialsSection: React.FC<TestimonialsSectionProps> = ({
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.6, delay: 0.6 }}
-            className="text-center mt-8"
+            className='text-center mt-8'
           >
             <button
               onClick={loadMore}
               disabled={isLoading}
-              className="inline-flex items-center space-x-2 bg-electric-cyan-600 text-white px-6 py-3 rounded-lg hover:bg-electric-cyan-500 transition-colors duration-300 disabled:opacity-50 disabled:cursor-not-allowed"
+              className='inline-flex items-center space-x-2 bg-electric-cyan-600 text-white px-6 py-3 rounded-lg hover:bg-electric-cyan-500 transition-colors duration-300 disabled:opacity-50 disabled:cursor-not-allowed'
             >
               {isLoading ? (
                 <>
-                  <div className="w-4 h-4 border-2 border-white border-t-transparent rounded-full animate-spin" />
+                  <div className='w-4 h-4 border-2 border-white border-t-transparent rounded-full animate-spin' />
                   <span>Loading...</span>
                 </>
               ) : (
                 <>
                   <span>Load More Testimonials</span>
-                  <svg 
-                    className="w-4 h-4" 
-                    fill="none" 
-                    stroke="currentColor" 
-                    viewBox="0 0 24 24"
+                  <svg
+                    className='w-4 h-4'
+                    fill='none'
+                    stroke='currentColor'
+                    viewBox='0 0 24 24'
                   >
-                    <path 
-                      strokeLinecap="round" 
-                      strokeLinejoin="round" 
-                      strokeWidth={2} 
-                      d="M19 14l-7 7m0 0l-7-7m7 7V3" 
+                    <path
+                      strokeLinecap='round'
+                      strokeLinejoin='round'
+                      strokeWidth={2}
+                      d='M19 14l-7 7m0 0l-7-7m7 7V3'
                     />
                   </svg>
                 </>
@@ -587,55 +654,69 @@ const TestimonialModal: React.FC<{
   if (!isOpen) return null;
 
   return (
-    <div className="fixed inset-0 z-50 overflow-y-auto">
-      <div className="flex items-center justify-center min-h-screen pt-4 px-4 pb-20 text-center">
-        <div 
-          className="fixed inset-0 bg-black/70 transition-opacity"
+    <div className='fixed inset-0 z-50 overflow-y-auto'>
+      <div className='flex items-center justify-center min-h-screen pt-4 px-4 pb-20 text-center'>
+        <div
+          className='fixed inset-0 bg-black/70 transition-opacity'
           onClick={onClose}
         />
-        
-        <div className="inline-block w-full max-w-4xl my-8 overflow-hidden text-left align-middle transition-all transform bg-deep-navy-800 border border-deep-navy-600 rounded-2xl">
-          <div className="relative">
+
+        <div className='inline-block w-full max-w-4xl my-8 overflow-hidden text-left align-middle transition-all transform bg-deep-navy-800 border border-deep-navy-600 rounded-2xl'>
+          <div className='relative'>
             <button
               onClick={onClose}
-              className="absolute top-4 right-4 z-10 w-8 h-8 bg-deep-navy-700 rounded-full flex items-center justify-center text-gray-400 hover:text-white"
+              className='absolute top-4 right-4 z-10 w-8 h-8 bg-deep-navy-700 rounded-full flex items-center justify-center text-gray-400 hover:text-white'
             >
-              <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M6 18L18 6M6 6l12 12" />
+              <svg
+                className='w-4 h-4'
+                fill='none'
+                stroke='currentColor'
+                viewBox='0 0 24 24'
+              >
+                <path
+                  strokeLinecap='round'
+                  strokeLinejoin='round'
+                  strokeWidth={2}
+                  d='M6 18L18 6M6 6l12 12'
+                />
               </svg>
             </button>
-            
-            <div className="p-8">
-              <div className="flex items-start space-x-6">
-                <div className="flex-shrink-0">
-                  <div className="w-20 h-20 rounded-full overflow-hidden border-4 border-electric-cyan-500/50">
+
+            <div className='p-8'>
+              <div className='flex items-start space-x-6'>
+                <div className='flex-shrink-0'>
+                  <div className='w-20 h-20 rounded-full overflow-hidden border-4 border-electric-cyan-500/50'>
                     <Image
                       src={testimonial.image}
                       alt={testimonial.name}
                       width={80}
                       height={80}
-                      className="object-cover"
+                      className='object-cover'
                     />
                   </div>
                 </div>
-                
-                <div className="flex-1">
-                  <div className="flex items-center space-x-2 mb-2">
+
+                <div className='flex-1'>
+                  <div className='flex items-center space-x-2 mb-2'>
                     {testimonial.verified && (
-                      <span className="px-2 py-1 bg-green-600/20 text-green-400 text-xs rounded border border-green-600/30">
+                      <span className='px-2 py-1 bg-green-600/20 text-green-400 text-xs rounded border border-green-600/30'>
                         Verified Client
                       </span>
                     )}
-                    <span className="px-2 py-1 bg-electric-cyan-600/20 text-electric-cyan-400 text-xs rounded border border-electric-cyan-600/30">
+                    <span className='px-2 py-1 bg-electric-cyan-600/20 text-electric-cyan-400 text-xs rounded border border-electric-cyan-600/30'>
                       {testimonial.companySize} {testimonial.companyIndustry}
                     </span>
                   </div>
-                  
-                  <h3 className="text-2xl font-bold text-white mb-1">{testimonial.name}</h3>
-                  <p className="text-electric-cyan-400 font-semibold mb-1">{testimonial.role}</p>
-                  <p className="text-gray-300 mb-4">{testimonial.company}</p>
-                  
-                  <div className="flex items-center space-x-1 mb-4">
+
+                  <h3 className='text-2xl font-bold text-white mb-1'>
+                    {testimonial.name}
+                  </h3>
+                  <p className='text-electric-cyan-400 font-semibold mb-1'>
+                    {testimonial.role}
+                  </p>
+                  <p className='text-gray-300 mb-4'>{testimonial.company}</p>
+
+                  <div className='flex items-center space-x-1 mb-4'>
                     {[...Array(5)].map((_, i) => (
                       <Star
                         key={i}
@@ -643,52 +724,80 @@ const TestimonialModal: React.FC<{
                       />
                     ))}
                   </div>
-                  
-                  <blockquote className="text-lg text-gray-200 mb-6 italic">
+
+                  <blockquote className='text-lg text-gray-200 mb-6 italic'>
                     "{testimonial.content}"
                   </blockquote>
-                  
+
                   {/* Security Metrics */}
                   {testimonial.securityMetrics && (
-                    <div className="grid grid-cols-2 md:grid-cols-4 gap-4 mb-6">
-                      {testimonial.securityMetrics.vulnerabilitiesFound !== undefined && (
-                        <div className="text-center p-3 bg-deep-navy-700/50 rounded-lg">
-                          <div className="text-xl font-bold text-red-400">{testimonial.securityMetrics.vulnerabilitiesFound}</div>
-                          <div className="text-xs text-gray-400">Vulns Found</div>
+                    <div className='grid grid-cols-2 md:grid-cols-4 gap-4 mb-6'>
+                      {testimonial.securityMetrics.vulnerabilitiesFound !==
+                        undefined && (
+                        <div className='text-center p-3 bg-deep-navy-700/50 rounded-lg'>
+                          <div className='text-xl font-bold text-red-400'>
+                            {testimonial.securityMetrics.vulnerabilitiesFound}
+                          </div>
+                          <div className='text-xs text-gray-400'>
+                            Vulns Found
+                          </div>
                         </div>
                       )}
                       {testimonial.securityMetrics.securityScoreImprovement && (
-                        <div className="text-center p-3 bg-deep-navy-700/50 rounded-lg">
-                          <div className="text-xl font-bold text-green-400">{testimonial.securityMetrics.securityScoreImprovement}%</div>
-                          <div className="text-xs text-gray-400">Security ↑</div>
+                        <div className='text-center p-3 bg-deep-navy-700/50 rounded-lg'>
+                          <div className='text-xl font-bold text-green-400'>
+                            {
+                              testimonial.securityMetrics
+                                .securityScoreImprovement
+                            }
+                            %
+                          </div>
+                          <div className='text-xs text-gray-400'>
+                            Security ↑
+                          </div>
                         </div>
                       )}
                       {testimonial.securityMetrics.incidentResponseTime && (
-                        <div className="text-center p-3 bg-deep-navy-700/50 rounded-lg">
-                          <div className="text-xl font-bold text-blue-400">{testimonial.securityMetrics.incidentResponseTime}</div>
-                          <div className="text-xs text-gray-400">Response Time</div>
+                        <div className='text-center p-3 bg-deep-navy-700/50 rounded-lg'>
+                          <div className='text-xl font-bold text-blue-400'>
+                            {testimonial.securityMetrics.incidentResponseTime}
+                          </div>
+                          <div className='text-xs text-gray-400'>
+                            Response Time
+                          </div>
                         </div>
                       )}
                       {testimonial.securityMetrics.costSavings && (
-                        <div className="text-center p-3 bg-deep-navy-700/50 rounded-lg">
-                          <div className="text-xl font-bold text-purple-400">{testimonial.securityMetrics.costSavings}</div>
-                          <div className="text-xs text-gray-400">Cost Savings</div>
+                        <div className='text-center p-3 bg-deep-navy-700/50 rounded-lg'>
+                          <div className='text-xl font-bold text-purple-400'>
+                            {testimonial.securityMetrics.costSavings}
+                          </div>
+                          <div className='text-xs text-gray-400'>
+                            Cost Savings
+                          </div>
                         </div>
                       )}
                     </div>
                   )}
-                  
+
                   {/* Project Details */}
-                  <div className="space-y-2 text-sm text-gray-400">
+                  <div className='space-y-2 text-sm text-gray-400'>
                     {testimonial.projectType && (
-                      <div><strong>Project Type:</strong> {testimonial.projectType.replace('-', ' ')}</div>
+                      <div>
+                        <strong>Project Type:</strong>{' '}
+                        {testimonial.projectType.replace('-', ' ')}
+                      </div>
                     )}
                     {testimonial.projectDuration && (
-                      <div><strong>Duration:</strong> {testimonial.projectDuration}</div>
+                      <div>
+                        <strong>Duration:</strong> {testimonial.projectDuration}
+                      </div>
                     )}
                     {testimonial.beforeAfter && (
                       <div>
-                        <strong>Before:</strong> {testimonial.beforeAfter.before}<br />
+                        <strong>Before:</strong>{' '}
+                        {testimonial.beforeAfter.before}
+                        <br />
                         <strong>After:</strong> {testimonial.beforeAfter.after}
                       </div>
                     )}

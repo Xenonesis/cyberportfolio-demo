@@ -5,7 +5,12 @@ import { SEO_CONFIG, CONTENT_OPTIMIZATION_GUIDELINES } from '@/lib/seo-config';
 
 interface ContentOptimizationProps {
   children: ReactNode;
-  contentType?: 'article' | 'case-study' | 'service' | 'landing-page' | 'blog-post';
+  contentType?:
+    | 'article'
+    | 'case-study'
+    | 'service'
+    | 'landing-page'
+    | 'blog-post';
   keywords?: string[];
   readingTime?: string;
   wordCount?: number;
@@ -118,7 +123,10 @@ export const ContentOptimization = ({
     return '';
   };
 
-  const calculateKeywordDensity = (text: string, keywords: string[]): number => {
+  const calculateKeywordDensity = (
+    text: string,
+    keywords: string[]
+  ): number => {
     if (!keywords.length) return 0;
 
     const wordCount = text.split(/\s+/).length;
@@ -142,10 +150,12 @@ export const ContentOptimization = ({
     const avgWordsPerSentence = words / sentences;
     const avgSyllablesPerWord = syllables / words;
 
-    return 206.835 - (1.015 * avgWordsPerSentence) - (84.6 * avgSyllablesPerWord);
+    return 206.835 - 1.015 * avgWordsPerSentence - 84.6 * avgSyllablesPerWord;
   };
 
-  const analyzeHeadingStructure = (headings: { level: number; text: string }[]): string => {
+  const analyzeHeadingStructure = (
+    headings: { level: number; text: string }[]
+  ): string => {
     if (!headings.length) return 'no-headings';
 
     const structure = headings.map(h => `H${h.level}`).join('-');
@@ -181,7 +191,7 @@ export const ContentOptimization = ({
     // Keyword density score (target: 1-2%)
     const keywordTarget = 1.5;
     const keywordDiff = Math.abs(metrics.keywordDensity - keywordTarget);
-    score += Math.max(0, 100 - (keywordDiff * 50));
+    score += Math.max(0, 100 - keywordDiff * 50);
 
     // Readability score (target: 60-80)
     const readability = Math.min(100, Math.max(0, metrics.readabilityScore));
@@ -191,7 +201,8 @@ export const ContentOptimization = ({
     const contentLengthGuidelines = getContentLengthGuidelines(contentType);
     if (contentLengthGuidelines) {
       const { min, max } = contentLengthGuidelines;
-      const lengthScore = metrics.contentLength >= min && metrics.contentLength <= max ? 100 : 50;
+      const lengthScore =
+        metrics.contentLength >= min && metrics.contentLength <= max ? 100 : 50;
       score += lengthScore;
     }
 
@@ -202,7 +213,10 @@ export const ContentOptimization = ({
     return Math.round(score / 4);
   };
 
-  const applyContentOptimization = (content: ReactNode, metrics: OptimizationMetrics): ReactNode => {
+  const applyContentOptimization = (
+    content: ReactNode,
+    metrics: OptimizationMetrics
+  ): ReactNode => {
     // This would implement actual content optimization
     // For now, we'll return the original content
     return content;
@@ -222,7 +236,9 @@ export const ContentOptimization = ({
       recommendations.push('Improve readability (use shorter sentences)');
     }
     if (metrics.readabilityScore > 80) {
-      recommendations.push('Consider more technical language for professional audience');
+      recommendations.push(
+        'Consider more technical language for professional audience'
+      );
     }
 
     if (!metrics.headingStructure.includes('H1')) {
@@ -239,7 +255,9 @@ export const ContentOptimization = ({
         recommendations.push(`Increase content length (minimum ${min} words)`);
       }
       if (metrics.contentLength > max) {
-        recommendations.push(`Consider shortening content (maximum ${max} words)`);
+        recommendations.push(
+          `Consider shortening content (maximum ${max} words)`
+        );
       }
     }
 
@@ -252,7 +270,7 @@ export const ContentOptimization = ({
     <div className={`content-optimization ${className}`}>
       {/* Optimization Metrics Display */}
       <div
-        className="optimization-metrics"
+        className='optimization-metrics'
         style={{
           display: showOptimizationTips ? 'block' : 'none',
           padding: '1rem',
@@ -262,7 +280,7 @@ export const ContentOptimization = ({
           marginBottom: '1rem',
         }}
       >
-        <div className="metrics-header">
+        <div className='metrics-header'>
           <h3>Content Optimization Analysis</h3>
           <button
             onClick={() => setShowOptimizationTips(false)}
@@ -272,56 +290,68 @@ export const ContentOptimization = ({
           </button>
         </div>
 
-        <div className="metrics-grid">
-          <div className="metric">
-            <strong>Keyword Density:</strong> {metrics.keywordDensity.toFixed(2)}%
+        <div className='metrics-grid'>
+          <div className='metric'>
+            <strong>Keyword Density:</strong>{' '}
+            {metrics.keywordDensity.toFixed(2)}%
             <div
-              className="metric-bar"
+              className='metric-bar'
               style={{
                 width: `${Math.min(metrics.keywordDensity * 20, 100)}%`,
-                backgroundColor: metrics.keywordDensity >= 0.5 && metrics.keywordDensity <= 2.5 ? '#10b981' : '#ef4444',
+                backgroundColor:
+                  metrics.keywordDensity >= 0.5 && metrics.keywordDensity <= 2.5
+                    ? '#10b981'
+                    : '#ef4444',
               }}
             />
           </div>
 
-          <div className="metric">
-            <strong>Readability Score:</strong> {metrics.readabilityScore.toFixed(1)}
+          <div className='metric'>
+            <strong>Readability Score:</strong>{' '}
+            {metrics.readabilityScore.toFixed(1)}
             <div
-              className="metric-bar"
+              className='metric-bar'
               style={{
                 width: `${Math.min(metrics.readabilityScore, 100)}%`,
-                backgroundColor: metrics.readabilityScore >= 60 ? '#10b981' : '#ef4444',
+                backgroundColor:
+                  metrics.readabilityScore >= 60 ? '#10b981' : '#ef4444',
               }}
             />
           </div>
 
-          <div className="metric">
+          <div className='metric'>
             <strong>Content Length:</strong> {metrics.contentLength} words
             <div
-              className="metric-bar"
+              className='metric-bar'
               style={{
                 width: `${Math.min((metrics.contentLength / 1000) * 100, 100)}%`,
-                backgroundColor: metrics.contentLength >= 500 && metrics.contentLength <= 2500 ? '#10b981' : '#ef4444',
+                backgroundColor:
+                  metrics.contentLength >= 500 && metrics.contentLength <= 2500
+                    ? '#10b981'
+                    : '#ef4444',
               }}
             />
           </div>
 
-          <div className="metric">
+          <div className='metric'>
             <strong>Optimization Score:</strong> {metrics.optimizationScore}/100
             <div
-              className="metric-bar"
+              className='metric-bar'
               style={{
                 width: `${metrics.optimizationScore}%`,
                 backgroundColor:
-                  metrics.optimizationScore >= 80 ? '#10b981' :
-                  metrics.optimizationScore >= 60 ? '#f59e0b' : '#ef4444',
+                  metrics.optimizationScore >= 80
+                    ? '#10b981'
+                    : metrics.optimizationScore >= 60
+                      ? '#f59e0b'
+                      : '#ef4444',
               }}
             />
           </div>
         </div>
 
         {recommendations.length > 0 && (
-          <div className="recommendations">
+          <div className='recommendations'>
             <h4>Recommendations:</h4>
             <ul>
               {recommendations.map((rec, index) => (
@@ -333,9 +363,7 @@ export const ContentOptimization = ({
       </div>
 
       {/* Main Content */}
-      <div className="optimized-content">
-        {optimizedContent}
-      </div>
+      <div className='optimized-content'>{optimizedContent}</div>
 
       {/* Show optimization button for content editors */}
       <button
@@ -373,7 +401,7 @@ export const ContentOptimization = ({
 
         .metric-bar {
           height: 4px;
-          marginTop: 0.5rem;
+          margintop: 0.5rem;
           transition: width 0.3s ease;
         }
 

@@ -19,7 +19,8 @@ export const Badge = ({
   icon,
   pulse = false,
 }: BadgeProps) => {
-  const baseClasses = 'inline-flex items-center font-medium rounded-full border transition-all duration-300';
+  const baseClasses =
+    'inline-flex items-center font-medium rounded-full border transition-all duration-300';
 
   const variantClasses = {
     default: 'bg-navy-700 text-gray-300 border-navy-600',
@@ -46,9 +47,9 @@ export const Badge = ({
       whileTap={{ scale: 0.95 }}
     >
       {icon && (
-        <div className="w-3 h-3 mr-1.5">
+        <div className='w-3 h-3 mr-1.5'>
           {/* Placeholder for icons */}
-          <div className="w-full h-full bg-current rounded-sm"></div>
+          <div className='w-full h-full bg-current rounded-sm'></div>
         </div>
       )}
       <span>{children}</span>

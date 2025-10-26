@@ -33,17 +33,17 @@ import { SEOProvider } from '@/components/seo/SEOProvider';
 export default function HomePage() {
   return (
     <SEOProvider
-      pageType="website"
-      pageTitle="Aditya Kumar Tiwari - Cybersecurity Expert"
-      pageDescription="Expert cybersecurity consultant specializing in enterprise security, incident response, and cloud security solutions."
+      pageType='website'
+      pageTitle='Aditya Kumar Tiwari - Cybersecurity Expert'
+      pageDescription='Expert cybersecurity consultant specializing in enterprise security, incident response, and cloud security solutions.'
       pageKeywords={[
         'cybersecurity specialist',
         'security consultant',
         'penetration testing',
         'vulnerability assessment',
       ]}
-      pageImage="/images/hero-security.jpg"
-      pageUrl="https://aditya-cybersecurity.com"
+      pageImage='/images/hero-security.jpg'
+      pageUrl='https://aditya-cybersecurity.com'
     >
       {/* Your page content */}
     </SEOProvider>
@@ -68,16 +68,16 @@ export default function CaseStudyPage() {
 
   return (
     <SEOProvider
-      pageType="case-study"
-      pageTitle="Enterprise Security Transformation | Case Study"
-      pageDescription="Complete security overhaul for Fortune 500 manufacturing company with 75% reduction in security incidents."
+      pageType='case-study'
+      pageTitle='Enterprise Security Transformation | Case Study'
+      pageDescription='Complete security overhaul for Fortune 500 manufacturing company with 75% reduction in security incidents.'
       pageKeywords={[
         'cybersecurity case study',
         'enterprise security transformation',
         'Zero Trust implementation',
       ]}
-      pageImage="/images/case-study-hero.jpg"
-      pageUrl="https://aditya-cybersecurity.com/case-studies/enterprise-security"
+      pageImage='/images/case-study-hero.jpg'
+      pageUrl='https://aditya-cybersecurity.com/case-studies/enterprise-security'
       enablePerformanceMonitoring={true}
       enableMobileOptimization={true}
       enableTrustBuilding={true}
@@ -96,7 +96,7 @@ import { SEOProvider, SchemaMarkup } from '@/components/seo';
 export default function BlogPost({ post }) {
   return (
     <SEOProvider
-      pageType="article"
+      pageType='article'
       pageTitle={post.title}
       pageDescription={post.excerpt}
       pageKeywords={post.tags}
@@ -104,18 +104,18 @@ export default function BlogPost({ post }) {
       pageUrl={`https://aditya-cybersecurity.com/blog/${post.slug}`}
     >
       {/* Blog content */}
-      
+
       {/* Additional schema for blog-specific elements */}
       <SchemaMarkup
-        pageType="article"
+        pageType='article'
         pageTitle={post.title}
         pageDescription={post.excerpt}
         pageImage={post.featuredImage}
         pageUrl={`https://aditya-cybersecurity.com/blog/${post.slug}`}
-        author="Aditya Kumar Tiwari"
+        author='Aditya Kumar Tiwari'
         publishDate={post.publishedAt}
         modifiedDate={post.updatedAt}
-        articleSection="Cybersecurity Blog"
+        articleSection='Cybersecurity Blog'
         articleTags={post.tags}
         faqList={post.faq}
       />
@@ -135,7 +135,7 @@ export const SEO_CONFIG = {
   siteTitle: 'Cybersecurity Portfolio - Aditya Kumar Tiwari',
   siteDescription: 'Expert cybersecurity consultant...',
   siteUrl: 'https://aditya-cybersecurity.com',
-  
+
   // Security-focused keywords
   primaryKeywords: [
     'cybersecurity specialist',
@@ -147,7 +147,7 @@ export const SEO_CONFIG = {
     'AI security',
     'prompt engineering security',
   ],
-  
+
   // Schema defaults
   schemaDefaults: {
     organization: {
@@ -155,8 +155,8 @@ export const SEO_CONFIG = {
       '@type': 'Person',
       name: 'Aditya Kumar Tiwari',
       // ... more schema properties
-    }
-  }
+    },
+  },
 };
 ```
 
@@ -183,6 +183,7 @@ export const SEO_PAGES = {
 ## Schema Markup Types
 
 ### Person Schema
+
 ```json
 {
   "@context": "https://schema.org",
@@ -199,6 +200,7 @@ export const SEO_PAGES = {
 ```
 
 ### Article Schema
+
 ```json
 {
   "@context": "https://schema.org",
@@ -223,6 +225,7 @@ export const SEO_PAGES = {
 ```
 
 ### Case Study Schema
+
 ```json
 {
   "@context": "https://schema.org",
@@ -248,6 +251,7 @@ export const SEO_PAGES = {
 ```
 
 ### Review Schema
+
 ```json
 {
   "@context": "https://schema.org",
@@ -392,32 +396,38 @@ The system provides real-time alerts for:
 
 ```html
 <title>Cybersecurity Expert & Full-Stack Developer | Aditya Kumar Tiwari</title>
-<meta name="description" content="Expert cybersecurity consultant...">
-<meta name="keywords" content="cybersecurity, security consultant, penetration testing">
-<meta name="viewport" content="width=device-width, initial-scale=1">
-<meta name="robots" content="index, follow">
+<meta name="description" content="Expert cybersecurity consultant..." />
+<meta
+  name="keywords"
+  content="cybersecurity, security consultant, penetration testing"
+/>
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<meta name="robots" content="index, follow" />
 ```
 
 ### OpenGraph
 
 ```html
-<meta property="og:title" content="Page Title">
-<meta property="og:description" content="Page description">
-<meta property="og:type" content="website">
-<meta property="og:url" content="https://example.com/page">
-<meta property="og:image" content="https://example.com/image.jpg">
-<meta property="og:site_name" content="Aditya Kumar Tiwari - Cybersecurity Expert">
+<meta property="og:title" content="Page Title" />
+<meta property="og:description" content="Page description" />
+<meta property="og:type" content="website" />
+<meta property="og:url" content="https://example.com/page" />
+<meta property="og:image" content="https://example.com/image.jpg" />
+<meta
+  property="og:site_name"
+  content="Aditya Kumar Tiwari - Cybersecurity Expert"
+/>
 ```
 
 ### Twitter Cards
 
 ```html
-<meta name="twitter:card" content="summary_large_image">
-<meta name="twitter:title" content="Page Title">
-<meta name="twitter:description" content="Page description">
-<meta name="twitter:image" content="https://example.com/image.jpg">
-<meta name="twitter:site" content="@aditya_cyber">
-<meta name="twitter:creator" content="@aditya_cyber">
+<meta name="twitter:card" content="summary_large_image" />
+<meta name="twitter:title" content="Page Title" />
+<meta name="twitter:description" content="Page description" />
+<meta name="twitter:image" content="https://example.com/image.jpg" />
+<meta name="twitter:site" content="@aditya_cyber" />
+<meta name="twitter:creator" content="@aditya_cyber" />
 ```
 
 ## Security-Focused SEO
@@ -425,6 +435,7 @@ The system provides real-time alerts for:
 ### Security Keywords
 
 **Primary Security Keywords:**
+
 - cybersecurity
 - security assessment
 - penetration testing
@@ -434,6 +445,7 @@ The system provides real-time alerts for:
 - cloud security
 
 **Technical Security Keywords:**
+
 - Zero Trust architecture
 - SIEM implementation
 - endpoint detection
@@ -442,6 +454,7 @@ The system provides real-time alerts for:
 - data encryption
 
 **Industry Security Keywords:**
+
 - financial services security
 - healthcare cybersecurity
 - cloud security compliance
@@ -459,6 +472,7 @@ The system provides real-time alerts for:
 ## Analytics Integration
 
 ### Google Search Console
+
 - XML sitemap generation
 - Robots.txt optimization
 - Canonical URL implementation
@@ -466,6 +480,7 @@ The system provides real-time alerts for:
 - Core Web Vitals monitoring
 
 ### Google Analytics
+
 - Organic traffic tracking
 - User behavior analysis
 - Conversion tracking
@@ -475,6 +490,7 @@ The system provides real-time alerts for:
 ## Best Practices
 
 ### On-Page SEO
+
 1. Use descriptive, keyword-rich titles (60 characters max)
 2. Write compelling meta descriptions (155 characters max)
 3. Implement proper heading hierarchy (H1, H2, H3)
@@ -483,6 +499,7 @@ The system provides real-time alerts for:
 6. Ensure mobile responsiveness
 
 ### Technical SEO
+
 1. Implement SSL/HTTPS
 2. Optimize page speed
 3. Create XML sitemap
@@ -491,6 +508,7 @@ The system provides real-time alerts for:
 6. Implement structured data
 
 ### Content SEO
+
 1. Create high-quality, original content
 2. Use relevant keywords naturally
 3. Optimize for user intent
@@ -499,6 +517,7 @@ The system provides real-time alerts for:
 6. Use semantic keywords
 
 ### Local SEO (for local targeting)
+
 1. Include location-based keywords
 2. Create location-specific pages
 3. Optimize Google My Business
@@ -510,12 +529,14 @@ The system provides real-time alerts for:
 ### Common Issues
 
 **Schema Validation Errors:**
+
 - Use Google's Rich Results Test
 - Validate JSON-LD syntax
 - Check required properties
 - Test with multiple tools
 
 **Performance Issues:**
+
 - Monitor Core Web Vitals
 - Optimize images
 - Minify CSS/JS
@@ -523,6 +544,7 @@ The system provides real-time alerts for:
 - Implement lazy loading
 
 **Mobile Issues:**
+
 - Test on multiple devices
 - Check touch targets
 - Optimize viewport

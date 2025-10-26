@@ -17,7 +17,13 @@ export interface SecurityBadgeProps {
 }
 
 export interface StatusBadgeProps {
-  status: 'online' | 'offline' | 'secure' | 'warning' | 'critical' | 'maintenance';
+  status:
+    | 'online'
+    | 'offline'
+    | 'secure'
+    | 'warning'
+    | 'critical'
+    | 'maintenance';
   label?: string;
   size?: 'sm' | 'md' | 'lg';
   className?: string;
@@ -111,35 +117,33 @@ export const StatusBadge = ({
   const config = statusConfig[status];
   const animationVariants = {
     initial: { scale: 0.8, opacity: 0 },
-    animate: { 
-      scale: 1, 
+    animate: {
+      scale: 1,
       opacity: 1,
       rotate: status === 'critical' ? [0, 5, -5, 0] : 0,
     },
   };
 
-  const animationProps = animate ? {
-    initial: animationVariants.initial,
-    animate: animationVariants.animate,
-    transition: {
-      duration: 0.3,
-      ease: 'easeOut',
-      repeat: config.pulse ? Infinity : 0,
-      repeatType: 'reverse' as const,
-    },
-  } : {};
+  const animationProps = animate
+    ? {
+        initial: animationVariants.initial,
+        animate: animationVariants.animate,
+        transition: {
+          duration: 0.3,
+          ease: 'easeOut',
+          repeat: config.pulse ? Infinity : 0,
+          repeatType: 'reverse' as const,
+        },
+      }
+    : {};
 
   return (
     <motion.div
       className={`${config.bg} ${config.border} rounded-full ${sizeConfig[size]} flex items-center gap-1 ${className} ${config.pulse ? 'animate-pulse' : ''}`}
       {...animationProps}
     >
-      <span className="text-sm">{config.icon}</span>
-      {label && (
-        <span className={`${config.text} font-medium`}>
-          {label}
-        </span>
-      )}
+      <span className='text-sm'>{config.icon}</span>
+      {label && <span className={`${config.text} font-medium`}>{label}</span>}
       {!label && (
         <span className={`${config.text} font-medium uppercase tracking-wider`}>
           {status}
@@ -230,28 +234,32 @@ export const ComplianceBadge = ({
     animate: { scale: 1, opacity: 1, rotate: 0 },
   };
 
-  const animationProps = animate ? {
-    initial: animationVariants.initial,
-    animate: animationVariants.animate,
-    transition: {
-      duration: 0.4,
-      ease: 'easeOut',
-      repeat: statusInfo.pulse ? Infinity : 0,
-      repeatType: 'reverse' as const,
-    },
-  } : {};
+  const animationProps = animate
+    ? {
+        initial: animationVariants.initial,
+        animate: animationVariants.animate,
+        transition: {
+          duration: 0.4,
+          ease: 'easeOut',
+          repeat: statusInfo.pulse ? Infinity : 0,
+          repeatType: 'reverse' as const,
+        },
+      }
+    : {};
 
   return (
     <motion.div
       className={`${statusInfo.bg} ${statusInfo.border} rounded-lg ${sizeConfig[size]} flex items-center gap-2 ${className} ${statusInfo.pulse ? 'animate-pulse' : ''}`}
       {...animationProps}
     >
-      <span className="text-lg">{standardInfo.icon}</span>
-      <div className="flex flex-col">
+      <span className='text-lg'>{standardInfo.icon}</span>
+      <div className='flex flex-col'>
         <span className={`${statusInfo.text} font-semibold`}>
           {standardInfo.name}
         </span>
-        <span className={`${statusInfo.text} text-xs uppercase tracking-wider opacity-70`}>
+        <span
+          className={`${statusInfo.text} text-xs uppercase tracking-wider opacity-70`}
+        >
           {status}
         </span>
       </div>
@@ -315,42 +323,46 @@ export const ThreatLevelBadge = ({
   const config = levelConfig[level];
   const animationVariants = {
     initial: { scale: 0.7, opacity: 0, y: 20 },
-    animate: { 
-      scale: 1, 
-      opacity: 1, 
+    animate: {
+      scale: 1,
+      opacity: 1,
       y: 0,
       rotate: level === 'imminent' ? [0, 15, -15, 0] : 0,
     },
   };
 
-  const animationProps = animate ? {
-    initial: animationVariants.initial,
-    animate: animationVariants.animate,
-    transition: {
-      duration: 0.5,
-      ease: 'easeOut',
-      repeat: config.glow ? Infinity : 0,
-      repeatType: 'reverse' as const,
-    },
-  } : {};
+  const animationProps = animate
+    ? {
+        initial: animationVariants.initial,
+        animate: animationVariants.animate,
+        transition: {
+          duration: 0.5,
+          ease: 'easeOut',
+          repeat: config.glow ? Infinity : 0,
+          repeatType: 'reverse' as const,
+        },
+      }
+    : {};
 
   return (
     <motion.div
       className={`${config.bg} ${config.border} rounded-lg ${sizeConfig[size]} ${className} ${config.glow ? 'animate-pulse' : ''}`}
       {...animationProps}
     >
-      <div className="flex items-center gap-3">
-        <span className="text-2xl">{config.icon}</span>
+      <div className='flex items-center gap-3'>
+        <span className='text-2xl'>{config.icon}</span>
         <div>
           {title && (
-            <h4 className={`${config.text} font-semibold flex items-center gap-2`}>
+            <h4
+              className={`${config.text} font-semibold flex items-center gap-2`}
+            >
               {title}
               {level === 'imminent' && (
-                <SecurityIcons.Alert 
-                  variant="critical" 
-                  size="sm" 
-                  animate={true} 
-                  pulse={true} 
+                <SecurityIcons.Alert
+                  variant='critical'
+                  size='sm'
+                  animate={true}
+                  pulse={true}
                 />
               )}
             </h4>
@@ -359,7 +371,9 @@ export const ThreatLevelBadge = ({
             <p className={`${config.text} text-sm opacity-80`}>{description}</p>
           )}
           {!title && !description && (
-            <span className={`${config.text} font-medium uppercase tracking-wider`}>
+            <span
+              className={`${config.text} font-medium uppercase tracking-wider`}
+            >
               Threat Level: {level.toUpperCase()}
             </span>
           )}
@@ -434,34 +448,48 @@ export const EncryptionBadge = ({
     animate: { scale: 1, opacity: 1, rotate: 0 },
   };
 
-  const animationProps = animate ? {
-    initial: animationVariants.initial,
-    animate: animationVariants.animate,
-    transition: {
-      duration: 0.4,
-      ease: 'easeOut',
-      repeat: statusInfo.pulse ? Infinity : 0,
-      repeatType: 'reverse' as const,
-    },
-  } : {};
+  const animationProps = animate
+    ? {
+        initial: animationVariants.initial,
+        animate: animationVariants.animate,
+        transition: {
+          duration: 0.4,
+          ease: 'easeOut',
+          repeat: statusInfo.pulse ? Infinity : 0,
+          repeatType: 'reverse' as const,
+        },
+      }
+    : {};
 
   return (
     <motion.div
       className={`${statusInfo.bg} ${statusInfo.border} rounded-full ${sizeConfig[size]} flex items-center gap-2 ${className} ${statusInfo.pulse ? 'animate-pulse' : ''}`}
       {...animationProps}
     >
-      <SecurityIcons.Lock 
+      <SecurityIcons.Lock
         variant={status === 'encrypted' ? 'locked' : 'unlocked'}
         size={size === 'sm' ? 'xs' : size === 'md' ? 'sm' : 'md'}
-        color={levelInfo.color === 'electric-cyan' ? 'cyan' : (levelInfo.color as 'cyan' | 'neon-green' | 'white' | 'red' | 'yellow' | 'gray')}
+        color={
+          levelInfo.color === 'electric-cyan'
+            ? 'cyan'
+            : (levelInfo.color as
+                | 'cyan'
+                | 'neon-green'
+                | 'white'
+                | 'red'
+                | 'yellow'
+                | 'gray')
+        }
         animate={animate}
         pulse={statusInfo.pulse}
       />
-      <div className="flex flex-col">
+      <div className='flex flex-col'>
         <span className={`${statusInfo.text} font-medium`}>
           {levelInfo.name}
         </span>
-        <span className={`${statusInfo.text} text-xs uppercase tracking-wider opacity-70`}>
+        <span
+          className={`${statusInfo.text} text-xs uppercase tracking-wider opacity-70`}
+        >
           {status}
         </span>
       </div>
@@ -536,23 +564,25 @@ export const SecurityBadge = ({
     animate: { scale: 1, opacity: 1 },
   };
 
-  const animationProps = animate ? {
-    initial: animationVariants.initial,
-    animate: animationVariants.animate,
-    transition: {
-      duration: 0.3,
-      ease: 'easeOut',
-      repeat: config.pulse ? Infinity : 0,
-      repeatType: 'reverse' as const,
-    },
-  } : {};
+  const animationProps = animate
+    ? {
+        initial: animationVariants.initial,
+        animate: animationVariants.animate,
+        transition: {
+          duration: 0.3,
+          ease: 'easeOut',
+          repeat: config.pulse ? Infinity : 0,
+          repeatType: 'reverse' as const,
+        },
+      }
+    : {};
 
   return (
     <motion.div
       className={`${config.bg} ${config.border} border rounded-full ${sizeConfig[size]} flex items-center gap-1 ${className} ${config.pulse ? 'animate-pulse' : ''}`}
       {...animationProps}
     >
-      {config.icon && <span className="text-sm">{config.icon}</span>}
+      {config.icon && <span className='text-sm'>{config.icon}</span>}
       <span className={`${colorConfig[color]} font-medium`}>
         {label || `${type.toUpperCase()} ${variant.toUpperCase()}`}
       </span>

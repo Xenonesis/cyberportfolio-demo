@@ -39,7 +39,7 @@ export const BundleAnalyzer: React.FC<BundleAnalyzerProps> = ({
       optimized: true,
       compressionRatio: parseFloat((Math.random() * 0.5 + 0.3).toFixed(2)), // 30-80%
     };
-    
+
     setBundleStats(stats);
     setAnalysisComplete(true);
   }, [enableAnalysis, isOptimized]);
@@ -75,110 +75,129 @@ export const BundleAnalyzer: React.FC<BundleAnalyzerProps> = ({
   // Calculate optimization score
   const calculateOptimizationScore = (): number => {
     if (!bundleStats) return 0;
-    
+
     let score = 100;
-    
+
     // Deduct points for large bundles
     if (bundleStats.totalSize > 1500) {
       score -= 20;
     } else if (bundleStats.totalSize > 1000) {
       score -= 10;
     }
-    
+
     // Deduct points for many chunks
     if (bundleStats.chunkCount > 8) {
       score -= 15;
     } else if (bundleStats.chunkCount > 5) {
       score -= 5;
     }
-    
+
     // Deduct points for large chunks
     if (bundleStats.largestChunk > 400) {
       score -= 25;
     } else if (bundleStats.largestChunk > 250) {
       score -= 10;
     }
-    
+
     // Add points for good compression
     if (bundleStats.compressionRatio > 0.6) {
       score += 15;
     } else if (bundleStats.compressionRatio > 0.4) {
       score += 5;
     }
-    
+
     return Math.max(0, Math.min(100, score));
   };
 
   const optimizationScore = calculateOptimizationScore();
 
   return (
-    <div className="relative">
+    <div className='relative'>
       {/* Bundle Analyzer Overlay */}
       {showReport && analysisComplete && bundleStats && (
-        <div className="fixed bottom-4 left-4 bg-deep-navy-500 border border-electric-cyan-500 rounded-lg p-4 shadow-lg z-50 max-w-md w-full">
-          <div className="flex justify-between items-center mb-3">
-            <h3 className="text-electric-cyan-500 font-mono text-sm">Bundle Analyzer</h3>
-            <button 
+        <div className='fixed bottom-4 left-4 bg-deep-navy-500 border border-electric-cyan-500 rounded-lg p-4 shadow-lg z-50 max-w-md w-full'>
+          <div className='flex justify-between items-center mb-3'>
+            <h3 className='text-electric-cyan-500 font-mono text-sm'>
+              Bundle Analyzer
+            </h3>
+            <button
               onClick={() => setAnalysisComplete(false)}
-              className="text-gray-400 hover:text-white text-lg"
+              className='text-gray-400 hover:text-white text-lg'
             >
               ×
             </button>
           </div>
-          
-          <div className="space-y-3 text-xs">
-            <div className="flex justify-between">
-              <span className="text-gray-300">Total Bundle Size:</span>
-              <span className={`font-mono ${bundleStats.totalSize > 1500 ? 'text-red-400' : bundleStats.totalSize > 1000 ? 'text-orange-400' : 'text-neon-green-500'}`}>
+
+          <div className='space-y-3 text-xs'>
+            <div className='flex justify-between'>
+              <span className='text-gray-300'>Total Bundle Size:</span>
+              <span
+                className={`font-mono ${bundleStats.totalSize > 1500 ? 'text-red-400' : bundleStats.totalSize > 1000 ? 'text-orange-400' : 'text-neon-green-500'}`}
+              >
                 {bundleStats.totalSize} KB
               </span>
             </div>
-            
-            <div className="flex justify-between">
-              <span className="text-gray-300">Chunk Count:</span>
-              <span className={`font-mono ${bundleStats.chunkCount > 8 ? 'text-red-400' : bundleStats.chunkCount > 5 ? 'text-orange-400' : 'text-neon-green-500'}`}>
+
+            <div className='flex justify-between'>
+              <span className='text-gray-300'>Chunk Count:</span>
+              <span
+                className={`font-mono ${bundleStats.chunkCount > 8 ? 'text-red-400' : bundleStats.chunkCount > 5 ? 'text-orange-400' : 'text-neon-green-500'}`}
+              >
                 {bundleStats.chunkCount}
               </span>
             </div>
-            
-            <div className="flex justify-between">
-              <span className="text-gray-300">Largest Chunk:</span>
-              <span className={`font-mono ${bundleStats.largestChunk > 400 ? 'text-red-400' : bundleStats.largestChunk > 250 ? 'text-orange-400' : 'text-neon-green-500'}`}>
+
+            <div className='flex justify-between'>
+              <span className='text-gray-300'>Largest Chunk:</span>
+              <span
+                className={`font-mono ${bundleStats.largestChunk > 400 ? 'text-red-400' : bundleStats.largestChunk > 250 ? 'text-orange-400' : 'text-neon-green-500'}`}
+              >
                 {bundleStats.largestChunk} KB
               </span>
             </div>
-            
-            <div className="flex justify-between">
-              <span className="text-gray-300">Compression Ratio:</span>
-              <span className={`font-mono ${bundleStats.compressionRatio > 0.6 ? 'text-neon-green-500' : bundleStats.compressionRatio > 0.4 ? 'text-orange-400' : 'text-red-400'}`}>
+
+            <div className='flex justify-between'>
+              <span className='text-gray-300'>Compression Ratio:</span>
+              <span
+                className={`font-mono ${bundleStats.compressionRatio > 0.6 ? 'text-neon-green-500' : bundleStats.compressionRatio > 0.4 ? 'text-orange-400' : 'text-red-400'}`}
+              >
                 {(bundleStats.compressionRatio * 100).toFixed(1)}%
               </span>
             </div>
-            
-            <div className="pt-2 border-t border-gray-700">
-              <div className="flex justify-between text-gray-300">
+
+            <div className='pt-2 border-t border-gray-700'>
+              <div className='flex justify-between text-gray-300'>
                 <span>Optimization Score:</span>
-                <span className={`font-mono ${optimizationScore >= 80 ? 'text-neon-green-500' : optimizationScore >= 60 ? 'text-orange-400' : 'text-red-400'}`}>
+                <span
+                  className={`font-mono ${optimizationScore >= 80 ? 'text-neon-green-500' : optimizationScore >= 60 ? 'text-orange-400' : 'text-red-400'}`}
+                >
                   {optimizationScore}/100
                 </span>
               </div>
-              <div className="w-full bg-gray-700 rounded-full h-1.5 mt-1">
-                <div 
+              <div className='w-full bg-gray-700 rounded-full h-1.5 mt-1'>
+                <div
                   className={`h-1.5 rounded-full ${
-                    optimizationScore >= 80 ? 'bg-neon-green-500' : 
-                    optimizationScore >= 60 ? 'bg-orange-500' : 'bg-red-500'
-                  }`} 
+                    optimizationScore >= 80
+                      ? 'bg-neon-green-500'
+                      : optimizationScore >= 60
+                        ? 'bg-orange-500'
+                        : 'bg-red-500'
+                  }`}
                   style={{ width: `${optimizationScore}%` }}
                 ></div>
               </div>
             </div>
-            
+
             {optimizationScore < 80 && (
-              <div className="pt-2 border-t border-gray-700">
-                <h4 className="text-electric-cyan-500 font-mono text-xs mb-1">Recommendations:</h4>
-                <ul className="text-gray-400 text-[10px] space-y-1">
+              <div className='pt-2 border-t border-gray-700'>
+                <h4 className='text-electric-cyan-500 font-mono text-xs mb-1'>
+                  Recommendations:
+                </h4>
+                <ul className='text-gray-400 text-[10px] space-y-1'>
                   {bundleStats.totalSize > 1500 && (
-                    <li>• Reduce bundle size by code splitting large modules</li>
+                    <li>
+                      • Reduce bundle size by code splitting large modules
+                    </li>
                   )}
                   {bundleStats.chunkCount > 8 && (
                     <li>• Consolidate small chunks to reduce HTTP requests</li>
@@ -187,7 +206,9 @@ export const BundleAnalyzer: React.FC<BundleAnalyzerProps> = ({
                     <li>• Split large chunks to improve loading performance</li>
                   )}
                   {bundleStats.compressionRatio < 0.4 && (
-                    <li>• Enable better compression (gzip/brotli) for assets</li>
+                    <li>
+                      • Enable better compression (gzip/brotli) for assets
+                    </li>
                   )}
                   <li>• Use dynamic imports for non-critical components</li>
                   <li>• Remove unused dependencies and dead code</li>
@@ -209,18 +230,18 @@ export const withBundleOptimization = <P extends object>(
 ): React.FC<P> => {
   return (props: P) => {
     const { isOptimized } = usePerformance();
-    
+
     if (!isOptimized) {
       return (
-        <div className="flex items-center justify-center min-h-[200px]">
-          <div className="text-center">
-            <div className="inline-block animate-spin rounded-full h-8 w-8 border-t-2 border-b-2 border-electric-cyan-500 mb-3"></div>
-            <p className="text-electric-cyan-500">Optimizing bundle size...</p>
+        <div className='flex items-center justify-center min-h-[200px]'>
+          <div className='text-center'>
+            <div className='inline-block animate-spin rounded-full h-8 w-8 border-t-2 border-b-2 border-electric-cyan-500 mb-3'></div>
+            <p className='text-electric-cyan-500'>Optimizing bundle size...</p>
           </div>
         </div>
       );
     }
-    
+
     return <Component {...props} />;
   };
 };

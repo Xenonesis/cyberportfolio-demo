@@ -26,7 +26,7 @@ export const ResourceLoader: React.FC<ResourceLoaderProps> = ({
   useEffect(() => {
     if (isOptimized && criticalResources.length > 0) {
       const loadCriticalResources = async () => {
-        const promises = criticalResources.map(async (resource) => {
+        const promises = criticalResources.map(async resource => {
           try {
             if (resource.endsWith('.js')) {
               // For scripts, we'll fetch them instead of using dynamic import
@@ -45,7 +45,10 @@ export const ResourceLoader: React.FC<ResourceLoaderProps> = ({
               await fetch(resource);
             }
           } catch (error) {
-            console.warn(`Failed to load critical resource: ${resource}`, error);
+            console.warn(
+              `Failed to load critical resource: ${resource}`,
+              error
+            );
           }
         });
 
@@ -55,50 +58,52 @@ export const ResourceLoader: React.FC<ResourceLoaderProps> = ({
 
       loadCriticalResources();
     }
- }, [isOptimized, criticalResources]);
+  }, [isOptimized, criticalResources]);
 
-   // Render resource hints
-   const renderResourceHints = () => {
-     const hints: JSX.Element[] = [];
- 
-     // Preconnect hints
-     preconnectOrigins.forEach((origin, index) => {
-       hints.push(
-         <link key={`preconnect-${index}`} rel="preconnect" href={origin} />
-       );
-     });
- 
-     // Preload hints
-     preloadResources.forEach((resource, index) => {
-       const extension = resource.split('.').pop();
-       let asType: string | undefined;
-       
-       if (extension === 'js') asType = 'script';
-       else if (extension === 'css') asType = 'style';
-       else if (['jpg', 'jpeg', 'png', 'webp', 'gif'].includes(extension || '')) asType = 'image';
-       else if (['woff', 'woff2', 'ttf', 'otf'].includes(extension || '')) asType = 'font';
-       else if (['json', 'xml'].includes(extension || '')) asType = 'fetch';
- 
-       hints.push(
-         <link
-           key={`preload-${index}`}
-           rel="preload"
-           href={resource}
-           as={asType}
-           crossOrigin="anonymous"
-         />
-       );
-     });
- 
-     // Prefetch hints
-     prefetchResources.forEach((resource, index) => {
-       hints.push(
-         <link key={`prefetch-${index}`} rel="prefetch" href={resource} />
-       );
-     });
- 
-     return hints;
-   };
+  // Render resource hints
+  const renderResourceHints = () => {
+    const hints: JSX.Element[] = [];
+
+    // Preconnect hints
+    preconnectOrigins.forEach((origin, index) => {
+      hints.push(
+        <link key={`preconnect-${index}`} rel='preconnect' href={origin} />
+      );
+    });
+
+    // Preload hints
+    preloadResources.forEach((resource, index) => {
+      const extension = resource.split('.').pop();
+      let asType: string | undefined;
+
+      if (extension === 'js') asType = 'script';
+      else if (extension === 'css') asType = 'style';
+      else if (['jpg', 'jpeg', 'png', 'webp', 'gif'].includes(extension || ''))
+        asType = 'image';
+      else if (['woff', 'woff2', 'ttf', 'otf'].includes(extension || ''))
+        asType = 'font';
+      else if (['json', 'xml'].includes(extension || '')) asType = 'fetch';
+
+      hints.push(
+        <link
+          key={`preload-${index}`}
+          rel='preload'
+          href={resource}
+          as={asType}
+          crossOrigin='anonymous'
+        />
+      );
+    });
+
+    // Prefetch hints
+    prefetchResources.forEach((resource, index) => {
+      hints.push(
+        <link key={`prefetch-${index}`} rel='prefetch' href={resource} />
+      );
+    });
+
+    return hints;
+  };
 
   return (
     <>
@@ -107,8 +112,8 @@ export const ResourceLoader: React.FC<ResourceLoaderProps> = ({
 
       {/* Critical resource loading script */}
       <Script
-        id="resource-preloader"
-        strategy="beforeInteractive"
+        id='resource-preloader'
+        strategy='beforeInteractive'
         dangerouslySetInnerHTML={{
           __html: `
             // Preload critical resources based on device capabilities
@@ -153,16 +158,20 @@ export const ResourceLoader: React.FC<ResourceLoaderProps> = ({
 
       {/* Resource loading status indicator */}
       {!resourcesLoaded && criticalResources.length > 0 && (
-        <div className="fixed inset-0 bg-deep-navy-800 z-50 flex items-center justify-center">
-          <div className="text-center">
-            <div className="relative w-16 h-16 mx-auto mb-4">
-              <div className="absolute inset-0 rounded-full bg-electric-cyan-500 opacity-20 animate-ping"></div>
-              <div className="relative w-full h-full rounded-full bg-electric-cyan-500 flex items-center justify-center">
-                <div className="w-8 h-8 rounded-full bg-deep-navy-800"></div>
+        <div className='fixed inset-0 bg-deep-navy-800 z-50 flex items-center justify-center'>
+          <div className='text-center'>
+            <div className='relative w-16 h-16 mx-auto mb-4'>
+              <div className='absolute inset-0 rounded-full bg-electric-cyan-500 opacity-20 animate-ping'></div>
+              <div className='relative w-full h-full rounded-full bg-electric-cyan-500 flex items-center justify-center'>
+                <div className='w-8 h-8 rounded-full bg-deep-navy-800'></div>
               </div>
             </div>
-            <p className="text-electric-cyan-500 text-lg font-mono">Optimizing Resources...</p>
-            <p className="text-gray-400 text-sm mt-2">Preparing security protocols</p>
+            <p className='text-electric-cyan-500 text-lg font-mono'>
+              Optimizing Resources...
+            </p>
+            <p className='text-gray-400 text-sm mt-2'>
+              Preparing security protocols
+            </p>
           </div>
         </div>
       )}

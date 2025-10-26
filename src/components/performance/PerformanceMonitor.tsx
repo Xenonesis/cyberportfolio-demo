@@ -19,7 +19,9 @@ interface MemoryInfo {
   jsHeapSizeLimit: number;
 }
 
-export const PerformanceMonitor: React.FC<PerformanceMonitorProps> = ({ children }) => {
+export const PerformanceMonitor: React.FC<PerformanceMonitorProps> = ({
+  children,
+}) => {
   const { isOptimized } = usePerformance();
   const [metrics, setMetrics] = useState<PerformanceMetrics>({
     memoryUsage: null,
@@ -29,7 +31,7 @@ export const PerformanceMonitor: React.FC<PerformanceMonitorProps> = ({ children
   const [showMonitor, setShowMonitor] = useState(false);
 
   // Toggle monitor visibility with keyboard shortcut
- useEffect(() => {
+  useEffect(() => {
     const handleKeyDown = (e: KeyboardEvent) => {
       if (e.ctrlKey && e.key === 'm') {
         e.preventDefault();
@@ -48,9 +50,13 @@ export const PerformanceMonitor: React.FC<PerformanceMonitorProps> = ({ children
     // Monitor memory usage
     const measureMemory = () => {
       if ('memory' in performance) {
-        const memory = (performance as Performance & { memory?: MemoryInfo }).memory;
+        const memory = (performance as Performance & { memory?: MemoryInfo })
+          .memory;
         if (memory) {
-          setMetrics(prev => ({ ...prev, memoryUsage: memory.usedJSHeapSize / 1048576 }));
+          setMetrics(prev => ({
+            ...prev,
+            memoryUsage: memory.usedJSHeapSize / 1048576,
+          }));
         }
       }
     };
@@ -72,7 +78,9 @@ export const PerformanceMonitor: React.FC<PerformanceMonitorProps> = ({ children
     // Monitor network speed
     const measureNetworkSpeed = () => {
       if ('connection' in navigator) {
-        const connection = (navigator as Navigator & { connection?: { downlink: number } }).connection;
+        const connection = (
+          navigator as Navigator & { connection?: { downlink: number } }
+        ).connection;
         if (connection) {
           setMetrics(prev => ({ ...prev, networkSpeed: connection.downlink }));
         }
@@ -95,34 +103,40 @@ export const PerformanceMonitor: React.FC<PerformanceMonitorProps> = ({ children
   }
 
   return (
-    <div className="relative">
+    <div className='relative'>
       {/* Performance Monitor Overlay */}
-      <div className="fixed top-4 right-4 bg-deep-navy-500 border border-electric-cyan-500 rounded-lg p-4 shadow-lg z-50 max-w-xs w-full">
-        <div className="flex justify-between items-center mb-2">
-          <h3 className="text-electric-cyan-500 font-mono text-sm">Performance Monitor</h3>
-          <button 
+      <div className='fixed top-4 right-4 bg-deep-navy-500 border border-electric-cyan-500 rounded-lg p-4 shadow-lg z-50 max-w-xs w-full'>
+        <div className='flex justify-between items-center mb-2'>
+          <h3 className='text-electric-cyan-500 font-mono text-sm'>
+            Performance Monitor
+          </h3>
+          <button
             onClick={() => setShowMonitor(false)}
-            className="text-gray-400 hover:text-white text-lg"
+            className='text-gray-400 hover:text-white text-lg'
           >
             ×
           </button>
         </div>
-        
-        <div className="space-y-2 text-xs">
-          <div className="flex justify-between">
-            <span className="text-gray-300">Memory Usage:</span>
-            <span className="text-neon-green-500">
-              {metrics.memoryUsage ? `${metrics.memoryUsage.toFixed(2)} MB` : '...'}
+
+        <div className='space-y-2 text-xs'>
+          <div className='flex justify-between'>
+            <span className='text-gray-300'>Memory Usage:</span>
+            <span className='text-neon-green-500'>
+              {metrics.memoryUsage
+                ? `${metrics.memoryUsage.toFixed(2)} MB`
+                : '...'}
             </span>
           </div>
-          <div className="flex justify-between">
-            <span className="text-gray-300">FPS:</span>
-            <span className="text-neon-green-500">{metrics.fps || '...'}</span>
+          <div className='flex justify-between'>
+            <span className='text-gray-300'>FPS:</span>
+            <span className='text-neon-green-500'>{metrics.fps || '...'}</span>
           </div>
-          <div className="flex justify-between">
-            <span className="text-gray-30">Network Speed:</span>
-            <span className="text-neon-green-500">
-              {metrics.networkSpeed ? `${metrics.networkSpeed.toFixed(2)} Mbps` : '...'}
+          <div className='flex justify-between'>
+            <span className='text-gray-30'>Network Speed:</span>
+            <span className='text-neon-green-500'>
+              {metrics.networkSpeed
+                ? `${metrics.networkSpeed.toFixed(2)} Mbps`
+                : '...'}
             </span>
           </div>
         </div>

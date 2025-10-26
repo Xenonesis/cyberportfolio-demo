@@ -58,16 +58,16 @@ export const OptimizedImage: React.FC<ImageOptimizationProps> = ({
   return (
     <div className={`relative ${className}`}>
       {!isLoaded && !hasError && (
-        <div className="absolute inset-0 bg-navy-700 animate-pulse rounded" />
+        <div className='absolute inset-0 bg-navy-700 animate-pulse rounded' />
       )}
-      
+
       <img
         src={src}
         alt={alt}
         width={width}
         height={height}
         loading={priority ? 'eager' : 'lazy'}
-        decoding="async"
+        decoding='async'
         className={`
           ${className}
           ${isLoaded ? 'opacity-100' : 'opacity-0'}
@@ -76,10 +76,10 @@ export const OptimizedImage: React.FC<ImageOptimizationProps> = ({
         onLoad={() => setIsLoaded(true)}
         onError={() => setHasError(true)}
       />
-      
+
       {hasError && (
-        <div className="absolute inset-0 bg-navy-700 flex items-center justify-center">
-          <span className="text-gray-400 text-sm">Image not available</span>
+        <div className='absolute inset-0 bg-navy-700 flex items-center justify-center'>
+          <span className='text-gray-400 text-sm'>Image not available</span>
         </div>
       )}
     </div>
@@ -92,11 +92,9 @@ interface IntersectionObserverProps {
   rootMargin?: string;
 }
 
-export const IntersectionObserverWrapper: React.FC<IntersectionObserverProps> = ({
-  children,
-  threshold = 0.5,
-  rootMargin = '0px',
-}) => {
+export const IntersectionObserverWrapper: React.FC<
+  IntersectionObserverProps
+> = ({ children, threshold = 0.5, rootMargin = '0px' }) => {
   const ref = useRef<HTMLDivElement>(null);
   const [isIntersecting, setIsIntersecting] = useState(false);
 
@@ -118,11 +116,7 @@ export const IntersectionObserverWrapper: React.FC<IntersectionObserverProps> = 
     };
   }, [threshold, rootMargin]);
 
-  return (
-    <div ref={ref}>
-      {children(isIntersecting)}
-    </div>
-  );
+  return <div ref={ref}>{children(isIntersecting)}</div>;
 };
 
 interface PerformanceMetricsProps {
@@ -143,10 +137,10 @@ export const PerformanceMetrics: React.FC<PerformanceMetricsProps> = ({
 
     const calculateMetrics = () => {
       const loadTime = performance.now() - startTime;
-      
+
       // Simulate render time measurement
       const renderTime = Math.random() * 100 + 50;
-      
+
       // Simulate interaction time measurement
       const interactionTime = Math.random() * 200 + 100;
 
@@ -156,7 +150,10 @@ export const PerformanceMetrics: React.FC<PerformanceMetricsProps> = ({
         interactionTime: Math.round(interactionTime),
       };
 
-      onMetricsUpdate?.(metrics);
+      // Only call onMetricsUpdate if it's provided
+      if (onMetricsUpdate) {
+        onMetricsUpdate(metrics);
+      }
 
       // Send metrics to analytics (would be implemented with real analytics service)
       if (typeof (window as any).gtag !== 'undefined') {
@@ -175,7 +172,7 @@ export const PerformanceMetrics: React.FC<PerformanceMetricsProps> = ({
       window.addEventListener('load', calculateMetrics);
       return () => window.removeEventListener('load', calculateMetrics);
     }
-  }, [onMetricsUpdate]);
+  }, []); // Remove onMetricsUpdate from dependencies since we check if it exists
 
   return null;
 };
@@ -195,7 +192,7 @@ export const ResourceHints: React.FC<ResourceHintsProps> = ({ resources }) => {
       {resources.map((resource, index) => (
         <link
           key={index}
-          rel="preload"
+          rel='preload'
           href={resource.href}
           as={resource.as}
           type={resource.type}
@@ -291,17 +288,17 @@ export const VirtualScroller: React.FC<VirtualScrollerProps> = ({
     <div
       className={`overflow-auto ${className}`}
       style={{ height: containerHeight }}
-      onScroll={(e) => setScrollTop(e.currentTarget.scrollTop)}
+      onScroll={e => setScrollTop(e.currentTarget.scrollTop)}
     >
       <div
-        className="relative"
+        className='relative'
         style={{
           height: items.length * itemHeight,
           width: '100%',
         }}
       >
         <div
-          className="absolute"
+          className='absolute'
           style={{
             top: startIndex * itemHeight,
             width: '100%',

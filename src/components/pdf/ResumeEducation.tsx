@@ -150,7 +150,7 @@ export const ResumeEducation = () => {
       <Text style={styles.sectionTitle}>Education & Certifications</Text>
 
       {/* Education */}
-      {EDUCATION.map((edu) => (
+      {EDUCATION.map(edu => (
         <View key={edu.id} style={styles.educationItem}>
           <View style={styles.educationHeader}>
             <Text style={styles.educationDegree}>{edu.degree}</Text>
@@ -159,9 +159,7 @@ export const ResumeEducation = () => {
 
           <Text style={styles.educationInstitution}>{edu.institution}</Text>
 
-          <Text style={styles.educationDescription}>
-            {edu.description}
-          </Text>
+          <Text style={styles.educationDescription}>{edu.description}</Text>
 
           {edu.honors && edu.honors.length > 0 && (
             <View style={styles.honorsSection}>
@@ -180,10 +178,15 @@ export const ResumeEducation = () => {
 
       {/* Certifications */}
       <View style={styles.certificationsSection}>
-        <Text style={styles.certificationsTitle}>Professional Certifications</Text>
+        <Text style={styles.certificationsTitle}>
+          Professional Certifications
+        </Text>
 
-        {CERTIFICATIONS.map((cert) => (
-          <View key={cert.id} style={[styles.certificationItem, { position: 'relative' }]}>
+        {CERTIFICATIONS.map(cert => (
+          <View
+            key={cert.id}
+            style={[styles.certificationItem, { position: 'relative' }]}
+          >
             <View style={styles.certificationHeader}>
               <Text style={styles.certificationTitle}>{cert.title}</Text>
               <Text style={styles.certificationDate}>{cert.date}</Text>
@@ -199,7 +202,14 @@ export const ResumeEducation = () => {
               <Text style={styles.certificationStatus}>COMPLETED</Text>
             )}
             {cert.status === 'in-progress' && (
-              <Text style={[styles.certificationStatus, { backgroundColor: '#00FFFF' }]}>IN PROGRESS</Text>
+              <Text
+                style={[
+                  styles.certificationStatus,
+                  { backgroundColor: '#00FFFF' },
+                ]}
+              >
+                IN PROGRESS
+              </Text>
             )}
           </View>
         ))}

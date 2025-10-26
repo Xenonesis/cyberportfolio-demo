@@ -29,9 +29,11 @@ export const BreadcrumbNavigation = ({
   const [currentUrl, setCurrentUrl] = useState('');
 
   useEffect(() => {
-    const path = currentPath || (typeof window !== 'undefined' ? window.location.pathname : '');
+    const path =
+      currentPath ||
+      (typeof window !== 'undefined' ? window.location.pathname : '');
     setCurrentUrl(path);
-    
+
     if (customItems) {
       setBreadcrumbs(customItems);
     } else {
@@ -78,15 +80,15 @@ export const BreadcrumbNavigation = ({
   const formatBreadcrumbName = (segment: string): string => {
     // Special cases for common segments
     const specialCases: Record<string, string> = {
-      'about': 'About',
-      'services': 'Services',
+      about: 'About',
+      services: 'Services',
       'case-studies': 'Case Studies',
-      'portfolio': 'Portfolio',
-      'blog': 'Blog',
-      'contact': 'Contact',
-      'certifications': 'Certifications',
+      portfolio: 'Portfolio',
+      blog: 'Blog',
+      contact: 'Contact',
+      certifications: 'Certifications',
       'career-timeline': 'Career Timeline',
-      'skills': 'Skills',
+      skills: 'Skills',
     };
 
     if (specialCases[segment]) {
@@ -94,9 +96,7 @@ export const BreadcrumbNavigation = ({
     }
 
     // Convert kebab-case or snake_case to Title Case
-    return segment
-      .replace(/[-_]/g, ' ')
-      .replace(/\b\w/g, l => l.toUpperCase());
+    return segment.replace(/[-_]/g, ' ').replace(/\b\w/g, l => l.toUpperCase());
   };
 
   if (breadcrumbs.length <= 1) {
@@ -106,12 +106,12 @@ export const BreadcrumbNavigation = ({
   return (
     <nav
       className={`breadcrumb-navigation ${className}`}
-      aria-label="Breadcrumb"
-      role="navigation"
+      aria-label='Breadcrumb'
+      role='navigation'
     >
       {showSchema && (
         <SchemaMarkup
-          pageType="breadcrumb"
+          pageType='breadcrumb'
           breadcrumbList={breadcrumbs.map(item => ({
             name: item.name,
             url: item.url,
@@ -119,41 +119,45 @@ export const BreadcrumbNavigation = ({
         />
       )}
 
-      <ol className="breadcrumb-list" itemScope itemType="https://schema.org/BreadcrumbList">
+      <ol
+        className='breadcrumb-list'
+        itemScope
+        itemType='https://schema.org/BreadcrumbList'
+      >
         {breadcrumbs.map((item, index) => (
           <li
             key={item.url}
             className={`breadcrumb-item ${index === breadcrumbs.length - 1 ? 'current' : ''}`}
             itemScope
-            itemProp="itemListElement"
-            itemType="https://schema.org/ListItem"
+            itemProp='itemListElement'
+            itemType='https://schema.org/ListItem'
           >
             {index > 0 && (
-              <span className="breadcrumb-separator" aria-hidden="true">
+              <span className='breadcrumb-separator' aria-hidden='true'>
                 {separator}
               </span>
             )}
-            
+
             {index < breadcrumbs.length - 1 ? (
               <a
                 href={item.url}
-                className="breadcrumb-link"
-                itemProp="item"
+                className='breadcrumb-link'
+                itemProp='item'
                 aria-label={`Go to ${item.name}`}
               >
-                <span itemProp="name">{item.name}</span>
+                <span itemProp='name'>{item.name}</span>
               </a>
             ) : (
               <span
-                className="breadcrumb-current"
-                itemProp="item"
-                aria-current="page"
+                className='breadcrumb-current'
+                itemProp='item'
+                aria-current='page'
               >
-                <span itemProp="name">{item.name}</span>
+                <span itemProp='name'>{item.name}</span>
               </span>
             )}
-            
-            <meta itemProp="position" content={item.position.toString()} />
+
+            <meta itemProp='position' content={item.position.toString()} />
           </li>
         ))}
       </ol>

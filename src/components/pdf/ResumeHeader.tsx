@@ -87,7 +87,9 @@ export const ResumeHeader = () => {
   return (
     <View style={styles.header}>
       <Text style={styles.name}>Aditya Kumar Tiwari</Text>
-      <Text style={styles.title}>Cybersecurity Expert & Full-Stack Developer</Text>
+      <Text style={styles.title}>
+        Cybersecurity Expert & Full-Stack Developer
+      </Text>
 
       <View style={styles.contactGrid}>
         <View style={styles.contactItem}>
@@ -104,11 +106,15 @@ export const ResumeHeader = () => {
         </View>
         <View style={styles.contactItem}>
           <Text style={styles.contactLabel}>LinkedIn:</Text>
-          <Text style={styles.contactValue}>linkedin.com/in/aditya-cybersecurity</Text>
+          <Text style={styles.contactValue}>
+            linkedin.com/in/aditya-cybersecurity
+          </Text>
         </View>
         <View style={styles.contactItem}>
           <Text style={styles.contactLabel}>GitHub:</Text>
-          <Text style={styles.contactValue}>github.com/aditya-cybersecurity</Text>
+          <Text style={styles.contactValue}>
+            github.com/aditya-cybersecurity
+          </Text>
         </View>
       </View>
 

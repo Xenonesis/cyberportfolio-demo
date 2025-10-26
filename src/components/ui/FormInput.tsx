@@ -36,10 +36,12 @@ export const FormInput = ({
 }: FormInputProps) => {
   const [isFocused, setIsFocused] = useState(false);
 
-  const baseClasses = 'w-full px-4 py-3 bg-navy-700 border rounded-md text-white placeholder-gray-400 focus:outline-none transition-all duration-300';
-  
+  const baseClasses =
+    'w-full px-4 py-3 bg-navy-700 border rounded-md text-white placeholder-gray-400 focus:outline-none transition-all duration-300';
+
   const stateClasses = {
-    default: 'border-navy-600 focus:border-cyan-500 focus:ring-2 focus:ring-cyan-400/50',
+    default:
+      'border-navy-600 focus:border-cyan-500 focus:ring-2 focus:ring-cyan-400/50',
     focused: 'border-cyan-500 ring-2 ring-cyan-400/50',
     error: 'border-red-500 focus:border-red-500 focus:ring-red-400/50',
     disabled: 'border-navy-700 bg-navy-800 text-gray-500 cursor-not-allowed',
@@ -55,14 +57,17 @@ export const FormInput = ({
   const inputClasses = `${baseClasses} ${getStateClass()} ${className}`;
 
   return (
-    <motion.div className="w-full">
+    <motion.div className='w-full'>
       {label && (
-        <label htmlFor={name} className="block text-sm font-medium text-gray-300 mb-2">
+        <label
+          htmlFor={name}
+          className='block text-sm font-medium text-gray-300 mb-2'
+        >
           {label}
-          {required && <span className="text-red-500 ml-1">*</span>}
+          {required && <span className='text-red-500 ml-1'>*</span>}
         </label>
       )}
-      
+
       <input
         type={type}
         name={name}
@@ -73,30 +78,30 @@ export const FormInput = ({
         required={required}
         disabled={disabled}
         onChange={onChange}
-        onBlur={(e) => {
+        onBlur={e => {
           setIsFocused(false);
           onBlur?.(e);
         }}
         onFocus={() => setIsFocused(true)}
         className={inputClasses}
       />
-      
+
       {error && (
         <motion.p
           initial={{ opacity: 0, y: -5 }}
           animate={{ opacity: 1, y: 0 }}
-          className="mt-2 text-sm text-red-400 flex items-center"
+          className='mt-2 text-sm text-red-400 flex items-center'
         >
-          <div className="w-4 h-4 mr-1">
+          <div className='w-4 h-4 mr-1'>
             {/* Error icon */}
-            <div className="w-full h-full bg-red-400 rounded-sm"></div>
+            <div className='w-full h-full bg-red-400 rounded-sm'></div>
           </div>
           {error}
         </motion.p>
       )}
-      
+
       {helpText && !error && (
-        <p className="mt-2 text-sm text-gray-400">{helpText}</p>
+        <p className='mt-2 text-sm text-gray-400'>{helpText}</p>
       )}
     </motion.div>
   );

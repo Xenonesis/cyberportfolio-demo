@@ -63,14 +63,16 @@ export const TestimonialsSEO: React.FC<TestimonialsSEOProps> = ({
   const generateMetaDescription = () => {
     const topTestimonials = testimonials.slice(0, 3);
     const companies = topTestimonials.map(t => t.company).join(', ');
-    const averageRating = testimonials.reduce((sum, t) => sum + t.rating, 0) / testimonials.length;
-    
+    const averageRating =
+      testimonials.reduce((sum, t) => sum + t.rating, 0) / testimonials.length;
+
     return `Read ${testimonials.length} verified client testimonials for Aditya Kumar Tiwari's cybersecurity services. ${companies} and ${testimonials.length - 3}+ other clients trust our security expertise. ${averageRating.toFixed(1)}★ rating.`;
   };
 
   // Generate Open Graph data
   const generateOpenGraphData = () => ({
-    title: 'Client Testimonials & Security Success Stories - Aditya Kumar Tiwari',
+    title:
+      'Client Testimonials & Security Success Stories - Aditya Kumar Tiwari',
     description: generateMetaDescription(),
     url: `https://aditya-cybersecurity.com/testimonials${currentPage > 1 ? `?page=${currentPage}` : ''}`,
     type: 'website',
@@ -91,9 +93,14 @@ export const TestimonialsSEO: React.FC<TestimonialsSEOProps> = ({
       ogTitle.setAttribute('content', generateOpenGraphData().title);
     }
 
-    const ogDescription = document.querySelector('meta[property="og:description"]');
+    const ogDescription = document.querySelector(
+      'meta[property="og:description"]'
+    );
     if (ogDescription) {
-      ogDescription.setAttribute('content', generateOpenGraphData().description);
+      ogDescription.setAttribute(
+        'content',
+        generateOpenGraphData().description
+      );
     }
 
     const ogUrl = document.querySelector('meta[property="og:url"]');
@@ -112,9 +119,14 @@ export const TestimonialsSEO: React.FC<TestimonialsSEOProps> = ({
       twitterTitle.setAttribute('content', generateOpenGraphData().title);
     }
 
-    const twitterDescription = document.querySelector('meta[name="twitter:description"]');
+    const twitterDescription = document.querySelector(
+      'meta[name="twitter:description"]'
+    );
     if (twitterDescription) {
-      twitterDescription.setAttribute('content', generateOpenGraphData().description);
+      twitterDescription.setAttribute(
+        'content',
+        generateOpenGraphData().description
+      );
     }
 
     const twitterImage = document.querySelector('meta[name="twitter:image"]');
@@ -130,7 +142,7 @@ export const TestimonialsSEO: React.FC<TestimonialsSEOProps> = ({
       (schemaScript as HTMLScriptElement).type = 'application/ld+json';
       document.head.appendChild(schemaScript);
     }
-    
+
     schemaScript.textContent = JSON.stringify(generateTestimonialSchema());
 
     return () => {
@@ -159,9 +171,9 @@ export const TestimonialsPerformanceMonitor: React.FC<{
     const startTime = performance.now();
 
     // Monitor component performance
-    const observer = new PerformanceObserver((list) => {
+    const observer = new PerformanceObserver(list => {
       const entries = list.getEntries();
-      entries.forEach((entry) => {
+      entries.forEach(entry => {
         if (entry.entryType === 'measure') {
           setPerformanceMetrics(prev => ({
             ...prev,
@@ -175,12 +187,16 @@ export const TestimonialsPerformanceMonitor: React.FC<{
 
     // Performance mark for component load
     performance.mark('testimonials-section-start');
-    
+
     // Simulate render completion
     setTimeout(() => {
       performance.mark('testimonials-section-end');
-      performance.measure('testimonials-section-render', 'testimonials-section-start', 'testimonials-section-end');
-      
+      performance.measure(
+        'testimonials-section-render',
+        'testimonials-section-start',
+        'testimonials-section-end'
+      );
+
       const endTime = performance.now();
       setPerformanceMetrics(prev => ({
         ...prev,
@@ -191,7 +207,9 @@ export const TestimonialsPerformanceMonitor: React.FC<{
       if (onPerformanceUpdate) {
         onPerformanceUpdate({
           loadTime: endTime - startTime,
-          renderTime: performance.getEntriesByName('testimonials-section-render')[0]?.duration || 0,
+          renderTime:
+            performance.getEntriesByName('testimonials-section-render')[0]
+              ?.duration || 0,
           testimonialsCount: testimonials.length,
         });
       }
@@ -201,9 +219,12 @@ export const TestimonialsPerformanceMonitor: React.FC<{
   }, [testimonials, onPerformanceUpdate]);
 
   return (
-    <div className="hidden">
+    <div className='hidden'>
       {/* Performance metrics for debugging */}
-      <div data-testid="performance-metrics" data-metrics={JSON.stringify(performanceMetrics)} />
+      <div
+        data-testid='performance-metrics'
+        data-metrics={JSON.stringify(performanceMetrics)}
+      />
     </div>
   );
 };
@@ -354,9 +375,12 @@ export const TestimonialsAnalytics: React.FC<{
   }, [testimonials, onEvent]);
 
   return (
-    <div className="hidden">
+    <div className='hidden'>
       {/* Analytics data for debugging */}
-      <div data-testid="analytics-data" data-engagement={JSON.stringify(engagementData)} />
+      <div
+        data-testid='analytics-data'
+        data-engagement={JSON.stringify(engagementData)}
+      />
     </div>
   );
 };
@@ -389,8 +413,12 @@ export const TestimonialLazyLoader: React.FC<{
   }, [threshold, rootMargin]);
 
   return (
-    <div ref={ref} className="w-full">
-      {isVisible ? children : <div className="w-full h-64 bg-deep-navy-800 animate-pulse rounded-xl" />}
+    <div ref={ref} className='w-full'>
+      {isVisible ? (
+        children
+      ) : (
+        <div className='w-full h-64 bg-deep-navy-800 animate-pulse rounded-xl' />
+      )}
     </div>
   );
 };
@@ -410,7 +438,9 @@ export const OptimizedTestimonialGrid: React.FC<{
       const threshold = document.documentElement.scrollHeight - 1000;
 
       if (scrollPosition >= threshold && visibleItems < testimonials.length) {
-        setVisibleItems(prev => Math.min(prev + itemsPerRow * 2, testimonials.length));
+        setVisibleItems(prev =>
+          Math.min(prev + itemsPerRow * 2, testimonials.length)
+        );
       }
     };
 
@@ -419,30 +449,38 @@ export const OptimizedTestimonialGrid: React.FC<{
   }, [visibleItems, testimonials.length, itemsPerRow]);
 
   return (
-    <div className="grid gap-8 md:grid-cols-2 lg:grid-cols-3">
+    <div className='grid gap-8 md:grid-cols-2 lg:grid-cols-3'>
       {testimonials.slice(0, visibleItems).map((testimonial, index) => (
         <React.Fragment key={testimonial.id}>
           {renderItem(testimonial)}
         </React.Fragment>
       ))}
-      
+
       {/* Loading skeleton for remaining items */}
       {visibleItems < testimonials.length && (
-        <div className="grid gap-8 md:grid-cols-2 lg:grid-cols-3">
-          {Array.from({ length: Math.min(itemsPerRow * 2, testimonials.length - visibleItems) }).map((_, index) => (
-            <div key={`skeleton-${index}`} className="bg-deep-navy-800 border border-deep-navy-600 rounded-xl overflow-hidden">
-              <div className="p-6">
-                <div className="flex items-center space-x-3 mb-4">
-                  <div className="w-12 h-12 bg-deep-navy-700 rounded-full animate-pulse" />
-                  <div className="flex-1">
-                    <div className="h-4 bg-deep-navy-700 rounded animate-pulse mb-2" />
-                    <div className="h-3 bg-deep-navy-700 rounded animate-pulse w-3/4" />
+        <div className='grid gap-8 md:grid-cols-2 lg:grid-cols-3'>
+          {Array.from({
+            length: Math.min(
+              itemsPerRow * 2,
+              testimonials.length - visibleItems
+            ),
+          }).map((_, index) => (
+            <div
+              key={`skeleton-${index}`}
+              className='bg-deep-navy-800 border border-deep-navy-600 rounded-xl overflow-hidden'
+            >
+              <div className='p-6'>
+                <div className='flex items-center space-x-3 mb-4'>
+                  <div className='w-12 h-12 bg-deep-navy-700 rounded-full animate-pulse' />
+                  <div className='flex-1'>
+                    <div className='h-4 bg-deep-navy-700 rounded animate-pulse mb-2' />
+                    <div className='h-3 bg-deep-navy-700 rounded animate-pulse w-3/4' />
                   </div>
                 </div>
-                <div className="space-y-2">
-                  <div className="h-3 bg-deep-navy-700 rounded animate-pulse" />
-                  <div className="h-3 bg-deep-navy-700 rounded animate-pulse w-5/6" />
-                  <div className="h-3 bg-deep-navy-700 rounded animate-pulse w-4/6" />
+                <div className='space-y-2'>
+                  <div className='h-3 bg-deep-navy-700 rounded animate-pulse' />
+                  <div className='h-3 bg-deep-navy-700 rounded animate-pulse w-5/6' />
+                  <div className='h-3 bg-deep-navy-700 rounded animate-pulse w-4/6' />
                 </div>
               </div>
             </div>

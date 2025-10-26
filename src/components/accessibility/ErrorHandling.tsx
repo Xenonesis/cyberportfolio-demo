@@ -1,6 +1,12 @@
-"use client";
+'use client';
 
-import React, { createContext, useContext, useState, ReactNode, useRef } from 'react';
+import React, {
+  createContext,
+  useContext,
+  useState,
+  ReactNode,
+  useRef,
+} from 'react';
 import { useAccessibility } from './AccessibilityProvider';
 
 interface ValidationRule {
@@ -21,19 +27,33 @@ interface ValidationResult {
 
 interface ErrorHandlingContextType {
   // Form validation
-  validateField: (fieldName: string, value: any, rules?: ValidationRule[]) => ValidationResult;
-  validateForm: (formData: Record<string, any>, rules?: ValidationRule[]) => ValidationResult[];
+  validateField: (
+    fieldName: string,
+    value: any,
+    rules?: ValidationRule[]
+  ) => ValidationResult;
+  validateForm: (
+    formData: Record<string, any>,
+    rules?: ValidationRule[]
+  ) => ValidationResult[];
   addValidationRule: (rule: ValidationRule) => void;
   removeValidationRule: (ruleId: string) => void;
   getValidationRules: (fieldName?: string) => ValidationRule[];
 
   // Error recovery
-  suggestCorrection: (fieldName: string, value: any, error: ValidationResult) => string[];
+  suggestCorrection: (
+    fieldName: string,
+    value: any,
+    error: ValidationResult
+  ) => string[];
   autoCorrect: (fieldName: string, value: any, error: ValidationResult) => any;
 
   // Accessibility announcements
   announceValidation: (results: ValidationResult[]) => void;
-  announceError: (message: string, severity?: 'error' | 'warning' | 'info') => void;
+  announceError: (
+    message: string,
+    severity?: 'error' | 'warning' | 'info'
+  ) => void;
 
   // Form state management
   formErrors: Record<string, ValidationResult[]>;
@@ -42,10 +62,15 @@ interface ErrorHandlingContextType {
 
   // Security validation
   validateSecurityInput: (fieldName: string, value: string) => ValidationResult;
-  sanitizeInput: (value: string, type?: 'text' | 'email' | 'url' | 'password') => string;
+  sanitizeInput: (
+    value: string,
+    type?: 'text' | 'email' | 'url' | 'password'
+  ) => string;
 }
 
-const ErrorHandlingContext = createContext<ErrorHandlingContextType | undefined>(undefined);
+const ErrorHandlingContext = createContext<
+  ErrorHandlingContextType | undefined
+>(undefined);
 
 interface ErrorHandlingProps {
   children: ReactNode;
@@ -76,7 +101,8 @@ export const ErrorHandling: React.FC<ErrorHandlingProps> = ({
     {
       id: 'required-field',
       field: '*',
-      rule: (value: any) => value !== null && value !== undefined && value !== '',
+      rule: (value: any) =>
+        value !== null && value !== undefined && value !== '',
       message: 'This field is required',
       severity: 'error',
       preventSubmission: true,
@@ -92,7 +118,8 @@ export const ErrorHandling: React.FC<ErrorHandlingProps> = ({
     {
       id: 'phone-format',
       field: 'phone',
-      rule: (value: string) => /^[\+]?[1-9][\d]{0,15}$/.test(value.replace(/[\s\-\(\)]/g, '')),
+      rule: (value: string) =>
+        /^[\+]?[1-9][\d]{0,15}$/.test(value.replace(/[\s\-\(\)]/g, '')),
       message: 'Please enter a valid phone number',
       severity: 'warning',
       preventSubmission: false,
@@ -116,7 +143,9 @@ export const ErrorHandling: React.FC<ErrorHandlingProps> = ({
     ...customValidationRules,
   ]);
 
-  const [formErrors, setFormErrorsState] = useState<Record<string, ValidationResult[]>>({});
+  const [formErrors, setFormErrorsState] = useState<
+    Record<string, ValidationResult[]>
+  >({});
   const liveRegionRef = useRef<HTMLDivElement>(null);
 
   // Add validation rule
@@ -132,11 +161,17 @@ export const ErrorHandling: React.FC<ErrorHandlingProps> = ({
   // Get validation rules for a field
   const getValidationRules = (fieldName?: string): ValidationRule[] => {
     if (!fieldName) return validationRules;
-    return validationRules.filter(rule => rule.field === fieldName || rule.field === '*');
+    return validationRules.filter(
+      rule => rule.field === fieldName || rule.field === '*'
+    );
   };
 
   // Validate single field
-  const validateField = (fieldName: string, value: any, rules?: ValidationRule[]): ValidationResult => {
+  const validateField = (
+    fieldName: string,
+    value: any,
+    rules?: ValidationRule[]
+  ): ValidationResult => {
     const applicableRules = rules || getValidationRules(fieldName);
 
     for (const rule of applicableRules) {
@@ -160,7 +195,10 @@ export const ErrorHandling: React.FC<ErrorHandlingProps> = ({
   };
 
   // Validate entire form
-  const validateForm = (formData: Record<string, any>, rules?: ValidationRule[]): ValidationResult[] => {
+  const validateForm = (
+    formData: Record<string, any>,
+    rules?: ValidationRule[]
+  ): ValidationResult[] => {
     const results: ValidationResult[] = [];
     const applicableRules = rules || validationRules;
 
@@ -175,7 +213,11 @@ export const ErrorHandling: React.FC<ErrorHandlingProps> = ({
   };
 
   // Suggest corrections for validation errors
-  const suggestCorrection = (fieldName: string, value: any, error: ValidationResult): string[] => {
+  const suggestCorrection = (
+    fieldName: string,
+    value: any,
+    error: ValidationResult
+  ): string[] => {
     const suggestions: string[] = [];
 
     switch (fieldName) {
@@ -189,7 +231,9 @@ export const ErrorHandling: React.FC<ErrorHandlingProps> = ({
 
       case 'phone':
         if (error.message?.includes('phone number')) {
-          suggestions.push('Enter numbers only, no spaces or special characters');
+          suggestions.push(
+            'Enter numbers only, no spaces or special characters'
+          );
           suggestions.push('Include country code for international numbers');
           suggestions.push('Example: +1234567890');
         }
@@ -219,7 +263,11 @@ export const ErrorHandling: React.FC<ErrorHandlingProps> = ({
   };
 
   // Auto-correct common errors
-  const autoCorrect = (fieldName: string, value: any, error: ValidationResult): any => {
+  const autoCorrect = (
+    fieldName: string,
+    value: any,
+    error: ValidationResult
+  ): any => {
     if (!enableAutoCorrection) return value;
 
     switch (fieldName) {
@@ -256,7 +304,9 @@ export const ErrorHandling: React.FC<ErrorHandlingProps> = ({
     if (!enableValidationAnnouncements || !liveRegionRef.current) return;
 
     const errorCount = results.filter(r => !r.isValid).length;
-    const warningCount = results.filter(r => r.severity === 'warning' && !r.isValid).length;
+    const warningCount = results.filter(
+      r => r.severity === 'warning' && !r.isValid
+    ).length;
 
     let announcement = '';
 
@@ -283,11 +333,18 @@ export const ErrorHandling: React.FC<ErrorHandlingProps> = ({
   };
 
   // Announce individual errors
-  const announceError = (message: string, severity: 'error' | 'warning' | 'info' = 'error') => {
+  const announceError = (
+    message: string,
+    severity: 'error' | 'warning' | 'info' = 'error'
+  ) => {
     if (!enableValidationAnnouncements || !liveRegionRef.current) return;
 
-    const prefix = severity === 'error' ? 'Error: ' :
-                  severity === 'warning' ? 'Warning: ' : 'Info: ';
+    const prefix =
+      severity === 'error'
+        ? 'Error: '
+        : severity === 'warning'
+          ? 'Warning: '
+          : 'Info: ';
 
     liveRegionRef.current.textContent = prefix + message;
     setTimeout(() => {
@@ -299,7 +356,12 @@ export const ErrorHandling: React.FC<ErrorHandlingProps> = ({
     // Add to accessibility errors - the addError function handles id and timestamp internally
     accessibilityContext.addError({
       message,
-      type: severity === 'error' ? 'critical' : severity === 'warning' ? 'warning' : 'info',
+      type:
+        severity === 'error'
+          ? 'critical'
+          : severity === 'warning'
+            ? 'warning'
+            : 'info',
       element: 'form-validation',
     } as any);
   };
@@ -324,7 +386,10 @@ export const ErrorHandling: React.FC<ErrorHandlingProps> = ({
   };
 
   // Security input validation
-  const validateSecurityInput = (fieldName: string, value: string): ValidationResult => {
+  const validateSecurityInput = (
+    fieldName: string,
+    value: string
+  ): ValidationResult => {
     if (!enableSecurityValidation) {
       return { field: fieldName, isValid: true };
     }
@@ -355,7 +420,9 @@ export const ErrorHandling: React.FC<ErrorHandlingProps> = ({
       const hasLowerCase = /[a-z]/.test(value);
       const hasUpperCase = /[A-Z]/.test(value);
       const hasNumbers = /\d/.test(value);
-      const hasSpecialChars = /[!@#$%^&*()_+\-=\[\]{};':"\\|,.<>\/?]/.test(value);
+      const hasSpecialChars = /[!@#$%^&*()_+\-=\[\]{};':"\\|,.<>\/?]/.test(
+        value
+      );
 
       if (value.length < 8) {
         return {
@@ -370,7 +437,8 @@ export const ErrorHandling: React.FC<ErrorHandlingProps> = ({
         return {
           field: fieldName,
           isValid: false,
-          message: 'Password must contain uppercase, lowercase, and numeric characters',
+          message:
+            'Password must contain uppercase, lowercase, and numeric characters',
           severity: 'warning',
         };
       }
@@ -389,7 +457,10 @@ export const ErrorHandling: React.FC<ErrorHandlingProps> = ({
   };
 
   // Input sanitization
-  const sanitizeInput = (value: string, type: 'text' | 'email' | 'url' | 'password' = 'text'): string => {
+  const sanitizeInput = (
+    value: string,
+    type: 'text' | 'email' | 'url' | 'password' = 'text'
+  ): string => {
     if (!enableSecurityValidation) return value;
 
     let sanitized = value;
@@ -444,14 +515,14 @@ export const ErrorHandling: React.FC<ErrorHandlingProps> = ({
 
   return (
     <ErrorHandlingContext.Provider value={contextValue}>
-      <div className="error-handling-container">
+      <div className='error-handling-container'>
         {/* Live region for screen reader announcements */}
         <div
           ref={liveRegionRef}
-          aria-live="polite"
-          aria-atomic="true"
-          className="sr-only"
-          role="status"
+          aria-live='polite'
+          aria-atomic='true'
+          className='sr-only'
+          role='status'
         />
         {children}
       </div>
@@ -462,7 +533,9 @@ export const ErrorHandling: React.FC<ErrorHandlingProps> = ({
 export const useErrorHandling = (): ErrorHandlingContextType => {
   const context = useContext(ErrorHandlingContext);
   if (!context) {
-    throw new Error('useErrorHandling must be used within an ErrorHandling provider');
+    throw new Error(
+      'useErrorHandling must be used within an ErrorHandling provider'
+    );
   }
   return context;
 };
@@ -495,16 +568,27 @@ export const ValidatedFormField: React.FC<ValidatedFormFieldProps> = ({
   showSuggestions = true,
   autoCorrect = true,
 }) => {
-  const { validateField, validateSecurityInput, suggestCorrection, autoCorrect: autoCorrectFn, sanitizeInput } = useErrorHandling();
+  const {
+    validateField,
+    validateSecurityInput,
+    suggestCorrection,
+    autoCorrect: autoCorrectFn,
+    sanitizeInput,
+  } = useErrorHandling();
   const [error, setError] = useState<ValidationResult | null>(null);
   const [suggestions, setSuggestions] = useState<string[]>([]);
   const [touched, setTouched] = useState(false);
 
-  const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
+  const handleChange = (
+    e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>
+  ) => {
     let newValue = e.target.value;
 
     // Sanitize input
-    newValue = sanitizeInput(newValue, type as 'text' | 'email' | 'url' | 'password');
+    newValue = sanitizeInput(
+      newValue,
+      type as 'text' | 'email' | 'url' | 'password'
+    );
 
     // Auto-correct if enabled
     if (autoCorrect && error && !error.isValid) {
@@ -552,9 +636,16 @@ export const ValidatedFormField: React.FC<ValidatedFormFieldProps> = ({
   return (
     <div className={`validated-form-field ${className}`}>
       {label && (
-        <label htmlFor={fieldId} className="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-1">
+        <label
+          htmlFor={fieldId}
+          className='block text-sm font-medium text-gray-700 dark:text-gray-300 mb-1'
+        >
           {label}
-          {required && <span className="text-red-500 ml-1" aria-label="required">*</span>}
+          {required && (
+            <span className='text-red-500 ml-1' aria-label='required'>
+              *
+            </span>
+          )}
         </label>
       )}
 
@@ -595,23 +686,28 @@ export const ValidatedFormField: React.FC<ValidatedFormFieldProps> = ({
         <div
           id={errorId}
           className={`mt-1 text-sm ${
-            error.severity === 'error' ? 'text-red-600' :
-            error.severity === 'warning' ? 'text-yellow-600' : 'text-blue-600'
+            error.severity === 'error'
+              ? 'text-red-600'
+              : error.severity === 'warning'
+                ? 'text-yellow-600'
+                : 'text-blue-600'
           }`}
-          role="alert"
-          aria-live="polite"
+          role='alert'
+          aria-live='polite'
         >
           {error.message}
         </div>
       )}
 
       {suggestions.length > 0 && showSuggestions && (
-        <div className="mt-2">
-          <p className="text-sm text-gray-600 dark:text-gray-400 mb-1">Suggestions:</p>
-          <ul className="text-sm text-gray-700 dark:text-gray-300 space-y-1">
+        <div className='mt-2'>
+          <p className='text-sm text-gray-600 dark:text-gray-400 mb-1'>
+            Suggestions:
+          </p>
+          <ul className='text-sm text-gray-700 dark:text-gray-300 space-y-1'>
             {suggestions.map((suggestion, index) => (
-              <li key={index} className="flex items-start">
-                <span className="text-blue-500 mr-2">•</span>
+              <li key={index} className='flex items-start'>
+                <span className='text-blue-500 mr-2'>•</span>
                 {suggestion}
               </li>
             ))}

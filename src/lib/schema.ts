@@ -11,7 +11,7 @@ export const ORGANIZATION_SCHEMA: SchemaMarkup = {
   url: SITE_CONFIG.url,
   description: SITE_CONFIG.description,
   image: `${SITE_CONFIG.url}/images/profile.jpg`,
-  sameAs: SITE_CONFIG.socials.map((social) => social.url),
+  sameAs: SITE_CONFIG.socials.map(social => social.url),
   mainEntityOfPage: {
     '@type': 'WebPage',
     '@id': SITE_CONFIG.url,
@@ -39,7 +39,9 @@ export function generateSeoMetadata(
   return {
     title: pageData.title || defaultData.title || SITE_CONFIG.title,
     description:
-      pageData.description || defaultData.description || SITE_CONFIG.description,
+      pageData.description ||
+      defaultData.description ||
+      SITE_CONFIG.description,
     keywords: pageData.keywords || defaultData.keywords || SEO_CONFIG.keywords,
     image: pageData.image || defaultData.image,
     url: pageData.url || defaultData.url || SITE_CONFIG.url,

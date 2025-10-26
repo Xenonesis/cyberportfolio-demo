@@ -45,10 +45,10 @@ export class ContactFormEncryption {
   async encryptData(data: string, key: CryptoKey): Promise<string> {
     const encoder = new TextEncoder();
     const dataBuffer = encoder.encode(data);
-    
+
     // Generate random IV
     const iv = crypto.getRandomValues(new Uint8Array(this.ivLength));
-    
+
     // Encrypt the data
     const encrypted = await crypto.subtle.encrypt(
       {
@@ -108,7 +108,10 @@ export class ContactFormEncryption {
    */
   async createDataHash(data: string): Promise<string> {
     const encoder = new TextEncoder();
-    const hashBuffer = await crypto.subtle.digest('SHA-256', encoder.encode(data));
+    const hashBuffer = await crypto.subtle.digest(
+      'SHA-256',
+      encoder.encode(data)
+    );
     return Array.from(new Uint8Array(hashBuffer))
       .map(b => b.toString(16).padStart(2, '0'))
       .join('');
@@ -117,7 +120,10 @@ export class ContactFormEncryption {
   /**
    * Verify data integrity using hash comparison
    */
-  async verifyDataIntegrity(data: string, expectedHash: string): Promise<boolean> {
+  async verifyDataIntegrity(
+    data: string,
+    expectedHash: string
+  ): Promise<boolean> {
     const currentHash = await this.createDataHash(data);
     return currentHash === expectedHash;
   }
@@ -128,7 +134,8 @@ export class SecurityValidator {
   private static readonly EMAIL_REGEX = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
   private static readonly PHONE_REGEX = /^\+?[\d\s\-\(\)]+$/;
   private static readonly NAME_REGEX = /^[a-zA-Z\s\-'.,]+$/;
-  private static readonly SECURITY_CONCERNS_REGEX = /^[a-zA-Z0-9\s\-\.,;:!?()]+$/;
+  private static readonly SECURITY_CONCERNS_REGEX =
+    /^[a-zA-Z0-9\s\-\.,;:!?()]+$/;
 
   /**
    * Validate email format and check for disposable email providers
@@ -148,13 +155,19 @@ export class SecurityValidator {
 
     // Check for disposable email providers
     const disposableDomains = [
-      '10minutemail.com', 'tempmail.org', 'guerrillamail.com',
-      'mailinator.com', 'throwaway.email'
+      '10minutemail.com',
+      'tempmail.org',
+      'guerrillamail.com',
+      'mailinator.com',
+      'throwaway.email',
     ];
 
     const domain = email.split('@')[1]?.toLowerCase();
     if (domain && disposableDomains.includes(domain)) {
-      return { valid: false, error: 'Disposable email addresses are not allowed' };
+      return {
+        valid: false,
+        error: 'Disposable email addresses are not allowed',
+      };
     }
 
     return { valid: true };
@@ -205,21 +218,34 @@ export class SecurityValidator {
   /**
    * Validate security concerns text
    */
-  static validateSecurityConcerns(concerns: string): { valid: boolean; error?: string } {
+  static validateSecurityConcerns(concerns: string): {
+    valid: boolean;
+    error?: string;
+  } {
     if (!concerns) {
       return { valid: false, error: 'Security concerns are required' };
     }
 
     if (concerns.length < 20) {
-      return { valid: false, error: 'Please provide more details about your security concerns (minimum 20 characters)' };
+      return {
+        valid: false,
+        error:
+          'Please provide more details about your security concerns (minimum 20 characters)',
+      };
     }
 
     if (concerns.length > 2000) {
-      return { valid: false, error: 'Security concerns are too long (maximum 2000 characters)' };
+      return {
+        valid: false,
+        error: 'Security concerns are too long (maximum 2000 characters)',
+      };
     }
 
     if (!this.SECURITY_CONCERNS_REGEX.test(concerns)) {
-      return { valid: false, error: 'Security concerns contain invalid characters' };
+      return {
+        valid: false,
+        error: 'Security concerns contain invalid characters',
+      };
     }
 
     return { valid: true };
@@ -243,10 +269,21 @@ export class SecurityValidator {
   /**
    * Check if form data contains sensitive information that should be encrypted
    */
-  static containsSensitiveData(data: Record<string, string | number | boolean>): boolean {
+  static containsSensitiveData(
+    data: Record<string, string | number | boolean>
+  ): boolean {
     const sensitiveKeywords = [
-      'password', 'secret', 'token', 'api', 'key', 'credential',
-      'ssn', 'social security', 'credit card', 'bank', 'financial'
+      'password',
+      'secret',
+      'token',
+      'api',
+      'key',
+      'credential',
+      'ssn',
+      'social security',
+      'credit card',
+      'bank',
+      'financial',
     ];
 
     const dataString = JSON.stringify(data).toLowerCase();
@@ -256,7 +293,15 @@ export class SecurityValidator {
   /**
    * Generate security score based on form validation
    */
-  static generateSecurityScore(formData: { name: string; email: string; phone?: string; company?: string; securityConcerns: string; privacyPolicyAccepted: boolean; securityChallengeCompleted: boolean }): number {
+  static generateSecurityScore(formData: {
+    name: string;
+    email: string;
+    phone?: string;
+    company?: string;
+    securityConcerns: string;
+    privacyPolicyAccepted: boolean;
+    securityChallengeCompleted: boolean;
+  }): number {
     let score = 0;
     const maxScore = 100;
 
@@ -273,7 +318,8 @@ export class SecurityValidator {
     if (this.validateCompany(formData.company || '').valid) score += 5;
 
     // Security concerns validation (30 points)
-    if (this.validateSecurityConcerns(formData.securityConcerns).valid) score += 30;
+    if (this.validateSecurityConcerns(formData.securityConcerns).valid)
+      score += 30;
 
     // Privacy policy acceptance (10 points)
     if (formData.privacyPolicyAccepted) score += 10;
@@ -287,7 +333,13 @@ export class SecurityValidator {
   /**
    * Detect potential security threats in form data
    */
-  static detectSecurityThreats(formData: { name: string; email: string; phone?: string; company?: string; securityConcerns: string }): string[] {
+  static detectSecurityThreats(formData: {
+    name: string;
+    email: string;
+    phone?: string;
+    company?: string;
+    securityConcerns: string;
+  }): string[] {
     const threats: string[] = [];
     const dataString = JSON.stringify(formData).toLowerCase();
 
@@ -299,7 +351,7 @@ export class SecurityValidator {
       /delete.*from/i,
       /update.*set/i,
       /' or 1=1/i,
-      /'; drop table/i
+      /'; drop table/i,
     ];
 
     sqlPatterns.forEach(pattern => {
@@ -315,7 +367,7 @@ export class SecurityValidator {
       /onload=/i,
       /onerror=/i,
       /<iframe/i,
-      /<object/i
+      /<object/i,
     ];
 
     xssPatterns.forEach(pattern => {
@@ -330,7 +382,7 @@ export class SecurityValidator {
       /exec\(/i,
       /system\(/i,
       /shell_exec/i,
-      /base64_decode/i
+      /base64_decode/i,
     ];
 
     suspiciousPatterns.forEach(pattern => {

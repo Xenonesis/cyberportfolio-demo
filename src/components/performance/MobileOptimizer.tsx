@@ -15,23 +15,23 @@ const MobileOptimizations: React.FC<{ isMobile: boolean }> = ({ isMobile }) => {
         -moz-osx-font-smoothing: grayscale;
         text-rendering: optimizeLegibility;
       }
-      
+
       /* Reduce complex animations on mobile */
       .mobile-optimized .complex-animation {
         animation-duration: 0.3s !important;
       }
-      
+
       /* Optimize for touch targets */
       .mobile-optimized .touch-target {
         min-height: 44px;
         min-width: 44px;
       }
-      
+
       /* Optimize images for mobile */
       .mobile-optimized img {
         max-height: 60vh;
       }
-      
+
       /* Reduce shadow complexity on mobile */
       .mobile-optimized .shadow-complex {
         box-shadow: 0 4px 8px rgba(0, 0, 0.1) !important;
@@ -44,7 +44,9 @@ interface MobileOptimizerProps {
   children: React.ReactNode;
 }
 
-export const MobileOptimizer: React.FC<MobileOptimizerProps> = ({ children }) => {
+export const MobileOptimizer: React.FC<MobileOptimizerProps> = ({
+  children,
+}) => {
   const { isMobile, setIsMobile } = usePerformance();
   const [touchDevice, setTouchDevice] = useState(false);
   const [screenDensity, setScreenDensity] = useState(1);
@@ -78,7 +80,7 @@ export const MobileOptimizer: React.FC<MobileOptimizerProps> = ({ children }) =>
     if (isMobile) {
       // Add mobile-specific performance optimizations
       document.body.classList.add('mobile-optimized');
-      
+
       // Reduce animations on mobile if not necessary
       if (screenDensity > 2) {
         // High density screens may need optimization
@@ -96,22 +98,25 @@ export const MobileOptimizer: React.FC<MobileOptimizerProps> = ({ children }) =>
   return (
     <>
       <MobileOptimizations isMobile={isMobile} />
-      
+
       {/* Mobile performance indicators */}
       {isMobile && (
-        <div className="fixed top-12 right-4 bg-deep-navy-500 border border-electric-cyan-500 rounded-lg p-2 z-40 text-xs opacity-80">
-          <div className="flex items-center space-x-2">
-            <div className="w-2 h-2 rounded-full bg-electric-cyan-500"></div>
-            <span className="text-electric-cyan-500 font-mono">MOBILE MODE</span>
+        <div className='fixed top-12 right-4 bg-deep-navy-500 border border-electric-cyan-500 rounded-lg p-2 z-40 text-xs opacity-80'>
+          <div className='flex items-center space-x-2'>
+            <div className='w-2 h-2 rounded-full bg-electric-cyan-500'></div>
+            <span className='text-electric-cyan-500 font-mono'>
+              MOBILE MODE
+            </span>
           </div>
-          <div className="mt-1 text-[10px] text-gray-400">
-            {touchDevice ? 'Touch: Yes' : 'Touch: No'} | Density: {screenDensity}x
+          <div className='mt-1 text-[10px] text-gray-400'>
+            {touchDevice ? 'Touch: Yes' : 'Touch: No'} | Density:{' '}
+            {screenDensity}x
           </div>
         </div>
       )}
 
       {/* Optimize rendering based on device */}
-      <div 
+      <div
         className={isMobile ? 'mobile-container' : 'desktop-container'}
         style={{
           contain: isMobile ? 'layout style paint' : 'none',
@@ -130,16 +135,14 @@ export const withMobileOptimization = <P extends object>(
 ): React.FC<P> => {
   const WithMobileOptimization: React.FC<P> = (props: P) => {
     const { isMobile } = usePerformance();
-    
+
     // Adjust props based on device
-    const adjustedProps = isMobile 
-      ? { ...props, isMobile: true } 
-      : props;
+    const adjustedProps = isMobile ? { ...props, isMobile: true } : props;
 
     return <Component {...adjustedProps} />;
   };
 
   WithMobileOptimization.displayName = `withMobileOptimization(${Component.displayName || Component.name})`;
-  
+
   return WithMobileOptimization;
 };

@@ -13,9 +13,13 @@ interface PerformanceContextType {
   setIsMobile: (mobile: boolean) => void;
 }
 
-const PerformanceContext = createContext<PerformanceContextType | undefined>(undefined);
+const PerformanceContext = createContext<PerformanceContextType | undefined>(
+  undefined
+);
 
-export const PerformanceProvider: React.FC<{ children: React.ReactNode }> = ({ children }) => {
+export const PerformanceProvider: React.FC<{ children: React.ReactNode }> = ({
+  children,
+}) => {
   const [isOptimized, setIsOptimized] = useState(false);
   const [loadingProgress, setLoadingProgress] = useState(0);
   const [isMobile, setIsMobile] = useState(false);
@@ -26,10 +30,10 @@ export const PerformanceProvider: React.FC<{ children: React.ReactNode }> = ({ c
     const checkMobile = () => {
       setIsMobile(window.innerWidth < 768);
     };
-    
+
     checkMobile();
     window.addEventListener('resize', checkMobile);
-    
+
     return () => {
       window.removeEventListener('resize', checkMobile);
     };
@@ -60,9 +64,9 @@ export const PerformanceProvider: React.FC<{ children: React.ReactNode }> = ({ c
           const preloadLinks = [
             '/api/projects',
             '/api/blog',
-            '/api/testimonials'
+            '/api/testimonials',
           ];
-          
+
           preloadLinks.forEach(href => {
             const link = document.createElement('link');
             link.rel = 'preload';
@@ -89,8 +93,8 @@ export const PerformanceProvider: React.FC<{ children: React.ReactNode }> = ({ c
     <PerformanceContext.Provider value={value}>
       {/* Performance monitoring script */}
       <Script
-        id="performance-monitoring"
-        strategy="beforeInteractive"
+        id='performance-monitoring'
+        strategy='beforeInteractive'
         dangerouslySetInnerHTML={{
           __html: `
             // Core Web Vitals monitoring
@@ -148,7 +152,7 @@ export const PerformanceProvider: React.FC<{ children: React.ReactNode }> = ({ c
           `,
         }}
       />
-      
+
       {children}
     </PerformanceContext.Provider>
   );

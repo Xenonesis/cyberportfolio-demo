@@ -8,7 +8,8 @@ import { Footer } from '@/components/layout/Footer';
 
 export const metadata: Metadata = {
   title: 'Case Studies & Security Projects - Aditya Kumar Tiwari',
-  description: 'Explore comprehensive cybersecurity case studies showcasing measurable security improvements, successful implementations, and proven results across various industries.',
+  description:
+    'Explore comprehensive cybersecurity case studies showcasing measurable security improvements, successful implementations, and proven results across various industries.',
   keywords: [
     'cybersecurity case studies',
     'security projects',
@@ -23,7 +24,8 @@ export const metadata: Metadata = {
   ],
   openGraph: {
     title: 'Case Studies & Security Projects - Aditya Kumar Tiwari',
-    description: 'View successful cybersecurity implementations with measurable outcomes and proven security improvements.',
+    description:
+      'View successful cybersecurity implementations with measurable outcomes and proven security improvements.',
     images: [
       {
         url: 'https://aditya-cybersecurity.com/images/og-case-studies.jpg',
@@ -38,7 +40,8 @@ export const metadata: Metadata = {
   twitter: {
     card: 'summary_large_image',
     title: 'Case Studies & Security Projects - Aditya Kumar Tiwari',
-    description: 'View successful cybersecurity implementations with measurable outcomes.',
+    description:
+      'View successful cybersecurity implementations with measurable outcomes.',
     images: ['https://aditya-cybersecurity.com/images/og-case-studies.jpg'],
   },
   alternates: {
@@ -47,26 +50,15 @@ export const metadata: Metadata = {
 };
 
 export default function CaseStudiesPage() {
-  const handlePerformanceUpdate = (metrics: {
-    loadTime: number;
-    renderTime: number;
-    interactionTime: number;
-  }) => {
-    console.log('Performance Metrics:', metrics);
-    // In a real implementation, this would send metrics to analytics
-  };
-
   return (
     <>
       {/* SEO Components */}
-      <CaseStudiesSEO caseStudies={[]} /> {/* Will be populated with actual data */}
-      <PerformanceMetrics onMetricsUpdate={handlePerformanceUpdate} />
-
+      <CaseStudiesSEO caseStudies={[]} />{' '}
+      {/* Will be populated with actual data */}
       {/* Header */}
       <Header />
-
       {/* Main Content */}
-      <main className="min-h-screen">
+      <main className='min-h-screen'>
         {/* Case Studies Section */}
         <CaseStudiesSection
           config={{
@@ -85,7 +77,6 @@ export default function CaseStudiesPage() {
           }}
         />
       </main>
-
       {/* Footer */}
       <Footer />
     </>

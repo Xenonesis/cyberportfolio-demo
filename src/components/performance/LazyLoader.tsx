@@ -27,8 +27,8 @@ export const LazyLoader: React.FC<LazyLoaderProps> = ({
     if (!elementRef.current) return;
 
     const observer = new IntersectionObserver(
-      (entries) => {
-        entries.forEach((entry) => {
+      entries => {
+        entries.forEach(entry => {
           if (entry.isIntersecting) {
             setIsVisible(true);
             setHasIntersected(true);
@@ -51,26 +51,26 @@ export const LazyLoader: React.FC<LazyLoaderProps> = ({
   }, [threshold, rootMargin, isMobile]);
 
   return (
-    <div 
-      ref={elementRef} 
+    <div
+      ref={elementRef}
       className={className}
       style={{
         minHeight: !hasIntersected ? '100px' : 'auto',
         transition: 'all 0.3s ease',
       }}
     >
-      {isVisible ? (
-        children
-      ) : (
-        placeholder || (
-          <div className="flex items-center justify-center min-h-[100px]">
-            <div className="flex flex-col items-center">
-              <div className="w-8 h-8 border-2 border-electric-cyan-500 border-t-transparent rounded-full animate-spin mb-2"></div>
-              <span className="text-electric-cyan-500 text-sm">Loading content...</span>
+      {isVisible
+        ? children
+        : placeholder || (
+            <div className='flex items-center justify-center min-h-[100px]'>
+              <div className='flex flex-col items-center'>
+                <div className='w-8 h-8 border-2 border-electric-cyan-500 border-t-transparent rounded-full animate-spin mb-2'></div>
+                <span className='text-electric-cyan-500 text-sm'>
+                  Loading content...
+                </span>
+              </div>
             </div>
-          </div>
-        )
-      )}
+          )}
     </div>
   );
 };
@@ -80,11 +80,13 @@ export const withLazyImport = <P extends object>(
   importFn: () => Promise<{ default: React.ComponentType<P> }>,
   fallback?: React.ReactNode
 ) => {
-  const LazyComponent: React.FC<P> = (props) => {
-    const [Component, setComponent] = useState<React.ComponentType<P> | null>(null);
+  const LazyComponent: React.FC<P> = props => {
+    const [Component, setComponent] = useState<React.ComponentType<P> | null>(
+      null
+    );
 
     useEffect(() => {
-      importFn().then((module) => {
+      importFn().then(module => {
         setComponent(() => module.default);
       });
     }, []);
@@ -92,10 +94,10 @@ export const withLazyImport = <P extends object>(
     return Component ? (
       <Component {...props} />
     ) : (
-      <div className="flex items-center justify-center min-h-[200px]">
-        <div className="flex flex-col items-center">
-          <div className="w-12 h-12 border-4 border-electric-cyan-500 border-t-transparent rounded-full animate-spin mb-3"></div>
-          <span className="text-electric-cyan-500">Loading module...</span>
+      <div className='flex items-center justify-center min-h-[200px]'>
+        <div className='flex flex-col items-center'>
+          <div className='w-12 h-12 border-4 border-electric-cyan-500 border-t-transparent rounded-full animate-spin mb-3'></div>
+          <span className='text-electric-cyan-500'>Loading module...</span>
         </div>
       </div>
     );

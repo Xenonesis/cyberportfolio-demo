@@ -1,0 +1,76 @@
+/* Critical CSS for Above-the-Fold Content */
+/* This CSS is inlined in the head for optimal LCP */
+
+:root {
+  /* Critical color variables */
+  --bg-primary: #080c14;
+  --text-primary: #ffffff;
+  --text-secondary: #94a3b8;
+  --accent-primary: #00ffff;
+  --accent-secondary: #39ff14;
+}
+
+/* Critical typography */
+.critical-text {
+  font-family: 'Geist Sans', system-ui, sans-serif;
+  font-weight: 600;
+  color: var(--text-primary);
+}
+
+/* Critical layout */
+.critical-hero {
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: linear-gradient(135deg, #080c14 0%, #0f172a 100%);
+}
+
+/* Critical animations (reduced motion aware) */
+@media (prefers-reduced-motion: no-preference) {
+  .critical-fade-in {
+    animation: criticalFadeIn 0.8s ease-out;
+  }
+}
+
+@keyframes criticalFadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* Critical button styles */
+.critical-button {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 0.75rem 1.5rem;
+  background: var(--accent-primary);
+  color: #000;
+  border-radius: 0.5rem;
+  font-weight: 600;
+  text-decoration: none;
+  transition: all 0.2s ease;
+}
+
+.critical-button:hover {
+  background: #00cccc;
+  transform: translateY(-1px);
+}
+
+/* Critical responsive design */
+@media (max-width: 768px) {
+  .critical-hero {
+    padding: 2rem 1rem;
+  }
+
+  .critical-text {
+    font-size: 2rem;
+    line-height: 1.2;
+  }
+}

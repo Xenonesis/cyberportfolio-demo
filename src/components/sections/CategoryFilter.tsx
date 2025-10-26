@@ -15,9 +15,9 @@ export const CategoryFilter: React.FC<CategoryFilterProps> = ({
   categories,
   selectedCategory,
   onCategoryChange,
-  className = "",
+  className = '',
   showAllOption = true,
-  allLabel = "All Categories"
+  allLabel = 'All Categories',
 }) => {
   const getCategoryColor = (category: BlogCategory) => {
     switch (category.color) {
@@ -67,8 +67,9 @@ export const CategoryFilter: React.FC<CategoryFilterProps> = ({
 
   const renderCategoryButton = (category: BlogCategory, index: number) => {
     const isSelected = selectedCategory === category.slug;
-    const baseClasses = "px-4 py-2 rounded-lg border text-sm font-medium transition-all duration-300 flex items-center space-x-2 min-w-max";
-    const colorClasses = isSelected 
+    const baseClasses =
+      'px-4 py-2 rounded-lg border text-sm font-medium transition-all duration-300 flex items-center space-x-2 min-w-max';
+    const colorClasses = isSelected
       ? getSelectedCategoryColor(category)
       : getCategoryColor(category);
 
@@ -81,29 +82,33 @@ export const CategoryFilter: React.FC<CategoryFilterProps> = ({
         aria-label={`Filter by ${category.name} category`}
       >
         {category.icon && (
-          <svg 
-            className="w-4 h-4" 
-            fill="none" 
-            stroke="currentColor" 
-            viewBox="0 0 24 24"
-            aria-hidden="true"
+          <svg
+            className='w-4 h-4'
+            fill='none'
+            stroke='currentColor'
+            viewBox='0 0 24 24'
+            aria-hidden='true'
           >
-            <path 
-              strokeLinecap="round" 
-              strokeLinejoin="round" 
-              strokeWidth={2} 
-              d="M11 5H6a2 2 0 00-2 2v11a2 2 0 002 2h11a2 2 0 002-2v-5m-1.414-9.414a2 2 0 112.828 2.828L11.828 15H9v-2.828l8.586-8.586z" 
+            <path
+              strokeLinecap='round'
+              strokeLinejoin='round'
+              strokeWidth={2}
+              d='M11 5H6a2 2 0 00-2 2v11a2 2 0 002 2h11a2 2 0 002-2v-5m-1.414-9.414a2 2 0 112.828 2.828L11.828 15H9v-2.828l8.586-8.586z'
             />
           </svg>
         )}
         <span>{category.name}</span>
-        <span className="text-xs opacity-75">({category.postCount})</span>
+        <span className='text-xs opacity-75'>({category.postCount})</span>
       </button>
     );
   };
 
   return (
-    <div className={`flex flex-wrap gap-2 ${className}`} role="group" aria-label="Category filter">
+    <div
+      className={`flex flex-wrap gap-2 ${className}`}
+      role='group'
+      aria-label='Category filter'
+    >
       {showAllOption && (
         <button
           onClick={() => onCategoryChange('all')}
@@ -113,27 +118,29 @@ export const CategoryFilter: React.FC<CategoryFilterProps> = ({
               : 'bg-navy-700 text-gray-300 border-navy-600 hover:bg-navy-600'
           }`}
           aria-pressed={selectedCategory === 'all'}
-          aria-label="Show all categories"
+          aria-label='Show all categories'
         >
-          <svg 
-            className="w-4 h-4" 
-            fill="none" 
-            stroke="currentColor" 
-            viewBox="0 0 24 24"
-            aria-hidden="true"
+          <svg
+            className='w-4 h-4'
+            fill='none'
+            stroke='currentColor'
+            viewBox='0 0 24 24'
+            aria-hidden='true'
           >
-            <path 
-              strokeLinecap="round" 
-              strokeLinejoin="round" 
-              strokeWidth={2} 
-              d="M4 6h16M4 12h16M4 18h16" 
+            <path
+              strokeLinecap='round'
+              strokeLinejoin='round'
+              strokeWidth={2}
+              d='M4 6h16M4 12h16M4 18h16'
             />
           </svg>
           <span>{allLabel}</span>
         </button>
       )}
-      
-      {categories.map((category, index) => renderCategoryButton(category, index))}
+
+      {categories.map((category, index) =>
+        renderCategoryButton(category, index)
+      )}
     </div>
   );
 };

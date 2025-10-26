@@ -21,17 +21,17 @@ export const Pagination: React.FC<PaginationProps> = ({
   showNumbers = true,
   showEllipsis = true,
   maxVisiblePages = 5,
-  className = ""
+  className = '',
 }) => {
   const [isAnimating, setIsAnimating] = useState(false);
 
   // Handle page change with animation
   const handlePageChange = (page: number) => {
     if (page === currentPage || page < 1 || page > totalPages) return;
-    
+
     setIsAnimating(true);
     onPageChange(page);
-    
+
     // Reset animation state after transition
     setTimeout(() => setIsAnimating(false), 300);
   };
@@ -80,92 +80,95 @@ export const Pagination: React.FC<PaginationProps> = ({
   }
 
   return (
-    <nav 
-      className={`pagination ${className}`} 
-      role="navigation" 
-      aria-label="Pagination"
+    <nav
+      className={`pagination ${className}`}
+      role='navigation'
+      aria-label='Pagination'
     >
-      <ul className={`inline-flex items-center space-x-1 ${isAnimating ? 'opacity-75' : 'opacity-100'} transition-opacity duration-300`}>
+      <ul
+        className={`inline-flex items-center space-x-1 ${isAnimating ? 'opacity-75' : 'opacity-100'} transition-opacity duration-300`}
+      >
         {/* Previous button */}
         <li>
           <button
             onClick={() => handlePageChange(currentPage - 1)}
             disabled={currentPage === 1}
-            className="flex items-center justify-center w-8 h-8 bg-navy-700 text-gray-300 rounded-lg border border-navy-600 hover:bg-cyan-600 hover:text-white disabled:opacity-50 disabled:cursor-not-allowed transition-colors duration-300"
-            aria-label="Previous page"
+            className='flex items-center justify-center w-8 h-8 bg-navy-700 text-gray-300 rounded-lg border border-navy-600 hover:bg-cyan-600 hover:text-white disabled:opacity-50 disabled:cursor-not-allowed transition-colors duration-300'
+            aria-label='Previous page'
             aria-disabled={currentPage === 1}
           >
-            <svg 
-              className="w-4 h-4" 
-              fill="none" 
-              stroke="currentColor" 
-              viewBox="0 0 24 24"
+            <svg
+              className='w-4 h-4'
+              fill='none'
+              stroke='currentColor'
+              viewBox='0 0 24 24'
             >
-              <path 
-                strokeLinecap="round" 
-                strokeLinejoin="round" 
-                strokeWidth={2} 
-                d="M15 19l-7-7 7-7" 
+              <path
+                strokeLinecap='round'
+                strokeLinejoin='round'
+                strokeWidth={2}
+                d='M15 19l-7-7 7-7'
               />
             </svg>
           </button>
         </li>
 
         {/* Page numbers */}
-        {showNumbers && pages.map((page, index) => (
-          <li key={index}>
-            {page === 'ellipsis-start' || page === 'ellipsis-end' ? (
-              <span className="flex items-center justify-center w-8 h-8 text-gray-400">
-                <svg 
-                  className="w-4 h-4" 
-                  fill="currentColor" 
-                  viewBox="0 0 20 20"
-                  aria-hidden="true"
+        {showNumbers &&
+          pages.map((page, index) => (
+            <li key={index}>
+              {page === 'ellipsis-start' || page === 'ellipsis-end' ? (
+                <span className='flex items-center justify-center w-8 h-8 text-gray-400'>
+                  <svg
+                    className='w-4 h-4'
+                    fill='currentColor'
+                    viewBox='0 0 20 20'
+                    aria-hidden='true'
+                  >
+                    <path
+                      fillRule='evenodd'
+                      d='M10 3a1 1 0 011 1v1a1 1 0 11-2 0V4a1 1 0 011-1zM10 13a1 1 0 011 1v1a1 1 0 11-2 0v-1a1 1 0 011-1zM10 8a1 1 0 011 1v1a1 1 0 11-2 0V9a1 1 0 011-1z'
+                      clipRule='evenodd'
+                    />
+                  </svg>
+                </span>
+              ) : (
+                <button
+                  onClick={() => handlePageChange(page as number)}
+                  className={`flex items-center justify-center w-8 h-8 rounded-lg border transition-colors duration-300 ${
+                    currentPage === page
+                      ? 'bg-cyan-600 text-white border-cyan-500'
+                      : 'bg-navy-700 text-gray-300 border-navy-600 hover:bg-cyan-600 hover:text-white'
+                  }`}
+                  aria-label={`Go to page ${page}`}
+                  aria-current={currentPage === page ? 'page' : undefined}
                 >
-                  <path 
-                    fillRule="evenodd" 
-                    d="M10 3a1 1 0 011 1v1a1 1 0 11-2 0V4a1 1 0 011-1zM10 13a1 1 0 011 1v1a1 1 0 11-2 0v-1a1 1 0 011-1zM10 8a1 1 0 011 1v1a1 1 0 11-2 0V9a1 1 0 011-1z" 
-                    clipRule="evenodd" 
-                  />
-                </svg>
-              </span>
-            ) : (
-              <button
-                onClick={() => handlePageChange(page as number)}
-                className={`flex items-center justify-center w-8 h-8 rounded-lg border transition-colors duration-300 ${
-                  currentPage === page
-                    ? 'bg-cyan-600 text-white border-cyan-500'
-                    : 'bg-navy-700 text-gray-300 border-navy-600 hover:bg-cyan-600 hover:text-white'
-                }`}
-                aria-label={`Go to page ${page}`}
-                aria-current={currentPage === page ? 'page' : undefined}
-              >
-                {page}
-              </button>
-            )}
-          </li>
-        ))}
+                  {page}
+                </button>
+              )}
+            </li>
+          ))}
 
         {/* Next button */}
         <li>
           <button
             onClick={() => handlePageChange(currentPage + 1)}
             disabled={currentPage === totalPages}
-            className="flex items-center justify-center w-8 h-8 bg-navy-700 text-gray-300 rounded-lg border border-navy-600 hover:bg-cyan-600 hover:text-white disabled:opacity-50 disabled:cursor-not-allowed transition-colors duration-300"
-            aria-label="Next page"
+            className='flex items-center justify-center w-8 h-8 bg-navy-700 text-gray-300 rounded-lg border border-navy-600 hover:bg-cyan-600 hover:text-white disabled:opacity-50 disabled:cursor-not-allowed transition-colors duration-300'
+            aria-label='Next page'
             aria-disabled={currentPage === totalPages}
           >
-            <svg 
-              className="w-4 h-4" 
-              fill="none" 
-              stroke="currentColor" 
-              viewBox="0 0 24 24"
+            <svg
+              className='w-4 h-4'
+              fill='none'
+              stroke='currentColor'
+              viewBox='0 0 24 24'
             >
-              <path 
-                strokeLinecap="round" 
-                strokeLinejoin="round" 
-                strokeWidth={2} 
-                d="M9 5l7 7-7 7" 
+              <path
+                strokeLinecap='round'
+                strokeLinejoin='round'
+                strokeWidth={2}
+                d='M9 5l7 7-7 7'
               />
             </svg>
           </button>
@@ -173,7 +176,7 @@ export const Pagination: React.FC<PaginationProps> = ({
       </ul>
 
       {/* Page info for screen readers */}
-      <div className="sr-only">
+      <div className='sr-only'>
         Page {currentPage} of {totalPages}
       </div>
 
@@ -183,11 +186,11 @@ export const Pagination: React.FC<PaginationProps> = ({
           padding: 0;
           margin: 0;
         }
-        
+
         .pagination li {
           display: inline-block;
         }
-        
+
         .pagination button {
           display: flex;
           align-items: center;

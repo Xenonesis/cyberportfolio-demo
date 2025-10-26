@@ -1,5 +1,9 @@
 import { useEffect, useState } from 'react';
-import { generateSeoMetadata, generateOpenGraph, generateTwitterCard } from '@/lib/schema';
+import {
+  generateSeoMetadata,
+  generateOpenGraph,
+  generateTwitterCard,
+} from '@/lib/schema';
 import { SITE_CONFIG, SEO_CONFIG } from '@/lib/data';
 
 interface SEOHeadProps {
@@ -47,7 +51,10 @@ export const SEOHead = ({
     setSeoData(generatedSeoData);
 
     // Generate schema markup
-    const generatedSchema = generateSchemaMarkup(generatedSeoData, structuredData);
+    const generatedSchema = generateSchemaMarkup(
+      generatedSeoData,
+      structuredData
+    );
     setSchemaData(generatedSchema);
   }, [title, description, keywords, image, url, type, structuredData]);
 
@@ -135,15 +142,15 @@ export const SEOHead = ({
     <>
       {/* Basic Meta Tags */}
       <title>{seoData.title}</title>
-      <meta name="description" content={seoData.description} />
+      <meta name='description' content={seoData.description} />
       <meta
-        name="keywords"
+        name='keywords'
         content={keywords?.join(', ') || SEO_CONFIG.keywords.join(', ')}
       />
-      <meta name="viewport" content="width=device-width, initial-scale=1" />
-      <meta name="robots" content={robots} />
-      <meta name="language" content={language} />
-      <meta name="locale" content={locale} />
+      <meta name='viewport' content='width=device-width, initial-scale=1' />
+      <meta name='robots' content={robots} />
+      <meta name='language' content={language} />
+      <meta name='locale' content={locale} />
 
       {/* Open Graph */}
       {Object.entries(openGraph).map(([key, value]) => (
@@ -156,49 +163,63 @@ export const SEOHead = ({
       ))}
 
       {/* Canonical URL */}
-      <link rel="canonical" href={finalCanonicalUrl} />
+      <link rel='canonical' href={finalCanonicalUrl} />
 
       {/* Alternate URLs for internationalization */}
-      <link rel="alternate" hrefLang="en-US" href={finalCanonicalUrl} />
-      <link rel="alternate" hrefLang="x-default" href={finalCanonicalUrl} />
+      <link rel='alternate' hrefLang='en-US' href={finalCanonicalUrl} />
+      <link rel='alternate' hrefLang='x-default' href={finalCanonicalUrl} />
 
       {/* Favicon and Apple Touch Icons */}
-      <link rel="icon" href="/favicon.ico" />
-      <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png" />
-      <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png" />
-      <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png" />
+      <link rel='icon' href='/favicon.ico' />
+      <link
+        rel='apple-touch-icon'
+        sizes='180x180'
+        href='/apple-touch-icon.png'
+      />
+      <link
+        rel='icon'
+        type='image/png'
+        sizes='32x32'
+        href='/favicon-32x32.png'
+      />
+      <link
+        rel='icon'
+        type='image/png'
+        sizes='16x16'
+        href='/favicon-16x16.png'
+      />
 
       {/* Preconnect for external resources */}
-      <link rel="preconnect" href="https://fonts.googleapis.com" />
-      <link rel="preconnect" href="https://fonts.gstatic.com" crossOrigin="" />
+      <link rel='preconnect' href='https://fonts.googleapis.com' />
+      <link rel='preconnect' href='https://fonts.gstatic.com' crossOrigin='' />
 
       {/* Font loading optimization */}
       <link
-        rel="stylesheet"
-        href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&family=JetBrains+Mono:wght@400;500;600;700&display=swap"
-        media="print"
+        rel='stylesheet'
+        href='https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&family=JetBrains+Mono:wght@400;500;600;700&display=swap'
+        media='print'
         // @ts-ignore
-        onLoad={(e) => {
+        onLoad={e => {
           (e.target as HTMLLinkElement).media = 'all';
         }}
       />
 
       {/* Security-focused meta tags */}
-      <meta name="author" content="Aditya Kumar Tiwari" />
+      <meta name='author' content='Aditya Kumar Tiwari' />
       <meta
-        name="category"
-        content="Cybersecurity, Security Consulting, Technology"
+        name='category'
+        content='Cybersecurity, Security Consulting, Technology'
       />
       <meta
-        name="security-credentials"
-        content="ISO 27001 Certified, CISSP, 100+ Security Assessments"
+        name='security-credentials'
+        content='ISO 27001 Certified, CISSP, 100+ Security Assessments'
       />
 
       {/* Structured Data (Schema Markup) */}
       {schemaData.map((schema, index) => (
         <script
           key={index}
-          type="application/ld+json"
+          type='application/ld+json'
           dangerouslySetInnerHTML={{
             __html: JSON.stringify(schema),
           }}
@@ -206,18 +227,18 @@ export const SEOHead = ({
       ))}
 
       {/* Performance optimization meta tags */}
-      <meta httpEquiv="X-UA-Compatible" content="IE=edge" />
-      <meta name="theme-color" content="#0F172A" />
-      <meta name="msapplication-TileColor" content="#0F172A" />
+      <meta httpEquiv='X-UA-Compatible' content='IE=edge' />
+      <meta name='theme-color' content='#0F172A' />
+      <meta name='msapplication-TileColor' content='#0F172A' />
 
       {/* Security headers simulation (for SEO purposes) */}
-      <meta name="X-Content-Type-Options" content="nosniff" />
-      <meta name="X-Frame-Options" content="DENY" />
-      <meta name="X-XSS-Protection" content="1; mode=block" />
+      <meta name='X-Content-Type-Options' content='nosniff' />
+      <meta name='X-Frame-Options' content='DENY' />
+      <meta name='X-XSS-Protection' content='1; mode=block' />
 
       {/* Content Security Policy simulation */}
       <meta
-        name="Content-Security-Policy"
+        name='Content-Security-Policy'
         content="default-src 'self'; script-src 'self' 'unsafe-inline' https://fonts.googleapis.com https://fonts.gstatic.com"
       />
     </>

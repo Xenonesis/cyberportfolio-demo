@@ -24,10 +24,15 @@ export const ENHANCED_TESTIMONIALS: EnhancedTestimonial[] = [
       'Aditya transformed our security posture completely. His expertise in Zero Trust architecture and incident response saved our company from potential catastrophic breaches. The 75% reduction in security incidents speaks volumes about his capabilities.',
     rating: 5,
     verified: true,
-    securityDomain: ['data-protection', 'incident-response', 'network-security'],
+    securityDomain: [
+      'data-protection',
+      'incident-response',
+      'network-security',
+    ],
     projectType: 'assessment',
     projectDuration: '4 months',
-    projectImpact: '75% reduction in security incidents, $2M annual cost savings',
+    projectImpact:
+      '75% reduction in security incidents, $2M annual cost savings',
     securityMetrics: {
       vulnerabilitiesFound: 45,
       securityScoreImprovement: 65,
@@ -36,8 +41,10 @@ export const ENHANCED_TESTIMONIALS: EnhancedTestimonial[] = [
       costSavings: '$2M annually',
     },
     beforeAfter: {
-      before: 'Legacy systems with outdated security controls, no centralized monitoring',
-      after: 'Zero Trust architecture implemented, 24/7 security monitoring, SOC 2 compliance',
+      before:
+        'Legacy systems with outdated security controls, no centralized monitoring',
+      after:
+        'Zero Trust architecture implemented, 24/7 security monitoring, SOC 2 compliance',
     },
     tags: ['Zero Trust', 'Incident Response', 'Enterprise Security'],
     date: '2024-11-15',
@@ -59,7 +66,8 @@ export const ENHANCED_TESTIMONIALS: EnhancedTestimonial[] = [
     securityDomain: ['cloud-security', 'compliance', 'data-protection'],
     projectType: 'development',
     projectDuration: '3 months',
-    projectImpact: 'HIPAA compliance achieved, zero data breaches during migration',
+    projectImpact:
+      'HIPAA compliance achieved, zero data breaches during migration',
     securityMetrics: {
       securityScoreImprovement: 80,
       complianceAchieved: ['HIPAA'],
@@ -86,7 +94,11 @@ export const ENHANCED_TESTIMONIALS: EnhancedTestimonial[] = [
       "Aditya's penetration testing revealed critical vulnerabilities we never knew existed. His comprehensive report and remediation guidance have significantly strengthened our security program. His professionalism and expertise are top-notch.",
     rating: 5,
     verified: true,
-    securityDomain: ['web-application-security', 'network-security', 'compliance'],
+    securityDomain: [
+      'web-application-security',
+      'network-security',
+      'compliance',
+    ],
     projectType: 'assessment',
     projectDuration: '6 weeks',
     projectImpact: '15 critical vulnerabilities identified and remediated',
@@ -97,7 +109,8 @@ export const ENHANCED_TESTIMONIALS: EnhancedTestimonial[] = [
     },
     beforeAfter: {
       before: 'Unaware of critical security gaps in our network',
-      after: 'Comprehensive vulnerability management program with regular testing',
+      after:
+        'Comprehensive vulnerability management program with regular testing',
     },
     tags: ['Penetration Testing', 'Vulnerability Assessment', 'PCI DSS'],
     date: '2024-10-15',
@@ -116,10 +129,15 @@ export const ENHANCED_TESTIMONIALS: EnhancedTestimonial[] = [
       'As a startup, security was our top concern. Aditya built our entire application with security-first principles. We now have zero critical vulnerabilities and investor confidence has skyrocketed. His development security expertise is exceptional.',
     rating: 5,
     verified: true,
-    securityDomain: ['secure-development', 'web-application-security', 'data-protection'],
+    securityDomain: [
+      'secure-development',
+      'web-application-security',
+      'data-protection',
+    ],
     projectType: 'development',
     projectDuration: '5 months',
-    projectImpact: 'Zero critical vulnerabilities, 99.9% security test pass rate',
+    projectImpact:
+      'Zero critical vulnerabilities, 99.9% security test pass rate',
     securityMetrics: {
       vulnerabilitiesFound: 0,
       securityScoreImprovement: 90,
@@ -144,7 +162,11 @@ export const ENHANCED_TESTIMONIALS: EnhancedTestimonial[] = [
       'When we experienced a ransomware attack, Aditya was our calm in the storm. His incident response team contained the threat within hours and recovered our systems with minimal data loss. His crisis management skills are invaluable.',
     rating: 5,
     verified: true,
-    securityDomain: ['incident-response', 'data-protection', 'network-security'],
+    securityDomain: [
+      'incident-response',
+      'data-protection',
+      'network-security',
+    ],
     projectType: 'incident-response',
     projectDuration: 'Emergency Response',
     projectImpact: 'Threat contained in 2 hours, 95% data recovery',
@@ -248,10 +270,15 @@ export const TESTIMONIAL_CATEGORIES: TestimonialCategory[] = [
   {
     id: 'security-assessment',
     name: 'Security Assessment',
-    description: 'Comprehensive security evaluations and vulnerability assessments',
+    description:
+      'Comprehensive security evaluations and vulnerability assessments',
     icon: 'shield-check',
     color: 'neon-green',
-    securityDomains: ['web-application-security', 'network-security', 'compliance'],
+    securityDomains: [
+      'web-application-security',
+      'network-security',
+      'compliance',
+    ],
   },
   {
     id: 'secure-development',
@@ -259,7 +286,11 @@ export const TESTIMONIAL_CATEGORIES: TestimonialCategory[] = [
     description: 'Security-first development and application security',
     icon: 'code',
     color: 'electric-cyan',
-    securityDomains: ['secure-development', 'web-application-security', 'data-protection'],
+    securityDomains: [
+      'secure-development',
+      'web-application-security',
+      'data-protection',
+    ],
   },
   {
     id: 'incident-response',
@@ -267,7 +298,11 @@ export const TESTIMONIAL_CATEGORIES: TestimonialCategory[] = [
     description: 'Emergency response and threat containment services',
     icon: 'alert-circle',
     color: 'red',
-    securityDomains: ['incident-response', 'data-protection', 'network-security'],
+    securityDomains: [
+      'incident-response',
+      'data-protection',
+      'network-security',
+    ],
   },
   {
     id: 'security-consulting',
@@ -283,7 +318,11 @@ export const TESTIMONIAL_CATEGORIES: TestimonialCategory[] = [
     description: 'Cloud migration and cloud security implementation',
     icon: 'cloud',
     color: 'blue',
-    securityDomains: ['cloud-security', 'data-protection', 'identity-access-management'],
+    securityDomains: [
+      'cloud-security',
+      'data-protection',
+      'identity-access-management',
+    ],
   },
   {
     id: 'security-training',
@@ -307,6 +346,7 @@ export const TESTIMONIALS_CONFIG: TestimonialsConfig = {
   showFilterBar: true,
   showSearch: true,
   showCarousel: true,
+  showPagination: true,
   enableLazyLoading: true,
   showRatings: true,
   showVerificationBadges: true,
@@ -323,7 +363,8 @@ export const SECURITY_SUCCESS_STORIES: SecuritySuccessStory[] = [
   {
     id: 'enterprise-zero-trust-transformation',
     title: 'Enterprise Zero Trust Transformation',
-    subtitle: 'Complete security overhaul for Fortune 500 manufacturing company',
+    subtitle:
+      'Complete security overhaul for Fortune 500 manufacturing company',
     client: {
       name: 'Sarah Johnson',
       role: 'CEO',
@@ -353,8 +394,17 @@ export const SECURITY_SUCCESS_STORIES: SecuritySuccessStory[] = [
         'Endpoint Detection and Response (EDR)',
         'Security Awareness Training Platform',
       ],
-      securityDomains: ['data-protection', 'network-security', 'incident-response', 'compliance'],
-      team: ['Aditya Kumar Tiwari (Lead Security Architect)', '3 Security Engineers', '1 Training Specialist'],
+      securityDomains: [
+        'data-protection',
+        'network-security',
+        'incident-response',
+        'compliance',
+      ],
+      team: [
+        'Aditya Kumar Tiwari (Lead Security Architect)',
+        '3 Security Engineers',
+        '1 Training Specialist',
+      ],
     },
     results: {
       securityMetrics: {
@@ -424,8 +474,16 @@ export const SECURITY_SUCCESS_STORIES: SecuritySuccessStory[] = [
         'Identity and Access Management (IAM)',
         'Cloud Monitoring and Logging',
       ],
-      securityDomains: ['cloud-security', 'compliance', 'data-protection', 'identity-access-management'],
-      team: ['Aditya Kumar Tiwari (Cloud Security Architect)', '2 Cloud Engineers'],
+      securityDomains: [
+        'cloud-security',
+        'compliance',
+        'data-protection',
+        'identity-access-management',
+      ],
+      team: [
+        'Aditya Kumar Tiwari (Cloud Security Architect)',
+        '2 Cloud Engineers',
+      ],
     },
     results: {
       securityMetrics: {
@@ -442,7 +500,8 @@ export const SECURITY_SUCCESS_STORIES: SecuritySuccessStory[] = [
       },
       beforeAfter: {
         securityPosture: 'On-premise systems with limited cloud expertise',
-        businessConfidence: 'HIPAA-compliant cloud environment with robust security',
+        businessConfidence:
+          'HIPAA-compliant cloud environment with robust security',
       },
     },
     testimonial: {
@@ -525,7 +584,8 @@ export const SECURITY_BADGES: SecurityBadge[] = [
   {
     id: 'certified-secure',
     name: 'Certified Secure',
-    description: 'Projects that have achieved security certification or compliance',
+    description:
+      'Projects that have achieved security certification or compliance',
     icon: 'shield-check',
     color: 'neon-green',
     criteria: [

@@ -55,27 +55,35 @@ export const CategorySection = ({
     <motion.section
       className={`category-section ${className}`}
       variants={categoryVariants}
-      initial="hidden"
-      animate="visible"
+      initial='hidden'
+      animate='visible'
     >
       {/* Category Header */}
-      <div className="category-header mb-6 p-4 bg-deep-navy-700 rounded-lg border border-electric-cyan-500/30">
-        <div className="flex items-center justify-between">
-          <div className="flex items-center space-x-3">
-            <div className="text-2xl" aria-hidden="true">
-              {category.icon === 'shield' ? '🛡️' : category.icon === 'code' ? '💻' : '📁'}
+      <div className='category-header mb-6 p-4 bg-deep-navy-700 rounded-lg border border-electric-cyan-500/30'>
+        <div className='flex items-center justify-between'>
+          <div className='flex items-center space-x-3'>
+            <div className='text-2xl' aria-hidden='true'>
+              {category.icon === 'shield'
+                ? '🛡️'
+                : category.icon === 'code'
+                  ? '💻'
+                  : '📁'}
             </div>
             <div>
-              <h3 className="text-xl font-bold text-white mb-1">{category.title}</h3>
-              <p className="text-gray-400 text-sm">{category.description}</p>
+              <h3 className='text-xl font-bold text-white mb-1'>
+                {category.title}
+              </h3>
+              <p className='text-gray-400 text-sm'>{category.description}</p>
             </div>
           </div>
-          
+
           {/* Category Stats */}
-          <div className="text-right">
-            <div className="text-electric-cyan-400 font-bold text-lg">{category.skillCount}</div>
-            <div className="text-gray-500 text-xs">Skills</div>
-            <div className="text-neon-green-400 font-medium text-sm mt-1">
+          <div className='text-right'>
+            <div className='text-electric-cyan-400 font-bold text-lg'>
+              {category.skillCount}
+            </div>
+            <div className='text-gray-500 text-xs'>Skills</div>
+            <div className='text-neon-green-400 font-medium text-sm mt-1'>
               Avg: {category.averageProficiency}%
             </div>
           </div>
@@ -84,10 +92,10 @@ export const CategorySection = ({
 
       {/* Skill Grid */}
       <motion.div
-        className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6"
+        className='grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6'
         variants={skillGridVariants}
       >
-        {category.skills.map((skill) => (
+        {category.skills.map(skill => (
           <SkillCard
             key={skill.id}
             skill={skill}

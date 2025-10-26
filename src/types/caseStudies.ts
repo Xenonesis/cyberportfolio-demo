@@ -44,7 +44,7 @@ export interface TimelineInfo {
 }
 
 // Security domain classification
-export type SecurityDomain = 
+export type SecurityDomain =
   | 'web-application-security'
   | 'network-security'
   | 'cloud-security'
@@ -76,7 +76,14 @@ export type CaseStudyCategory =
   | 'mid-market';
 
 // Project size classification
-export type ProjectSize = 'small' | 'medium' | 'large' | 'enterprise' | 'startup' | 'smb' | 'mid-market';
+export type ProjectSize =
+  | 'small'
+  | 'medium'
+  | 'large'
+  | 'enterprise'
+  | 'startup'
+  | 'smb'
+  | 'mid-market';
 
 // Metric types for measurable outcomes
 export interface CaseStudyMetric {

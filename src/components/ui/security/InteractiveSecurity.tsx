@@ -73,17 +73,22 @@ export const SecurityButton = ({
 
   const colorConfig = {
     cyan: 'bg-electric-cyan-500/20 border-electric-cyan-500 text-electric-cyan-400',
-    'neon-green': 'bg-neon-green-500/20 border-neon-green-500 text-neon-green-400',
+    'neon-green':
+      'bg-neon-green-500/20 border-neon-green-500 text-neon-green-400',
     white: 'bg-white/20 border-white text-white',
     red: 'bg-red-500/20 border-red-500 text-red-400',
     yellow: 'bg-yellow-500/20 border-yellow-500 text-yellow-400',
   };
 
   const variantConfig = {
-    primary: 'bg-electric-cyan-500/30 border-electric-cyan-500 hover:bg-electric-cyan-500/40',
-    secondary: 'bg-neon-green-500/30 border-neon-green-500 hover:bg-neon-green-500/40',
-    outline: 'border-2 border-electric-cyan-500 bg-transparent hover:bg-electric-cyan-500/20',
-    security: 'bg-gradient-to-r from-electric-cyan-500/20 to-neon-green-500/20 border border-electric-cyan-500',
+    primary:
+      'bg-electric-cyan-500/30 border-electric-cyan-500 hover:bg-electric-cyan-500/40',
+    secondary:
+      'bg-neon-green-500/30 border-neon-green-500 hover:bg-neon-green-500/40',
+    outline:
+      'border-2 border-electric-cyan-500 bg-transparent hover:bg-electric-cyan-500/20',
+    security:
+      'bg-gradient-to-r from-electric-cyan-500/20 to-neon-green-500/20 border border-electric-cyan-500',
     neon: 'bg-gradient-to-r from-electric-cyan-500 to-neon-green-500 border border-transparent',
   };
 
@@ -92,22 +97,22 @@ export const SecurityButton = ({
 
   const handleClick = () => {
     if (disabled || loading) return;
-    
+
     setIsAnimating(true);
     setShowEffect(true);
-    
+
     setTimeout(() => setIsAnimating(false), 300);
     setTimeout(() => setShowEffect(false), 1000);
-    
+
     onClick?.();
   };
 
   const animationVariants = {
     initial: { scale: 1, filter: 'hue-rotate(0deg)' },
-    animate: { 
-      scale: 1.05, 
+    animate: {
+      scale: 1.05,
       filter: 'hue-rotate(180deg)',
-      boxShadow: '0 0 20px rgba(0, 255, 255, 0.3)' 
+      boxShadow: '0 0 20px rgba(0, 255, 255, 0.3)',
     },
     tap: { scale: 0.95 },
   };
@@ -115,34 +120,38 @@ export const SecurityButton = ({
   const securityEffectVariants = {
     scan: (
       <SecurityAnimations.SecurityScan
-        type="radial"
-        speed="fast"
+        type='radial'
+        speed='fast'
         color={color}
-        className="absolute inset-0"
+        className='absolute inset-0'
         animate={showEffect}
       />
     ),
     encrypt: (
       <SecurityAnimations.EncryptionEffect
-        level="standard"
-        speed="normal"
+        level='standard'
+        speed='normal'
         color={color}
-        className="absolute inset-0"
+        className='absolute inset-0'
         animate={showEffect}
       />
     ),
     shield: (
       <motion.div
-        className="absolute inset-0 border-4 border-electric-cyan-500 rounded-lg"
+        className='absolute inset-0 border-4 border-electric-cyan-500 rounded-lg'
         initial={{ scale: 0, opacity: 0 }}
-        animate={showEffect ? { scale: 1.2, opacity: 0.3 } : { scale: 0, opacity: 0 }}
+        animate={
+          showEffect ? { scale: 1.2, opacity: 0.3 } : { scale: 0, opacity: 0 }
+        }
         transition={{ duration: 0.5 }}
       />
     ),
     pulse: (
       <motion.div
         className={`absolute inset-0 rounded-lg ${colorConfig[color]} opacity-20`}
-        animate={showEffect ? { scale: 1.5, opacity: 0 } : { scale: 0, opacity: 0 }}
+        animate={
+          showEffect ? { scale: 1.5, opacity: 0 } : { scale: 0, opacity: 0 }
+        }
         transition={{ duration: 0.8 }}
       />
     ),
@@ -153,17 +162,21 @@ export const SecurityButton = ({
       className={`relative ${variantConfig[variant]} ${colorConfig[color]} ${sizeConfig[size]} border rounded-lg font-medium transition-all duration-300 ease-out ${className}`}
       onClick={handleClick}
       disabled={disabled || loading}
-      whileHover={{ 
+      whileHover={{
         scale: 1.02,
         boxShadow: '0 0 15px rgba(0, 255, 255, 0.2)',
       }}
       whileTap={{ scale: 0.98 }}
-      animate={animate && isAnimating ? animationVariants.animate : animationVariants.initial}
+      animate={
+        animate && isAnimating
+          ? animationVariants.animate
+          : animationVariants.initial
+      }
       transition={{ duration: 0.3 }}
     >
       {securityEffect && securityEffectVariants[securityEffect]}
-      
-      <div className="relative flex items-center gap-2">
+
+      <div className='relative flex items-center gap-2'>
         {icon && (
           <SecurityIcons.Lock
             size={size === 'sm' ? 'xs' : size === 'md' ? 'sm' : 'md'}
@@ -207,7 +220,7 @@ export const ProtectionToggle = ({
   const animationVariants = {
     initial: { scale: 1 },
     animate: { scale: 1.1 },
-    toggleOn: { 
+    toggleOn: {
       x: size === 'sm' ? '4px' : size === 'md' ? '6px' : '8px',
       backgroundColor: 'var(--neon-green)',
     },
@@ -225,33 +238,37 @@ export const ProtectionToggle = ({
       >
         <motion.div
           className={`absolute top-0.5 left-0.5 ${size === 'sm' ? 'w-3 h-3' : size === 'md' ? 'w-4 h-4' : 'w-6 h-6'} bg-white rounded-full shadow-md`}
-          animate={enabled ? { x: size === 'sm' ? '4px' : size === 'md' ? '6px' : '8px' } : { x: 0 }}
+          animate={
+            enabled
+              ? { x: size === 'sm' ? '4px' : size === 'md' ? '6px' : '8px' }
+              : { x: 0 }
+          }
           transition={{ duration: 0.3, ease: 'easeInOut' }}
         />
-        
+
         {enabled && (
           <SecurityIcons.Shield
             size={size === 'sm' ? 'xs' : size === 'md' ? 'sm' : 'md'}
-            color="neon-green"
-            variant="active"
-            className="absolute inset-0 flex items-center justify-center"
+            color='neon-green'
+            variant='active'
+            className='absolute inset-0 flex items-center justify-center'
             animate={animate}
           />
         )}
-        
+
         {!enabled && (
           <SecurityIcons.Lock
             size={size === 'sm' ? 'xs' : size === 'md' ? 'sm' : 'md'}
-            color="gray"
-            variant="default"
-            className="absolute inset-0 flex items-center justify-center"
+            color='gray'
+            variant='default'
+            className='absolute inset-0 flex items-center justify-center'
             animate={animate}
           />
         )}
       </motion.div>
-      
+
       {label && (
-        <span className="text-sm font-medium text-light-gray-300">
+        <span className='text-sm font-medium text-light-gray-300'>
           {enabled ? `Protected ${label}` : `Unprotected ${label}`}
         </span>
       )}
@@ -287,7 +304,7 @@ export const SecurityModal = ({
     <AnimatePresence>
       {isOpen && (
         <motion.div
-          className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-black/50 backdrop-blur-sm"
+          className='fixed inset-0 z-50 flex items-center justify-center p-4 bg-black/50 backdrop-blur-sm'
           initial={{ opacity: 0 }}
           animate={{ opacity: 1 }}
           exit={{ opacity: 0 }}
@@ -298,39 +315,49 @@ export const SecurityModal = ({
             initial={{ scale: 0.9, opacity: 0, y: 20 }}
             animate={{ scale: 1, opacity: 1, y: 0 }}
             exit={{ scale: 0.9, opacity: 0, y: 20 }}
-            onClick={(e) => e.stopPropagation()}
+            onClick={e => e.stopPropagation()}
           >
-            <div className="flex items-start justify-between mb-4">
-              <h3 className="text-xl font-semibold text-light-gray-300 flex items-center gap-2">
-                <SecurityIcons.Alert variant={variant === 'threat' ? 'critical' : variant === 'confirmation' ? 'success' : variant === 'info' ? 'info' : 'warning'} size="md" color="cyan" />
+            <div className='flex items-start justify-between mb-4'>
+              <h3 className='text-xl font-semibold text-light-gray-300 flex items-center gap-2'>
+                <SecurityIcons.Alert
+                  variant={
+                    variant === 'threat'
+                      ? 'critical'
+                      : variant === 'confirmation'
+                        ? 'success'
+                        : variant === 'info'
+                          ? 'info'
+                          : 'warning'
+                  }
+                  size='md'
+                  color='cyan'
+                />
                 {title}
               </h3>
               <button
                 onClick={onClose}
-                className="text-gray-400 hover:text-white transition-colors"
+                className='text-gray-400 hover:text-white transition-colors'
               >
-                <SecurityIcons.Lock variant="default" size="sm" color="gray" />
+                <SecurityIcons.Lock variant='default' size='sm' color='gray' />
               </button>
             </div>
-            
-            <div className="text-light-gray-400">
-              {children}
-            </div>
-            
-            <div className="flex justify-end space-x-3 mt-6">
+
+            <div className='text-light-gray-400'>{children}</div>
+
+            <div className='flex justify-end space-x-3 mt-6'>
               <SecurityButton
-                variant="outline"
-                size="sm"
+                variant='outline'
+                size='sm'
                 onClick={onClose}
                 securityEffect={undefined}
               >
                 Cancel
               </SecurityButton>
               <SecurityButton
-                variant="security"
-                size="sm"
+                variant='security'
+                size='sm'
                 onClick={onClose}
-                securityEffect="encrypt"
+                securityEffect='encrypt'
               >
                 Confirm
               </SecurityButton>
@@ -370,10 +397,10 @@ export const SecurityCard = ({
 
   const animationVariants = {
     initial: { scale: 1, rotate: 0 },
-    hover: { 
-      scale: 1.02, 
+    hover: {
+      scale: 1.02,
       rotate: 2,
-      boxShadow: '0 8px 32px rgba(0, 255, 255, 0.1)' 
+      boxShadow: '0 8px 32px rgba(0, 255, 255, 0.1)',
     },
     tap: { scale: 0.98 },
   };
@@ -384,41 +411,53 @@ export const SecurityCard = ({
       onMouseEnter={() => setIsHovered(true)}
       onMouseLeave={() => setIsHovered(false)}
       onClick={onClick}
-      animate={animate ? (isHovered ? animationVariants.hover : animationVariants.initial) : {}}
+      animate={
+        animate
+          ? isHovered
+            ? animationVariants.hover
+            : animationVariants.initial
+          : {}
+      }
       whileTap={animate ? animationVariants.tap : {}}
       transition={{ duration: 0.3 }}
     >
       {variant === 'threat' && isHovered && (
         <SecurityAnimations.ThreatLevel
-          level="high"
-          size="sm"
-          className="absolute -top-2 -right-2"
+          level='high'
+          size='sm'
+          className='absolute -top-2 -right-2'
           animate={true}
         />
       )}
-      
+
       {variant === 'secure' && isHovered && (
         <SecurityAnimations.SecurityScan
-          type="grid"
-          speed="fast"
-          color="neon-green"
-          className="absolute inset-0"
+          type='grid'
+          speed='fast'
+          color='neon-green'
+          className='absolute inset-0'
           animate={true}
         />
       )}
-      
-      <div className="relative z-10">
-        <div className="flex items-center gap-3 mb-2">
+
+      <div className='relative z-10'>
+        <div className='flex items-center gap-3 mb-2'>
           {icon && (
             <SecurityIcons.Circuit
               size={size === 'sm' ? 'xs' : size === 'md' ? 'sm' : 'md'}
-              color={variant === 'threat' ? 'red' : variant === 'secure' ? 'neon-green' : 'cyan'}
+              color={
+                variant === 'threat'
+                  ? 'red'
+                  : variant === 'secure'
+                    ? 'neon-green'
+                    : 'cyan'
+              }
               animate={animate}
             />
           )}
-          <h4 className="font-semibold text-light-gray-300">{title}</h4>
+          <h4 className='font-semibold text-light-gray-300'>{title}</h4>
         </div>
-        <p className="text-light-gray-400 text-sm">{description}</p>
+        <p className='text-light-gray-400 text-sm'>{description}</p>
       </div>
     </motion.div>
   );

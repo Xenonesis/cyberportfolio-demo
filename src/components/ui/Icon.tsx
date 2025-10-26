@@ -35,7 +35,7 @@ export const Icon = ({
   };
 
   const baseClasses = `${sizeClasses[size]} ${colorClasses[color]} ${className}`;
-  
+
   const animationProps = animate
     ? {
         whileHover: { scale: 1.2, rotate: 5 },
@@ -46,12 +46,9 @@ export const Icon = ({
   const pulseClass = pulse ? 'animate-pulse' : '';
 
   return (
-    <motion.div
-      className={`${baseClasses} ${pulseClass}`}
-      {...animationProps}
-    >
+    <motion.div className={`${baseClasses} ${pulseClass}`} {...animationProps}>
       {/* Placeholder for icons - would use react-icons in real implementation */}
-      <div className="w-full h-full bg-current rounded-sm"></div>
+      <div className='w-full h-full bg-current rounded-sm'></div>
     </motion.div>
   );
 };

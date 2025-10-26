@@ -173,16 +173,14 @@ export const ResumeProjects = () => {
     <View style={styles.section}>
       <Text style={styles.sectionTitle}>Key Projects & Case Studies</Text>
 
-      {topProjects.map((project) => (
+      {topProjects.map(project => (
         <View key={project.id} style={styles.projectItem}>
           <View style={styles.projectHeader}>
             <Text style={styles.projectTitle}>{project.title}</Text>
             <Text style={styles.projectSubtitle}>{project.subtitle}</Text>
           </View>
 
-          <Text style={styles.projectDescription}>
-            {project.description}
-          </Text>
+          <Text style={styles.projectDescription}>{project.description}</Text>
 
           <View style={styles.technologiesSection}>
             <Text style={styles.technologiesTitle}>Technologies Used:</Text>

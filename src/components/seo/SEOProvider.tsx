@@ -1,6 +1,12 @@
 'use client';
 
-import { createContext, useContext, useEffect, useState, ReactNode } from 'react';
+import {
+  createContext,
+  useContext,
+  useEffect,
+  useState,
+  ReactNode,
+} from 'react';
 import { SEOHead } from './SEOHead';
 import { SchemaMarkup } from './SchemaMarkup';
 import { BreadcrumbNavigation } from './BreadcrumbNavigation';
@@ -98,7 +104,7 @@ export const SEOProvider = ({
 
   return (
     <SEOContext.Provider value={contextValue}>
-      <div className="seo-optimized-content">
+      <div className='seo-optimized-content'>
         {/* SEO Head with meta tags and schema */}
         <SEOHead
           title={pageTitle}
@@ -114,9 +120,7 @@ export const SEOProvider = ({
         <BreadcrumbNavigation currentPath={currentPage} />
 
         {/* Content Optimization */}
-        <ContentOptimization>
-          {children}
-        </ContentOptimization>
+        <ContentOptimization>{children}</ContentOptimization>
 
         {/* Trust Building Elements */}
         {enableTrustBuilding && <TrustBuilding />}

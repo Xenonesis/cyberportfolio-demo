@@ -40,7 +40,13 @@ export interface Education {
 }
 
 // Base skill category types
-export type BaseSkillCategory = 'technical' | 'security' | 'management' | 'soft' | 'cybersecurity' | 'development';
+export type BaseSkillCategory =
+  | 'technical'
+  | 'security'
+  | 'management'
+  | 'soft'
+  | 'cybersecurity'
+  | 'development';
 
 // Detailed skill category types
 export type DetailedSkillCategory =
@@ -328,7 +334,11 @@ export interface AnimationVariants {
 }
 
 // Career timeline event categories
-export type TimelineCategory = 'education' | 'experience' | 'certification' | 'achievement';
+export type TimelineCategory =
+  | 'education'
+  | 'experience'
+  | 'certification'
+  | 'achievement';
 
 // Career timeline event status
 export type TimelineStatus = 'completed' | 'in-progress' | 'upcoming';

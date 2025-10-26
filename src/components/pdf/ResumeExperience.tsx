@@ -118,7 +118,7 @@ export const ResumeExperience = () => {
     <View style={styles.section}>
       <Text style={styles.sectionTitle}>Professional Experience</Text>
 
-      {EXPERIENCE.map((exp) => (
+      {EXPERIENCE.map(exp => (
         <View key={exp.id} style={styles.experienceItem}>
           <View style={styles.experienceHeader}>
             <Text style={styles.experienceTitle}>{exp.title}</Text>
@@ -127,9 +127,7 @@ export const ResumeExperience = () => {
 
           <Text style={styles.experienceCompany}>{exp.company}</Text>
 
-          <Text style={styles.experienceDescription}>
-            {exp.description}
-          </Text>
+          <Text style={styles.experienceDescription}>{exp.description}</Text>
 
           <View style={styles.technologiesSection}>
             <Text style={styles.technologiesTitle}>Key Technologies:</Text>

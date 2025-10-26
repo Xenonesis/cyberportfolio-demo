@@ -53,8 +53,6 @@ export type {
   SecurityCardProps,
 } from './InteractiveSecurity';
 
-export type {
-  SecurityContextType,
-} from './SecurityDesignSystem';
+export type { SecurityContextType } from './SecurityDesignSystem';
 
 export { useSecurityContext } from './SecurityDesignSystem';

@@ -57,7 +57,8 @@ export const TrustBuilding = ({
           id: 'security-assessments',
           type: 'achievement' as const,
           title: '100+ Security Assessments',
-          description: 'Successfully completed comprehensive security evaluations',
+          description:
+            'Successfully completed comprehensive security evaluations',
           icon: 'check-circle',
           value: '100+',
           verified: true,
@@ -128,21 +129,27 @@ export const TrustBuilding = ({
     }
 
     return () => observer.disconnect();
-  }, [showCertifications, showAchievements, showMetrics, showTestimonials, showClients]);
+  }, [
+    showCertifications,
+    showAchievements,
+    showMetrics,
+    showTestimonials,
+    showClients,
+  ]);
 
   const getTrustSignalIcon = (type: string, customIcon?: string) => {
     const icons: Record<string, string> = {
-      'certification': '🔒',
-      'achievement': '🏆',
-      'metric': '📊',
-      'testimonial': '💬',
-      'client': '🏢',
+      certification: '🔒',
+      achievement: '🏆',
+      metric: '📊',
+      testimonial: '💬',
+      client: '🏢',
       'shield-check': '🛡️',
       'check-circle': '✅',
-      'target': '🎯',
-      'users': '👥',
+      target: '🎯',
+      users: '👥',
       'alert-circle': '⚠️',
-      'clock': '⏰',
+      clock: '⏰',
       'file-text': '📄',
     };
 
@@ -151,57 +158,57 @@ export const TrustBuilding = ({
 
   const getTrustSignalColor = (type: string) => {
     const colors: Record<string, string> = {
-      'certification': 'text-cyan-400',
-      'achievement': 'text-green-400',
-      'metric': 'text-blue-400',
-      'testimonial': 'text-purple-400',
-      'client': 'text-orange-400',
+      certification: 'text-cyan-400',
+      achievement: 'text-green-400',
+      metric: 'text-blue-400',
+      testimonial: 'text-purple-400',
+      client: 'text-orange-400',
     };
 
     return colors[type] || 'text-gray-400';
   };
 
   return (
-    <div className={`trust-building ${className}`} data-testid="trust-building">
-      <div className="trust-header">
-        <h2 className="trust-title">
-          <span className="trust-icon">🔒</span>
+    <div className={`trust-building ${className}`} data-testid='trust-building'>
+      <div className='trust-header'>
+        <h2 className='trust-title'>
+          <span className='trust-icon'>🔒</span>
           Trusted Cybersecurity Expert
         </h2>
-        <p className="trust-subtitle">
+        <p className='trust-subtitle'>
           Proven expertise with verified credentials and satisfied clients
         </p>
       </div>
 
-      <div className="trust-grid">
-        {trustSignals.map((signal) => (
+      <div className='trust-grid'>
+        {trustSignals.map(signal => (
           <div
             key={signal.id}
             className={`trust-card ${isVisible ? 'animate-fade-in' : ''}`}
             data-signal-type={signal.type}
           >
-            <div className="trust-card-content">
-              <div className="trust-icon-container">
-                <span className="trust-emoji">
+            <div className='trust-card-content'>
+              <div className='trust-icon-container'>
+                <span className='trust-emoji'>
                   {getTrustSignalIcon(signal.type, signal.icon)}
                 </span>
               </div>
 
-              <div className="trust-info">
-                <h3 className={`trust-title ${getTrustSignalColor(signal.type)}`}>
+              <div className='trust-info'>
+                <h3
+                  className={`trust-title ${getTrustSignalColor(signal.type)}`}
+                >
                   {signal.title}
                 </h3>
-                <p className="trust-description">
-                  {signal.description}
-                </p>
+                <p className='trust-description'>{signal.description}</p>
                 {signal.value && (
-                  <div className="trust-value">
+                  <div className='trust-value'>
                     <strong>{signal.value}</strong>
                   </div>
                 )}
                 {signal.verified && (
-                  <div className="trust-verified">
-                    <span className="verified-badge">✓ Verified</span>
+                  <div className='trust-verified'>
+                    <span className='verified-badge'>✓ Verified</span>
                   </div>
                 )}
               </div>
@@ -211,22 +218,27 @@ export const TrustBuilding = ({
 
         {/* Additional trust elements */}
         {showClients && (
-          <div className={`trust-card clients-card ${isVisible ? 'animate-fade-in' : ''}`}>
-            <div className="trust-card-content">
-              <div className="trust-icon-container">
-                <span className="trust-emoji">🏢</span>
+          <div
+            className={`trust-card clients-card ${isVisible ? 'animate-fade-in' : ''}`}
+          >
+            <div className='trust-card-content'>
+              <div className='trust-icon-container'>
+                <span className='trust-emoji'>🏢</span>
               </div>
-              <div className="trust-info">
-                <h3 className="text-orange-400">Trusted by Industry Leaders</h3>
-                <p className="trust-description">
-                  Serving clients across financial services, healthcare, technology, and government sectors
+              <div className='trust-info'>
+                <h3 className='text-orange-400'>Trusted by Industry Leaders</h3>
+                <p className='trust-description'>
+                  Serving clients across financial services, healthcare,
+                  technology, and government sectors
                 </p>
-                <div className="client-industries">
-                  {SEO_CONFIG.securitySEO.clientIndustries.map((industry, index) => (
-                    <span key={index} className="client-industry-tag">
-                      {industry}
-                    </span>
-                  ))}
+                <div className='client-industries'>
+                  {SEO_CONFIG.securitySEO.clientIndustries.map(
+                    (industry, index) => (
+                      <span key={index} className='client-industry-tag'>
+                        {industry}
+                      </span>
+                    )
+                  )}
                 </div>
               </div>
             </div>
@@ -234,19 +246,22 @@ export const TrustBuilding = ({
         )}
 
         {showTestimonials && (
-          <div className={`trust-card testimonials-card ${isVisible ? 'animate-fade-in' : ''}`}>
-            <div className="trust-card-content">
-              <div className="trust-icon-container">
-                <span className="trust-emoji">⭐</span>
+          <div
+            className={`trust-card testimonials-card ${isVisible ? 'animate-fade-in' : ''}`}
+          >
+            <div className='trust-card-content'>
+              <div className='trust-icon-container'>
+                <span className='trust-emoji'>⭐</span>
               </div>
-              <div className="trust-info">
-                <h3 className="text-purple-400">Client Testimonials</h3>
-                <p className="trust-description">
-                  "Aditya's expertise transformed our security posture completely. Highly recommended!"
+              <div className='trust-info'>
+                <h3 className='text-purple-400'>Client Testimonials</h3>
+                <p className='trust-description'>
+                  "Aditya's expertise transformed our security posture
+                  completely. Highly recommended!"
                 </p>
-                <div className="testimonial-rating">
-                  <span className="rating-stars">★★★★★</span>
-                  <span className="rating-count">5.0/5 from 50+ reviews</span>
+                <div className='testimonial-rating'>
+                  <span className='rating-stars'>★★★★★</span>
+                  <span className='rating-count'>5.0/5 from 50+ reviews</span>
                 </div>
               </div>
             </div>
@@ -256,7 +271,7 @@ export const TrustBuilding = ({
 
       {/* Schema markup for trust signals */}
       <script
-        type="application/ld+json"
+        type='application/ld+json'
         dangerouslySetInnerHTML={{
           __html: JSON.stringify({
             '@context': 'https://schema.org',
@@ -332,7 +347,9 @@ export const TrustBuilding = ({
         .animate-fade-in {
           opacity: 1;
           transform: translateY(0);
-          transition: opacity 0.6s ease, transform 0.6s ease;
+          transition:
+            opacity 0.6s ease,
+            transform 0.6s ease;
         }
 
         .trust-card-content {

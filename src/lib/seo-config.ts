@@ -207,7 +207,7 @@ export const SEO_PAGES = {
   about: {
     title: 'About Aditya Kumar Tiwari | Cybersecurity Expert & Developer',
     description:
-      'Learn about Aditya Kumar Tiwari\'s cybersecurity expertise, education, certifications, and professional journey in protecting organizations from cyber threats.',
+      "Learn about Aditya Kumar Tiwari's cybersecurity expertise, education, certifications, and professional journey in protecting organizations from cyber threats.",
     keywords: [
       'about cybersecurity expert',
       'cybersecurity professional',
@@ -343,8 +343,8 @@ export const SEO_PERFORMANCE_CONFIG = {
   // Core Web Vitals thresholds
   coreWebVitals: {
     LCP: 2500, // Largest Contentful Paint (ms)
-    FID: 100,  // First Input Delay (ms)
-    CLS: 0.1,  // Cumulative Layout Shift
+    FID: 100, // First Input Delay (ms)
+    CLS: 0.1, // Cumulative Layout Shift
   },
 
   // SEO ranking factors

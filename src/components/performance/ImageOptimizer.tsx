@@ -17,7 +17,7 @@ export const ImageOptimizer: React.FC<OptimizedImageProps> = ({
   src,
   alt,
   priority = false,
- quality = 75,
+  quality = 75,
   placeholder = 'empty',
   blurDataURL,
   ...props
@@ -25,11 +25,21 @@ export const ImageOptimizer: React.FC<OptimizedImageProps> = ({
   const { isMobile } = usePerformance();
 
   // Determine image dimensions based on device
-  const optimizedWidth = props.width ? (isMobile ? Math.min(Number(props.width), 400) : Number(props.width)) : undefined;
-  const optimizedHeight = props.height ? (isMobile ? Math.min(Number(props.height), 400) : Number(props.height)) : undefined;
+  const optimizedWidth = props.width
+    ? isMobile
+      ? Math.min(Number(props.width), 400)
+      : Number(props.width)
+    : undefined;
+  const optimizedHeight = props.height
+    ? isMobile
+      ? Math.min(Number(props.height), 400)
+      : Number(props.height)
+    : undefined;
 
- // Use WebP format with fallback
-  const imageSrc = src.endsWith('.svg') ? src : src.replace(/\.(jpg|jpeg|png)$/i, '.webp');
+  // Use WebP format with fallback
+  const imageSrc = src.endsWith('.svg')
+    ? src
+    : src.replace(/\.(jpg|jpeg|png)$/i, '.webp');
 
   return (
     <Image
@@ -42,7 +52,12 @@ export const ImageOptimizer: React.FC<OptimizedImageProps> = ({
       placeholder={placeholder}
       blurDataURL={blurDataURL}
       loading={priority ? 'eager' : 'lazy'}
-      sizes={props.sizes || (isMobile ? '(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw' : '(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw')}
+      sizes={
+        props.sizes ||
+        (isMobile
+          ? '(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw'
+          : '(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw')
+      }
       style={{
         ...props.style,
         maxWidth: '100%',
@@ -92,19 +107,27 @@ export const LazyImage: React.FC<OptimizedImageProps> = ({
 
   if (!isVisible && !priority) {
     return (
-      <div 
-        ref={imageRef} 
-        style={{ 
-          width: props.width, 
-          height: props.height, 
+      <div
+        ref={imageRef}
+        style={{
+          width: props.width,
+          height: props.height,
           background: 'rgba(0, 255, 255, 0.1)',
           display: 'flex',
           alignItems: 'center',
           justifyContent: 'center',
-          borderRadius: props.style?.borderRadius || 0
+          borderRadius: props.style?.borderRadius || 0,
         }}
       >
-        <div className="animate-pulse" style={{ width: '50%', height: '50%', background: 'rgba(0, 255, 255, 0.2)', borderRadius: 4 }} />
+        <div
+          className='animate-pulse'
+          style={{
+            width: '50%',
+            height: '50%',
+            background: 'rgba(0, 255, 255, 0.2)',
+            borderRadius: 4,
+          }}
+        />
       </div>
     );
   }

@@ -125,18 +125,27 @@ export const CASE_STUDIES: CaseStudy[] = [
   {
     id: 'enterprise-security-overhaul',
     title: 'Enterprise Security Overhaul',
-    subtitle: 'Complete security transformation for Fortune 500 manufacturing company',
+    subtitle:
+      'Complete security transformation for Fortune 500 manufacturing company',
     description:
       'Led a comprehensive security transformation for a Fortune 500 manufacturing company, implementing Zero Trust architecture and reducing security incidents by 75%. The project spanned 6 months and involved complete infrastructure overhaul.',
     image: '/images/case-studies/enterprise-security-overhaul.jpg',
-    category: ['enterprise', 'web-security', 'incident-response'] as CaseStudyCategory[],
+    category: [
+      'enterprise',
+      'web-security',
+      'incident-response',
+    ] as CaseStudyCategory[],
     client: clients[0],
     timeline: {
       startDate: '2023-01-15',
       endDate: '2023-07-15',
       duration: '6 months',
     },
-    securityDomain: ['web-application-security', 'network-security', 'incident-response'] as SecurityDomain[],
+    securityDomain: [
+      'web-application-security',
+      'network-security',
+      'incident-response',
+    ] as SecurityDomain[],
     metrics: [
       {
         id: 'security-incidents',
@@ -197,7 +206,8 @@ export const CASE_STUDIES: CaseStudy[] = [
       {
         id: 'incident-reduction',
         title: 'Security Incident Reduction',
-        description: 'Dramatically reduced security incidents through proactive monitoring',
+        description:
+          'Dramatically reduced security incidents through proactive monitoring',
         value: '75%',
         unit: 'reduction',
         impact: 'high',
@@ -253,18 +263,27 @@ export const CASE_STUDIES: CaseStudy[] = [
   {
     id: 'cloud-migration-security',
     title: 'Cloud Migration Security',
-    subtitle: 'Secure AWS migration for healthcare provider with HIPAA compliance',
+    subtitle:
+      'Secure AWS migration for healthcare provider with HIPAA compliance',
     description:
       'Designed and implemented security controls for a healthcare provider migrating to AWS, ensuring HIPAA compliance and patient data protection. The project involved comprehensive security architecture design and implementation.',
     image: '/images/case-studies/cloud-migration-security.jpg',
-    category: ['cloud-security', 'healthcare', 'compliance'] as CaseStudyCategory[],
+    category: [
+      'cloud-security',
+      'healthcare',
+      'compliance',
+    ] as CaseStudyCategory[],
     client: clients[1],
     timeline: {
       startDate: '2023-03-01',
       endDate: '2023-08-31',
       duration: '6 months',
     },
-    securityDomain: ['cloud-security', 'compliance', 'data-protection'] as SecurityDomain[],
+    securityDomain: [
+      'cloud-security',
+      'compliance',
+      'data-protection',
+    ] as SecurityDomain[],
     metrics: [
       {
         id: 'compliance-status',
@@ -352,7 +371,8 @@ export const CASE_STUDIES: CaseStudy[] = [
       {
         id: 'disaster-recovery',
         title: 'Disaster Recovery',
-        description: 'Improved disaster recovery capabilities with 99.9% uptime',
+        description:
+          'Improved disaster recovery capabilities with 99.9% uptime',
         value: '99.9%',
         unit: 'uptime',
         impact: 'medium',
@@ -383,14 +403,22 @@ export const CASE_STUDIES: CaseStudy[] = [
     description:
       'Conducted extensive penetration testing for a global bank, identifying critical vulnerabilities and providing actionable remediation guidance. The assessment covered web applications, network infrastructure, and social engineering.',
     image: '/images/case-studies/financial-penetration-test.jpg',
-    category: ['financial', 'penetration-testing', 'vulnerability-assessment'] as CaseStudyCategory[],
+    category: [
+      'financial',
+      'penetration-testing',
+      'vulnerability-assessment',
+    ] as CaseStudyCategory[],
     client: clients[2],
     timeline: {
       startDate: '2023-05-15',
       endDate: '2023-07-15',
       duration: '2 months',
     },
-    securityDomain: ['vulnerability-assessment', 'penetration-testing', 'network-security'] as SecurityDomain[],
+    securityDomain: [
+      'vulnerability-assessment',
+      'penetration-testing',
+      'network-security',
+    ] as SecurityDomain[],
     metrics: [
       {
         id: 'vulnerabilities-found',
@@ -509,14 +537,22 @@ export const CASE_STUDIES: CaseStudy[] = [
     description:
       'Built security foundation for a Series A tech startup, implementing DevSecOps practices and secure development lifecycle. The project enabled the startup to pass security due diligence and secure funding.',
     image: '/images/case-studies/startup-security-foundation.jpg',
-    category: ['startup', 'secure-development', 'web-security'] as CaseStudyCategory[],
+    category: [
+      'startup',
+      'secure-development',
+      'web-security',
+    ] as CaseStudyCategory[],
     client: clients[3],
     timeline: {
       startDate: '2023-08-01',
       endDate: '2023-11-30',
       duration: '4 months',
     },
-    securityDomain: ['secure-development', 'web-application-security', 'compliance'] as SecurityDomain[],
+    securityDomain: [
+      'secure-development',
+      'web-application-security',
+      'compliance',
+    ] as SecurityDomain[],
     metrics: [
       {
         id: 'vulnerabilities',
@@ -644,7 +680,11 @@ export const CASE_STUDIES: CaseStudy[] = [
       endDate: '2024-01-31',
       duration: '4 months',
     },
-    securityDomain: ['web-application-security', 'compliance', 'data-protection'] as SecurityDomain[],
+    securityDomain: [
+      'web-application-security',
+      'compliance',
+      'data-protection',
+    ] as SecurityDomain[],
     metrics: [
       {
         id: 'payment-security',
@@ -732,7 +772,8 @@ export const CASE_STUDIES: CaseStudy[] = [
       {
         id: 'data-protection',
         title: 'Data Protection',
-        description: 'Enhanced customer data protection with end-to-end encryption',
+        description:
+          'Enhanced customer data protection with end-to-end encryption',
         value: 'Advanced',
         unit: 'protection level',
         impact: 'medium',
@@ -763,14 +804,22 @@ export const CASE_STUDIES: CaseStudy[] = [
     description:
       'Designed and implemented comprehensive cybersecurity program for government agency, including threat intelligence, incident response, and security awareness. The program significantly improved national security posture.',
     image: '/images/case-studies/government-cybersecurity-program.jpg',
-    category: ['government', 'incident-response', 'network-security'] as CaseStudyCategory[],
+    category: [
+      'government',
+      'incident-response',
+      'network-security',
+    ] as CaseStudyCategory[],
     client: clients[5],
     timeline: {
       startDate: '2023-06-01',
       endDate: '2024-06-01',
       duration: '1 year',
     },
-    securityDomain: ['incident-response', 'network-security', 'compliance'] as SecurityDomain[],
+    securityDomain: [
+      'incident-response',
+      'network-security',
+      'compliance',
+    ] as SecurityDomain[],
     metrics: [
       {
         id: 'threat-intelligence',
@@ -831,7 +880,8 @@ export const CASE_STUDIES: CaseStudy[] = [
       {
         id: 'threat-intelligence',
         title: 'Threat Intelligence',
-        description: 'Implemented advanced threat intelligence with real-time monitoring',
+        description:
+          'Implemented advanced threat intelligence with real-time monitoring',
         value: 'Advanced',
         unit: 'capability level',
         impact: 'high',
@@ -840,7 +890,8 @@ export const CASE_STUDIES: CaseStudy[] = [
       {
         id: 'response-time',
         title: 'Response Time',
-        description: 'Reduced incident response time from 4 hours to 30 minutes',
+        description:
+          'Reduced incident response time from 4 hours to 30 minutes',
         value: '87%',
         unit: 'faster',
         impact: 'high',
@@ -889,14 +940,22 @@ export const CASE_STUDIES: CaseStudy[] = [
     description:
       'Implemented comprehensive cybersecurity program for university, protecting student data and research while enabling academic innovation. The program balanced security with academic freedom requirements.',
     image: '/images/case-studies/education-security-program.jpg',
-    category: ['education', 'network-security', 'compliance'] as CaseStudyCategory[],
+    category: [
+      'education',
+      'network-security',
+      'compliance',
+    ] as CaseStudyCategory[],
     client: clients[6],
     timeline: {
       startDate: '2023-09-01',
       endDate: '2024-03-31',
       duration: '7 months',
     },
-    securityDomain: ['network-security', 'compliance', 'data-protection'] as SecurityDomain[],
+    securityDomain: [
+      'network-security',
+      'compliance',
+      'data-protection',
+    ] as SecurityDomain[],
     metrics: [
       {
         id: 'student-data-protection',
@@ -957,7 +1016,8 @@ export const CASE_STUDIES: CaseStudy[] = [
       {
         id: 'data-protection',
         title: 'Data Protection',
-        description: 'Enhanced student and research data protection to advanced level',
+        description:
+          'Enhanced student and research data protection to advanced level',
         value: 'Advanced',
         unit: 'protection level',
         impact: 'high',
@@ -984,7 +1044,8 @@ export const CASE_STUDIES: CaseStudy[] = [
       {
         id: 'research-protection',
         title: 'Research Protection',
-        description: 'Protected sensitive research data from unauthorized access',
+        description:
+          'Protected sensitive research data from unauthorized access',
         value: 'Complete',
         unit: 'protection',
         impact: 'medium',
@@ -1015,14 +1076,22 @@ export const CASE_STUDIES: CaseStudy[] = [
     description:
       'Conducted security assessment for IoT device manufacturer, identifying vulnerabilities in device firmware and cloud infrastructure. Implemented security improvements to protect millions of connected devices.',
     image: '/images/case-studies/iot-device-security.jpg',
-    category: ['technology', 'iot-security', 'secure-development'] as CaseStudyCategory[],
+    category: [
+      'technology',
+      'iot-security',
+      'secure-development',
+    ] as CaseStudyCategory[],
     client: clients[7],
     timeline: {
       startDate: '2024-01-15',
       endDate: '2024-04-15',
       duration: '3 months',
     },
-    securityDomain: ['iot-security', 'secure-development', 'network-security'] as SecurityDomain[],
+    securityDomain: [
+      'iot-security',
+      'secure-development',
+      'network-security',
+    ] as SecurityDomain[],
     metrics: [
       {
         id: 'device-vulnerabilities',
@@ -1157,10 +1226,30 @@ export const CASE_STUDIES_CONFIG = {
 export const CASE_STUDY_FILTERS = {
   categories: [
     { id: 'web-security', label: 'Web Security', count: 3, isActive: false },
-    { id: 'network-security', label: 'Network Security', count: 3, isActive: false },
-    { id: 'cloud-security', label: 'Cloud Security', count: 2, isActive: false },
-    { id: 'incident-response', label: 'Incident Response', count: 2, isActive: false },
-    { id: 'secure-development', label: 'Secure Development', count: 2, isActive: false },
+    {
+      id: 'network-security',
+      label: 'Network Security',
+      count: 3,
+      isActive: false,
+    },
+    {
+      id: 'cloud-security',
+      label: 'Cloud Security',
+      count: 2,
+      isActive: false,
+    },
+    {
+      id: 'incident-response',
+      label: 'Incident Response',
+      count: 2,
+      isActive: false,
+    },
+    {
+      id: 'secure-development',
+      label: 'Secure Development',
+      count: 2,
+      isActive: false,
+    },
     { id: 'compliance', label: 'Compliance', count: 4, isActive: false },
     { id: 'enterprise', label: 'Enterprise', count: 4, isActive: false },
     { id: 'healthcare', label: 'Healthcare', count: 1, isActive: false },
@@ -1173,21 +1262,66 @@ export const CASE_STUDY_FILTERS = {
     { id: 'smb', label: 'Small Business', count: 1, isActive: false },
   ],
   securityDomains: [
-    { id: 'web-application-security', label: 'Web Application Security', count: 3, isActive: false },
-    { id: 'network-security', label: 'Network Security', count: 3, isActive: false },
-    { id: 'cloud-security', label: 'Cloud Security', count: 2, isActive: false },
-    { id: 'incident-response', label: 'Incident Response', count: 2, isActive: false },
-    { id: 'secure-development', label: 'Secure Development', count: 2, isActive: false },
+    {
+      id: 'web-application-security',
+      label: 'Web Application Security',
+      count: 3,
+      isActive: false,
+    },
+    {
+      id: 'network-security',
+      label: 'Network Security',
+      count: 3,
+      isActive: false,
+    },
+    {
+      id: 'cloud-security',
+      label: 'Cloud Security',
+      count: 2,
+      isActive: false,
+    },
+    {
+      id: 'incident-response',
+      label: 'Incident Response',
+      count: 2,
+      isActive: false,
+    },
+    {
+      id: 'secure-development',
+      label: 'Secure Development',
+      count: 2,
+      isActive: false,
+    },
     { id: 'compliance', label: 'Compliance', count: 4, isActive: false },
     { id: 'iot-security', label: 'IoT Security', count: 1, isActive: false },
-    { id: 'mobile-security', label: 'Mobile Security', count: 0, isActive: false },
-    { id: 'data-protection', label: 'Data Protection', count: 4, isActive: false },
-    { id: 'identity-access-management', label: 'Identity & Access Management', count: 2, isActive: false },
+    {
+      id: 'mobile-security',
+      label: 'Mobile Security',
+      count: 0,
+      isActive: false,
+    },
+    {
+      id: 'data-protection',
+      label: 'Data Protection',
+      count: 4,
+      isActive: false,
+    },
+    {
+      id: 'identity-access-management',
+      label: 'Identity & Access Management',
+      count: 2,
+      isActive: false,
+    },
   ],
   industries: [
     { id: 'manufacturing', label: 'Manufacturing', count: 1, isActive: false },
     { id: 'healthcare', label: 'Healthcare', count: 1, isActive: false },
-    { id: 'financial-services', label: 'Financial Services', count: 1, isActive: false },
+    {
+      id: 'financial-services',
+      label: 'Financial Services',
+      count: 1,
+      isActive: false,
+    },
     { id: 'technology', label: 'Technology', count: 2, isActive: false },
     { id: 'retail', label: 'Retail', count: 1, isActive: false },
     { id: 'government', label: 'Government', count: 1, isActive: false },

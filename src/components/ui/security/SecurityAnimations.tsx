@@ -89,11 +89,11 @@ export const DataFlow = ({
   };
 
   const directionConfig = {
-    left: { x: ['100%', '-100%'], y: 0 },
-    right: { x: ['-100%', '100%'], y: 0 },
-    up: { x: 0, y: ['100%', '-100%'] },
-    down: { x: 0, y: ['-100%', '100%'] },
-    circular: { rotate: [0, 360] },
+    left: { x: '100%', y: '0%' },
+    right: { x: '-100%', y: '0%' },
+    up: { x: '0%', y: '100%' },
+    down: { x: '0%', y: '-100%' },
+    circular: { rotate: 0 },
   };
 
   const animationVariants = {
@@ -111,44 +111,60 @@ export const DataFlow = ({
     },
   };
 
-  const animationProps = animate ? {
-    initial: animationVariants.initial,
-    animate: animationVariants.animate,
-    transition: {
-      duration: speedConfig[speed],
-      ease: 'easeInOut',
-      repeat: Infinity,
-      repeatType: 'reverse' as const,
-    },
-  } : {};
+  const animationProps = animate
+    ? {
+        initial: animationVariants.initial,
+        animate: animationVariants.animate,
+        transition: {
+          duration: speedConfig[speed],
+          ease: 'easeInOut',
+          repeat: Infinity,
+          repeatType: 'reverse' as const,
+        },
+      }
+    : {};
 
   return (
     <motion.div
       className={`${colorConfig[color]} ${className}`}
       {...animationProps}
     >
-      <div className="relative">
+      <div className='relative'>
         {/* Data flow particles */}
-        <div className="absolute inset-0">
+        <div className='absolute inset-0'>
           {[...Array(8)].map((_, i) => {
             const randomX = Math.random() * 80 + 10;
             const randomY = Math.random() * 80 + 10;
             const randomDuration = speedConfig[speed] * (0.5 + Math.random());
-            
+
             return (
               <motion.div
                 key={i}
-                className="absolute w-1 h-1 bg-current rounded-full"
+                className='absolute w-1 h-1 bg-current rounded-full'
                 initial={{
                   opacity: 0,
                   x: `${randomX}%`,
                   y: `${randomY}%`,
                 }}
-                animate={animate ? {
-                  opacity: [0, intensityConfig[intensity], 0],
-                  x: direction === 'left' ? '-100%' : direction === 'right' ? '100%' : 0,
-                  y: direction === 'up' ? '-100%' : direction === 'down' ? '100%' : 0,
-                } : {}}
+                animate={
+                  animate
+                    ? {
+                        opacity: [0, intensityConfig[intensity], 0],
+                        x:
+                          direction === 'left'
+                            ? '-100%'
+                            : direction === 'right'
+                              ? '100%'
+                              : 0,
+                        y:
+                          direction === 'up'
+                            ? '-100%'
+                            : direction === 'down'
+                              ? '100%'
+                              : 0,
+                      }
+                    : {}
+                }
                 transition={{
                   duration: randomDuration,
                   delay: i * 0.1,
@@ -162,21 +178,25 @@ export const DataFlow = ({
             );
           })}
         </div>
-        
+
         {/* Data stream line */}
         <motion.div
-          className="relative h-px bg-current"
+          className='relative h-px bg-current'
           initial={{ scaleX: 0 }}
-          animate={animate ? {
-            scaleX: [0, 1, 0],
-            opacity: [0, intensityConfig[intensity], 0],
-          } : {}}
+          animate={
+            animate
+              ? {
+                  scaleX: [0, 1, 0],
+                  opacity: [0, intensityConfig[intensity], 0],
+                }
+              : {}
+          }
           transition={{
             duration: speedConfig[speed],
             repeat: Infinity,
           }}
         />
-        
+
         {children}
       </div>
     </motion.div>
@@ -219,16 +239,19 @@ export const BinaryRain = ({
   return (
     <div className={`relative ${className}`}>
       {animate && (
-        <div className="absolute inset-0 pointer-events-none">
+        <div className='absolute inset-0 pointer-events-none'>
           {[...Array(densityConfig[density])].map((_, i) => {
-            const char = binaryCharacters[Math.floor(Math.random() * binaryCharacters.length)];
+            const char =
+              binaryCharacters[
+                Math.floor(Math.random() * binaryCharacters.length)
+              ];
             const size = Math.random() * 4 + 8;
             const left = Math.random() * 100;
             const delay = Math.random() * speedConfig[speed];
             const duration = speedConfig[speed] + Math.random() * 2;
             const initialRotate = Math.random() * 360;
             const animateRotate = Math.random() * 360 + 360;
-  
+
             return (
               <motion.div
                 key={i}
@@ -259,8 +282,8 @@ export const BinaryRain = ({
           })}
         </div>
       )}
-      
-      <div className="relative z-10">{children}</div>
+
+      <div className='relative z-10'>{children}</div>
     </div>
   );
 };
@@ -300,10 +323,14 @@ export const SecurityScan = ({
           <motion.div
             className={`absolute w-full h-1 ${colorConfig[color]} opacity-30`}
             initial={scanVariants.initial}
-            animate={animate ? {
-              y: ['-100%', '100%'],
-              opacity: [0.2, 0.6, 0.2],
-            } : {}}
+            animate={
+              animate
+                ? {
+                    y: ['-100%', '100%'],
+                    opacity: [0.2, 0.6, 0.2],
+                  }
+                : {}
+            }
             transition={{
               duration: speedConfig[speed],
               repeat: Infinity,
@@ -316,10 +343,14 @@ export const SecurityScan = ({
           <motion.div
             className={`absolute h-full w-1 ${colorConfig[color]} opacity-30`}
             initial={scanVariants.initial}
-            animate={animate ? {
-              x: ['-100%', '100%'],
-              opacity: [0.2, 0.6, 0.2],
-            } : {}}
+            animate={
+              animate
+                ? {
+                    x: ['-100%', '100%'],
+                    opacity: [0.2, 0.6, 0.2],
+                  }
+                : {}
+            }
             transition={{
               duration: speedConfig[speed],
               repeat: Infinity,
@@ -332,10 +363,14 @@ export const SecurityScan = ({
           <motion.div
             className={`absolute ${colorConfig[color]} opacity-20`}
             initial={{ scale: 0, opacity: 0 }}
-            animate={animate ? {
-              scale: [0, 2, 0],
-              opacity: [0, 0.4, 0],
-            } : {}}
+            animate={
+              animate
+                ? {
+                    scale: [0, 2, 0],
+                    opacity: [0, 0.4, 0],
+                  }
+                : {}
+            }
             transition={{
               duration: speedConfig[speed],
               repeat: Infinity,
@@ -353,18 +388,22 @@ export const SecurityScan = ({
         );
       case 'grid':
         return (
-          <div className="absolute inset-0">
+          <div className='absolute inset-0'>
             {[...Array(5)].map((_, i) => (
               <motion.div
                 key={i}
                 className={`absolute ${colorConfig[color]} opacity-20`}
                 initial={{ scale: 0, opacity: 0 }}
-                animate={animate ? {
-                  x: ['-100%', '100%'],
-                  y: ['-100%', '100%'],
-                  opacity: [0, 0.3, 0],
-                  rotate: [0, 360],
-                } : {}}
+                animate={
+                  animate
+                    ? {
+                        x: ['-100%', '100%'],
+                        y: ['-100%', '100%'],
+                        opacity: [0, 0.3, 0],
+                        rotate: [0, 360],
+                      }
+                    : {}
+                }
                 transition={{
                   duration: speedConfig[speed] + i * 0.2,
                   repeat: Infinity,
@@ -389,7 +428,7 @@ export const SecurityScan = ({
   return (
     <div className={`relative ${className}`}>
       {getScanElement()}
-      <div className="relative z-10">{children}</div>
+      <div className='relative z-10'>{children}</div>
     </div>
   );
 };
@@ -431,9 +470,9 @@ export const EncryptionEffect = ({
   return (
     <div className={`relative ${className}`}>
       {animate && (
-        <div className="absolute inset-0 pointer-events-none">
+        <div className='absolute inset-0 pointer-events-none'>
           {[...Array(layers)].map((_, layer) => (
-            <div key={layer} className="absolute inset-0">
+            <div key={layer} className='absolute inset-0'>
               {[...Array(particles)].map((_, i) => {
                 const angle = (i / particles) * 2 * Math.PI;
                 const radius = 50 + layer * 20;
@@ -471,7 +510,7 @@ export const EncryptionEffect = ({
           ))}
         </div>
       )}
-      
+
       {/* Lock overlay for encryption effect */}
       {level !== 'basic' && animate && (
         <motion.div
@@ -488,20 +527,20 @@ export const EncryptionEffect = ({
           }}
         >
           <svg
-            viewBox="0 0 24 24"
-            fill="none"
-            stroke="currentColor"
-            strokeWidth="1"
-            className="w-1/2 h-1/2"
+            viewBox='0 0 24 24'
+            fill='none'
+            stroke='currentColor'
+            strokeWidth='1'
+            className='w-1/2 h-1/2'
           >
-            <rect x="3" y="11" width="18" height="11" rx="2" ry="2" />
-            <path d="M7 11V7a5 5 0 0 1 10 0v4" />
-            <circle cx="12" cy="16" r="1" />
+            <rect x='3' y='11' width='18' height='11' rx='2' ry='2' />
+            <path d='M7 11V7a5 5 0 0 1 10 0v4' />
+            <circle cx='12' cy='16' r='1' />
           </svg>
         </motion.div>
       )}
-      
-      <div className="relative z-10">{children}</div>
+
+      <div className='relative z-10'>{children}</div>
     </div>
   );
 };
@@ -529,31 +568,31 @@ export const ThreatLevel = ({
   };
 
   const levelConfig = {
-    low: { 
+    low: {
       icon: '🔒',
       pulse: false,
       scale: 1,
       color: 'neon-green' as const,
     },
-    medium: { 
+    medium: {
       icon: '⚠️',
       pulse: true,
       scale: 1.1,
       color: 'yellow' as const,
     },
-    high: { 
+    high: {
       icon: '🚨',
       pulse: true,
       scale: 1.2,
       color: 'red' as const,
     },
-    critical: { 
+    critical: {
       icon: '💀',
       pulse: true,
       scale: 1.3,
       color: 'red' as const,
     },
-    imminent: { 
+    imminent: {
       icon: '⚡',
       pulse: true,
       scale: 1.4,
@@ -565,30 +604,32 @@ export const ThreatLevel = ({
 
   const animationVariants = {
     initial: { scale: 0.5, opacity: 0 },
-    animate: { 
+    animate: {
       scale: config.scale,
       opacity: 1,
       rotate: level === 'imminent' ? [0, 10, -10, 0] : 0,
     },
   };
 
-  const animationProps = animate ? {
-    initial: animationVariants.initial,
-    animate: animationVariants.animate,
-    transition: {
-      duration: 0.5,
-      ease: 'easeOut',
-      repeat: config.pulse ? Infinity : 0,
-      repeatType: 'reverse' as const,
-    },
-  } : {};
+  const animationProps = animate
+    ? {
+        initial: animationVariants.initial,
+        animate: animationVariants.animate,
+        transition: {
+          duration: 0.5,
+          ease: 'easeOut',
+          repeat: config.pulse ? Infinity : 0,
+          repeatType: 'reverse' as const,
+        },
+      }
+    : {};
 
   return (
     <motion.div
       className={`${sizeConfig[size]} ${colorConfig[config.color]} ${className}`}
       {...animationProps}
     >
-      <span className="w-full h-full flex items-center justify-center text-lg">
+      <span className='w-full h-full flex items-center justify-center text-lg'>
         {config.icon}
       </span>
     </motion.div>

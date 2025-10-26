@@ -81,7 +81,11 @@ export const FOOTER_NAVIGATION: NavigationItem[] = [
     href: '#',
     children: [
       { id: 'about', title: 'About', href: '/about' },
-      { id: 'career-timeline', title: 'Career Timeline', href: '/career-timeline' },
+      {
+        id: 'career-timeline',
+        title: 'Career Timeline',
+        href: '/career-timeline',
+      },
       { id: 'skills', title: 'Skills', href: '/skills' },
       { id: 'services', title: 'Services', href: '/services' },
       { id: 'case-studies', title: 'Case Studies', href: '/case-studies' },
@@ -95,7 +99,11 @@ export const FOOTER_NAVIGATION: NavigationItem[] = [
     href: '#',
     children: [
       { id: 'contact', title: 'Contact', href: '/contact' },
-      { id: 'certifications', title: 'Certifications', href: '/certifications' },
+      {
+        id: 'certifications',
+        title: 'Certifications',
+        href: '/certifications',
+      },
       { id: 'privacy', title: 'Privacy Policy', href: '/privacy' },
       { id: 'terms', title: 'Terms of Service', href: '/terms' },
     ],
@@ -105,10 +113,26 @@ export const FOOTER_NAVIGATION: NavigationItem[] = [
     title: 'Social',
     href: '#',
     children: [
-      { id: 'linkedin', title: 'LinkedIn', href: 'https://linkedin.com/in/aditya-cybersecurity' },
-      { id: 'twitter', title: 'Twitter', href: 'https://twitter.com/aditya_cyber' },
-      { id: 'github', title: 'GitHub', href: 'https://github.com/aditya-cybersecurity' },
-      { id: 'medium', title: 'Medium', href: 'https://medium.com/@aditya-cybersecurity' },
+      {
+        id: 'linkedin',
+        title: 'LinkedIn',
+        href: 'https://linkedin.com/in/aditya-cybersecurity',
+      },
+      {
+        id: 'twitter',
+        title: 'Twitter',
+        href: 'https://twitter.com/aditya_cyber',
+      },
+      {
+        id: 'github',
+        title: 'GitHub',
+        href: 'https://github.com/aditya-cybersecurity',
+      },
+      {
+        id: 'medium',
+        title: 'Medium',
+        href: 'https://medium.com/@aditya-cybersecurity',
+      },
     ],
   },
 ];
@@ -229,7 +253,7 @@ export const EDUCATION: Education[] = [
     year: '2017',
     description:
       'Specialized in advanced cybersecurity concepts, cryptography, and network security. Thesis on "Advanced Threat Detection using Machine Learning".',
-    honors: ['Dean\'s List', 'Cybersecurity Research Award'],
+    honors: ["Dean's List", 'Cybersecurity Research Award'],
   },
   {
     id: 'bs-computer-science',
@@ -368,7 +392,8 @@ export const DETAILED_SKILLS: DetailedSkill[] = [
     proficiency: 95,
     yearsOfExperience: 8,
     icon: 'nmap',
-    description: 'Network discovery and security auditing tool for comprehensive vulnerability assessment.',
+    description:
+      'Network discovery and security auditing tool for comprehensive vulnerability assessment.',
     certificationLinks: ['https://nmap.org/book/man.html'],
     projectExamples: ['/content/projects/enterprise-security-overhaul.md'],
     isExpert: true,
@@ -381,8 +406,11 @@ export const DETAILED_SKILLS: DetailedSkill[] = [
     proficiency: 85,
     yearsOfExperience: 6,
     icon: 'nessus',
-    description: 'Professional vulnerability scanner for identifying security issues across networks.',
-    certificationLinks: ['https://www.tenable.com/certifications/nessus-professional'],
+    description:
+      'Professional vulnerability scanner for identifying security issues across networks.',
+    certificationLinks: [
+      'https://www.tenable.com/certifications/nessus-professional',
+    ],
     isAdvanced: true,
   },
   {
@@ -393,7 +421,8 @@ export const DETAILED_SKILLS: DetailedSkill[] = [
     proficiency: 75,
     yearsOfExperience: 5,
     icon: 'openvas',
-    description: 'Open-source vulnerability scanner and manager for comprehensive security assessments.',
+    description:
+      'Open-source vulnerability scanner and manager for comprehensive security assessments.',
     isAdvanced: true,
   },
   {
@@ -404,7 +433,8 @@ export const DETAILED_SKILLS: DetailedSkill[] = [
     proficiency: 70,
     yearsOfExperience: 4,
     icon: 'qualys',
-    description: 'Cloud-based security and compliance solutions for enterprise vulnerability management.',
+    description:
+      'Cloud-based security and compliance solutions for enterprise vulnerability management.',
     isIntermediate: true,
   },
 
@@ -417,8 +447,11 @@ export const DETAILED_SKILLS: DetailedSkill[] = [
     proficiency: 90,
     yearsOfExperience: 7,
     icon: 'metasploit',
-    description: 'Penetration testing framework for developing, testing, and executing exploit code.',
-    certificationLinks: ['https://www.rapid7.com/products/metasploit/metasploit-certified-specialist/'],
+    description:
+      'Penetration testing framework for developing, testing, and executing exploit code.',
+    certificationLinks: [
+      'https://www.rapid7.com/products/metasploit/metasploit-certified-specialist/',
+    ],
     isExpert: true,
   },
   {
@@ -429,7 +462,8 @@ export const DETAILED_SKILLS: DetailedSkill[] = [
     proficiency: 85,
     yearsOfExperience: 6,
     icon: 'burp-suite',
-    description: 'Web security testing platform for identifying vulnerabilities in web applications.',
+    description:
+      'Web security testing platform for identifying vulnerabilities in web applications.',
     isAdvanced: true,
   },
   {
@@ -440,7 +474,8 @@ export const DETAILED_SKILLS: DetailedSkill[] = [
     proficiency: 80,
     yearsOfExperience: 5,
     icon: 'owasp-zap',
-    description: 'Open-source web application security scanner for finding security vulnerabilities.',
+    description:
+      'Open-source web application security scanner for finding security vulnerabilities.',
     isAdvanced: true,
   },
   {
@@ -451,7 +486,8 @@ export const DETAILED_SKILLS: DetailedSkill[] = [
     proficiency: 95,
     yearsOfExperience: 8,
     icon: 'kali-linux',
-    description: 'Debian-based Linux distribution for penetration testing and digital forensics.',
+    description:
+      'Debian-based Linux distribution for penetration testing and digital forensics.',
     isExpert: true,
   },
 
@@ -464,7 +500,8 @@ export const DETAILED_SKILLS: DetailedSkill[] = [
     proficiency: 85,
     yearsOfExperience: 7,
     icon: 'wireshark',
-    description: 'Network protocol analyzer for capturing and analyzing network traffic.',
+    description:
+      'Network protocol analyzer for capturing and analyzing network traffic.',
     isAdvanced: true,
   },
   {
@@ -475,7 +512,8 @@ export const DETAILED_SKILLS: DetailedSkill[] = [
     proficiency: 75,
     yearsOfExperience: 5,
     icon: 'snort',
-    description: 'Open-source network intrusion detection system for real-time traffic analysis.',
+    description:
+      'Open-source network intrusion detection system for real-time traffic analysis.',
     isAdvanced: true,
   },
   {
@@ -486,7 +524,8 @@ export const DETAILED_SKILLS: DetailedSkill[] = [
     proficiency: 70,
     yearsOfExperience: 4,
     icon: 'suricata',
-    description: 'High-performance network IDS, IPS, and network security monitoring engine.',
+    description:
+      'High-performance network IDS, IPS, and network security monitoring engine.',
     isIntermediate: true,
   },
   {
@@ -497,7 +536,8 @@ export const DETAILED_SKILLS: DetailedSkill[] = [
     proficiency: 70,
     yearsOfExperience: 4,
     icon: 'pfsense',
-    description: 'Open-source firewall and router platform for network security and traffic management.',
+    description:
+      'Open-source firewall and router platform for network security and traffic management.',
     isIntermediate: true,
   },
 
@@ -510,7 +550,8 @@ export const DETAILED_SKILLS: DetailedSkill[] = [
     proficiency: 75,
     yearsOfExperience: 5,
     icon: 'autopsy',
-    description: 'Digital forensics platform for analyzing hard drives and smart devices.',
+    description:
+      'Digital forensics platform for analyzing hard drives and smart devices.',
     isAdvanced: true,
   },
   {
@@ -521,7 +562,8 @@ export const DETAILED_SKILLS: DetailedSkill[] = [
     proficiency: 65,
     yearsOfExperience: 3,
     icon: 'ftk',
-    description: 'Comprehensive digital forensics solution for evidence analysis and investigation.',
+    description:
+      'Comprehensive digital forensics solution for evidence analysis and investigation.',
     isIntermediate: true,
   },
   {
@@ -532,7 +574,8 @@ export const DETAILED_SKILLS: DetailedSkill[] = [
     proficiency: 60,
     yearsOfExperience: 3,
     icon: 'volatility',
-    description: 'Memory forensics framework for analyzing volatile memory from computer systems.',
+    description:
+      'Memory forensics framework for analyzing volatile memory from computer systems.',
     isBeginner: true,
   },
   {
@@ -543,7 +586,8 @@ export const DETAILED_SKILLS: DetailedSkill[] = [
     proficiency: 60,
     yearsOfExperience: 3,
     icon: 'osforensics',
-    description: 'Digital forensics tool for recovering data and analyzing computer evidence.',
+    description:
+      'Digital forensics tool for recovering data and analyzing computer evidence.',
     isBeginner: true,
   },
 
@@ -556,7 +600,8 @@ export const DETAILED_SKILLS: DetailedSkill[] = [
     proficiency: 80,
     yearsOfExperience: 5,
     icon: 'aws',
-    description: 'Comprehensive view of security state across AWS accounts and compliance status.',
+    description:
+      'Comprehensive view of security state across AWS accounts and compliance status.',
     isAdvanced: true,
   },
   {
@@ -567,7 +612,8 @@ export const DETAILED_SKILLS: DetailedSkill[] = [
     proficiency: 80,
     yearsOfExperience: 5,
     icon: 'azure',
-    description: 'Unified security management and advanced threat protection for Azure resources.',
+    description:
+      'Unified security management and advanced threat protection for Azure resources.',
     isAdvanced: true,
   },
   {
@@ -578,7 +624,8 @@ export const DETAILED_SKILLS: DetailedSkill[] = [
     proficiency: 70,
     yearsOfExperience: 4,
     icon: 'gcp',
-    description: 'Cloud security posture management and data protection for Google Cloud Platform.',
+    description:
+      'Cloud security posture management and data protection for Google Cloud Platform.',
     isIntermediate: true,
   },
 
@@ -591,7 +638,8 @@ export const DETAILED_SKILLS: DetailedSkill[] = [
     proficiency: 85,
     yearsOfExperience: 6,
     icon: 'splunk',
-    description: 'Platform for searching, monitoring, and analyzing machine-generated data.',
+    description:
+      'Platform for searching, monitoring, and analyzing machine-generated data.',
     isAdvanced: true,
   },
   {
@@ -602,7 +650,8 @@ export const DETAILED_SKILLS: DetailedSkill[] = [
     proficiency: 75,
     yearsOfExperience: 5,
     icon: 'elk',
-    description: 'Open-source log analysis platform for real-time data visualization and monitoring.',
+    description:
+      'Open-source log analysis platform for real-time data visualization and monitoring.',
     isAdvanced: true,
   },
   {
@@ -613,7 +662,8 @@ export const DETAILED_SKILLS: DetailedSkill[] = [
     proficiency: 70,
     yearsOfExperience: 4,
     icon: 'graylog',
-    description: 'Open-source log management platform for centralized logging and analysis.',
+    description:
+      'Open-source log management platform for centralized logging and analysis.',
     isIntermediate: true,
   },
   {
@@ -624,7 +674,8 @@ export const DETAILED_SKILLS: DetailedSkill[] = [
     proficiency: 65,
     yearsOfExperience: 3,
     icon: 'qradar',
-    description: 'Enterprise security information and event management platform.',
+    description:
+      'Enterprise security information and event management platform.',
     isIntermediate: true,
   },
 
@@ -637,7 +688,8 @@ export const DETAILED_SKILLS: DetailedSkill[] = [
     proficiency: 95,
     yearsOfExperience: 10,
     icon: 'javascript',
-    description: 'Versatile programming language for web development and application building.',
+    description:
+      'Versatile programming language for web development and application building.',
     isExpert: true,
   },
   {
@@ -648,7 +700,8 @@ export const DETAILED_SKILLS: DetailedSkill[] = [
     proficiency: 85,
     yearsOfExperience: 6,
     icon: 'typescript',
-    description: 'Type-safe superset of JavaScript for building large-scale web applications.',
+    description:
+      'Type-safe superset of JavaScript for building large-scale web applications.',
     isAdvanced: true,
   },
   {
@@ -659,7 +712,8 @@ export const DETAILED_SKILLS: DetailedSkill[] = [
     proficiency: 80,
     yearsOfExperience: 7,
     icon: 'python',
-    description: 'High-level programming language for automation, data analysis, and security tools.',
+    description:
+      'High-level programming language for automation, data analysis, and security tools.',
     isAdvanced: true,
   },
   {
@@ -670,7 +724,8 @@ export const DETAILED_SKILLS: DetailedSkill[] = [
     proficiency: 85,
     yearsOfExperience: 8,
     icon: 'php',
-    description: 'Server-side scripting language for web development and secure applications.',
+    description:
+      'Server-side scripting language for web development and secure applications.',
     isAdvanced: true,
   },
   {
@@ -681,7 +736,8 @@ export const DETAILED_SKILLS: DetailedSkill[] = [
     proficiency: 80,
     yearsOfExperience: 7,
     icon: 'sql',
-    description: 'Structured Query Language for database management and security auditing.',
+    description:
+      'Structured Query Language for database management and security auditing.',
     isAdvanced: true,
   },
 
@@ -694,7 +750,8 @@ export const DETAILED_SKILLS: DetailedSkill[] = [
     proficiency: 85,
     yearsOfExperience: 6,
     icon: 'react',
-    description: 'JavaScript library for building user interfaces with component-based architecture.',
+    description:
+      'JavaScript library for building user interfaces with component-based architecture.',
     isAdvanced: true,
   },
   {
@@ -705,7 +762,8 @@ export const DETAILED_SKILLS: DetailedSkill[] = [
     proficiency: 80,
     yearsOfExperience: 5,
     icon: 'nextjs',
-    description: 'React framework for server-side rendering and static site generation.',
+    description:
+      'React framework for server-side rendering and static site generation.',
     isAdvanced: true,
   },
   {
@@ -716,7 +774,8 @@ export const DETAILED_SKILLS: DetailedSkill[] = [
     proficiency: 85,
     yearsOfExperience: 7,
     icon: 'nodejs',
-    description: 'JavaScript runtime for building scalable network applications and APIs.',
+    description:
+      'JavaScript runtime for building scalable network applications and APIs.',
     isAdvanced: true,
   },
   {
@@ -727,7 +786,8 @@ export const DETAILED_SKILLS: DetailedSkill[] = [
     proficiency: 85,
     yearsOfExperience: 8,
     icon: 'laravel',
-    description: 'PHP framework for web artisans with elegant syntax and security features.',
+    description:
+      'PHP framework for web artisans with elegant syntax and security features.',
     isAdvanced: true,
   },
   {
@@ -738,7 +798,8 @@ export const DETAILED_SKILLS: DetailedSkill[] = [
     proficiency: 75,
     yearsOfExperience: 6,
     icon: 'express',
-    description: 'Minimalist web framework for Node.js with security middleware support.',
+    description:
+      'Minimalist web framework for Node.js with security middleware support.',
     isAdvanced: true,
   },
 
@@ -751,7 +812,8 @@ export const DETAILED_SKILLS: DetailedSkill[] = [
     proficiency: 75,
     yearsOfExperience: 4,
     icon: 'snyk',
-    description: 'Developer-first security platform for finding and fixing vulnerabilities.',
+    description:
+      'Developer-first security platform for finding and fixing vulnerabilities.',
     isAdvanced: true,
   },
   {
@@ -762,7 +824,8 @@ export const DETAILED_SKILLS: DetailedSkill[] = [
     proficiency: 70,
     yearsOfExperience: 4,
     icon: 'sonarqube',
-    description: 'Platform for continuous inspection of code quality and security vulnerabilities.',
+    description:
+      'Platform for continuous inspection of code quality and security vulnerabilities.',
     isIntermediate: true,
   },
   {
@@ -773,7 +836,8 @@ export const DETAILED_SKILLS: DetailedSkill[] = [
     proficiency: 65,
     yearsOfExperience: 3,
     icon: 'owasp',
-    description: 'Tool for detecting publicly disclosed vulnerabilities in application dependencies.',
+    description:
+      'Tool for detecting publicly disclosed vulnerabilities in application dependencies.',
     isIntermediate: true,
   },
 
@@ -786,7 +850,8 @@ export const DETAILED_SKILLS: DetailedSkill[] = [
     proficiency: 85,
     yearsOfExperience: 6,
     icon: 'docker',
-    description: 'Platform for developing, shipping, and running applications in containers.',
+    description:
+      'Platform for developing, shipping, and running applications in containers.',
     isAdvanced: true,
   },
   {
@@ -797,7 +862,8 @@ export const DETAILED_SKILLS: DetailedSkill[] = [
     proficiency: 75,
     yearsOfExperience: 4,
     icon: 'kubernetes',
-    description: 'Container orchestration platform for automating deployment and management.',
+    description:
+      'Container orchestration platform for automating deployment and management.',
     isAdvanced: true,
   },
   {
@@ -808,7 +874,8 @@ export const DETAILED_SKILLS: DetailedSkill[] = [
     proficiency: 70,
     yearsOfExperience: 5,
     icon: 'jenkins',
-    description: 'Open-source automation server for continuous integration and delivery.',
+    description:
+      'Open-source automation server for continuous integration and delivery.',
     isIntermediate: true,
   },
   {
@@ -819,7 +886,8 @@ export const DETAILED_SKILLS: DetailedSkill[] = [
     proficiency: 70,
     yearsOfExperience: 4,
     icon: 'gitlab',
-    description: 'Integrated CI/CD platform for automated testing and deployment.',
+    description:
+      'Integrated CI/CD platform for automated testing and deployment.',
     isIntermediate: true,
   },
 
@@ -832,7 +900,8 @@ export const DETAILED_SKILLS: DetailedSkill[] = [
     proficiency: 80,
     yearsOfExperience: 6,
     icon: 'aws',
-    description: 'Comprehensive cloud platform with extensive security services and compliance.',
+    description:
+      'Comprehensive cloud platform with extensive security services and compliance.',
     isAdvanced: true,
   },
   {
@@ -843,7 +912,8 @@ export const DETAILED_SKILLS: DetailedSkill[] = [
     proficiency: 80,
     yearsOfExperience: 6,
     icon: 'azure',
-    description: 'Cloud computing platform with integrated security and compliance features.',
+    description:
+      'Cloud computing platform with integrated security and compliance features.',
     isAdvanced: true,
   },
   {
@@ -854,7 +924,8 @@ export const DETAILED_SKILLS: DetailedSkill[] = [
     proficiency: 70,
     yearsOfExperience: 4,
     icon: 'gcp',
-    description: 'Cloud platform with advanced security analytics and machine learning services.',
+    description:
+      'Cloud platform with advanced security analytics and machine learning services.',
     isIntermediate: true,
   },
   {
@@ -865,7 +936,8 @@ export const DETAILED_SKILLS: DetailedSkill[] = [
     proficiency: 65,
     yearsOfExperience: 3,
     icon: 'digitalocean',
-    description: 'Cloud infrastructure provider with simple and scalable solutions.',
+    description:
+      'Cloud infrastructure provider with simple and scalable solutions.',
     isIntermediate: true,
   },
 
@@ -878,7 +950,8 @@ export const DETAILED_SKILLS: DetailedSkill[] = [
     proficiency: 85,
     yearsOfExperience: 8,
     icon: 'mysql',
-    description: 'Relational database management system with robust security features.',
+    description:
+      'Relational database management system with robust security features.',
     isAdvanced: true,
   },
   {
@@ -889,7 +962,8 @@ export const DETAILED_SKILLS: DetailedSkill[] = [
     proficiency: 80,
     yearsOfExperience: 7,
     icon: 'postgresql',
-    description: 'Advanced open-source relational database with strong security controls.',
+    description:
+      'Advanced open-source relational database with strong security controls.',
     isAdvanced: true,
   },
   {
@@ -900,7 +974,8 @@ export const DETAILED_SKILLS: DetailedSkill[] = [
     proficiency: 75,
     yearsOfExperience: 5,
     icon: 'mongodb',
-    description: 'NoSQL database with flexible schema and security features for modern applications.',
+    description:
+      'NoSQL database with flexible schema and security features for modern applications.',
     isAdvanced: true,
   },
   {
@@ -911,7 +986,8 @@ export const DETAILED_SKILLS: DetailedSkill[] = [
     proficiency: 70,
     yearsOfExperience: 4,
     icon: 'redis',
-    description: 'In-memory data structure store with security considerations for caching.',
+    description:
+      'In-memory data structure store with security considerations for caching.',
     isIntermediate: true,
   },
 ];
@@ -919,9 +995,12 @@ export const DETAILED_SKILLS: DetailedSkill[] = [
 // Utility function to calculate category statistics
 const calculateCategoryStats = (skills: DetailedSkill[]) => {
   const skillCount = skills.length;
-  const averageProficiency = skillCount > 0
-    ? Math.round(skills.reduce((sum, skill) => sum + skill.proficiency, 0) / skillCount)
-    : 0;
+  const averageProficiency =
+    skillCount > 0
+      ? Math.round(
+          skills.reduce((sum, skill) => sum + skill.proficiency, 0) / skillCount
+        )
+      : 0;
   return { skillCount, averageProficiency };
 };
 
@@ -930,35 +1009,70 @@ export const SKILL_CATEGORIES: SkillCategory[] = [
   {
     id: 'cybersecurity',
     title: 'Cybersecurity Tools & Technologies',
-    description: 'Comprehensive security tools and technologies for threat detection and response',
+    description:
+      'Comprehensive security tools and technologies for threat detection and response',
     icon: 'shield',
     color: 'neon-green',
     skills: DETAILED_SKILLS.filter(skill =>
-      ['vulnerability-assessment', 'penetration-testing', 'network-security', 'forensics', 'cloud-security', 'siem'].includes(skill.category)
+      [
+        'vulnerability-assessment',
+        'penetration-testing',
+        'network-security',
+        'forensics',
+        'cloud-security',
+        'siem',
+      ].includes(skill.category)
     ),
-    ...calculateCategoryStats(DETAILED_SKILLS.filter(skill =>
-      ['vulnerability-assessment', 'penetration-testing', 'network-security', 'forensics', 'cloud-security', 'siem'].includes(skill.category)
-    )),
+    ...calculateCategoryStats(
+      DETAILED_SKILLS.filter(skill =>
+        [
+          'vulnerability-assessment',
+          'penetration-testing',
+          'network-security',
+          'forensics',
+          'cloud-security',
+          'siem',
+        ].includes(skill.category)
+      )
+    ),
   },
   {
     id: 'development',
     title: 'Development & Programming',
-    description: 'Programming languages, frameworks, and development tools with security focus',
+    description:
+      'Programming languages, frameworks, and development tools with security focus',
     icon: 'code',
     color: 'electric-cyan',
     skills: DETAILED_SKILLS.filter(skill =>
-      ['languages', 'frameworks', 'security-tools', 'devops', 'cloud-platforms', 'databases'].includes(skill.category)
+      [
+        'languages',
+        'frameworks',
+        'security-tools',
+        'devops',
+        'cloud-platforms',
+        'databases',
+      ].includes(skill.category)
     ),
-    ...calculateCategoryStats(DETAILED_SKILLS.filter(skill =>
-      ['languages', 'frameworks', 'security-tools', 'devops', 'cloud-platforms', 'databases'].includes(skill.category)
-    )),
+    ...calculateCategoryStats(
+      DETAILED_SKILLS.filter(skill =>
+        [
+          'languages',
+          'frameworks',
+          'security-tools',
+          'devops',
+          'cloud-platforms',
+          'databases',
+        ].includes(skill.category)
+      )
+    ),
   },
 ];
 
 // Skills matrix configuration
 export const SKILLS_MATRIX_CONFIG: SkillsMatrixConfig = {
   title: 'Cybersecurity & Development Skills Matrix',
-  description: 'Comprehensive display of technical expertise across security and development domains',
+  description:
+    'Comprehensive display of technical expertise across security and development domains',
   categories: SKILL_CATEGORIES,
   showProficiencyLevels: true,
   showYearsOfExperience: true,
@@ -996,7 +1110,8 @@ export const PROFICIENCY_LEVELS: ProficiencyLevel[] = [
     minPercentage: 50,
     maxPercentage: 69,
     color: 'light-gray',
-    description: 'Solid understanding with practical experience and application',
+    description:
+      'Solid understanding with practical experience and application',
     icon: 'gear',
   },
   {
@@ -1025,8 +1140,10 @@ export const CERTIFICATIONS = [
     issuer: 'Google',
     date: '2023',
     status: 'completed',
-    verificationUrl: 'https://www.coursera.org/account/accomplishments/certificate/XXXXX',
-    description: 'Foundational cybersecurity concepts and practices from Google.',
+    verificationUrl:
+      'https://www.coursera.org/account/accomplishments/certificate/XXXXX',
+    description:
+      'Foundational cybersecurity concepts and practices from Google.',
   },
   {
     id: 'cisco-threat-management',
@@ -1053,7 +1170,8 @@ export const CERTIFICATIONS = [
     date: '2023',
     status: 'completed',
     verificationUrl: '#',
-    description: 'International standard for information security management systems.',
+    description:
+      'International standard for information security management systems.',
   },
   {
     id: 'cisco-ethical-hacker',
@@ -1071,7 +1189,8 @@ export const CERTIFICATIONS = [
     date: '2024',
     status: 'completed',
     verificationUrl: '#',
-    description: 'Advanced prompt engineering techniques for AI security applications.',
+    description:
+      'Advanced prompt engineering techniques for AI security applications.',
   },
 ];
 
@@ -1113,7 +1232,7 @@ export const SERVICES: Service[] = [
     id: 'security-assessment',
     title: 'Security Assessment',
     description:
-      'Comprehensive evaluation of your organization\'s security posture including vulnerability scanning, penetration testing, and risk assessment.',
+      "Comprehensive evaluation of your organization's security posture including vulnerability scanning, penetration testing, and risk assessment.",
     icon: 'shield-check',
     features: [
       'External and internal vulnerability assessment',
@@ -1346,7 +1465,7 @@ export const TESTIMONIALS: Testimonial[] = [
     company: 'Global Bank Corp.',
     image: '/images/testimonials/lisa-rodriguez.jpg',
     content:
-      'Aditya\'s penetration testing revealed critical vulnerabilities we never knew existed. His comprehensive report and remediation guidance have significantly strengthened our security program. His professionalism and expertise are top-notch.',
+      "Aditya's penetration testing revealed critical vulnerabilities we never knew existed. His comprehensive report and remediation guidance have significantly strengthened our security program. His professionalism and expertise are top-notch.",
     rating: 5,
   },
 ];
@@ -1407,17 +1526,23 @@ export const CAREER_TIMELINE_EVENTS: TimelineEvent[] = [
     status: 'in-progress',
     startDate: '2023',
     current: true,
-    description: 'Pursuing advanced studies in cybersecurity with focus on threat detection using machine learning algorithms. Researching advanced persistent threats and AI-powered security solutions.',
+    description:
+      'Pursuing advanced studies in cybersecurity with focus on threat detection using machine learning algorithms. Researching advanced persistent threats and AI-powered security solutions.',
     achievements: [
       'Thesis on "Advanced Threat Detection using Machine Learning"',
       'Research published in cybersecurity journal',
-      'Dean\'s List recognition',
-      'Cybersecurity Research Award recipient'
+      "Dean's List recognition",
+      'Cybersecurity Research Award recipient',
     ],
-    technologies: ['Machine Learning', 'Threat Intelligence', 'AI Security', 'Network Security'],
+    technologies: [
+      'Machine Learning',
+      'Threat Intelligence',
+      'AI Security',
+      'Network Security',
+    ],
     icon: 'graduation-cap',
     color: 'neon-green',
-    priority: 1
+    priority: 1,
   },
   {
     id: 'bs-computer-science-2023',
@@ -1427,17 +1552,23 @@ export const CAREER_TIMELINE_EVENTS: TimelineEvent[] = [
     status: 'completed',
     startDate: '2019',
     endDate: '2023',
-    description: 'Foundational studies in computer science with emphasis on networking and security principles. Graduated with honors and established strong technical foundation.',
+    description:
+      'Foundational studies in computer science with emphasis on networking and security principles. Graduated with honors and established strong technical foundation.',
     achievements: [
       'Summa Cum Laude graduation',
       'Best Student Award in Computer Science',
       'Completed security-focused capstone project',
-      'Published research on network security'
+      'Published research on network security',
     ],
-    technologies: ['Programming', 'Networking', 'Database Systems', 'Security Fundamentals'],
+    technologies: [
+      'Programming',
+      'Networking',
+      'Database Systems',
+      'Security Fundamentals',
+    ],
     icon: 'graduation-cap',
     color: 'electric-cyan',
-    priority: 2
+    priority: 2,
   },
   {
     id: 'cybersecurity-specialist-developer-2023-present',
@@ -1447,23 +1578,31 @@ export const CAREER_TIMELINE_EVENTS: TimelineEvent[] = [
     status: 'in-progress',
     startDate: '2023',
     current: true,
-    description: 'Combining cybersecurity expertise with full-stack development to create secure, innovative solutions for startups and SMBs. Specialize in security-first development methodology and proactive threat mitigation.',
+    description:
+      'Combining cybersecurity expertise with full-stack development to create secure, innovative solutions for startups and SMBs. Specialize in security-first development methodology and proactive threat mitigation.',
     achievements: [
       'Developed secure web applications with zero critical vulnerabilities',
       'Implemented security-first development practices for 15+ clients',
       'Reduced security incidents by 80% through proactive measures',
       'Created custom security tools using AI/ML technologies',
-      '99.9% security success rate across all projects'
+      '99.9% security success rate across all projects',
     ],
-    technologies: ['Laravel/PHP', 'Vulnerability Assessment', 'Penetration Testing', 'Cloud Security', 'AI/ML Security', 'Prompt Engineering'],
+    technologies: [
+      'Laravel/PHP',
+      'Vulnerability Assessment',
+      'Penetration Testing',
+      'Cloud Security',
+      'AI/ML Security',
+      'Prompt Engineering',
+    ],
     metrics: [
       { label: 'Clients Served', value: '50+', icon: 'users' },
       { label: 'Security Assessments', value: '100+', icon: 'shield-check' },
-      { label: 'Success Rate', value: '99.9%', icon: 'check-circle' }
+      { label: 'Success Rate', value: '99.9%', icon: 'check-circle' },
     ],
     icon: 'shield',
     color: 'electric-cyan',
-    priority: 3
+    priority: 3,
   },
   {
     id: 'cybersecurity-analyst-2022-2023',
@@ -1473,17 +1612,25 @@ export const CAREER_TIMELINE_EVENTS: TimelineEvent[] = [
     status: 'completed',
     startDate: '2022',
     endDate: '2023',
-    description: 'Conducted comprehensive vulnerability assessments and penetration testing while integrating security into development workflows. Bridged gap between security and development teams.',
+    description:
+      'Conducted comprehensive vulnerability assessments and penetration testing while integrating security into development workflows. Bridged gap between security and development teams.',
     achievements: [
       'Discovered and remediated 50+ critical vulnerabilities',
       'Implemented secure code review processes',
       'Achieved 100% client satisfaction in security assessments',
-      'Reduced average vulnerability remediation time by 40%'
+      'Reduced average vulnerability remediation time by 40%',
     ],
-    technologies: ['Vulnerability Scanning', 'Penetration Testing', 'Risk Assessment', 'Secure Development', 'Incident Response', 'Compliance'],
+    technologies: [
+      'Vulnerability Scanning',
+      'Penetration Testing',
+      'Risk Assessment',
+      'Secure Development',
+      'Incident Response',
+      'Compliance',
+    ],
     icon: 'alert-circle',
     color: 'neon-green',
-    priority: 4
+    priority: 4,
   },
   {
     id: 'security-focused-developer-2021-2022',
@@ -1493,17 +1640,25 @@ export const CAREER_TIMELINE_EVENTS: TimelineEvent[] = [
     status: 'completed',
     startDate: '2021',
     endDate: '2022',
-    description: 'Developed web applications with integrated security measures. Focused on secure coding practices and threat modeling during development lifecycle.',
+    description:
+      'Developed web applications with integrated security measures. Focused on secure coding practices and threat modeling during development lifecycle.',
     achievements: [
       'Built 20+ secure web applications with zero security breaches',
       'Implemented OAuth2 and JWT authentication systems',
       'Conducted security code reviews for development team',
-      'Reduced application vulnerabilities by 60%'
+      'Reduced application vulnerabilities by 60%',
     ],
-    technologies: ['Laravel/PHP', 'JavaScript/TypeScript', 'API Security', 'Authentication Systems', 'Database Security', 'Security Testing'],
+    technologies: [
+      'Laravel/PHP',
+      'JavaScript/TypeScript',
+      'API Security',
+      'Authentication Systems',
+      'Database Security',
+      'Security Testing',
+    ],
     icon: 'code',
     color: 'electric-cyan',
-    priority: 5
+    priority: 5,
   },
   {
     id: 'google-foundations-cybersecurity-2024',
@@ -1512,18 +1667,25 @@ export const CAREER_TIMELINE_EVENTS: TimelineEvent[] = [
     category: 'certification',
     status: 'completed',
     startDate: '2024',
-    description: 'Foundational cybersecurity concepts and practices from Google. Covers threat landscape, security controls, and incident response.',
+    description:
+      'Foundational cybersecurity concepts and practices from Google. Covers threat landscape, security controls, and incident response.',
     achievements: [
       'Completed comprehensive cybersecurity curriculum',
       'Gained hands-on experience with security tools',
       'Certified in security best practices',
-      'Prepared for advanced cybersecurity roles'
+      'Prepared for advanced cybersecurity roles',
     ],
-    technologies: ['Security Fundamentals', 'Threat Analysis', 'Incident Response', 'Security Controls'],
-    verificationUrl: 'https://www.coursera.org/account/accomplishments/certificate/XXXXX',
+    technologies: [
+      'Security Fundamentals',
+      'Threat Analysis',
+      'Incident Response',
+      'Security Controls',
+    ],
+    verificationUrl:
+      'https://www.coursera.org/account/accomplishments/certificate/XXXXX',
     icon: 'certificate',
     color: 'neon-green',
-    priority: 6
+    priority: 6,
   },
   {
     id: 'cisco-cyber-threat-management-2024',
@@ -1533,17 +1695,23 @@ export const CAREER_TIMELINE_EVENTS: TimelineEvent[] = [
     status: 'in-progress',
     startDate: '2024',
     current: true,
-    description: 'Advanced threat detection and response methodologies. Learning enterprise-level threat intelligence and security operations.',
+    description:
+      'Advanced threat detection and response methodologies. Learning enterprise-level threat intelligence and security operations.',
     achievements: [
       'Mastering advanced threat detection techniques',
       'Learning enterprise security operations',
       'Understanding threat intelligence platforms',
-      'Preparing for security leadership roles'
+      'Preparing for security leadership roles',
     ],
-    technologies: ['Threat Intelligence', 'Security Operations', 'Incident Response', 'Threat Hunting'],
+    technologies: [
+      'Threat Intelligence',
+      'Security Operations',
+      'Incident Response',
+      'Threat Hunting',
+    ],
     icon: 'target',
     color: 'electric-cyan',
-    priority: 7
+    priority: 7,
   },
   {
     id: 'osforensics-triage-certification-2024',
@@ -1553,17 +1721,23 @@ export const CAREER_TIMELINE_EVENTS: TimelineEvent[] = [
     status: 'in-progress',
     startDate: '2024',
     current: true,
-    description: 'Digital forensics and incident response techniques. Learning evidence collection and analysis for security incidents.',
+    description:
+      'Digital forensics and incident response techniques. Learning evidence collection and analysis for security incidents.',
     achievements: [
       'Mastering digital forensics tools and techniques',
       'Learning incident response procedures',
       'Understanding evidence collection standards',
-      'Preparing for forensic investigations'
+      'Preparing for forensic investigations',
     ],
-    technologies: ['Digital Forensics', 'Incident Response', 'Evidence Collection', 'Forensic Analysis'],
+    technologies: [
+      'Digital Forensics',
+      'Incident Response',
+      'Evidence Collection',
+      'Forensic Analysis',
+    ],
     icon: 'search',
     color: 'neon-green',
-    priority: 8
+    priority: 8,
   },
   {
     id: 'iso-27001-2024',
@@ -1572,17 +1746,23 @@ export const CAREER_TIMELINE_EVENTS: TimelineEvent[] = [
     category: 'certification',
     status: 'completed',
     startDate: '2024',
-    description: 'International standard for information security management systems. Understanding comprehensive security frameworks and compliance.',
+    description:
+      'International standard for information security management systems. Understanding comprehensive security frameworks and compliance.',
     achievements: [
       'Learned ISO 27001 framework and implementation',
       'Understanding security management best practices',
       'Gained knowledge of compliance requirements',
-      'Prepared for security governance roles'
+      'Prepared for security governance roles',
     ],
-    technologies: ['Security Management', 'Compliance', 'Risk Assessment', 'Security Frameworks'],
+    technologies: [
+      'Security Management',
+      'Compliance',
+      'Risk Assessment',
+      'Security Frameworks',
+    ],
     icon: 'globe',
     color: 'electric-cyan',
-    priority: 9
+    priority: 9,
   },
   {
     id: 'cisco-ethical-hacker-2024',
@@ -1591,17 +1771,23 @@ export const CAREER_TIMELINE_EVENTS: TimelineEvent[] = [
     category: 'certification',
     status: 'completed',
     startDate: '2024',
-    description: 'Ethical hacking and penetration testing certification. Learning offensive security techniques for defensive purposes.',
+    description:
+      'Ethical hacking and penetration testing certification. Learning offensive security techniques for defensive purposes.',
     achievements: [
       'Certified in ethical hacking methodologies',
       'Mastered penetration testing techniques',
       'Understanding attacker mindset and tactics',
-      'Gained hands-on security testing skills'
+      'Gained hands-on security testing skills',
     ],
-    technologies: ['Penetration Testing', 'Ethical Hacking', 'Vulnerability Assessment', 'Security Testing'],
+    technologies: [
+      'Penetration Testing',
+      'Ethical Hacking',
+      'Vulnerability Assessment',
+      'Security Testing',
+    ],
     icon: 'bug',
     color: 'neon-green',
-    priority: 10
+    priority: 10,
   },
   {
     id: 'linkedin-prompt-engineering-2024',
@@ -1610,17 +1796,23 @@ export const CAREER_TIMELINE_EVENTS: TimelineEvent[] = [
     category: 'certification',
     status: 'completed',
     startDate: '2024',
-    description: 'Advanced prompt engineering techniques for AI security applications. Learning to leverage AI for security automation and threat detection.',
+    description:
+      'Advanced prompt engineering techniques for AI security applications. Learning to leverage AI for security automation and threat detection.',
     achievements: [
       'Mastered prompt engineering for security use cases',
       'Learned AI-powered security automation',
       'Understanding AI security implications',
-      'Developed AI-enhanced security tools'
+      'Developed AI-enhanced security tools',
     ],
-    technologies: ['Prompt Engineering', 'Generative AI', 'AI Security', 'Automation'],
+    technologies: [
+      'Prompt Engineering',
+      'Generative AI',
+      'AI Security',
+      'Automation',
+    ],
     icon: 'brain',
     color: 'electric-cyan',
-    priority: 11
+    priority: 11,
   },
   {
     id: 'security-assessments-milestone-2024',
@@ -1629,21 +1821,22 @@ export const CAREER_TIMELINE_EVENTS: TimelineEvent[] = [
     category: 'achievement',
     status: 'completed',
     startDate: '2024',
-    description: 'Successfully completed over 100 comprehensive security assessments for diverse clients ranging from startups to enterprise organizations.',
+    description:
+      'Successfully completed over 100 comprehensive security assessments for diverse clients ranging from startups to enterprise organizations.',
     achievements: [
       'Conducted 100+ security assessments',
       'Achieved 99.9% success rate',
       'Served 50+ clients across industries',
-      'Zero critical security incidents in assessments'
+      'Zero critical security incidents in assessments',
     ],
     metrics: [
       { label: 'Total Assessments', value: '100+', icon: 'shield-check' },
       { label: 'Client Satisfaction', value: '99.9%', icon: 'smile' },
-      { label: 'Industry Coverage', value: '10+', icon: 'building' }
+      { label: 'Industry Coverage', value: '10+', icon: 'building' },
     ],
     icon: 'trophy',
     color: 'neon-green',
-    priority: 12
+    priority: 12,
   },
   {
     id: 'security-research-publication-2024',
@@ -1652,17 +1845,23 @@ export const CAREER_TIMELINE_EVENTS: TimelineEvent[] = [
     category: 'achievement',
     status: 'completed',
     startDate: '2024',
-    description: 'Published research paper on advanced threat detection using machine learning in peer-reviewed cybersecurity journal.',
+    description:
+      'Published research paper on advanced threat detection using machine learning in peer-reviewed cybersecurity journal.',
     achievements: [
       'Published in cybersecurity research journal',
       'Research cited by industry professionals',
       'Presented findings at security conference',
-      'Contributed to security knowledge base'
+      'Contributed to security knowledge base',
     ],
-    technologies: ['Research', 'Machine Learning', 'Threat Detection', 'Academic Writing'],
+    technologies: [
+      'Research',
+      'Machine Learning',
+      'Threat Detection',
+      'Academic Writing',
+    ],
     icon: 'book',
     color: 'electric-cyan',
-    priority: 13
+    priority: 13,
   },
   {
     id: 'conference-speaking-engagement-2024',
@@ -1671,29 +1870,36 @@ export const CAREER_TIMELINE_EVENTS: TimelineEvent[] = [
     category: 'achievement',
     status: 'completed',
     startDate: '2024',
-    description: 'Invited speaker at major cybersecurity conference presenting on AI-powered threat detection and security automation.',
+    description:
+      'Invited speaker at major cybersecurity conference presenting on AI-powered threat detection and security automation.',
     achievements: [
       'Presented to 500+ security professionals',
       'Shared innovative security approaches',
       'Networked with industry leaders',
-      'Received positive feedback from attendees'
+      'Received positive feedback from attendees',
     ],
-    technologies: ['Public Speaking', 'Security Research', 'AI Security', 'Industry Networking'],
+    technologies: [
+      'Public Speaking',
+      'Security Research',
+      'AI Security',
+      'Industry Networking',
+    ],
     icon: 'mic',
     color: 'neon-green',
-    priority: 14
-  }
+    priority: 14,
+  },
 ];
 
 // Resume summary configuration
 export const RESUME_SUMMARY: ResumeSummary = {
-  overview: 'Cybersecurity Specialist & Full-Stack Developer with 7+ years of experience protecting organizations from evolving cyber threats. Expertise spans enterprise security architecture, incident response, cloud security, and AI-powered threat detection. Combines deep technical knowledge with strategic security leadership.',
+  overview:
+    'Cybersecurity Specialist & Full-Stack Developer with 7+ years of experience protecting organizations from evolving cyber threats. Expertise spans enterprise security architecture, incident response, cloud security, and AI-powered threat detection. Combines deep technical knowledge with strategic security leadership.',
   keyAchievements: [
     '100+ Security Assessments Completed with 99.9% Success Rate',
     '50+ Clients Protected Across Multiple Industries',
     '75% Reduction in Security Incidents for Enterprise Clients',
     'Published Research in Cybersecurity Journal',
-    'Certified in 10+ Security Technologies and Frameworks'
+    'Certified in 10+ Security Technologies and Frameworks',
   ],
   specializations: [
     'Vulnerability Assessment & Penetration Testing',
@@ -1701,19 +1907,20 @@ export const RESUME_SUMMARY: ResumeSummary = {
     'Incident Response & Threat Analysis',
     'AI/ML Security & Prompt Engineering',
     'Secure Web Application Development',
-    'Security Architecture & Risk Management'
+    'Security Architecture & Risk Management',
   ],
-  philosophy: 'Believe in proactive security through continuous monitoring, threat intelligence, and security-first development practices. Focus on building resilient systems that protect digital assets while enabling business innovation.',
+  philosophy:
+    'Believe in proactive security through continuous monitoring, threat intelligence, and security-first development practices. Focus on building resilient systems that protect digital assets while enabling business innovation.',
   goals: [
     'Advance AI-powered security automation and threat detection',
     'Expand enterprise security consulting practice',
     'Contribute to cybersecurity education and awareness',
     'Develop innovative security solutions for emerging technologies',
-    'Achieve CISSP and other advanced security certifications'
+    'Achieve CISSP and other advanced security certifications',
   ],
   contactEmail: 'aditya@cybersecurity.com',
   downloadUrl: '/resume/Aditya_Kumar_Tiwari_Resume.pdf',
-  lastUpdated: '2024-12-25'
+  lastUpdated: '2024-12-25',
 };
 
 // Career timeline configuration
@@ -1727,6 +1934,6 @@ export const CAREER_TIMELINE_CONFIG: CareerTimelineConfig = {
   responsiveBreakpoints: {
     mobile: 640,
     tablet: 1024,
-    desktop: 1280
-  }
+    desktop: 1280,
+  },
 };

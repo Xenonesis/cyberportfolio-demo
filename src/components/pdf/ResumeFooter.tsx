@@ -127,8 +127,9 @@ export const ResumeFooter = () => {
 
       <View style={styles.disclaimer}>
         <Text style={styles.disclaimerText}>
-          This resume is confidential and intended solely for the recipient. All information contained herein is proprietary
-          and may not be reproduced or distributed without explicit written permission.
+          This resume is confidential and intended solely for the recipient. All
+          information contained herein is proprietary and may not be reproduced
+          or distributed without explicit written permission.
         </Text>
       </View>
     </View>

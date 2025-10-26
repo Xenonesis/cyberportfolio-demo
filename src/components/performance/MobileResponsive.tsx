@@ -15,33 +15,45 @@ interface ResponsiveContextType {
   breakpoint: 'sm' | 'md' | 'lg' | 'xl' | '2xl';
 }
 
-const ResponsiveContext = createContext<ResponsiveContextType | undefined>(undefined);
+const ResponsiveContext = createContext<ResponsiveContextType | undefined>(
+  undefined
+);
 
-export const MobileResponsive: React.FC<MobileResponsiveProps> = ({ children }) => {
-  const [responsiveState, setResponsiveState] = useState<ResponsiveContextType>({
-    isMobile: false,
-    isTablet: false,
-    isDesktop: false,
-    isLargeDesktop: false,
-    orientation: 'portrait',
-    breakpoint: 'sm',
-  });
+export const MobileResponsive: React.FC<MobileResponsiveProps> = ({
+  children,
+}) => {
+  const [responsiveState, setResponsiveState] = useState<ResponsiveContextType>(
+    {
+      isMobile: false,
+      isTablet: false,
+      isDesktop: false,
+      isLargeDesktop: false,
+      orientation: 'portrait',
+      breakpoint: 'sm',
+    }
+  );
 
   useEffect(() => {
     const updateResponsiveState = () => {
       const width = window.innerWidth;
       const height = window.innerHeight;
-      
+
       setResponsiveState({
         isMobile: width < 768,
         isTablet: width >= 768 && width < 1024,
         isDesktop: width >= 1024 && width < 1280,
         isLargeDesktop: width >= 1280,
         orientation: width > height ? 'landscape' : 'portrait',
-        breakpoint: width < 640 ? 'sm' : 
-                  width < 768 ? 'md' : 
-                  width < 1024 ? 'lg' : 
-                  width < 1280 ? 'xl' : '2xl',
+        breakpoint:
+          width < 640
+            ? 'sm'
+            : width < 768
+              ? 'md'
+              : width < 1024
+                ? 'lg'
+                : width < 1280
+                  ? 'xl'
+                  : '2xl',
       });
     };
 
@@ -50,7 +62,7 @@ export const MobileResponsive: React.FC<MobileResponsiveProps> = ({ children }) 
 
     // Add event listener for resize
     window.addEventListener('resize', updateResponsiveState);
-    
+
     // Add event listener for orientation change
     window.addEventListener('orientationchange', updateResponsiveState);
 
@@ -62,7 +74,7 @@ export const MobileResponsive: React.FC<MobileResponsiveProps> = ({ children }) 
 
   return (
     <ResponsiveContext.Provider value={responsiveState}>
-      <div 
+      <div
         className={`
           responsive-container
           ${responsiveState.isMobile ? 'mobile-view' : ''}
@@ -82,7 +94,9 @@ export const MobileResponsive: React.FC<MobileResponsiveProps> = ({ children }) 
 export const useResponsive = (): ResponsiveContextType => {
   const context = useContext(ResponsiveContext);
   if (context === undefined) {
-    throw new Error('useResponsive must be used within a MobileResponsive provider');
+    throw new Error(
+      'useResponsive must be used within a MobileResponsive provider'
+    );
   }
   return context;
 };
@@ -101,7 +115,7 @@ export const ResponsiveComponent: React.FC<{
   if (isTablet && tablet) return <>{tablet}</>;
   if (isDesktop && desktop) return <>{desktop}</>;
   if (isLargeDesktop && largeDesktop) return <>{largeDesktop}</>;
-  
+
   return <>{fallback}</>;
 };
 
@@ -113,26 +127,26 @@ export const ResponsiveGrid: React.FC<{
   tabletCols?: number;
   desktopCols?: number;
   largeDesktopCols?: number;
-}> = ({ 
-  children, 
-  className = '', 
-  mobileCols = 1, 
-  tabletCols = 2, 
-  desktopCols = 3, 
-  largeDesktopCols = 4 
+}> = ({
+  children,
+  className = '',
+  mobileCols = 1,
+  tabletCols = 2,
+  desktopCols = 3,
+  largeDesktopCols = 4,
 }) => {
   const { isMobile, isTablet, isDesktop, isLargeDesktop } = useResponsive();
-  
-  const cols = isMobile 
-    ? mobileCols 
-    : isTablet 
-      ? tabletCols 
-      : isDesktop 
-        ? desktopCols 
+
+  const cols = isMobile
+    ? mobileCols
+    : isTablet
+      ? tabletCols
+      : isDesktop
+        ? desktopCols
         : largeDesktopCols;
 
   return (
-    <div 
+    <div
       className={`
         grid
         ${className}

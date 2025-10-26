@@ -7,15 +7,18 @@ This document outlines the complete CSS3 styling system for Aditya Kumar Tiwari'
 ## 🎨 Color Palette
 
 ### Primary Colors
+
 - **Deep Navy Blue** (`#0F172A`): Main background and dark elements
 - **Electric Cyan** (`#00FFFF`): Primary accent, highlights, interactive elements
 - **Neon Green** (`#39FF14`): Secondary accent, success indicators, highlights
 
 ### Secondary Colors
+
 - **Security Gray** (`#1E293B`): Secondary backgrounds, cards
 - **Light Gray** (`#F8FAFC`): Light mode backgrounds, text on dark
 
 ### Security-Themed Utility Colors
+
 - **Threat Level Indicators**:
   - Low: `#39FF14` (Neon Green)
   - Medium: `#FFD700` (Gold/Yellow)
@@ -30,6 +33,7 @@ This document outlines the complete CSS3 styling system for Aditya Kumar Tiwari'
 ## 🚀 CSS3 Animations
 
 ### Core Animations
+
 - **Glow Effect**: Pulsing neon glow for interactive elements
 - **Circuit Pattern**: Moving circuit lines in backgrounds
 - **Data Flow**: Subtle data movement animations
@@ -41,6 +45,7 @@ This document outlines the complete CSS3 styling system for Aditya Kumar Tiwari'
 - **Cyber Grid**: Moving grid pattern background
 
 ### Animation Classes
+
 ```css
 .security-glow      /* Neon glow effect */
 .circuit-pattern    /* Circuit background animation */
@@ -53,6 +58,7 @@ This document outlines the complete CSS3 styling system for Aditya Kumar Tiwari'
 ## 🎯 Component Styling
 
 ### Navigation Header
+
 - **Background**: Deep Navy with subtle gradient
 - **Logo**: Electric Cyan text with security icon
 - **Navigation Links**: Light Gray with Electric Cyan hover
@@ -60,6 +66,7 @@ This document outlines the complete CSS3 styling system for Aditya Kumar Tiwari'
 - **Theme Toggle**: Neon Green indicator with smooth transition
 
 ### Hero Section
+
 - **Background**: Deep Navy with animated circuit pattern
 - **Headline**: White text with Electric Cyan accent words
 - **Sub-headline**: Light Gray with reduced opacity
@@ -67,6 +74,7 @@ This document outlines the complete CSS3 styling system for Aditya Kumar Tiwari'
 - **Security Badges**: Neon Green checkmarks, Electric Cyan borders
 
 ### About Section
+
 - **Profile Card**: Security Gray with Electric Cyan border
 - **Skill Progress Bars**: Neon Green fill, Electric Cyan track
 - **Certification Badges**: Hover effects with glow
@@ -74,6 +82,7 @@ This document outlines the complete CSS3 styling system for Aditya Kumar Tiwari'
 - **Download Button**: Neon Green with security icon
 
 ### Services Section
+
 - **Service Cards**: Security Gray with hover lift
 - **Service Icons**: Electric Cyan with subtle animation
 - **Pricing Tiers**: Different border colors (Cyan, Green, Navy)
@@ -81,6 +90,7 @@ This document outlines the complete CSS3 styling system for Aditya Kumar Tiwari'
 - **CTA Buttons**: Gradient from Electric Cyan to Neon Green
 
 ### Portfolio/Case Studies
+
 - **Project Cards**: Dark with glassmorphism effect
 - **Project Images**: Border with Electric Cyan glow
 - **Metrics Display**: Neon Green for positive metrics
@@ -88,6 +98,7 @@ This document outlines the complete CSS3 styling system for Aditya Kumar Tiwari'
 - **Filter Buttons**: Active state with Electric Cyan background
 
 ### Blog Section
+
 - **Article Cards**: Security Gray with subtle border
 - **Featured Post**: Larger with Electric Cyan accent
 - **Category Badges**: Neon Green background
@@ -95,6 +106,7 @@ This document outlines the complete CSS3 styling system for Aditya Kumar Tiwari'
 - **Newsletter Form**: Deep Navy background with glow
 
 ### Contact Section
+
 - **Contact Form**: Security Gray with Electric Cyan focus
 - **Form Fields**: Dark background, Light Gray text
 - **Security Notice**: Neon Green border and icon
@@ -104,6 +116,7 @@ This document outlines the complete CSS3 styling system for Aditya Kumar Tiwari'
 ## 📱 Responsive Design
 
 ### Breakpoints
+
 - **Mobile**: 320px - 639px
 - **Small Devices**: 640px - 767px
 - **Tablet**: 768px - 1023px
@@ -112,6 +125,7 @@ This document outlines the complete CSS3 styling system for Aditya Kumar Tiwari'
 - **Extra Large**: 1536px+
 
 ### Responsive Features
+
 - **Mobile-First Design**: Optimized for touch interactions
 - **Flexible Grids**: Adaptable layout systems
 - **Touch Targets**: Minimum 44px with proper spacing
@@ -122,6 +136,7 @@ This document outlines the complete CSS3 styling system for Aditya Kumar Tiwari'
 ## ♿ Accessibility Features
 
 ### WCAG 2.1 AA Compliance
+
 - **Color Contrast**: Minimum 4.5:1 for normal text, 3:1 for large text
 - **Focus Indicators**: Visible focus states with 3px outline
 - **Keyboard Navigation**: Full keyboard accessibility
@@ -129,11 +144,13 @@ This document outlines the complete CSS3 styling system for Aditya Kumar Tiwari'
 - **Motion Preferences**: Respect user motion settings
 
 ### High Contrast Mode
+
 - Enhanced color contrast for users with visual impairments
 - Simplified animations and effects
 - Clear focus indicators
 
 ### Reduced Motion
+
 - Option to disable all animations
 - Simplified interactions
 - Performance optimization
@@ -141,18 +158,21 @@ This document outlines the complete CSS3 styling system for Aditya Kumar Tiwari'
 ## ⚡ Performance Optimizations
 
 ### CSS Optimizations
+
 - **CSS Variables**: For consistent theming and easy updates
 - **Hardware Acceleration**: Use of `transform: translateZ(0)` for animations
 - **Contain Property**: Layout containment for performance
 - **Critical CSS**: Inline above-the-fold styles
 
 ### Animation Performance
+
 - **Will-Change Property**: For animation optimization
 - **GPU Acceleration**: Transform and opacity animations
 - **Frame Rate**: Target 60fps for smooth animations
 - **Memory Management**: Efficient animation cleanup
 
 ### Loading Optimizations
+
 - **Font Loading**: Optimized web font loading with fallbacks
 - **Image Optimization**: Lazy loading and modern formats
 - **Critical Path**: Optimized critical rendering path
@@ -161,6 +181,7 @@ This document outlines the complete CSS3 styling system for Aditya Kumar Tiwari'
 ## 🔧 Security-Themed Utilities
 
 ### Custom Classes
+
 ```css
 .security-glow          /* Electric Cyan glow effect */
 .circuit-pattern        /* Background circuit design */
@@ -173,6 +194,7 @@ This document outlines the complete CSS3 styling system for Aditya Kumar Tiwari'
 ```
 
 ### Component-Specific Classes
+
 ```css
 .hero-banner           /* Full-width hero styling */
 .skill-progress        /* Animated progress bars */
@@ -184,6 +206,7 @@ This document outlines the complete CSS3 styling system for Aditya Kumar Tiwari'
 ## 🎮 Interactive Effects
 
 ### Button Variants
+
 - **Primary**: Electric Cyan gradient with hover effects
 - **Secondary**: Neon Green with security border
 - **Outline**: Electric Cyan outline with hover fill
@@ -192,12 +215,14 @@ This document outlines the complete CSS3 styling system for Aditya Kumar Tiwari'
 - **Neon**: Multi-color gradient with pulse animation
 
 ### Card Interactions
+
 - **Hover Lift**: Subtle elevation on hover
 - **Security Glow**: Neon border glow effect
 - **Image Overlay**: Gradient overlay on image hover
 - **Content Reveal**: Hidden content on hover
 
 ### Form Enhancements
+
 - **Focus Glow**: Border glow on focus
 - **Validation States**: Color-coded validation
 - **Loading States**: Security-themed spinners
@@ -206,18 +231,21 @@ This document outlines the complete CSS3 styling system for Aditya Kumar Tiwari'
 ## 📊 Testing and Validation
 
 ### Browser Compatibility
+
 - **Modern Browsers**: Chrome, Firefox, Safari, Edge
 - **CSS Grid/Flexbox**: Full support
 - **CSS Variables**: Modern browser support
 - **Animations**: Hardware-accelerated
 
 ### Performance Testing
+
 - **Lighthouse Score**: Target 90+ for performance
 - **Core Web Vitals**: Optimize FCP, LCP, CLS
 - **Mobile Performance**: Optimize for mobile devices
 - **Accessibility Score**: Target 90+ for accessibility
 
 ### Security Testing
+
 - **Color Contrast**: WCAG 2.1 AA compliance
 - **Keyboard Navigation**: Full keyboard accessibility
 - **Screen Reader**: Proper ARIA support
@@ -226,7 +254,9 @@ This document outlines the complete CSS3 styling system for Aditya Kumar Tiwari'
 ## 🚀 Implementation Guide
 
 ### Getting Started
+
 1. Import the main CSS files:
+
    ```css
    @import './security.css';
    @import './responsive.css';
@@ -234,6 +264,7 @@ This document outlines the complete CSS3 styling system for Aditya Kumar Tiwari'
    ```
 
 2. Use Tailwind classes with security theme:
+
    ```html
    <div class="bg-deep-navy-800 text-electric-cyan-400">
      <button class="btn-security">Security Button</button>
@@ -248,6 +279,7 @@ This document outlines the complete CSS3 styling system for Aditya Kumar Tiwari'
    ```
 
 ### Customization
+
 - **Color Variables**: Update CSS custom properties
 - **Animation Speed**: Modify animation durations
 - **Breakpoints**: Adjust responsive breakpoints
@@ -256,12 +288,14 @@ This document outlines the complete CSS3 styling system for Aditya Kumar Tiwari'
 ## 📈 Future Enhancements
 
 ### Planned Features
+
 - **Dark Mode Toggle**: Enhanced theme switching
 - **Security Dashboard**: Real-time security metrics
 - **Interactive Elements**: More security-themed interactions
 - **Performance Monitoring**: Built-in performance tracking
 
 ### Optimization Roadmap
+
 - **CSS-in-JS**: Component-level styling
 - **Design System**: Comprehensive component library
 - **Animation Library**: Reusable animation components
@@ -270,12 +304,14 @@ This document outlines the complete CSS3 styling system for Aditya Kumar Tiwari'
 ## 📞 Support and Maintenance
 
 ### Regular Updates
+
 - **Security Patches**: Regular security updates
 - **Browser Compatibility**: Ongoing browser testing
 - **Performance Optimization**: Continuous performance improvements
 - **Accessibility Updates**: WCAG compliance updates
 
 ### Documentation
+
 - **Component Library**: Detailed component documentation
 - **Style Guide**: Comprehensive style guide
 - **Best Practices**: Security and accessibility guidelines

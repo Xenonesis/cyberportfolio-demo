@@ -75,7 +75,8 @@ export function isInViewport(element: HTMLElement): boolean {
   return (
     rect.top >= 0 &&
     rect.left >= 0 &&
-    rect.bottom <= (window.innerHeight || document.documentElement.clientHeight) &&
+    rect.bottom <=
+      (window.innerHeight || document.documentElement.clientHeight) &&
     rect.right <= (window.innerWidth || document.documentElement.clientWidth)
   );
 }
@@ -197,12 +198,15 @@ export function groupBy<T>(
   array: T[],
   key: (item: T) => string
 ): Record<string, T[]> {
-  return array.reduce((groups, item) => {
-    const groupKey = key(item);
-    groups[groupKey] = groups[groupKey] || [];
-    groups[groupKey].push(item);
-    return groups;
-  }, {} as Record<string, T[]>);
+  return array.reduce(
+    (groups, item) => {
+      const groupKey = key(item);
+      groups[groupKey] = groups[groupKey] || [];
+      groups[groupKey].push(item);
+      return groups;
+    },
+    {} as Record<string, T[]>
+  );
 }
 
 /**
@@ -211,8 +215,7 @@ export function groupBy<T>(
 export function deepClone<T>(obj: T): T {
   if (obj === null || typeof obj !== 'object') return obj;
   if (obj instanceof Date) return new Date(obj.getTime()) as any;
-  if (obj instanceof Array)
-    return obj.map((item) => deepClone(item)) as any;
+  if (obj instanceof Array) return obj.map(item => deepClone(item)) as any;
   if (typeof obj === 'object') {
     const clonedObj = {} as any;
     for (const key in obj) {

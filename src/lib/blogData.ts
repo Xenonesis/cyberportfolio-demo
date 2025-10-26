@@ -7,19 +7,21 @@ export const BLOG_CATEGORIES: BlogCategory[] = [
     id: 'cybersecurity-fundamentals',
     name: 'Cybersecurity Fundamentals',
     slug: 'cybersecurity-fundamentals',
-    description: 'Essential cybersecurity concepts and best practices for startups and SMBs',
+    description:
+      'Essential cybersecurity concepts and best practices for startups and SMBs',
     color: 'neon-green',
     icon: 'shield',
-    postCount: 8
+    postCount: 8,
   },
   {
     id: 'technical-security',
     name: 'Technical Security Topics',
     slug: 'technical-security',
-    description: 'In-depth technical security analysis and implementation guides',
+    description:
+      'In-depth technical security analysis and implementation guides',
     color: 'electric-cyan',
     icon: 'code',
-    postCount: 12
+    postCount: 12,
   },
   {
     id: 'development-security',
@@ -28,25 +30,27 @@ export const BLOG_CATEGORIES: BlogCategory[] = [
     description: 'Secure coding practices and DevSecOps integration',
     color: 'light-blue',
     icon: 'code-branch',
-    postCount: 10
+    postCount: 10,
   },
   {
     id: 'ai-emerging-tech',
     name: 'AI and Emerging Tech',
     slug: 'ai-emerging-tech',
-    description: 'AI security, prompt engineering, and emerging cybersecurity technologies',
+    description:
+      'AI security, prompt engineering, and emerging cybersecurity technologies',
     color: 'purple',
     icon: 'brain',
-    postCount: 6
+    postCount: 6,
   },
   {
     id: 'industry-insights',
     name: 'Industry Insights',
     slug: 'industry-insights',
-    description: 'Compliance, risk assessment, and security consulting best practices',
+    description:
+      'Compliance, risk assessment, and security consulting best practices',
     color: 'orange',
     icon: 'trending-up',
-    postCount: 8
+    postCount: 8,
   },
   {
     id: 'case-studies',
@@ -55,7 +59,7 @@ export const BLOG_CATEGORIES: BlogCategory[] = [
     description: 'Real-world security incident analysis and lessons learned',
     color: 'red',
     icon: 'file-text',
-    postCount: 4
+    postCount: 4,
   },
   {
     id: 'tool-reviews',
@@ -64,7 +68,7 @@ export const BLOG_CATEGORIES: BlogCategory[] = [
     description: 'Security tool evaluations and technology comparisons',
     color: 'yellow',
     icon: 'tool',
-    postCount: 5
+    postCount: 5,
   },
   {
     id: 'interviews',
@@ -73,8 +77,8 @@ export const BLOG_CATEGORIES: BlogCategory[] = [
     description: 'Insights from cybersecurity industry leaders and experts',
     color: 'pink',
     icon: 'mic',
-    postCount: 3
-  }
+    postCount: 3,
+  },
 ];
 
 // Comprehensive blog posts data - 56 articles across all categories
@@ -83,9 +87,11 @@ export const BLOG_POSTS: BlogPost[] = [
   {
     id: 'zero-trust-architecture',
     title: 'Implementing Zero Trust Architecture: A Comprehensive Guide',
-    subtitle: 'Learn how to build a robust Zero Trust security model for your organization',
+    subtitle:
+      'Learn how to build a robust Zero Trust security model for your organization',
     slug: 'zero-trust-architecture',
-    excerpt: 'Zero Trust Architecture is revolutionizing how organizations approach cybersecurity. This comprehensive guide covers the principles, implementation strategies, and real-world applications of Zero Trust frameworks.',
+    excerpt:
+      'Zero Trust Architecture is revolutionizing how organizations approach cybersecurity. This comprehensive guide covers the principles, implementation strategies, and real-world applications of Zero Trust frameworks.',
     content: `# Implementing Zero Trust Architecture: A Comprehensive Guide
 
 ## The Zero Trust Revolution
@@ -185,36 +191,82 @@ Zero Trust Architecture represents a fundamental shift in how we approach cybers
     publishedAt: '2024-01-15',
     author: 'Aditya Kumar Tiwari',
     readingTime: '12 min read',
-    tags: ['Zero Trust', 'Security Architecture', 'Enterprise Security', 'Network Security', 'IAM'],
+    tags: [
+      'Zero Trust',
+      'Security Architecture',
+      'Enterprise Security',
+      'Network Security',
+      'IAM',
+    ],
     category: 'technical-security',
     featuredImage: '/images/blog/zero-trust.jpg',
     featured: true,
     seo: {
-      title: 'Zero Trust Architecture Guide - Cybersecurity Best Practices 2024',
-      description: 'Comprehensive guide to implementing Zero Trust Architecture with practical steps, technologies, and real-world examples for enterprise security.',
-      keywords: ['zero trust', 'security architecture', 'cybersecurity', 'enterprise security', 'network security', 'identity management', 'ZTNA', 'micro-segmentation']
+      title:
+        'Zero Trust Architecture Guide - Cybersecurity Best Practices 2024',
+      description:
+        'Comprehensive guide to implementing Zero Trust Architecture with practical steps, technologies, and real-world examples for enterprise security.',
+      keywords: [
+        'zero trust',
+        'security architecture',
+        'cybersecurity',
+        'enterprise security',
+        'network security',
+        'identity management',
+        'ZTNA',
+        'micro-segmentation',
+      ],
     },
     authorInfo: {
       name: 'Aditya Kumar Tiwari',
       bio: 'Cybersecurity Specialist & Full-Stack Developer with 7+ years of experience protecting organizations from evolving cyber threats.',
       avatar: '/images/aditya-avatar.jpg',
-      credentials: ['M.S. in Cybersecurity', 'CISSP (In Progress)', 'Google Cybersecurity Certificate', 'Cisco Ethical Hacker'],
+      credentials: [
+        'M.S. in Cybersecurity',
+        'CISSP (In Progress)',
+        'Google Cybersecurity Certificate',
+        'Cisco Ethical Hacker',
+      ],
       socialLinks: [
-        { id: 'linkedin', title: 'LinkedIn', url: 'https://linkedin.com/in/aditya-cybersecurity', icon: 'linkedin', username: '@aditya-cybersecurity' },
-        { id: 'twitter', title: 'Twitter', url: 'https://twitter.com/aditya_cyber', icon: 'twitter', username: '@aditya_cyber' },
-        { id: 'github', title: 'GitHub', url: 'https://github.com/aditya-cybersecurity', icon: 'github', username: 'aditya-cybersecurity' }
-      ]
+        {
+          id: 'linkedin',
+          title: 'LinkedIn',
+          url: 'https://linkedin.com/in/aditya-cybersecurity',
+          icon: 'linkedin',
+          username: '@aditya-cybersecurity',
+        },
+        {
+          id: 'twitter',
+          title: 'Twitter',
+          url: 'https://twitter.com/aditya_cyber',
+          icon: 'twitter',
+          username: '@aditya_cyber',
+        },
+        {
+          id: 'github',
+          title: 'GitHub',
+          url: 'https://github.com/aditya-cybersecurity',
+          icon: 'github',
+          username: 'aditya-cybersecurity',
+        },
+      ],
     },
-    relatedPosts: ['cloud-security-best-practices', 'network-security-implementation', 'incident-response-plan']
+    relatedPosts: [
+      'cloud-security-best-practices',
+      'network-security-implementation',
+      'incident-response-plan',
+    ],
   },
 
   // Technical Security Articles
   {
     id: 'cloud-security-best-practices',
     title: 'Cloud Security Best Practices for 2024',
-    subtitle: 'Essential security measures for protecting your cloud infrastructure',
+    subtitle:
+      'Essential security measures for protecting your cloud infrastructure',
     slug: 'cloud-security-best-practices',
-    excerpt: 'As organizations continue to migrate to the cloud, understanding and implementing robust cloud security practices is crucial. This article covers the latest trends and best practices for 2024.',
+    excerpt:
+      'As organizations continue to migrate to the cloud, understanding and implementing robust cloud security practices is crucial. This article covers the latest trends and best practices for 2024.',
     content: `# Cloud Security Best Practices for 2024
 
 ## The Cloud Security Landscape
@@ -314,30 +366,68 @@ Cloud security is not a one-time project but an ongoing process that requires co
     featured: true,
     seo: {
       title: 'Cloud Security Best Practices 2024 - Expert Guide',
-      description: 'Latest cloud security best practices and strategies for protecting your cloud infrastructure across AWS, Azure, and Google Cloud platforms.',
-      keywords: ['cloud security', 'AWS security', 'Azure security', 'GCP security', 'best practices', 'cloud security 2024', 'cloud security posture']
+      description:
+        'Latest cloud security best practices and strategies for protecting your cloud infrastructure across AWS, Azure, and Google Cloud platforms.',
+      keywords: [
+        'cloud security',
+        'AWS security',
+        'Azure security',
+        'GCP security',
+        'best practices',
+        'cloud security 2024',
+        'cloud security posture',
+      ],
     },
     authorInfo: {
       name: 'Aditya Kumar Tiwari',
       bio: 'Cybersecurity Specialist & Full-Stack Developer with 7+ years of experience protecting organizations from evolving cyber threats.',
       avatar: '/images/aditya-avatar.jpg',
-      credentials: ['M.S. in Cybersecurity', 'CISSP (In Progress)', 'Google Cybersecurity Certificate', 'Cisco Ethical Hacker'],
+      credentials: [
+        'M.S. in Cybersecurity',
+        'CISSP (In Progress)',
+        'Google Cybersecurity Certificate',
+        'Cisco Ethical Hacker',
+      ],
       socialLinks: [
-        { id: 'linkedin', title: 'LinkedIn', url: 'https://linkedin.com/in/aditya-cybersecurity', icon: 'linkedin', username: '@aditya-cybersecurity' },
-        { id: 'twitter', title: 'Twitter', url: 'https://twitter.com/aditya_cyber', icon: 'twitter', username: '@aditya_cyber' },
-        { id: 'github', title: 'GitHub', url: 'https://github.com/aditya-cybersecurity', icon: 'github', username: 'aditya-cybersecurity' }
-      ]
+        {
+          id: 'linkedin',
+          title: 'LinkedIn',
+          url: 'https://linkedin.com/in/aditya-cybersecurity',
+          icon: 'linkedin',
+          username: '@aditya-cybersecurity',
+        },
+        {
+          id: 'twitter',
+          title: 'Twitter',
+          url: 'https://twitter.com/aditya_cyber',
+          icon: 'twitter',
+          username: '@aditya_cyber',
+        },
+        {
+          id: 'github',
+          title: 'GitHub',
+          url: 'https://github.com/aditya-cybersecurity',
+          icon: 'github',
+          username: 'aditya-cybersecurity',
+        },
+      ],
     },
-    relatedPosts: ['zero-trust-architecture', 'network-security-implementation', 'compliance-frameworks']
+    relatedPosts: [
+      'zero-trust-architecture',
+      'network-security-implementation',
+      'compliance-frameworks',
+    ],
   },
 
   // More articles would continue here...
   {
     id: 'network-security-implementation',
     title: 'Network Security Implementation: A Complete Guide',
-    subtitle: 'Step-by-step approach to securing your organization\'s network infrastructure',
+    subtitle:
+      "Step-by-step approach to securing your organization's network infrastructure",
     slug: 'network-security-implementation',
-    excerpt: 'Network security is the foundation of any cybersecurity program. This comprehensive guide covers modern network security implementation strategies and technologies.',
+    excerpt:
+      'Network security is the foundation of any cybersecurity program. This comprehensive guide covers modern network security implementation strategies and technologies.',
     content: `# Network Security Implementation: A Complete Guide
 
 ## The Foundation of Cybersecurity
@@ -414,28 +504,60 @@ Effective network security requires a comprehensive, layered approach that evolv
     featured: false,
     seo: {
       title: 'Network Security Implementation Guide - Complete Strategy 2024',
-      description: 'Comprehensive guide to implementing network security with firewalls, intrusion detection, and modern security technologies.',
-      keywords: ['network security', 'firewall', 'intrusion detection', 'VPN', 'network security implementation']
+      description:
+        'Comprehensive guide to implementing network security with firewalls, intrusion detection, and modern security technologies.',
+      keywords: [
+        'network security',
+        'firewall',
+        'intrusion detection',
+        'VPN',
+        'network security implementation',
+      ],
     },
     authorInfo: {
       name: 'Aditya Kumar Tiwari',
       bio: 'Cybersecurity Specialist & Full-Stack Developer with 7+ years of experience protecting organizations from evolving cyber threats.',
       avatar: '/images/aditya-avatar.jpg',
-      credentials: ['M.S. in Cybersecurity', 'CISSP (In Progress)', 'Google Cybersecurity Certificate', 'Cisco Ethical Hacker'],
+      credentials: [
+        'M.S. in Cybersecurity',
+        'CISSP (In Progress)',
+        'Google Cybersecurity Certificate',
+        'Cisco Ethical Hacker',
+      ],
       socialLinks: [
-        { id: 'linkedin', title: 'LinkedIn', url: 'https://linkedin.com/in/aditya-cybersecurity', icon: 'linkedin', username: '@aditya-cybersecurity' },
-        { id: 'twitter', title: 'Twitter', url: 'https://twitter.com/aditya_cyber', icon: 'twitter', username: '@aditya_cyber' },
-        { id: 'github', title: 'GitHub', url: 'https://github.com/aditya-cybersecurity', icon: 'github', username: 'aditya-cybersecurity' }
-      ]
-    }
+        {
+          id: 'linkedin',
+          title: 'LinkedIn',
+          url: 'https://linkedin.com/in/aditya-cybersecurity',
+          icon: 'linkedin',
+          username: '@aditya-cybersecurity',
+        },
+        {
+          id: 'twitter',
+          title: 'Twitter',
+          url: 'https://twitter.com/aditya_cyber',
+          icon: 'twitter',
+          username: '@aditya_cyber',
+        },
+        {
+          id: 'github',
+          title: 'GitHub',
+          url: 'https://github.com/aditya-cybersecurity',
+          icon: 'github',
+          username: 'aditya-cybersecurity',
+        },
+      ],
+    },
   },
 
   {
     id: 'incident-response-plan',
     title: 'Building an Effective Incident Response Plan',
-    subtitle: 'Step-by-step guide to creating a comprehensive incident response strategy',
+    subtitle:
+      'Step-by-step guide to creating a comprehensive incident response strategy',
     slug: 'incident-response-plan',
-    excerpt: 'A well-structured incident response plan can mean the difference between a minor security incident and a major data breach. Learn how to build an effective response strategy.',
+    excerpt:
+      'A well-structured incident response plan can mean the difference between a minor security incident and a major data breach. Learn how to build an effective response strategy.',
     content: `# Building an Effective Incident Response Plan
 
 ## The Critical Importance of Incident Response
@@ -535,26 +657,62 @@ An effective incident response plan is not just a document—it's a living, brea
     publishedAt: '2024-01-05',
     author: 'Aditya Kumar Tiwari',
     readingTime: '12 min read',
-    tags: ['Incident Response', 'Security Planning', 'Cybersecurity', 'Data Breach'],
+    tags: [
+      'Incident Response',
+      'Security Planning',
+      'Cybersecurity',
+      'Data Breach',
+    ],
     category: 'industry-insights',
     featuredImage: '/images/blog/incident-response.jpg',
     featured: true,
     seo: {
       title: 'Incident Response Plan Guide - Cybersecurity Strategy 2024',
-      description: 'Comprehensive guide to building an effective incident response plan for cybersecurity threats and data breaches.',
-      keywords: ['incident response', 'security plan', 'cybersecurity', 'data breach', 'response strategy', 'incident response plan']
+      description:
+        'Comprehensive guide to building an effective incident response plan for cybersecurity threats and data breaches.',
+      keywords: [
+        'incident response',
+        'security plan',
+        'cybersecurity',
+        'data breach',
+        'response strategy',
+        'incident response plan',
+      ],
     },
     authorInfo: {
       name: 'Aditya Kumar Tiwari',
       bio: 'Cybersecurity Specialist & Full-Stack Developer with 7+ years of experience protecting organizations from evolving cyber threats.',
       avatar: '/images/aditya-avatar.jpg',
-      credentials: ['M.S. in Cybersecurity', 'CISSP (In Progress)', 'Google Cybersecurity Certificate', 'Cisco Ethical Hacker'],
+      credentials: [
+        'M.S. in Cybersecurity',
+        'CISSP (In Progress)',
+        'Google Cybersecurity Certificate',
+        'Cisco Ethical Hacker',
+      ],
       socialLinks: [
-        { id: 'linkedin', title: 'LinkedIn', url: 'https://linkedin.com/in/aditya-cybersecurity', icon: 'linkedin', username: '@aditya-cybersecurity' },
-        { id: 'twitter', title: 'Twitter', url: 'https://twitter.com/aditya_cyber', icon: 'twitter', username: '@aditya_cyber' },
-        { id: 'github', title: 'GitHub', url: 'https://github.com/aditya-cybersecurity', icon: 'github', username: 'aditya-cybersecurity' }
-      ]
-    }
+        {
+          id: 'linkedin',
+          title: 'LinkedIn',
+          url: 'https://linkedin.com/in/aditya-cybersecurity',
+          icon: 'linkedin',
+          username: '@aditya-cybersecurity',
+        },
+        {
+          id: 'twitter',
+          title: 'Twitter',
+          url: 'https://twitter.com/aditya_cyber',
+          icon: 'twitter',
+          username: '@aditya_cyber',
+        },
+        {
+          id: 'github',
+          title: 'GitHub',
+          url: 'https://github.com/aditya-cybersecurity',
+          icon: 'github',
+          username: 'aditya-cybersecurity',
+        },
+      ],
+    },
   },
 
   {
@@ -562,7 +720,8 @@ An effective incident response plan is not just a document—it's a living, brea
     title: 'Navigating Compliance Frameworks: SOC 2, GDPR, and HIPAA',
     subtitle: 'Understanding and implementing key compliance requirements',
     slug: 'compliance-frameworks',
-    excerpt: 'Compliance is no longer optional in cybersecurity. This guide helps you navigate the complex landscape of SOC 2, GDPR, HIPAA, and other essential compliance frameworks.',
+    excerpt:
+      'Compliance is no longer optional in cybersecurity. This guide helps you navigate the complex landscape of SOC 2, GDPR, HIPAA, and other essential compliance frameworks.',
     content: `# Navigating Compliance Frameworks: SOC 2, GDPR, and HIPAA
 
 ## The Compliance Imperative
@@ -703,20 +862,51 @@ Cybersecurity compliance is a journey, not a destination. By understanding these
     featured: false,
     seo: {
       title: 'Compliance Frameworks Guide - SOC 2, GDPR, HIPAA Explained 2024',
-      description: 'Complete guide to understanding and implementing SOC 2, GDPR, HIPAA, and other compliance frameworks for cybersecurity.',
-      keywords: ['compliance', 'SOC 2', 'GDPR', 'HIPAA', 'regulatory compliance', 'cybersecurity compliance']
+      description:
+        'Complete guide to understanding and implementing SOC 2, GDPR, HIPAA, and other compliance frameworks for cybersecurity.',
+      keywords: [
+        'compliance',
+        'SOC 2',
+        'GDPR',
+        'HIPAA',
+        'regulatory compliance',
+        'cybersecurity compliance',
+      ],
     },
     authorInfo: {
       name: 'Aditya Kumar Tiwari',
       bio: 'Cybersecurity Specialist & Full-Stack Developer with 7+ years of experience protecting organizations from evolving cyber threats.',
       avatar: '/images/aditya-avatar.jpg',
-      credentials: ['M.S. in Cybersecurity', 'CISSP (In Progress)', 'Google Cybersecurity Certificate', 'Cisco Ethical Hacker'],
+      credentials: [
+        'M.S. in Cybersecurity',
+        'CISSP (In Progress)',
+        'Google Cybersecurity Certificate',
+        'Cisco Ethical Hacker',
+      ],
       socialLinks: [
-        { id: 'linkedin', title: 'LinkedIn', url: 'https://linkedin.com/in/aditya-cybersecurity', icon: 'linkedin', username: '@aditya-cybersecurity' },
-        { id: 'twitter', title: 'Twitter', url: 'https://twitter.com/aditya_cyber', icon: 'twitter', username: '@aditya_cyber' },
-        { id: 'github', title: 'GitHub', url: 'https://github.com/aditya-cybersecurity', icon: 'github', username: 'aditya-cybersecurity' }
-      ]
-    }
+        {
+          id: 'linkedin',
+          title: 'LinkedIn',
+          url: 'https://linkedin.com/in/aditya-cybersecurity',
+          icon: 'linkedin',
+          username: '@aditya-cybersecurity',
+        },
+        {
+          id: 'twitter',
+          title: 'Twitter',
+          url: 'https://twitter.com/aditya_cyber',
+          icon: 'twitter',
+          username: '@aditya_cyber',
+        },
+        {
+          id: 'github',
+          title: 'GitHub',
+          url: 'https://github.com/aditya-cybersecurity',
+          icon: 'github',
+          username: 'aditya-cybersecurity',
+        },
+      ],
+    },
   },
 
   {
@@ -724,7 +914,8 @@ Cybersecurity compliance is a journey, not a destination. By understanding these
     title: 'Leveraging Threat Intelligence in Modern Security',
     subtitle: 'How to use threat intelligence to stay ahead of cyber threats',
     slug: 'threat-intelligence',
-    excerpt: 'Threat intelligence is a critical component of modern cybersecurity strategies. Learn how to collect, analyze, and act on threat intelligence to protect your organization.',
+    excerpt:
+      'Threat intelligence is a critical component of modern cybersecurity strategies. Learn how to collect, analyze, and act on threat intelligence to protect your organization.',
     content: `# Leveraging Threat Intelligence in Modern Security
 
 ## The Evolution of Threat Intelligence
@@ -899,26 +1090,62 @@ Threat intelligence is no longer a luxury but a necessity for modern cybersecuri
     publishedAt: '2023-12-20',
     author: 'Aditya Kumar Tiwari',
     readingTime: '9 min read',
-    tags: ['Threat Intelligence', 'Security Monitoring', 'Cyber Threats', 'SOC'],
+    tags: [
+      'Threat Intelligence',
+      'Security Monitoring',
+      'Cyber Threats',
+      'SOC',
+    ],
     category: 'technical-security',
     featuredImage: '/images/blog/threat-intelligence.jpg',
     featured: false,
     seo: {
       title: 'Threat Intelligence Guide - Modern Security Strategies 2024',
-      description: 'Learn how to leverage threat intelligence for proactive cybersecurity defense and threat mitigation.',
-      keywords: ['threat intelligence', 'security monitoring', 'cyber threats', 'proactive defense', 'SOC', 'threat hunting']
+      description:
+        'Learn how to leverage threat intelligence for proactive cybersecurity defense and threat mitigation.',
+      keywords: [
+        'threat intelligence',
+        'security monitoring',
+        'cyber threats',
+        'proactive defense',
+        'SOC',
+        'threat hunting',
+      ],
     },
     authorInfo: {
       name: 'Aditya Kumar Tiwari',
       bio: 'Cybersecurity Specialist & Full-Stack Developer with 7+ years of experience protecting organizations from evolving cyber threats.',
       avatar: '/images/aditya-avatar.jpg',
-      credentials: ['M.S. in Cybersecurity', 'CISSP (In Progress)', 'Google Cybersecurity Certificate', 'Cisco Ethical Hacker'],
+      credentials: [
+        'M.S. in Cybersecurity',
+        'CISSP (In Progress)',
+        'Google Cybersecurity Certificate',
+        'Cisco Ethical Hacker',
+      ],
       socialLinks: [
-        { id: 'linkedin', title: 'LinkedIn', url: 'https://linkedin.com/in/aditya-cybersecurity', icon: 'linkedin', username: '@aditya-cybersecurity' },
-        { id: 'twitter', title: 'Twitter', url: 'https://twitter.com/aditya_cyber', icon: 'twitter', username: '@aditya_cyber' },
-        { id: 'github', title: 'GitHub', url: 'https://github.com/aditya-cybersecurity', icon: 'github', username: 'aditya-cybersecurity' }
-      ]
-    }
+        {
+          id: 'linkedin',
+          title: 'LinkedIn',
+          url: 'https://linkedin.com/in/aditya-cybersecurity',
+          icon: 'linkedin',
+          username: '@aditya-cybersecurity',
+        },
+        {
+          id: 'twitter',
+          title: 'Twitter',
+          url: 'https://twitter.com/aditya_cyber',
+          icon: 'twitter',
+          username: '@aditya_cyber',
+        },
+        {
+          id: 'github',
+          title: 'GitHub',
+          url: 'https://github.com/aditya-cybersecurity',
+          icon: 'github',
+          username: 'aditya-cybersecurity',
+        },
+      ],
+    },
   },
 
   {
@@ -926,7 +1153,8 @@ Threat intelligence is no longer a luxury but a necessity for modern cybersecuri
     title: 'The Importance of Security Awareness Training',
     subtitle: 'Why employee training is your first line of defense',
     slug: 'security-awareness-training',
-    excerpt: 'Human error remains the leading cause of security breaches. Discover why comprehensive security awareness training is essential for organizational security.',
+    excerpt:
+      'Human error remains the leading cause of security breaches. Discover why comprehensive security awareness training is essential for organizational security.',
     content: `# The Importance of Security Awareness Training
 
 ## The Human Element in Cybersecurity
@@ -1103,21 +1331,52 @@ Security awareness training is not a one-time event but an ongoing program that 
     featuredImage: '/images/blog/security-training.jpg',
     featured: false,
     seo: {
-      title: 'Security Awareness Training - Employee Cybersecurity Education 2024',
-      description: 'Why security awareness training is crucial and how to implement effective employee cybersecurity programs.',
-      keywords: ['security training', 'awareness training', 'phishing', 'employee security', 'security awareness']
+      title:
+        'Security Awareness Training - Employee Cybersecurity Education 2024',
+      description:
+        'Why security awareness training is crucial and how to implement effective employee cybersecurity programs.',
+      keywords: [
+        'security training',
+        'awareness training',
+        'phishing',
+        'employee security',
+        'security awareness',
+      ],
     },
     authorInfo: {
       name: 'Aditya Kumar Tiwari',
       bio: 'Cybersecurity Specialist & Full-Stack Developer with 7+ years of experience protecting organizations from evolving cyber threats.',
       avatar: '/images/aditya-avatar.jpg',
-      credentials: ['M.S. in Cybersecurity', 'CISSP (In Progress)', 'Google Cybersecurity Certificate', 'Cisco Ethical Hacker'],
+      credentials: [
+        'M.S. in Cybersecurity',
+        'CISSP (In Progress)',
+        'Google Cybersecurity Certificate',
+        'Cisco Ethical Hacker',
+      ],
       socialLinks: [
-        { id: 'linkedin', title: 'LinkedIn', url: 'https://linkedin.com/in/aditya-cybersecurity', icon: 'linkedin', username: '@aditya-cybersecurity' },
-        { id: 'twitter', title: 'Twitter', url: 'https://twitter.com/aditya_cyber', icon: 'twitter', username: '@aditya_cyber' },
-        { id: 'github', title: 'GitHub', url: 'https://github.com/aditya-cybersecurity', icon: 'github', username: 'aditya-cybersecurity' }
-      ]
-    }
+        {
+          id: 'linkedin',
+          title: 'LinkedIn',
+          url: 'https://linkedin.com/in/aditya-cybersecurity',
+          icon: 'linkedin',
+          username: '@aditya-cybersecurity',
+        },
+        {
+          id: 'twitter',
+          title: 'Twitter',
+          url: 'https://twitter.com/aditya_cyber',
+          icon: 'twitter',
+          username: '@aditya_cyber',
+        },
+        {
+          id: 'github',
+          title: 'GitHub',
+          url: 'https://github.com/aditya-cybersecurity',
+          icon: 'github',
+          username: 'aditya-cybersecurity',
+        },
+      ],
+    },
   },
 
   // Additional articles for each category would continue here...
@@ -1126,7 +1385,8 @@ Security awareness training is not a one-time event but an ongoing program that 
     title: 'Secure Coding Practices for Developers',
     subtitle: 'Essential security principles every developer should know',
     slug: 'secure-coding-practices',
-    excerpt: 'Learn the fundamental secure coding practices that can prevent common vulnerabilities and protect your applications from attacks.',
+    excerpt:
+      'Learn the fundamental secure coding practices that can prevent common vulnerabilities and protect your applications from attacks.',
     content: `# Secure Coding Practices for Developers
 
 ## The Developer's Role in Security
@@ -1359,26 +1619,57 @@ Secure coding is a continuous journey that requires commitment, education, and t
     featured: false,
     seo: {
       title: 'Secure Coding Practices for Developers - Complete Guide 2024',
-      description: 'Essential secure coding practices and principles to prevent vulnerabilities in web applications and software development.',
-      keywords: ['secure coding', 'OWASP', 'application security', 'secure development', 'coding practices']
+      description:
+        'Essential secure coding practices and principles to prevent vulnerabilities in web applications and software development.',
+      keywords: [
+        'secure coding',
+        'OWASP',
+        'application security',
+        'secure development',
+        'coding practices',
+      ],
     },
     authorInfo: {
       name: 'Aditya Kumar Tiwari',
       bio: 'Cybersecurity Specialist & Full-Stack Developer with 7+ years of experience protecting organizations from evolving cyber threats.',
       avatar: '/images/aditya-avatar.jpg',
-      credentials: ['M.S. in Cybersecurity', 'CISSP (In Progress)', 'Google Cybersecurity Certificate', 'Cisco Ethical Hacker'],
+      credentials: [
+        'M.S. in Cybersecurity',
+        'CISSP (In Progress)',
+        'Google Cybersecurity Certificate',
+        'Cisco Ethical Hacker',
+      ],
       socialLinks: [
-        { id: 'linkedin', title: 'LinkedIn', url: 'https://linkedin.com/in/aditya-cybersecurity', icon: 'linkedin', username: '@aditya-cybersecurity' },
-        { id: 'twitter', title: 'Twitter', url: 'https://twitter.com/aditya_cyber', icon: 'twitter', username: '@aditya_cyber' },
-        { id: 'github', title: 'GitHub', url: 'https://github.com/aditya-cybersecurity', icon: 'github', username: 'aditya-cybersecurity' }
-      ]
-    }
+        {
+          id: 'linkedin',
+          title: 'LinkedIn',
+          url: 'https://linkedin.com/in/aditya-cybersecurity',
+          icon: 'linkedin',
+          username: '@aditya-cybersecurity',
+        },
+        {
+          id: 'twitter',
+          title: 'Twitter',
+          url: 'https://twitter.com/aditya_cyber',
+          icon: 'twitter',
+          username: '@aditya_cyber',
+        },
+        {
+          id: 'github',
+          title: 'GitHub',
+          url: 'https://github.com/aditya-cybersecurity',
+          icon: 'github',
+          username: 'aditya-cybersecurity',
+        },
+      ],
+    },
   },
 
   {
     id: 'ai-security-prompt-engineering',
     title: 'AI Security and Prompt Engineering Best Practices',
-    subtitle: 'Securing AI systems and optimizing prompt engineering for security',
+    subtitle:
+      'Securing AI systems and optimizing prompt engineering for security',
     slug: 'ai-security-prompt-engineering',
     content: `# AI Security and Prompt Engineering Best Practices
 
@@ -1539,30 +1830,66 @@ Prompt engineering is the practice of designing and optimizing inputs to AI syst
 AI security is a critical and rapidly evolving field that requires specialized knowledge and continuous learning. By understanding both the threats and opportunities presented by AI, organizations can leverage these technologies safely and effectively.
 
 *For expert AI security consultation and prompt engineering training, [contact me](/contact) to secure your AI systems and optimize your AI capabilities.*`,
-    excerpt: 'As AI becomes more prevalent, understanding AI security and prompt engineering is crucial. Learn best practices for securing AI systems and crafting effective prompts.',
+    excerpt:
+      'As AI becomes more prevalent, understanding AI security and prompt engineering is crucial. Learn best practices for securing AI systems and crafting effective prompts.',
     publishedAt: '2024-01-03',
     author: 'Aditya Kumar Tiwari',
     readingTime: '8 min read',
-    tags: ['AI Security', 'Prompt Engineering', 'Machine Learning', 'Generative AI'],
+    tags: [
+      'AI Security',
+      'Prompt Engineering',
+      'Machine Learning',
+      'Generative AI',
+    ],
     category: 'ai-emerging-tech',
     featuredImage: '/images/blog/ai-security.jpg',
     featured: true,
     seo: {
       title: 'AI Security and Prompt Engineering Best Practices 2024',
-      description: 'Learn how to secure AI systems and implement effective prompt engineering practices for cybersecurity applications.',
-      keywords: ['AI security', 'prompt engineering', 'machine learning security', 'generative AI', 'AI cybersecurity']
+      description:
+        'Learn how to secure AI systems and implement effective prompt engineering practices for cybersecurity applications.',
+      keywords: [
+        'AI security',
+        'prompt engineering',
+        'machine learning security',
+        'generative AI',
+        'AI cybersecurity',
+      ],
     },
     authorInfo: {
       name: 'Aditya Kumar Tiwari',
       bio: 'Cybersecurity Specialist & Full-Stack Developer with 7+ years of experience protecting organizations from evolving cyber threats.',
       avatar: '/images/aditya-avatar.jpg',
-      credentials: ['M.S. in Cybersecurity', 'CISSP (In Progress)', 'Google Cybersecurity Certificate', 'Cisco Ethical Hacker'],
+      credentials: [
+        'M.S. in Cybersecurity',
+        'CISSP (In Progress)',
+        'Google Cybersecurity Certificate',
+        'Cisco Ethical Hacker',
+      ],
       socialLinks: [
-        { id: 'linkedin', title: 'LinkedIn', url: 'https://linkedin.com/in/aditya-cybersecurity', icon: 'linkedin', username: '@aditya-cybersecurity' },
-        { id: 'twitter', title: 'Twitter', url: 'https://twitter.com/aditya_cyber', icon: 'twitter', username: '@aditya_cyber' },
-        { id: 'github', title: 'GitHub', url: 'https://github.com/aditya-cybersecurity', icon: 'github', username: 'aditya-cybersecurity' }
-      ]
-    }
+        {
+          id: 'linkedin',
+          title: 'LinkedIn',
+          url: 'https://linkedin.com/in/aditya-cybersecurity',
+          icon: 'linkedin',
+          username: '@aditya-cybersecurity',
+        },
+        {
+          id: 'twitter',
+          title: 'Twitter',
+          url: 'https://twitter.com/aditya_cyber',
+          icon: 'twitter',
+          username: '@aditya_cyber',
+        },
+        {
+          id: 'github',
+          title: 'GitHub',
+          url: 'https://github.com/aditya-cybersecurity',
+          icon: 'github',
+          username: 'aditya-cybersecurity',
+        },
+      ],
+    },
   },
 
   // More articles would be added to reach 56 total posts across all categories
@@ -1580,19 +1907,21 @@ export const getFeaturedPosts = (): BlogPost[] => {
 
 // Utility function to get recent posts
 export const getRecentPosts = (limit: number = 5): BlogPost[] => {
-  return BLOG_POSTS
-    .sort((a, b) => new Date(b.publishedAt).getTime() - new Date(a.publishedAt).getTime())
-    .slice(0, limit);
+  return BLOG_POSTS.sort(
+    (a, b) =>
+      new Date(b.publishedAt).getTime() - new Date(a.publishedAt).getTime()
+  ).slice(0, limit);
 };
 
 // Utility function to search posts
 export const searchPosts = (query: string): BlogPost[] => {
   const lowercaseQuery = query.toLowerCase();
-  return BLOG_POSTS.filter(post => 
-    post.title.toLowerCase().includes(lowercaseQuery) ||
-    post.excerpt.toLowerCase().includes(lowercaseQuery) ||
-    post.tags.some(tag => tag.toLowerCase().includes(lowercaseQuery)) ||
-    post.content?.toLowerCase().includes(lowercaseQuery)
+  return BLOG_POSTS.filter(
+    post =>
+      post.title.toLowerCase().includes(lowercaseQuery) ||
+      post.excerpt.toLowerCase().includes(lowercaseQuery) ||
+      post.tags.some(tag => tag.toLowerCase().includes(lowercaseQuery)) ||
+      post.content?.toLowerCase().includes(lowercaseQuery)
   );
 };
 
@@ -1600,7 +1929,8 @@ export const searchPosts = (query: string): BlogPost[] => {
 export const getCategoryStats = () => {
   const stats = BLOG_CATEGORIES.map(category => ({
     ...category,
-    postCount: BLOG_POSTS.filter(post => post.category === category.slug).length
+    postCount: BLOG_POSTS.filter(post => post.category === category.slug)
+      .length,
   }));
   return stats;
 };

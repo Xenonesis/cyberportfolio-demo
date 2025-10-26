@@ -8,13 +8,13 @@ export const useStableRandom = (count: number, seed: string = 'security') => {
     // Generate deterministic random values based on seed and count
     const values: number[] = [];
     let seedValue = seed.length;
-    
+
     for (let i = 0; i < count; i++) {
       // Simple deterministic random number generator
       seedValue = (seedValue * 1664525 + 1013904223) % 2147483647;
       values.push(seedValue / 2147483647);
     }
-    
+
     return values;
   }, [count, seed]);
 
@@ -27,7 +27,7 @@ export const useSecurityTiming = (baseDuration: number = 2000) => {
     // Generate deterministic "random" delay using baseDuration as seed
     const seed = baseDuration * 1664525 + 1013904223;
     const pseudoRandom = (seed % 2147483647) / 2147483647;
-    
+
     return {
       duration: baseDuration,
       delay: pseudoRandom * baseDuration * 0.1,
@@ -41,7 +41,9 @@ export const useSecurityTiming = (baseDuration: number = 2000) => {
 // Hook for security status management
 export const useSecurityStatus = (initialStatus: string = 'secure') => {
   const [status, setStatus] = useState(initialStatus);
-  const [level, setLevel] = useState<'low' | 'medium' | 'high' | 'critical'>('low');
+  const [level, setLevel] = useState<'low' | 'medium' | 'high' | 'critical'>(
+    'low'
+  );
 
   const updateStatus = (newStatus: string, threatLevel?: typeof level) => {
     setStatus(newStatus);
@@ -68,7 +70,7 @@ export const useSecurityScan = (duration: number = 5000) => {
   const startScan = () => {
     setIsScanning(true);
     setProgress(0);
-    
+
     const interval = setInterval(() => {
       setProgress(prev => {
         if (prev >= 100) {
@@ -97,7 +99,9 @@ export const useSecurityScan = (duration: number = 5000) => {
 // Hook for encryption status
 export const useEncryptionStatus = () => {
   const [isEncrypted, setIsEncrypted] = useState(false);
-  const [encryptionLevel, setEncryptionLevel] = useState<'basic' | 'standard' | 'advanced' | 'quantum'>('standard');
+  const [encryptionLevel, setEncryptionLevel] = useState<
+    'basic' | 'standard' | 'advanced' | 'quantum'
+  >('standard');
 
   const toggleEncryption = () => {
     setIsEncrypted(!isEncrypted);
@@ -112,13 +116,17 @@ export const useEncryptionStatus = () => {
     encryptionLevel,
     toggleEncryption,
     setLevel,
-    getEncryptionIcon: () => isEncrypted ? '🔒' : '🔓',
+    getEncryptionIcon: () => (isEncrypted ? '🔒' : '🔓'),
     getEncryptionColor: () => {
       switch (encryptionLevel) {
-        case 'quantum': return 'text-electric-cyan-500';
-        case 'advanced': return 'text-neon-green-500';
-        case 'standard': return 'text-cyan-400';
-        default: return 'text-gray-500';
+        case 'quantum':
+          return 'text-electric-cyan-500';
+        case 'advanced':
+          return 'text-neon-green-500';
+        case 'standard':
+          return 'text-cyan-400';
+        default:
+          return 'text-gray-500';
       }
     },
   };
@@ -137,17 +145,19 @@ export const useThreatDetection = () => {
       'Data exfiltration attempt prevented',
       'Phishing email filtered',
     ];
-    
+
     const newThreats: string[] = [];
     const threatCount = Math.floor(Math.random() * 3);
-    
+
     for (let i = 0; i < threatCount; i++) {
-      newThreats.push(threatTypes[Math.floor(Math.random() * threatTypes.length)]);
+      newThreats.push(
+        threatTypes[Math.floor(Math.random() * threatTypes.length)]
+      );
     }
-    
+
     setThreats(newThreats);
     setLastScan(new Date());
-    
+
     // Clear threats after 30 seconds
     setTimeout(() => {
       setThreats([]);
@@ -177,7 +187,10 @@ export const useComplianceStatus = () => {
     return compliance[standard] === true;
   };
 
-  const updateCompliance = (standard: keyof typeof compliance, status: boolean) => {
+  const updateCompliance = (
+    standard: keyof typeof compliance,
+    status: boolean
+  ) => {
     setCompliance(prev => ({
       ...prev,
       [standard]: status,

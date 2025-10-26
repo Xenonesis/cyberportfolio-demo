@@ -40,9 +40,10 @@ export const MobileOptimization = ({
   useEffect(() => {
     // Detect mobile environment
     const detectMobile = () => {
-      const isMobile = /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(
-        navigator.userAgent
-      );
+      const isMobile =
+        /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(
+          navigator.userAgent
+        );
 
       const touchSupport = 'ontouchstart' in window;
       const viewportWidth = window.innerWidth;
@@ -57,7 +58,7 @@ export const MobileOptimization = ({
       }
 
       // Get battery level if available
-      let batteryLevel = null;
+      const batteryLevel = null;
       if ('getBattery' in navigator) {
         (navigator as any).getBattery().then((battery: any) => {
           setMetrics(prev => ({ ...prev, batteryLevel: battery.level }));
@@ -132,7 +133,9 @@ export const MobileOptimization = ({
     ];
 
     metaTags.forEach(tag => {
-      let meta = document.querySelector(`meta[name="${tag.name}"]`) as HTMLMetaElement;
+      let meta = document.querySelector(
+        `meta[name="${tag.name}"]`
+      ) as HTMLMetaElement;
       if (!meta) {
         meta = document.createElement('meta') as HTMLMetaElement;
         meta.name = tag.name;
@@ -224,7 +227,10 @@ export const MobileOptimization = ({
     if (!metrics.isMobile) score += 20; // Desktop gets bonus
     if (!metrics.touchSupport) score -= 10;
     if (metrics.viewportWidth < 320) score -= 5;
-    if (metrics.connectionSpeed === 'slow-2g' || metrics.connectionSpeed === '2g') {
+    if (
+      metrics.connectionSpeed === 'slow-2g' ||
+      metrics.connectionSpeed === '2g'
+    ) {
       score -= 20;
     }
     if (metrics.connectionSpeed === '3g') score -= 10;
@@ -239,27 +245,33 @@ export const MobileOptimization = ({
     <>
       {/* Mobile Optimization Meta Tags */}
       {enableMobileMetaTags && (
-        <div className="mobile-meta-tags" style={{ display: 'none' }}>
-          <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-          <meta name="theme-color" content="#0F172A" />
-          <meta name="mobile-web-app-capable" content="yes" />
+        <div className='mobile-meta-tags' style={{ display: 'none' }}>
+          <meta
+            name='viewport'
+            content='width=device-width, initial-scale=1.0'
+          />
+          <meta name='theme-color' content='#0F172A' />
+          <meta name='mobile-web-app-capable' content='yes' />
         </div>
       )}
 
       {/* Mobile Performance Monitoring */}
-      <div className={`mobile-optimization ${className}`} data-testid="mobile-optimization">
-        <div className="mobile-metrics" style={{ display: 'none' }}>
-          <div data-metric="is-mobile">{metrics.isMobile}</div>
-          <div data-metric="touch-support">{metrics.touchSupport}</div>
-          <div data-metric="viewport-width">{metrics.viewportWidth}</div>
-          <div data-metric="connection-speed">{metrics.connectionSpeed}</div>
-          <div data-metric="battery-level">{metrics.batteryLevel}</div>
-          <div data-metric="performance-score">{mobilePerformanceScore}</div>
+      <div
+        className={`mobile-optimization ${className}`}
+        data-testid='mobile-optimization'
+      >
+        <div className='mobile-metrics' style={{ display: 'none' }}>
+          <div data-metric='is-mobile'>{metrics.isMobile}</div>
+          <div data-metric='touch-support'>{metrics.touchSupport}</div>
+          <div data-metric='viewport-width'>{metrics.viewportWidth}</div>
+          <div data-metric='connection-speed'>{metrics.connectionSpeed}</div>
+          <div data-metric='battery-level'>{metrics.batteryLevel}</div>
+          <div data-metric='performance-score'>{mobilePerformanceScore}</div>
         </div>
 
         {/* Mobile-specific schema markup */}
         <script
-          type="application/ld+json"
+          type='application/ld+json'
           dangerouslySetInnerHTML={{
             __html: JSON.stringify({
               '@context': 'https://schema.org',
@@ -288,10 +300,10 @@ export const MobileOptimization = ({
 
         {/* Mobile optimization status indicator */}
         {mobileOptimized && (
-          <div className="mobile-optimized-indicator">
-            <div className="mobile-badge">
-              <span className="mobile-icon">📱</span>
-              <span className="mobile-text">Mobile Optimized</span>
+          <div className='mobile-optimized-indicator'>
+            <div className='mobile-badge'>
+              <span className='mobile-icon'>📱</span>
+              <span className='mobile-text'>Mobile Optimized</span>
             </div>
           </div>
         )}
@@ -350,9 +362,9 @@ export const MobileOptimization = ({
 
       {/* Accelerated Mobile Pages (AMP) support */}
       {enableAcceleratedMobilePages && (
-        <div className="amp-support" style={{ display: 'none' }}>
+        <div className='amp-support' style={{ display: 'none' }}>
           {/* AMP components would be added here */}
-          <link rel="amphtml" href={`${window.location.href}?amp=1`} />
+          <link rel='amphtml' href={`${window.location.href}?amp=1`} />
         </div>
       )}
     </>

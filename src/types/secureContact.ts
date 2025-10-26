@@ -7,18 +7,18 @@ export interface SecureContactFormData {
   email: string;
   phone?: string;
   company?: string;
-  
+
   // Security consultation details
   consultationType: ConsultationType;
   projectTimeline: ProjectTimeline;
   budgetRange: BudgetRange;
   securityConcerns: string;
-  
+
   // Security verification
   privacyPolicyAccepted: boolean;
   securityChallengeCompleted: boolean;
   captchaToken?: string;
-  
+
   // Metadata
   submissionId: string;
   timestamp: string;
@@ -29,7 +29,7 @@ export interface SecureContactFormData {
 }
 
 // Consultation type options
-export type ConsultationType = 
+export type ConsultationType =
   | 'security-assessment'
   | 'development-security'
   | 'incident-response'
@@ -39,7 +39,7 @@ export type ConsultationType =
   | 'security-training';
 
 // Project timeline options
-export type ProjectTimeline = 
+export type ProjectTimeline =
   | 'immediate'
   | '1-2-weeks'
   | '1-3-months'
@@ -47,11 +47,7 @@ export type ProjectTimeline =
   | 'long-term';
 
 // Budget range options
-export type BudgetRange = 
-  | 'under-5k'
-  | '5k-15k'
-  | '15k-50k'
-  | '50k-plus';
+export type BudgetRange = 'under-5k' | '5k-15k' | '15k-50k' | '50k-plus';
 
 // Form validation state
 export interface FormValidationState {
@@ -197,7 +193,11 @@ export interface ValidationRules {
 export interface SecurityEvent {
   id: string;
   timestamp: string;
-  type: 'form-submission' | 'security-challenge' | 'encryption-attempt' | 'validation-error';
+  type:
+    | 'form-submission'
+    | 'security-challenge'
+    | 'encryption-attempt'
+    | 'validation-error';
   severity: 'info' | 'warning' | 'error' | 'critical';
   message: string;
   details: Record<string, string | number | boolean>;

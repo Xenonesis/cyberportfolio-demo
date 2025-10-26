@@ -1,4 +1,4 @@
-"use client";
+'use client';
 
 import React, { createContext, useContext, useState, ReactNode } from 'react';
 import { useAccessibility } from './AccessibilityProvider';
@@ -13,7 +13,9 @@ interface MotionPreferencesContextType {
   getTransitionClass: (baseClass: string, transitionClass?: string) => string;
 }
 
-const MotionPreferencesContext = createContext<MotionPreferencesContextType | undefined>(undefined);
+const MotionPreferencesContext = createContext<
+  MotionPreferencesContextType | undefined
+>(undefined);
 
 interface MotionPreferencesProps {
   children: ReactNode;
@@ -30,7 +32,8 @@ export const MotionPreferences: React.FC<MotionPreferencesProps> = ({
   const [reducedMotion, setReducedMotion] = useState(false);
 
   // Compute animation enabled state based on preferences
-  const shouldReduceMotion = reducedMotion || accessibilityContext.prefersReducedMotion;
+  const shouldReduceMotion =
+    reducedMotion || accessibilityContext.prefersReducedMotion;
   const animationEnabled = !shouldReduceMotion;
 
   const toggleReducedMotion = () => {
@@ -43,18 +46,24 @@ export const MotionPreferences: React.FC<MotionPreferencesProps> = ({
         ? 'Reduced motion enabled for accessibility'
         : 'Standard motion enabled',
       type: 'info',
-      priority: 'low'
+      priority: 'low',
     });
   };
 
-  const getAnimationClass = (baseClass: string, animatedClass?: string): string => {
+  const getAnimationClass = (
+    baseClass: string,
+    animatedClass?: string
+  ): string => {
     if (!enableAnimationControl || !animationEnabled) {
       return baseClass;
     }
     return animatedClass ? `${baseClass} ${animatedClass}` : baseClass;
   };
 
-  const getTransitionClass = (baseClass: string, transitionClass?: string): string => {
+  const getTransitionClass = (
+    baseClass: string,
+    transitionClass?: string
+  ): string => {
     if (!enableAnimationControl || !animationEnabled) {
       return baseClass;
     }
@@ -75,9 +84,15 @@ export const MotionPreferences: React.FC<MotionPreferencesProps> = ({
     <MotionPreferencesContext.Provider value={contextValue}>
       <div
         className={getAnimationClass('motion-preferences-container')}
-        data-reduced-motion={reducedMotion || accessibilityContext.prefersReducedMotion}
+        data-reduced-motion={
+          reducedMotion || accessibilityContext.prefersReducedMotion
+        }
         data-animation-enabled={animationEnabled}
-        aria-label={reducedMotion || accessibilityContext.prefersReducedMotion ? 'Motion reduced for accessibility' : undefined}
+        aria-label={
+          reducedMotion || accessibilityContext.prefersReducedMotion
+            ? 'Motion reduced for accessibility'
+            : undefined
+        }
       >
         {children}
       </div>
@@ -88,7 +103,9 @@ export const MotionPreferences: React.FC<MotionPreferencesProps> = ({
 export const useMotionPreferences = (): MotionPreferencesContextType => {
   const context = useContext(MotionPreferencesContext);
   if (!context) {
-    throw new Error('useMotionPreferences must be used within a MotionPreferences provider');
+    throw new Error(
+      'useMotionPreferences must be used within a MotionPreferences provider'
+    );
   }
   return context;
 };
@@ -117,41 +134,45 @@ export const MotionToggleButton: React.FC<MotionToggleButtonProps> = ({
   const buttonClasses = [
     'inline-flex items-center gap-2 rounded-md border border-gray-300 bg-white px-3 py-2 text-sm font-medium text-gray-700 shadow-sm hover:bg-gray-50 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-offset-2 dark:border-gray-600 dark:bg-gray-800 dark:text-gray-200 dark:hover:bg-gray-700',
     sizeClass,
-    className
-  ].filter(Boolean).join(' ');
+    className,
+  ]
+    .filter(Boolean)
+    .join(' ');
 
   return (
     <button
       onClick={toggleReducedMotion}
       className={buttonClasses}
       aria-pressed={reducedMotion}
-      aria-label={reducedMotion ? 'Disable reduced motion' : 'Enable reduced motion'}
-      type="button"
+      aria-label={
+        reducedMotion ? 'Disable reduced motion' : 'Enable reduced motion'
+      }
+      type='button'
     >
       <svg
         className={`h-4 w-4 ${reducedMotion ? 'text-blue-600' : 'text-gray-400'}`}
-        fill="none"
-        viewBox="0 0 24 24"
+        fill='none'
+        viewBox='0 0 24 24'
         strokeWidth={2}
-        stroke="currentColor"
-        aria-hidden="true"
+        stroke='currentColor'
+        aria-hidden='true'
       >
         {reducedMotion ? (
           <path
-            strokeLinecap="round"
-            strokeLinejoin="round"
-            d="M13.875 18.825A10.05 10.05 0 0112 19c-4.478 0-8.268-2.943-9.543-7a9.97 9.97 0 011.563-3.029m5.858.908a3 3 0 114.243 4.243M9.878 9.878l4.242 4.242M9.878 9.878L3 3m6.878 6.878L21 21"
+            strokeLinecap='round'
+            strokeLinejoin='round'
+            d='M13.875 18.825A10.05 10.05 0 0112 19c-4.478 0-8.268-2.943-9.543-7a9.97 9.97 0 011.563-3.029m5.858.908a3 3 0 114.243 4.243M9.878 9.878l4.242 4.242M9.878 9.878L3 3m6.878 6.878L21 21'
           />
         ) : (
           <path
-            strokeLinecap="round"
-            strokeLinejoin="round"
-            d="M15 12a3 3 0 11-6 0 3 3 0 016 0z"
+            strokeLinecap='round'
+            strokeLinejoin='round'
+            d='M15 12a3 3 0 11-6 0 3 3 0 016 0z'
           />
         )}
       </svg>
       {showLabel && (
-        <span className="sr-only sm:not-sr-only">
+        <span className='sr-only sm:not-sr-only'>
           {reducedMotion ? 'Disable Reduced Motion' : 'Enable Reduced Motion'}
         </span>
       )}

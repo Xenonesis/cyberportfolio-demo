@@ -14,7 +14,10 @@ interface SkillsMatrixProps {
   className?: string;
 }
 
-export const SkillsMatrix = ({ config = SKILLS_MATRIX_CONFIG, className = '' }: SkillsMatrixProps) => {
+export const SkillsMatrix = ({
+  config = SKILLS_MATRIX_CONFIG,
+  className = '',
+}: SkillsMatrixProps) => {
   const [searchTerm, setSearchTerm] = useState('');
   const [selectedCategory, setSelectedCategory] = useState<string>('all');
   const [showAllSkills, setShowAllSkills] = useState(false);
@@ -25,9 +28,11 @@ export const SkillsMatrix = ({ config = SKILLS_MATRIX_CONFIG, className = '' }: 
       .map(category => ({
         ...category,
         skills: category.skills.filter(skill => {
-          const matchesSearch = skill.name.toLowerCase().includes(searchTerm.toLowerCase()) ||
-                               skill.description.toLowerCase().includes(searchTerm.toLowerCase());
-          const matchesCategory = selectedCategory === 'all' || skill.category === selectedCategory;
+          const matchesSearch =
+            skill.name.toLowerCase().includes(searchTerm.toLowerCase()) ||
+            skill.description.toLowerCase().includes(searchTerm.toLowerCase());
+          const matchesCategory =
+            selectedCategory === 'all' || skill.category === selectedCategory;
           return matchesSearch && matchesCategory;
         }),
       }))
@@ -47,9 +52,13 @@ export const SkillsMatrix = ({ config = SKILLS_MATRIX_CONFIG, className = '' }: 
 
   // Get proficiency level for display
   const getProficiencyLevel = (proficiency: number) => {
-    return PROFICIENCY_LEVELS.find(level => 
-      proficiency >= level.minPercentage && proficiency <= level.maxPercentage
-    ) || PROFICIENCY_LEVELS[2]; // Default to intermediate
+    return (
+      PROFICIENCY_LEVELS.find(
+        level =>
+          proficiency >= level.minPercentage &&
+          proficiency <= level.maxPercentage
+      ) || PROFICIENCY_LEVELS[2]
+    ); // Default to intermediate
   };
 
   // Animation variants
@@ -66,10 +75,10 @@ export const SkillsMatrix = ({ config = SKILLS_MATRIX_CONFIG, className = '' }: 
 
   const categoryVariants = {
     hidden: { opacity: 0, y: 20 },
-    visible: { 
-      opacity: 1, 
+    visible: {
+      opacity: 1,
       y: 0,
-      transition: { 
+      transition: {
         type: 'spring',
         stiffness: 100,
         damping: 15,
@@ -80,42 +89,48 @@ export const SkillsMatrix = ({ config = SKILLS_MATRIX_CONFIG, className = '' }: 
   return (
     <motion.section
       className={`skills-matrix ${className}`}
-      initial="hidden"
-      animate="visible"
+      initial='hidden'
+      animate='visible'
       variants={containerVariants}
     >
       {/* Matrix Header */}
-      <MatrixHeader 
+      <MatrixHeader
         title={config.title}
         description={config.description}
-        totalSkills={config.categories.reduce((sum, cat) => sum + cat.skillCount, 0)}
+        totalSkills={config.categories.reduce(
+          (sum, cat) => sum + cat.skillCount,
+          0
+        )}
         averageProficiency={Math.round(
-          config.categories.reduce((sum, cat) => sum + cat.averageProficiency, 0) / config.categories.length
+          config.categories.reduce(
+            (sum, cat) => sum + cat.averageProficiency,
+            0
+          ) / config.categories.length
         )}
       />
 
       {/* Controls */}
       <motion.div
-        className="matrix-controls mb-8 p-6 bg-security-gray-800 rounded-xl border border-security-gray-700"
+        className='matrix-controls mb-8 p-6 bg-security-gray-800 rounded-xl border border-security-gray-700'
         variants={categoryVariants}
       >
-        <div className="flex flex-col md:flex-row gap-4 items-start md:items-center justify-between">
+        <div className='flex flex-col md:flex-row gap-4 items-start md:items-center justify-between'>
           {/* Search */}
           {config.enableSearch && (
-            <div className="flex-1 min-w-0">
+            <div className='flex-1 min-w-0'>
               <input
-                type="text"
-                placeholder="Search skills by name or description..."
+                type='text'
+                placeholder='Search skills by name or description...'
                 value={searchTerm}
-                onChange={(e) => setSearchTerm(e.target.value)}
-                className="w-full px-4 py-2 bg-security-gray-700 border border-security-gray-600 rounded-lg text-white placeholder-gray-500 focus:outline-none focus:border-electric-cyan-500 focus:ring-1 focus:ring-electric-cyan-500 transition-colors"
+                onChange={e => setSearchTerm(e.target.value)}
+                className='w-full px-4 py-2 bg-security-gray-700 border border-security-gray-600 rounded-lg text-white placeholder-gray-500 focus:outline-none focus:border-electric-cyan-500 focus:ring-1 focus:ring-electric-cyan-500 transition-colors'
               />
             </div>
           )}
 
           {/* Category Filter */}
           {config.enableFiltering && (
-            <div className="flex flex-wrap gap-2">
+            <div className='flex flex-wrap gap-2'>
               <button
                 onClick={() => setSelectedCategory('all')}
                 className={`px-3 py-1 rounded-full text-sm font-medium transition-all ${
@@ -124,7 +139,12 @@ export const SkillsMatrix = ({ config = SKILLS_MATRIX_CONFIG, className = '' }: 
                     : 'bg-security-gray-700 text-gray-400 hover:bg-security-gray-600'
                 }`}
               >
-                All ({config.categories.reduce((sum, cat) => sum + cat.skillCount, 0)})
+                All (
+                {config.categories.reduce(
+                  (sum, cat) => sum + cat.skillCount,
+                  0
+                )}
+                )
               </button>
               {allCategories.map(category => (
                 <button
@@ -136,7 +156,9 @@ export const SkillsMatrix = ({ config = SKILLS_MATRIX_CONFIG, className = '' }: 
                       : 'bg-security-gray-700 text-gray-400 hover:bg-security-gray-600'
                   }`}
                 >
-                  {category.replace('-', ' ').replace(/\b\w/g, l => l.toUpperCase())}
+                  {category
+                    .replace('-', ' ')
+                    .replace(/\b\w/g, l => l.toUpperCase())}
                 </button>
               ))}
             </div>
@@ -157,12 +179,9 @@ export const SkillsMatrix = ({ config = SKILLS_MATRIX_CONFIG, className = '' }: 
       </motion.div>
 
       {/* Skills Categories */}
-      <AnimatePresence mode="wait">
-        <motion.div
-          className="grid gap-8"
-          variants={containerVariants}
-        >
-          {filteredSkills.map((category) => (
+      <AnimatePresence mode='wait'>
+        <motion.div className='grid gap-8' variants={containerVariants}>
+          {filteredSkills.map(category => (
             <CategorySection
               key={category.id}
               category={category}
@@ -183,14 +202,16 @@ export const SkillsMatrix = ({ config = SKILLS_MATRIX_CONFIG, className = '' }: 
       {/* Empty State */}
       {filteredSkills.length === 0 && (
         <motion.div
-          className="text-center py-12"
+          className='text-center py-12'
           initial={{ opacity: 0, scale: 0.8 }}
           animate={{ opacity: 1, scale: 1 }}
           transition={{ duration: 0.3 }}
         >
-          <div className="text-6xl mb-4">🔍</div>
-          <h3 className="text-xl font-semibold text-gray-400 mb-2">No skills found</h3>
-          <p className="text-gray-500">
+          <div className='text-6xl mb-4'>🔍</div>
+          <h3 className='text-xl font-semibold text-gray-400 mb-2'>
+            No skills found
+          </h3>
+          <p className='text-gray-500'>
             Try adjusting your search terms or category filters.
           </p>
         </motion.div>

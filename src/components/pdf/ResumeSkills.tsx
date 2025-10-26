@@ -119,9 +119,14 @@ const styles = StyleSheet.create({
 });
 
 const getProficiencyColor = (level: number) => {
-  const proficiency = PROFICIENCY_LEVELS.find(p => level >= p.minPercentage && level <= p.maxPercentage);
-  return proficiency?.color === 'neon-green' ? '#39FF14' :
-         proficiency?.color === 'electric-cyan' ? '#00FFFF' : '#64748B';
+  const proficiency = PROFICIENCY_LEVELS.find(
+    p => level >= p.minPercentage && level <= p.maxPercentage
+  );
+  return proficiency?.color === 'neon-green'
+    ? '#39FF14'
+    : proficiency?.color === 'electric-cyan'
+      ? '#00FFFF'
+      : '#64748B';
 };
 
 export const ResumeSkills = () => {
@@ -129,17 +134,18 @@ export const ResumeSkills = () => {
     <View style={styles.section}>
       <Text style={styles.sectionTitle}>Skills & Expertise</Text>
 
-      {SKILL_CATEGORIES.map((category) => (
+      {SKILL_CATEGORIES.map(category => (
         <View key={category.id} style={styles.categoryContainer}>
           <View style={styles.categoryHeader}>
             <Text style={styles.categoryTitle}>{category.title}</Text>
             <Text style={styles.categoryStats}>
-              {category.skillCount} skills • {category.averageProficiency}% avg proficiency
+              {category.skillCount} skills • {category.averageProficiency}% avg
+              proficiency
             </Text>
           </View>
 
           <View style={styles.skillsGrid}>
-            {category.skills.slice(0, 8).map((skill) => (
+            {category.skills.slice(0, 8).map(skill => (
               <View key={skill.id} style={styles.skillItem}>
                 <View style={styles.skillHeader}>
                   <Text style={styles.skillName}>{skill.name}</Text>
@@ -172,14 +178,18 @@ export const ResumeSkills = () => {
       <View style={styles.proficiencyLegend}>
         <Text style={styles.legendTitle}>Proficiency Levels</Text>
         <View style={styles.legendGrid}>
-          {PROFICIENCY_LEVELS.map((level) => (
+          {PROFICIENCY_LEVELS.map(level => (
             <View key={level.level} style={styles.legendItem}>
               <View
                 style={[
                   styles.legendColor,
                   {
-                    backgroundColor: level.color === 'neon-green' ? '#39FF14' :
-                                   level.color === 'electric-cyan' ? '#00FFFF' : '#64748B'
+                    backgroundColor:
+                      level.color === 'neon-green'
+                        ? '#39FF14'
+                        : level.color === 'electric-cyan'
+                          ? '#00FFFF'
+                          : '#64748B',
                   },
                 ]}
               />

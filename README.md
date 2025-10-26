@@ -132,17 +132,20 @@ cybersecurity-portfolio/
 ### Installation
 
 1. **Clone the repository** (if using as template):
+
    ```bash
    git clone <repository-url> cybersecurity-portfolio
    cd cybersecurity-portfolio
    ```
 
 2. **Install dependencies**:
+
    ```bash
    npm install
    ```
 
 3. **Start development server**:
+
    ```bash
    npm run dev
    ```
@@ -228,20 +231,20 @@ Markdown files in `/content/blog/` with frontmatter:
 
 ```markdown
 ---
-title: "Post Title"
-subtitle: "Post subtitle"
-slug: "post-slug"
-excerpt: "Post excerpt"
-publishedAt: "2024-01-15"
-author: "Aditya Kumar Tiwari"
-readingTime: "5 min read"
-tags: ["Tag1", "Tag2"]
-category: "Category"
-featuredImage: "/images/blog/image.jpg"
+title: 'Post Title'
+subtitle: 'Post subtitle'
+slug: 'post-slug'
+excerpt: 'Post excerpt'
+publishedAt: '2024-01-15'
+author: 'Aditya Kumar Tiwari'
+readingTime: '5 min read'
+tags: ['Tag1', 'Tag2']
+category: 'Category'
+featuredImage: '/images/blog/image.jpg'
 seo:
-  title: "SEO Title"
-  description: "SEO description"
-  keywords: ["keyword1", "keyword2"]
+  title: 'SEO Title'
+  description: 'SEO description'
+  keywords: ['keyword1', 'keyword2']
 ---
 ```
 
@@ -251,16 +254,16 @@ Markdown files in `/content/projects/` with detailed project information:
 
 ```markdown
 ---
-title: "Project Title"
-subtitle: "Project description"
-client: "Client Name"
-industry: "Industry"
-duration: "Project duration"
-budget: "Project budget"
-challenges: ["Challenge 1", "Challenge 2"]
-solutions: ["Solution 1", "Solution 2"]
-technologies: ["Tech 1", "Tech 2"]
-results: ["Result 1", "Result 2"]
+title: 'Project Title'
+subtitle: 'Project description'
+client: 'Client Name'
+industry: 'Industry'
+duration: 'Project duration'
+budget: 'Project budget'
+challenges: ['Challenge 1', 'Challenge 2']
+solutions: ['Solution 1', 'Solution 2']
+technologies: ['Tech 1', 'Tech 2']
+results: ['Result 1', 'Result 2']
 ---
 ```
 
