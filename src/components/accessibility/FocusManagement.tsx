@@ -22,7 +22,7 @@ interface FocusManagementContextType {
   showFocusIndicators: boolean;
   toggleFocusIndicators: () => void;
   focusIndicatorStyle: 'default' | 'high-contrast' | 'custom';
-  setFocusIndicatorStyle: ( // eslint-disable-line no-unused-vars
+  setFocusIndicatorStyle: (  
     style: 'default' | 'high-contrast' | 'custom'
   ) => void;
 }
