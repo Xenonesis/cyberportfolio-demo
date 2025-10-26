@@ -5,7 +5,7 @@ import { ContentOptimization } from '@/components/seo/ContentOptimization';
 import { TrustBuilding } from '@/components/seo/TrustBuilding';
 import { MobileOptimization } from '@/components/seo/MobileOptimization';
 import { PerformanceMonitoring } from '@/components/seo/PerformanceMonitoring';
-import { SchemaMarkup } from '@/components/seo/SchemaMarkup';
+import SchemaMarkup from '@/components/seo/SchemaMarkup';
 import { BreadcrumbNavigation } from '@/components/seo/BreadcrumbNavigation';
 
 export default function SEODemoPage() {

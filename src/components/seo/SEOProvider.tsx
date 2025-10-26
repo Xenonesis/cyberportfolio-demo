@@ -8,7 +8,7 @@ import {
   ReactNode,
 } from 'react';
 import { SEOHead } from './SEOHead';
-import { SchemaMarkup } from './SchemaMarkup';
+import SchemaMarkup from './SchemaMarkup';
 import { BreadcrumbNavigation } from './BreadcrumbNavigation';
 import { PerformanceMonitoring } from './PerformanceMonitoring';
 import { MobileOptimization } from './MobileOptimization';
