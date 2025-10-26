@@ -8,7 +8,7 @@ const dom = new JSDOM('<!DOCTYPE html><html><body></body></html>', {
 });
 
 // Set up global browser APIs
-global.window = dom.window as any;
+global.window = dom.window;
 global.document = dom.window.document;
 global.navigator = dom.window.navigator;
 global.HTMLElement = dom.window.HTMLElement;
@@ -23,7 +23,7 @@ global.HTMLTextAreaElement = dom.window.HTMLTextAreaElement;
 // Mock matchMedia
 Object.defineProperty(window, 'matchMedia', {
   writable: true,
-  value: (query: string) => ({
+  value: (query) => ({
     matches: false,
     media: query,
     onchange: null,
@@ -38,7 +38,7 @@ Object.defineProperty(window, 'matchMedia', {
 // Mock getComputedStyle
 Object.defineProperty(window, 'getComputedStyle', {
   writable: true,
-  value: (element: Element) => {
+  value: (element) => {
     const defaultStyle = {
       backgroundColor: 'rgb(255, 255, 255)',
       color: 'rgb(0, 0, 0)',
@@ -51,7 +51,7 @@ Object.defineProperty(window, 'getComputedStyle', {
       borderWidth: '0px',
       animationName: 'none',
       transitionProperty: 'none',
-      getPropertyValue: (prop: string) => {
+      getPropertyValue: (prop) => {
         if (prop === '--reduced-motion') return 'false';
         return '';
       },
