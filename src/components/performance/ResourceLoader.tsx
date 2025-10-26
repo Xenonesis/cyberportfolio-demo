@@ -62,7 +62,7 @@ export const ResourceLoader: React.FC<ResourceLoaderProps> = ({
 
   // Render resource hints
   const renderResourceHints = () => {
-    const hints: JSX.Element[] = [];
+    const hints: React.JSX.Element[] = [];
 
     // Preconnect hints
     preconnectOrigins.forEach((origin, index) => {
